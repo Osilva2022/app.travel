@@ -90,6 +90,18 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
+        'wordpress' => [
+            'driver' => 'mysql',
+            'host' => '23.111.180.50',
+            'database' => env('WP_DATABASE'),
+            'username' => env('WP_USERNAME'),
+            'password' => env('WP_PASSWORD'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => 'test_',
+            'strict' => false,
+            'engine' => null,
+         ],
 
     ],
 
