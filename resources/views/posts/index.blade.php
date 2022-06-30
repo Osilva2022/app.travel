@@ -129,31 +129,29 @@
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-5">
-                                                <div class="col-5">
-                                                    <a href="{{ route('posts.show', $data) }}"
-                                                        class="text-decoration-none text-muted">
-                                                        <img src="{{ $data->image }}"
-                                                            class="bd-placeholder-img card-img-top rounded-4 shadow"
-                                                            width="100%" height="180">
-                                                    </a>
-                                                </div>
-                                                <div class="col-7">
-                                                    <div class="card-body">
-                                                        <span class="card-title badge bg-primary fs-6">
-                                                            {{ $data->main_category }}
-                                                        </span>
-                                                        <p class="card-text">
-                                                            <a href="{{ route('posts.show', $data) }}"
-                                                                class="text-decoration-none text-muted">
-                                                                {!! Str::limit($data->content, 100, ' ...') !!}
-                                                            </a>
-                                                        </p>
-                                                        <p class="card-text">
-                                                            <small class="text-muted">
-                                                                {{ $data->post_date->format('d M Y') }}
-                                                            </small>
-                                                        </p>
-                                                    </div>
+                                                <a href="{{ route('posts.show', $data) }}"
+                                                    class="text-decoration-none text-muted">
+                                                    <img src="{{ $data->image }}"
+                                                        class="bd-placeholder-img card-img-top rounded-4 shadow"
+                                                        width="100%" height="180">
+                                                </a>
+                                            </div>
+                                            <div class="col-7">
+                                                <div class="card-body">
+                                                    <span class="card-title badge bg-primary fs-6">
+                                                        {{ $data->main_category }}
+                                                    </span>
+                                                    <p class="card-text">
+                                                        <a href="{{ route('posts.show', $data) }}"
+                                                            class="text-decoration-none text-muted">
+                                                            {!! Str::limit($data->content, 100, ' ...') !!}
+                                                        </a>
+                                                    </p>
+                                                    <p class="card-text">
+                                                        <small class="text-muted">
+                                                            {{ $data->post_date->format('d M Y') }}
+                                                        </small>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
