@@ -122,9 +122,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    @foreach ($news as $data)
-                        @if ($new->ID != $data->ID)
-                            <div class="row">
+                    <div class="row">
+                        @foreach ($news as $data)
+                            @if ($new->ID != $data->ID)
                                 <div class="col-12">
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
@@ -158,22 +158,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 mb-4">
-                                        <button class="btn btn-primary form-control rounded-pill" type="button">More
-                                            news</button>
-                                    </div>
                                 </div>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                        <div class="col-12 mb-4">
+                            <button class="btn btn-primary form-control rounded-pill" type="button">More
+                                news</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- NEWS -->
+                <div class="row justify-content-center">
+                    <div class="col-12  pb-2 mb-2">
+                        <hr>
+                    </div>
                 </div>
             </div>
-            <!-- NEWS -->
-            <div class="row justify-content-center">
-                <div class="col-12  pb-2 mb-2">
-                    <hr>
-                </div>
-            </div>
-        </div>
     </main>
 
     <!-- Reviews -->
