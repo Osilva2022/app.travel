@@ -35,7 +35,7 @@
                     <div class="card mb-3 border-0" style="max-width: 540px;">
                         <div class="row">
                             <div class="col-2 text-end">
-                                <img src="{{ asset('assets/img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
+                                <img src="{{ asset('img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
                                     width="60" height="60">
                             </div>
                             <div class="col-8">
@@ -57,7 +57,7 @@
                     <div class="card border-0">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img src="{{ asset('assets/img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
+                                <img src="{{ asset('img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
                                     width="60" height="60">
                             </div>
                             <div class="col-12">
@@ -76,25 +76,25 @@
             <div class="row mb-4">
                 <div class="col-md-3 col-6 text-center mb-4">
                     <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="{{ asset('assets/img/svg/ttd-ico.svg') }}" alt="" width="35" height="35">
+                        <img src="{{ asset('img/svg/ttd-ico.svg') }}" alt="" width="35" height="35">
                         <h5>Things to Do</h5>
                     </button>
                 </div>
                 <div class="col-md-3 col-6 text-center mb-4">
                     <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="{{ asset('assets/img/svg/events-ico.svg') }}" alt="" width="35" height="35">
+                        <img src="{{ asset('img/svg/events-ico.svg') }}" alt="" width="35" height="35">
                         <h5>Events</h5>
                     </button>
                 </div>
                 <div class="col-md-3 col-6 text-center mb-4">
                     <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="{{ asset('assets/img/svg/news-ico.svg') }}" alt="" width="35" height="35">
+                        <img src="{{ asset('img/svg/news-ico.svg') }}" alt="" width="35" height="35">
                         <h5>News</h5>
                     </button>
                 </div>
                 <div class="col-md-3 col-6 text-center mb-4">
                     <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="{{ asset('assets/img/svg/dest-ico.svg') }}" alt="" width="35" height="35">
+                        <img src="{{ asset('img/svg/dest-ico.svg') }}" alt="" width="35" height="35">
                         <h5>Destination</h5>
                     </button>
                 </div>

@@ -27,7 +27,7 @@
                                         @endif
                                     @endforeach
                                     <span class="badge float-end">
-                                        <img src="{{ asset('assets/img/estrella.png') }}" alt="destacada" width="25"
+                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="25"
                                             height="25">
                                     </span>
                                     <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $review->title }}
