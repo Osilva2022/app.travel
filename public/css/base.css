@@ -46,7 +46,7 @@
     font-size: 12px;
 }
 
-.post-cont>img {
+div.post-cont img {
     max-width: 100% !important;
     height: auto !important;
 }
