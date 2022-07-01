@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4" id="menu-header">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('posts.index') }}">
-            <img src="{{ asset('assets/img/svg/tribune-travel-white.svg') }}" width="100"
+            <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="100"
                 class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"

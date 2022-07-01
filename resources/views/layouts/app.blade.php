@@ -9,12 +9,12 @@
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     <title>Tribune Travel</title>
     <!-- Favicons -->
-    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
     <!-- Bootstrap --> 
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
-    <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -37,7 +37,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center  pb-2 mb-2">
                     <a class="text-muted" href="#">
-                        <img src="{{ asset('assets/img/svg/tribune-travel-color.svg') }}" width="125" alt="">
+                        <img src="{{ asset('img/svg/tribune-travel-color.svg') }}" width="125" alt="">
                     </a>
                 </div>
                 <div class="col-12 text-center">
@@ -57,20 +57,20 @@
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
                             <a class="text-muted" href="https://www.facebook.com/TribuneTravel/">
-                                <img src="{{ asset('assets/img/svg/face-ico.svg') }}" alt="facebook-icon" width="24"
+                                <img src="{{ asset('img/svg/face-ico.svg') }}" alt="facebook-icon" width="24"
                                     height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="https://www.youtube.com/channel/UCqHGXwbsSrkAjnr3kVFcOdA"
                                 target="_blank">
-                                <img src="{{ asset('assets/img/youtube.png') }}" alt="facebook-icon" width="24"
+                                <img src="{{ asset('img/youtube.png') }}" alt="facebook-icon" width="24"
                                     height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="https://www.instagram.com/tribunetravel/">
-                                <img src="{{ asset('assets/img/svg/inst-ico.svg') }}" alt="facebook-icon" width="24"
+                                <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="facebook-icon" width="24"
                                     height="24">
                             </a>
                         </li>
@@ -83,7 +83,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center  pb-2 mb-2">
                     <a class="" href="#">
-                        <img src="{{ asset('assets/img/svg/cps-media-color.svg') }}" width="100" alt="">
+                        <img src="{{ asset('img/svg/cps-media-color.svg') }}" width="100" alt="">
                     </a>
                 </div>
             </div>
@@ -92,23 +92,23 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="https://tvmar.tv/" target="_blank">
-                                <img src="{{ asset('assets/img/svg/tv-mar-black.svg') }}" width="100%" alt="">
+                                <img src="{{ asset('img/svg/tv-mar-black.svg') }}" width="100%" alt="">
                             </a>
                         </div>
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="https://radiante.fm/" target="_blank">
-                                <img src="{{ asset('assets/img/svg/radiante-fm-horizontal-black.svg') }}" width="100%"
+                                <img src="{{ asset('img/svg/radiante-fm-horizontal-black.svg') }}" width="100%"
                                     alt="">
                             </a>
                         </div>
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="https://tribunadelabahia.com.mx/" target="_blank">
-                                <img src="{{ asset('assets/img/svg/tribuna-color.svg') }}" width="100%" alt="">
+                                <img src="{{ asset('img/svg/tribuna-color.svg') }}" width="100%" alt="">
                             </a>
                         </div>
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="#">
-                                <img src="{{ asset('assets/img/svg/tribune-travel-black.svg') }}" width="100%"
+                                <img src="{{ asset('img/svg/tribune-travel-black.svg') }}" width="100%"
                                     alt="">
                             </a>
                         </div>
@@ -134,9 +134,9 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>    
-    <script src="{{ asset('assets/js/jQuery.js') }}"></script>
-    <script src="{{ asset('assets/js/base.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>    
+    <script src="{{ asset('js/jQuery.js') }}"></script>
+    <script src="{{ asset('js/base.js') }}"></script>
     <script>
         $(function() {
             $(window).on("scroll", function() {
