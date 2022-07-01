@@ -47,8 +47,8 @@
 }
 
 .post-cont>img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 @media (min-width: 768px) {
