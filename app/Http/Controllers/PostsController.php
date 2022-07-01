@@ -24,11 +24,11 @@ class PostsController extends Controller
         WHERE post_type='attachment' AND post_parent <> 0  ORDER BY post_parent ASC;");        
 
         $posts = Post::status('publish')->limit(10)->orderBy('ID','DESC')->get();  
-        $review = Post::taxonomy('category', 'Reviews')->first();
+        $review = Post::taxonomy('category', 'Reviews')->last();
         $reviews = Post::taxonomy('category', 'Reviews')->get();
         $things = Post::taxonomy('category', 'Things to do')->get();
         $events = Post::taxonomy('category', 'Events')->get();
-        $new = Post::taxonomy('category', 'News')->first();
+        $new = Post::taxonomy('category', 'News')->last();
         $news = Post::taxonomy('category', 'News')->get();
         // $cat = Post::taxonomy('post_tag','!=','')->get();
 
