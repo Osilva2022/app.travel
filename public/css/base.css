@@ -46,6 +46,11 @@
     font-size: 12px;
 }
 
+.post-cont>img {
+    max-width: 100%;
+    height: auto;
+}
+
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;

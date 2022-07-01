@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <!-- POST / NOTA -->
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-4 post-cont">
                     {!! $post->content !!}
                 </div>
                 <!-- POST / NOTA -->
