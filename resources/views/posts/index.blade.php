@@ -85,11 +85,15 @@
                                                         </small>
                                                     </p>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 @endif
                             @endforeach
+                         
+
+
                         </div>
                         <div class="col-12 mb-4">
                             <button class="btn btn-primary form-control rounded-pill" type="button">More
