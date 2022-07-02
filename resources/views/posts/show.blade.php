@@ -26,7 +26,7 @@
                     <h4>{{ $post->post_title }}</h4>
                 </div>
                 <div class="col-12">
-                    <img src="{{ $post->image }}" alt="" width="100%">
+                    <img src="{{ $post->image }}" alt="" width="100%" height="auto" style="max-height: 410px; max-width: 720px;">
                 </div>
                 <div class="col-12 mb-4">
                     <h6>Image Caption</h6>
