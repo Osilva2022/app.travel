@@ -118,7 +118,7 @@
                         <a href="{{ route('posts.show', $new) }}" title="{{ $new->title }}"
                             class="text-decoration-none text-muted">
                             <div class="card-img-overlay text-white">
-                                <span class="badge bg-primary">{{ $new->main_category }}</span>
+                                <span class="badge bg-primary">{{ htmlspecialchars($new->main_category) }}</span>
                                 <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $new->title }}
                                 </h5>
                             </div>
