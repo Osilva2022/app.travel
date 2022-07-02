@@ -52,4 +52,9 @@ class PostsController extends Controller
 
         return view('posts.category', compact('category'));
     }
+    public function destiny($destiny)
+    {
+        dd($destiny);
+
+    }
 }
