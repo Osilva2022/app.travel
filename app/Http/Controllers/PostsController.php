@@ -32,7 +32,7 @@ class PostsController extends Controller
 
         // $cat = Post::taxonomy('post_tag','!=','')->get();        
 
-        // dd($posts);        
+        dd(htmlspecialchars_decode($new));        
 
         return view('posts.index',compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
        
