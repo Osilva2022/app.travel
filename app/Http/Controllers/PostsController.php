@@ -26,12 +26,11 @@ class PostsController extends Controller
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
-        $events = Post::taxonomy('category', 'Events')->get();
+        $events = Post::taxonomy('category', 'Events')->latest()->get();
         $new = Post::taxonomy('category', 'News')->latest()->first();
         $news = Post::taxonomy('category', 'News')->latest()->get();
 
-        // $cat = Post::taxonomy('post_tag','!=','')->get();
-        
+        // $cat = Post::taxonomy('post_tag','!=','')->get();        
 
         // dd($posts);        
 
@@ -44,5 +43,13 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => Post::slug($slug)->status('publish')->firstOrFail(),
         ]);
+    }
+
+    public function category($category)
+    {
+        $category = Post::taxonomy('category', $category)->latest()->paginate(10);
+        dd($category);
+
+        return view('posts.category', compact('category'));
     }
 }
