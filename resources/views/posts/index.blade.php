@@ -76,7 +76,7 @@
                                                     <p class="card-text">
                                                         <a href="{{ route('posts.show', $data) }}"
                                                             class="text-decoration-none text-muted">
-                                                            {!! Str::limit($data->content, 100, ' ...') !!}
+                                                            {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
                                                     </p>
                                                     <p class="card-text">
@@ -148,7 +148,7 @@
                                                     <p class="card-text">
                                                         <a href="{{ route('posts.show', $data) }}"
                                                             class="text-decoration-none text-muted">
-                                                            {!! Str::limit($data->content, 100, ' ...') !!}
+                                                            {!! Str::limit($data->Tt3e#RbQ0dmGdPjqt2z1a8oc, 100, ' ...') !!}
                                                         </a>
                                                     </p>
                                                     <p class="card-text">
