@@ -35,9 +35,7 @@ class PostsController extends Controller
         // dd($categories);
 
         return view('posts.index',compact('posts','categories','attachment', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
-        return view('posts.index', [
-            'posts' => Post::published()->newest()->paginate(3),
-        ]);
+      
     }
 
     public function show(string $slug): View
