@@ -8,7 +8,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item">
-            <img src="{{ asset('img/slider-2.jpg') }}" class="bd-placeholder-img-lg" width="100%" height="100%"
+            <img src="{{ asset('img/slider-v1.jpg') }}" class="bd-placeholder-img-lg" width="100%" height="100%"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <div class="container">
                 <div class="carousel-caption text-start">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="carousel-item active">
-            <img src="{{ asset('img/slider-1.jpg') }}" class="bd-placeholder-img-lg" width="100%" height="100%"
+            <img src="{{ asset('img/slider-v2.jpg') }}" class="bd-placeholder-img-lg" width="100%" height="100%"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <div class="container">
                 <div class="carousel-caption">
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('img/slider-3.jpg') }}" class="bd-placeholder-img-lg" width="100%" height="100%"
+            <img src="{{ asset('img/slider-v3.jpg') }}" class="bd-placeholder-img-lg" width="100%" height="100%"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <div class="container">
                 <div class="carousel-caption text-end">
