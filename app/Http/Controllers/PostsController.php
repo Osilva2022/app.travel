@@ -22,7 +22,7 @@ class PostsController extends Controller
         $review = Post::taxonomy('category', 'Reviews')->first();
         $reviews = Post::taxonomy('category', 'Reviews')->paginate(3);
         $posts = Post::status('publish')->limit(10)->orderBy('ID','DESC')->get();  
-        $review = Post::taxonomy('category', 'Reviews')->last();
+        $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->get();
         $things = Post::taxonomy('category', 'Things to do')->get();
         $events = Post::taxonomy('category', 'Events')->get();
