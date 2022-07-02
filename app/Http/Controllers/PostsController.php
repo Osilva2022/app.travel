@@ -36,8 +36,6 @@ class PostsController extends Controller
 
         return view('posts.index',compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
        
-        return view('posts.index',compact('posts','categories','attachment', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
-      
     }
 
     public function show(string $slug): View
