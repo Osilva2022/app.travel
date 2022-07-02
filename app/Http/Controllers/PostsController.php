@@ -31,7 +31,7 @@ class PostsController extends Controller
         $news = Post::taxonomy('category', 'News')->latest()->get();
 
         // $cat = Post::taxonomy('post_tag','!=','')->get();        
-        $new = htmlspecialchars_decode($new);
+        // $new = htmlspecialchars_decode($new);
         // dd($new);        
 
         return view('posts.index',compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
