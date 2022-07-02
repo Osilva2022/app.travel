@@ -34,8 +34,13 @@ class PostsController extends Controller
 
         // dd($posts);        
 
+<<<<<<< HEAD
         return view('posts.index',compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
        
+=======
+        return view('posts.index',compact('posts','categories','attachment', 'reviews', 'review', 'things', 'events', 'news', 'new'));      
+      
+>>>>>>> 16bceb103b0beb56878bf4dee8d72c6bd0d70aa6
     }
 
     public function show(string $slug): View
