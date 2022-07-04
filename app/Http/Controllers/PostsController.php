@@ -45,14 +45,14 @@ class PostsController extends Controller
 
     public function category(string $category): View
     {
-        $postcategories = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
+        $categorydata = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id WHERE tm.meta_key = 'cc_color' ");  
 
-        $categori = Post::taxonomy('category', $category)->latest()->first();       
-        $categories = Post::taxonomy('category', $category)->latest()->paginate(10);
+        $firstpostcategory = Post::taxonomy('category', $category)->latest()->first();       
+        $postscategory = Post::taxonomy('category', $category)->latest()->paginate(8);
         // dd($category);
 
-        return view('posts.categories', compact('postcategories','categori', 'categories'));
+        return view('posts.categories', compact('categorydata','firstpostcategory', 'postscategory'));
     }
 
     public function destiny($destiny)
