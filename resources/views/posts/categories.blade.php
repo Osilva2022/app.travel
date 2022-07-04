@@ -5,7 +5,7 @@
     <main style="margin-top: 7rem;">
         <div class="container">
             <div class="row">
-                <h4>Tribune Reviews</h4>
+                <h4>Tribune {{$category}}</h4>
                 {{ $i = 1 }}
                 @foreach ($postscategory as $data)
                     @if ($i == 1)
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            {{ $reviews->links() }}
+            {{ $postscategory->links() }}
             <div class="row mb-4">
                 <div class="col-12">
                     <nav aria-label="Page navigation example">

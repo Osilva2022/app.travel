@@ -52,7 +52,7 @@ class PostsController extends Controller
         $postscategory = Post::taxonomy('category', $category)->latest()->paginate(8);
         // dd($category);
 
-        return view('posts.categories', compact('categorydata','firstpostcategory', 'postscategory'));
+        return view('posts.categories', compact('categorydata','firstpostcategory', 'postscategory', 'category'));
     }
 
     public function destiny($destiny)
