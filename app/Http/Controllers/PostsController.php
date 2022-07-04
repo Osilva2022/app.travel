@@ -24,7 +24,7 @@ class PostsController extends Controller
                                     WHERE t.term_id=ttt.term_id
                                     AND ttt.taxonomy = 'post_tag'");
 
-        $posts = Post::status('publish')->orderBy('ID', 'DESC')->paginate(9);
+        $posts = Post::status('publish')->orderBy('ID', 'DESC')->paginate(2);
         $posts = Post::status('publish')->limit(10)->orderBy('ID', 'DESC')->get();
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
