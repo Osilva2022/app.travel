@@ -23,7 +23,7 @@
                                     @foreach ($destinations_data as $dd)
                                         @if ($review->main_category == $dd->name)
                                             <span class="badge"
-                                                style="background:{{ $dd->meta_value }};">{{ $review->main_category }}</span>
+                                                style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         @endif
                                     @endforeach
                                     <span class="badge float-end">
@@ -69,7 +69,7 @@
                                                         @if ($data->main_category == $dd->name)
                                                             <span class="card-title badge fs-6"
                                                                 style="background:{{ $dd->meta_value }};">
-                                                                {{ $data->main_category }}
+                                                                {{ $dd->name }}
                                                             </span>
                                                         @endif
                                                     @endforeach
@@ -210,7 +210,7 @@
                                 @foreach ($destinations_data as $dd)
                                     @if ($new->main_category == $dd->name)
                                         <span class="badge" style="background:{{ $dd->meta_value }};">
-                                            {{ $new->main_category }}
+                                            {{ $dd->name }}
                                         </span>
                                     @endif
                                 @endforeach
@@ -241,7 +241,7 @@
                                                         @if ($data->main_category == $dd->name)
                                                             <span class="badge"
                                                                 style="background:{{ $dd->meta_value }};">
-                                                                {{ $data->main_category }}
+                                                                {{ $dd->name }}
                                                             </span>
                                                         @endif
                                                     @endforeach
