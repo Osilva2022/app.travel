@@ -12,15 +12,15 @@
                         <div class="col-12">
                             <div class="card mb-3 border-0">
                                 <div class="card border-0">
-                                    <img src="{{ $postscategory->image }}" class="img-fluid rounded-4 shadow hover-zoom"
+                                    <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
                                         style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
-                                    <a href="{{ route('posts.show', $postscategory) }}" title="Click to see more"
+                                    <a href="{{ route('posts.show', $data) }}" title="Click to see more"
                                         class="text-decoration-none text-muted">
                                         <div class="card-img-overlay text-white h-100">
                                             @foreach ($categorydata as $cat)
-                                                @if ($postscategory->main_category == $cat->name)
+                                                @if ($data->main_category == $cat->name)
                                                     <span class="badge"
-                                                        style="background:{{ $cat->meta_value }};">{{ $postscategory->main_category }}</span>
+                                                        style="background:{{ $cat->meta_value }};">{{ $data->main_category }}</span>
                                                 @endif
                                             @endforeach
                                             @if ($firstpostcategory->ID == $data->ID)
@@ -30,20 +30,20 @@
                                                 </span>
                                             @endif
                                             <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
-                                                {{ $postscategory->title }}
+                                                {{ $data->title }}
                                             </h5>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <a href="{{ route('posts.show', $review) }}" title="Click to see more"
+                                        <a href="{{ route('posts.show', $data) }}" title="Click to see more"
                                             class="text-decoration-none text-muted">
-                                            {!! Str::limit($review->content, 225, ' ...') !!}
+                                            {!! Str::limit($data->content, 225, ' ...') !!}
                                         </a>
                                     </p>
                                     <p class="card-text"><small
-                                            class="text-muted">{{ $review->post_date->format('d M Y') }}</small></p>
+                                            class="text-muted">{{ $data->post_date->format('d M Y') }}</small></p>
                                 </div>
                             </div>
                         </div>
@@ -59,21 +59,21 @@
                                         <div class="col-6 col-lg-3">
                                             <div class="card mb-3 border-0">
                                                 <div class="row g-0">
-                                                    <a href="{{ route('posts.show', $postscategory) }}"
+                                                    <a href="{{ route('posts.show', $data) }}"
                                                         title="Click to see more">
-                                                        <img src="{{ $postscategory->image }}"
+                                                        <img src="{{ $data->image }}"
                                                             class="img-fluid rounded-4 shadow"
                                                             style="height: 150px; width: 100%; display: block;">
                                                     </a>
                                                     <div class="card-body">
-                                                        <a href="{{ route('posts.show', $postscategory) }}"
+                                                        <a href="{{ route('posts.show', $data) }}"
                                                             title="Click to see more"
                                                             class="text-decoration-none text-muted">
-                                                            <h5 class="card-title">{{ $postscategory->title }}
+                                                            <h5 class="card-title">{{ $data->title }}
                                                             </h5>
                                                         </a>
                                                         <p class="card-text"><small
-                                                                class="text-muted">{{ $postscategory->post_date->format('d M Y') }}</small>
+                                                                class="text-muted">{{ $data->post_date->format('d M Y') }}</small>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -89,23 +89,23 @@
                 <div class="col-lg-6 col-lg-12">
                     <div class="row">
                         {{ $i = 1 }}
-                        @foreach ($reviews as $data)
-                            @if ($review->ID != $data->ID)
+                        @foreach ($postscategory as $data)
+                            @if ($firstpostcategory->ID != $data->ID)
                                 @if ($i >= 5 && $i <= 8)
                                     <div class="col-12 col-lg-4">
                                         <div class="card mb-3 border-0">
-                                            <a href="{{ route('posts.show', $review) }}" title="Click to see more">
-                                                <img src="{{ $review->image }}" class="img-fluid rounded-4 shadow"
+                                            <a href="{{ route('posts.show', $data) }}" title="Click to see more">
+                                                <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                     style="height: 250px; width: 100%; display: block;">
                                             </a>
                                             <div class="card-body">
-                                                <a href="{{ route('posts.show', $review) }}" title="Click to see more"
+                                                <a href="{{ route('posts.show', $data) }}" title="Click to see more"
                                                     class="text-decoration-none text-muted">
-                                                    <h5 class="card-title">{{ $review->title }}
+                                                    <h5 class="card-title">{{ $data->title }}
                                                     </h5>
                                                 </a>
                                                 <p class="card-text"><small
-                                                        class="text-muted">{{ $review->post_date->format('d M Y') }}</small>
+                                                        class="text-muted">{{ $data->post_date->format('d M Y') }}</small>
                                                 </p>
                                             </div>
                                         </div>
