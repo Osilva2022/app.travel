@@ -30,7 +30,8 @@
                                         <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="25"
                                             height="25">
                                     </span>
-                                    <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $review->title }}
+                                    <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
+                                        {{ $review->title }}
                                     </h5>
                                 </div>
                             </a>
@@ -39,7 +40,7 @@
                             <p class="card-text">
                                 <a href="{{ route('post', $review) }}" title="{{ $review->title }}"
                                     class="text-decoration-none text-muted">
-                                    {!! Str::limit($review->content, 225, ' ...') !!}
+                                    {!! Str::limit($review->content, 175, ' ...') !!}
                                 </a>
                             </p>
                             <p class="card-text"><small
