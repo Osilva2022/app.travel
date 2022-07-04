@@ -34,7 +34,7 @@ class PostsController extends Controller
         $new = Post::taxonomy('category', 'News')->latest()->first();
         $news = Post::taxonomy('category', 'News')->latest()->get();
 
-        // dd($review->terms['post_destinos']);        
+        dd($review->post_destinos);        
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
