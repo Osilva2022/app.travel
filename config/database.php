@@ -92,7 +92,7 @@ return [
         ],
         'wordpress' => [
             'driver' => 'mysql',
-            'host' => '23.111.180.50',
+            'host' => env('WP_HOST', 'localhost'),
             'database' => env('WP_DATABASE'),
             'username' => env('WP_USERNAME'),
             'password' => env('WP_PASSWORD'),
