@@ -167,18 +167,18 @@
                                                 @endforeach
                                             </div>
                                             <div class="carousel-indicators position-relative">
-                                                <button type="button" data-bs-target="#tag-carousel" data-bs-slide-to="0"
-                                                    class="bg-primary " aria-current="true"
-                                                    aria-label="Slide 1"></button>
-                                                <button type="button" data-bs-target="#tag-carousel"
-                                                    data-bs-slide-to="1" class="bg-primary active"
-                                                    aria-label="Slide 2"></button>
-                                                <button type="button" data-bs-target="#tag-carousel"
-                                                    data-bs-slide-to="2" class="bg-primary "
-                                                    aria-label="Slide 3"></button>
-                                                <button type="button" data-bs-target="#tag-carousel"
-                                                    data-bs-slide-to="3" class="bg-primary "
-                                                    aria-label="Slide 4"></button>
+                                                <?php $i = 0; ?>
+                                                @foreach ($tags_data as $data_tag)
+                                                    <?php $active = ''; ?>
+                                                    @if ($i == 0)
+                                                        <?php $active = 'active'; ?>
+                                                    @endif
+                                                    <button type="button" data-bs-target="#tag-carousel"
+                                                        data-bs-slide-to="{{ $i }}"
+                                                        class="bg-primary  {{ $active }}" aria-current="true"
+                                                        aria-label="Slide 1"></button>
+                                                    <?php $i++; ?>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
