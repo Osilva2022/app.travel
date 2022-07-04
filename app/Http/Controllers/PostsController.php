@@ -18,7 +18,7 @@ class PostsController extends Controller
         $categories = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id WHERE tm.meta_key = 'cc_color' ");        
 
-        $posts = Post::status('publish')->orderBy('ID','DESC')->paginate(5);  
+        $posts = Post::status('publish')->orderBy('ID','DESC')->paginate(9);  
         $posts = Post::status('publish')->limit(10)->orderBy('ID','DESC')->get();
               
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
