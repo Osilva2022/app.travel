@@ -40,7 +40,7 @@ class PostsController extends Controller
 
         // $cat = Post::taxonomy('post_tag','!=','')->get();        
         // $new = htmlspecialchars_decode($new);
-        dd($reviews->terms);        
+        dd($reviews);        
 
         return view('layouts.index', compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
