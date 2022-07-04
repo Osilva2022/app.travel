@@ -21,7 +21,7 @@
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
                                     @foreach ($destinations_data as $dd)
-                                        @if ($review->main_category == $dd->name)
+                                        @if ($review->terms['post_destinos'] == $dd->name)
                                             <span class="badge"
                                                 style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         @endif
