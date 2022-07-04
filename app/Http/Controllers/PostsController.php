@@ -35,9 +35,9 @@ class PostsController extends Controller
         return view('layouts.index', compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new'));
     }
 
-    public function show(string $slug): View
+    public function post(string $slug): View
     {
-        return view('posts.show', [
+        return view('posts.index', [
             'post' => Post::slug($slug)->status('publish')->firstOrFail(),
         ]);
     }
