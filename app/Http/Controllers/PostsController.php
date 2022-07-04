@@ -48,8 +48,11 @@ class PostsController extends Controller
 
     public function category(string $category): View
     {
-        $categorydata = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
-        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id WHERE tm.meta_key = 'cc_color' ");
+        $destinations_data = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
+                                            INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
+                                            INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
+                                            WHERE tm.meta_key = 'cc_color'
+                                            AND ttt.taxonomy = 'post_destinos'");
 
         $firstpostcategory = Post::taxonomy('category', $category)->latest()->first();
         $postscategory = Post::taxonomy('category', $category)->latest()->paginate(8);
