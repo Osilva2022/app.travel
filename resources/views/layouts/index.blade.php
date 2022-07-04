@@ -118,15 +118,14 @@
                             style="min-width: 390px;">
                             @foreach ($destinations_data as $data)
                                 <?php $active = ''; ?>
-                                @if ($destinations_data->name == 'Puerto Vallarta')
+                                @if ($data->name == 'Puerto Vallarta')
                                     <?php $active = 'active'; ?>
                                 @endif
                                 <li class="nav-item nav-test" role="presentation">
-                                    <a class="nav-link {{ $active }}" id="{{ $destinations_data->term_id }}-tab"
-                                        data-bs-toggle="tab" data-bs-target="#{{ $destinations_data->term_id }}"
-                                        type="button" role="tab" aria-controls="{{ $destinations_data->term_id }}"
-                                        aria-selected="true">Riviera
-                                        Nayarit</a>
+                                    <a class="nav-link {{ $active }}" id="{{ $data->term_id }}-tab"
+                                        data-bs-toggle="tab" data-bs-target="#{{ $data->term_id }}" type="button"
+                                        role="tab" aria-controls="{{ $data->term_id }}"
+                                        aria-selected="true">{{ $data->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -134,11 +133,11 @@
                     <div class="tab-content" id="myTabContent">
                         @foreach ($destinations_data as $data)
                             <?php $active = ''; ?>
-                            @if ($destinations_data->name == 'Puerto Vallarta')
+                            @if ($data->name == 'Puerto Vallarta')
                                 <?php $active = 'active show'; ?>
                             @endif
-                            <div class="tab-pane fade  {{ $active }}" id="{{ $destinations_data->term_id }}"
-                                role="tabpanel" aria-labelledby="{{ $destinations_data->term_id }}-tab">
+                            <div class="tab-pane fade  {{ $active }}" id="{{ $data->term_id }}"
+                                role="tabpanel" aria-labelledby="{{ $data->term_id }}-tab">
                                 <div class="row">
                                     <div class="col-sm-12 mb-2">
                                         <div id="tag-carousel" class="carousel slide mb-2" data-bs-ride="carousel">
@@ -150,9 +149,10 @@
                                                         <?php $active = 'active show'; ?>
                                                     @endif
                                                     <div class="carousel-item {{ $active }}">
-                                                        <img src="{{ asset('img/silider-1.png') }}" class="bd-placeholder-img-lg"
-                                                            width="100%" height="100%" aria-hidden="true"
-                                                            preserveAspectRatio="xMidYMid slice" focusable="false">
+                                                        <img src="{{ asset('img/silider-1.png') }}"
+                                                            class="bd-placeholder-img-lg" width="100%" height="100%"
+                                                            aria-hidden="true" preserveAspectRatio="xMidYMid slice"
+                                                            focusable="false">
                                                         <div class="container">
                                                             <div class="carousel-caption text-start bottom-0">
                                                                 <h5>{{ $data_tag->name }}</h5>
