@@ -127,7 +127,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        @foreach ($news as $data)
+                        @foreach ($news as $data)                        
                             @if ($new->ID != $data->ID)
                                 <div class="col-12">
                                     <div class="card mb-3 border-0">

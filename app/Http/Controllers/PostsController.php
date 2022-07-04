@@ -19,10 +19,8 @@ class PostsController extends Controller
         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id WHERE tm.meta_key = 'cc_color' ");        
 
         $posts = Post::status('publish')->orderBy('ID','DESC')->paginate(5);  
-        $posts = Post::status('publish')->limit(10)->orderBy('ID','DESC')->get();  
-
-        $review = Post::taxonomy('category', 'Reviews')->latest()->first();
-        $reviews = Post::taxonomy('category', 'Reviews')->latest()->get();       
+        $posts = Post::status('publish')->limit(10)->orderBy('ID','DESC')->get();
+              
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
