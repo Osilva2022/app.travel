@@ -96,8 +96,8 @@
 
                         </div>
                         <div class="col-12 mb-4">
-                            <button class="btn btn-primary form-control rounded-pill" type="button">More
-                                Reviews</button>
+                            <a href="{{ route('posts.category', "Reviews") }}" class="btn btn-primary form-control rounded-pill" type="button">More
+                                Reviews</a>
                         </div>
                     </div>
                 </div>
