@@ -45,8 +45,9 @@ class PostsController extends Controller
 
     public function category(string $category): View
     {
+        
         $category = Post::taxonomy('category', $category)->latest()->paginate(10);
-        // dd($category);
+        dd($category);
 
         return view('posts.category', compact('category'));
     }
