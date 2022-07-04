@@ -14,10 +14,6 @@ class PostsController extends Controller
 
     public function index(): View
     {
-
-        $categories = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
-        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id WHERE tm.meta_key = 'cc_color' ");
-
         $destinations_data = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
                                             INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                             INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
@@ -38,11 +34,9 @@ class PostsController extends Controller
         $new = Post::taxonomy('category', 'News')->latest()->first();
         $news = Post::taxonomy('category', 'News')->latest()->get();
 
-        // $cat = Post::taxonomy('post_tag','!=','')->get();        
-        // $new = htmlspecialchars_decode($new);
-        dd($review->terms['post_destinos']);        
+        // dd($review->terms['post_destinos']);        
 
-        return view('layouts.index', compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
 
     public function post(string $slug): View
