@@ -58,7 +58,7 @@ class PostsController extends Controller
         $postscategory = Post::taxonomy('category', $category)->latest()->paginate(8);
         // dd($category);
         if ($category == "Reviews") {
-            return view('categories.reviews', compact('categorydata', 'firstpostcategory', 'postscategory', 'category'));
+            return view('categories.reviews', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category'));
         }
     }
 
