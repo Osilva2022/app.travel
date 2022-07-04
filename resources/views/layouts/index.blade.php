@@ -151,7 +151,7 @@
                                                         <?php $active = 'active show'; ?>
                                                     @endif
                                                     <div class="carousel-item {{ $active }}">
-                                                        <img src="{{ asset('img/slider-1.png') }}"
+                                                        <img src="{{ asset('img/slider-1.jpg') }}"
                                                             class="bd-placeholder-img-lg" width="100%" height="100%"
                                                             aria-hidden="true" preserveAspectRatio="xMidYMid slice"
                                                             focusable="false">
