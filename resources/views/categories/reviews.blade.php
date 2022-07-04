@@ -80,8 +80,8 @@
                                             </div>
                                         </div>
                                     @endif
+                                    <?php $i++; ?>
                                 @endif
-                                <?php $i++; ?>
                             @endforeach
                         </div>
                     </div>
@@ -111,8 +111,8 @@
                                         </div>
                                     </div>
                                 @endif
+                                <?php $i++; ?>
                             @endif
-                            <?php $i++; ?>
                         @endforeach
                     </div>
                 </div>
