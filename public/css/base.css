@@ -20,6 +20,10 @@
     width: .75rem !important;
 }
 
+#tag-carousel>.carousel-inner>.carousel-item {
+    height: 17rem;
+}
+
 .sub-img {
     background-color: #A50050;
     opacity: 50%;

@@ -118,13 +118,15 @@
                             style="min-width: 390px;">
                             @foreach ($destinations_data as $data)
                                 <?php $active = ''; ?>
+                                <?php $selected = 'false'; ?>
                                 @if ($data->name == 'Puerto Vallarta')
                                     <?php $active = 'active'; ?>
+                                    <?php $selected = 'true'; ?>
                                 @endif
                                 <li class="nav-item nav-test" role="presentation">
                                     <a class="nav-link {{ $active }}" id="{{ $data->term_id }}-tab"
-                                        data-bs-toggle="tab" data-bs-target="#{{ $data->term_id }}" type="button"
-                                        role="tab" aria-controls="{{ $data->term_id }}"
+                                        data-bs-toggle="tab" data-bs-target="#tag-{{ $data->term_id }}" type="button"
+                                        role="tab" aria-controls="tag-{{ $data->term_id }}"
                                         aria-selected="true">{{ $data->name }}</a>
                                 </li>
                             @endforeach
@@ -136,7 +138,7 @@
                             @if ($data->name == 'Puerto Vallarta')
                                 <?php $active = 'active show'; ?>
                             @endif
-                            <div class="tab-pane fade  {{ $active }}" id="{{ $data->term_id }}"
+                            <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}"
                                 role="tabpanel" aria-labelledby="{{ $data->term_id }}-tab">
                                 <div class="row">
                                     <div class="col-sm-12 mb-2">
