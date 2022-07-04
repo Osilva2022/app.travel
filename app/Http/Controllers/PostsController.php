@@ -19,7 +19,7 @@ class PostsController extends Controller
                                             INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
                                             WHERE tm.meta_key = 'cc_color'
                                             AND ttt.taxonomy = 'post_destinos'");
-        
+
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
                                     WHERE t.term_id=ttt.term_id
                                     AND ttt.taxonomy = 'post_tag'");
@@ -34,7 +34,7 @@ class PostsController extends Controller
         $new = Post::taxonomy('category', 'News')->latest()->first();
         $news = Post::taxonomy('category', 'News')->latest()->get();
 
-        dd($review->post_destinos);        
+        dd($review->post_destinos);
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
