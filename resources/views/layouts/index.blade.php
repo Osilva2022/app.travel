@@ -17,13 +17,13 @@
                         <div class="card border-0">
                             <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
-                            <a href="{{ route('posts.show', $review) }}" title="{{ $review->title }}"
+                            <a href="{{ route('post', $review) }}" title="{{ $review->title }}"
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
-                                    @foreach ($categories as $cat)
-                                        @if ($review->main_category == $cat->name)
+                                    @foreach ($destinations_data as $dd)
+                                        @if ($review->main_category == $dd->name)
                                             <span class="badge"
-                                                style="background:{{ $cat->meta_value }};">{{ $review->main_category }}</span>
+                                                style="background:{{ $dd->meta_value }};">{{ $review->main_category }}</span>
                                         @endif
                                     @endforeach
                                     <span class="badge float-end">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                <a href="{{ route('posts.show', $review) }}" title="{{ $review->title }}"
+                                <a href="{{ route('post', $review) }}" title="{{ $review->title }}"
                                     class="text-decoration-none text-muted">
                                     {!! Str::limit($review->content, 225, ' ...') !!}
                                 </a>
@@ -56,7 +56,7 @@
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-5">
-                                                <a href="{{ route('posts.show', $data) }}"
+                                                <a href="{{ route('post', $data) }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -65,16 +65,16 @@
                                             </div>
                                             <div class="col-7">
                                                 <div class="card-body">
-                                                    @foreach ($categories as $cat)
-                                                        @if ($data->main_category == $cat->name)
+                                                    @foreach ($destinations_data as $dd)
+                                                        @if ($data->main_category == $dd->name)
                                                             <span class="card-title badge fs-6"
-                                                                style="background:{{ $cat->meta_value }};">
+                                                                style="background:{{ $dd->meta_value }};">
                                                                 {{ $data->main_category }}
                                                             </span>
                                                         @endif
                                                     @endforeach
                                                     <p class="card-text">
-                                                        <a href="{{ route('posts.show', $data) }}"
+                                                        <a href="{{ route('post', $data) }}"
                                                             class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
@@ -85,24 +85,113 @@
                                                         </small>
                                                     </p>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 @endif
                             @endforeach
-                         
+
 
 
                         </div>
                         <div class="col-12 mb-4">
-                            <a href="{{ route('posts.category', "Reviews") }}" class="btn btn-primary form-control rounded-pill" type="button">More
+                            <a href="{{ route('posts.category', 'Reviews') }}"
+                                class="btn btn-primary form-control rounded-pill" type="button">More
                                 Reviews</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- REVIEWS -->
+            <div class="row justify-content-center">
+                <div class="col-12 mb-4">
+                    <hr>
+                </div>
+            </div>
+            <!-- TTD -->
+            <div class="row">
+                <h4 class="text-center mb-3">Things To Do</h4>
+                <div class="col-12">
+                    <div class="" style="overflow-x: auto;">
+                        <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
+                            style="min-width: 390px;">
+                            @foreach ($destinations_data as $data)
+                                <?php $active = ''; ?>
+                                @if ($destinations_data->name == 'Puerto Vallarta')
+                                    <?php $active = 'active'; ?>
+                                @endif
+                                <li class="nav-item nav-test" role="presentation">
+                                    <a class="nav-link {{ $active }}" id="{{ $destinations_data->term_id }}-tab"
+                                        data-bs-toggle="tab" data-bs-target="#{{ $destinations_data->term_id }}"
+                                        type="button" role="tab" aria-controls="{{ $destinations_data->term_id }}"
+                                        aria-selected="true">Riviera
+                                        Nayarit</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        @foreach ($destinations_data as $data)
+                            <?php $active = ''; ?>
+                            @if ($destinations_data->name == 'Puerto Vallarta')
+                                <?php $active = 'active show'; ?>
+                            @endif
+                            <div class="tab-pane fade  {{ $active }}" id="{{ $destinations_data->term_id }}"
+                                role="tabpanel" aria-labelledby="{{ $destinations_data->term_id }}-tab">
+                                <div class="row">
+                                    <div class="col-sm-12 mb-2">
+                                        <div id="tag-carousel" class="carousel slide mb-2" data-bs-ride="carousel">
+                                            <div class="carousel-inner shadow rounded-4">
+                                                <?php $i = 1; ?>
+                                                @foreach ($tags_data as $data_tag)
+                                                    <?php $active = ''; ?>
+                                                    @if ($i == 1)
+                                                        <?php $active = 'active show'; ?>
+                                                    @endif
+                                                    <div class="carousel-item {{ $active }}">
+                                                        <img src="{{ asset('img/silider-1.png') }}" class="bd-placeholder-img-lg"
+                                                            width="100%" height="100%" aria-hidden="true"
+                                                            preserveAspectRatio="xMidYMid slice" focusable="false">
+                                                        <div class="container">
+                                                            <div class="carousel-caption text-start bottom-0">
+                                                                <h5>{{ $data_tag->name }}</h5>
+                                                                <p>Some representative placeholder content for the first
+                                                                    slide.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php $i++; ?>
+                                                @endforeach
+                                            </div>
+                                            <div class="carousel-indicators position-relative">
+                                                <button type="button" data-bs-target="#tag-carousel" data-bs-slide-to="0"
+                                                    class="bg-primary " aria-current="true"
+                                                    aria-label="Slide 1"></button>
+                                                <button type="button" data-bs-target="#tag-carousel"
+                                                    data-bs-slide-to="1" class="bg-primary active"
+                                                    aria-label="Slide 2"></button>
+                                                <button type="button" data-bs-target="#tag-carousel"
+                                                    data-bs-slide-to="2" class="bg-primary "
+                                                    aria-label="Slide 3"></button>
+                                                <button type="button" data-bs-target="#tag-carousel"
+                                                    data-bs-slide-to="3" class="bg-primary "
+                                                    aria-label="Slide 4"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <a class="btn btn-primary form-control rounded-pill" type="button">More
+                                            things
+                                            to do</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <!-- TTD -->
             <div class="row justify-content-center">
                 <div class="col-12 mb-4">
                     <hr>
@@ -115,10 +204,16 @@
                     <div class="card mb-4 border-0">
                         <img src="{{ $new->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                             width="100%" height="220">
-                        <a href="{{ route('posts.show', $new) }}" title="{{ $new->title }}"
+                        <a href="{{ route('post', $new) }}" title="{{ $new->title }}"
                             class="text-decoration-none text-muted">
                             <div class="card-img-overlay text-white">
-                                <span class="badge bg-primary">{{ htmlspecialchars_decode($new->main_category) }}</span>
+                                @foreach ($destinations_data as $dd)
+                                    @if ($new->main_category == $dd->name)
+                                        <span class="badge" style="background:{{ $dd->meta_value }};">
+                                            {{ $new->main_category }}
+                                        </span>
+                                    @endif
+                                @endforeach
                                 <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $new->title }}
                                 </h5>
                             </div>
@@ -127,13 +222,13 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        @foreach ($news as $data)                        
+                        @foreach ($news as $data)
                             @if ($new->ID != $data->ID)
                                 <div class="col-12">
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-5">
-                                                <a href="{{ route('posts.show', $data) }}"
+                                                <a href="{{ route('post', $data) }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -142,11 +237,16 @@
                                             </div>
                                             <div class="col-7">
                                                 <div class="card-body">
-                                                    <span class="card-title badge bg-primary fs-6">
-                                                        {{ $data->main_category }}
-                                                    </span>
+                                                    @foreach ($destinations_data as $dd)
+                                                        @if ($data->main_category == $dd->name)
+                                                            <span class="badge"
+                                                                style="background:{{ $dd->meta_value }};">
+                                                                {{ $data->main_category }}
+                                                            </span>
+                                                        @endif
+                                                    @endforeach
                                                     <p class="card-text">
-                                                        <a href="{{ route('posts.show', $data) }}"
+                                                        <a href="{{ route('post', $data) }}"
                                                             class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
@@ -177,57 +277,4 @@
                 </div>
             </div>
     </main>
-
-    <!-- Reviews -->
-
-    {{-- @foreach ($reviews as $data)
-        @if ($review->ID == $data->ID)
-            Ultimo post
-        @else
-            <h4>{{ $data->title }}</h4>
-            <p>{{ $data->main_category }}</p>
-            <a href="{{ route('posts.show', $data) }}">
-                <img class="img-fluid" src="{{ $data->image }}" width="250"><br>
-                {{ $data->post_date->format('d M Y') }} <br>
-            </a>
-
-            <p>{!! Str::limit($data->content, 125, ' ...') !!}</p>
-            <strong>By </strong>{{ $data->author->display_name }}
-            <br><br>
-        @endif
-    @endforeach --}}
-
-
-    {{-- @foreach ($posts as $post)
-          @if ($post->category == 'Reviews')    
-
-          @foreach ($categories as $cat)
-          @if ($post->category == $cat->name)    
-            <span class="badge" style="background:{{ $cat->meta_value }};">{{ $cat->name }}</span> 
-         
-          @endif
-          @endforeach  
-          <br> 
-          
-          
-          @foreach ($attachment as $att)
-          @if ($att->post_parent = $post->id)
-          <a href="{{ route('posts.show', $post->post_name ) }}">
-            <img class="img-fluid" src="{{ $att->url }}" width="250"><br>
-            {{  $post->post_date  }} <br>            
-          </a>
-          @endif
-          @endforeach
-          <a href="{{ route('posts.show', $post->post_name ) }}">
-            <h3> {{ $post->post_title }}</h3>
-          </a><br>            
-          <p>{!! Str::limit($post->post_content , 125, ' ...') !!}</p>        
-          <br><br> 
-        
-
-          @endif      
-        @endforeach --}}
-    <br><br><br>
-    {{-- <h3>Seccion Things to do</h3> --}}
-    <!-- Things to do -->
 @endsection

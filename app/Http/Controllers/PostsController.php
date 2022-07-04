@@ -18,6 +18,16 @@ class PostsController extends Controller
         $categories = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id WHERE tm.meta_key = 'cc_color' ");
 
+        $destinations_data = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
+                                            INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
+                                            INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
+                                            WHERE tm.meta_key = 'cc_color'
+                                            AND ttt.taxonomy = 'post_destinos'");
+        
+        $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
+                                    WHERE t.term_id=ttt.term_id
+                                    AND ttt.taxonomy = 'post_tag'");
+
         $posts = Post::status('publish')->orderBy('ID', 'DESC')->paginate(9);
         $posts = Post::status('publish')->limit(10)->orderBy('ID', 'DESC')->get();
 
@@ -32,7 +42,7 @@ class PostsController extends Controller
         // $new = htmlspecialchars_decode($new);
         // dd($new);        
 
-        return view('layouts.index', compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new'));
+        return view('layouts.index', compact('categories', 'reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
 
     public function post(string $slug): View

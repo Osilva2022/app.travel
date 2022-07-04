@@ -15,13 +15,13 @@
                                 <div class="card border-0">
                                     <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
                                         style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
-                                    <a href="{{ route('posts.show', $data) }}" title="Click to see more"
+                                    <a href="{{ route('post', $data) }}" title="Click to see more"
                                         class="text-decoration-none text-muted">
                                         <div class="card-img-overlay text-white h-100">
-                                            @foreach ($categorydata as $cat)
-                                                @if ($data->main_category == $cat->name)
+                                            @foreach ($destinations_data as $dd)
+                                                @if ($data->main_category == $dd->name)
                                                     <span class="badge"
-                                                        style="background:{{ $cat->meta_value }};">{{ $data->main_category }}</span>
+                                                        style="background:{{ $dd->meta_value }};">{{ $data->main_category }}</span>
                                                 @endif
                                             @endforeach
                                             @if ($firstpostcategory->ID == $data->ID)
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <a href="{{ route('posts.show', $data) }}" title="Click to see more"
+                                        <a href="{{ route('post', $data) }}" title="Click to see more"
                                             class="text-decoration-none text-muted">
                                             {!! Str::limit($data->content, 225, ' ...') !!}
                                         </a>
@@ -61,12 +61,12 @@
                                         <div class="col-6 col-lg-3">
                                             <div class="card mb-3 border-0">
                                                 <div class="row g-0">
-                                                    <a href="{{ route('posts.show', $data) }}" title="Click to see more">
+                                                    <a href="{{ route('post', $data) }}" title="Click to see more">
                                                         <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                             style="height: 150px; width: 100%; display: block;">
                                                     </a>
                                                     <div class="card-body">
-                                                        <a href="{{ route('posts.show', $data) }}"
+                                                        <a href="{{ route('post', $data) }}"
                                                             title="Click to see more"
                                                             class="text-decoration-none text-muted">
                                                             <h5 class="card-title">{{ $data->title }}
@@ -94,12 +94,12 @@
                                 @if ($i >= 5 && $i <= 8)
                                     <div class="col-12 col-lg-4">
                                         <div class="card mb-3 border-0">
-                                            <a href="{{ route('posts.show', $data) }}" title="Click to see more">
+                                            <a href="{{ route('post', $data) }}" title="Click to see more">
                                                 <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                     style="height: 250px; width: 100%; display: block;">
                                             </a>
                                             <div class="card-body">
-                                                <a href="{{ route('posts.show', $data) }}" title="Click to see more"
+                                                <a href="{{ route('post', $data) }}" title="Click to see more"
                                                     class="text-decoration-none text-muted">
                                                     <h5 class="card-title">{{ $data->title }}
                                                     </h5>
@@ -136,32 +136,7 @@
                 </div>
             </div>
             <!-- BOTONES CATEGORIAS -->
-            <div class="row mb-4">
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="media/svg/ttd-ico.svg" alt="" width="35" height="35">
-                        <h5>Things to Do</h5>
-                    </button>
-                </div>
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="media/svg/events-ico.svg" alt="" width="35" height="35">
-                        <h5>Events</h5>
-                    </button>
-                </div>
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="media/svg/news-ico.svg" alt="" width="35" height="35">
-                        <h5>News</h5>
-                    </button>
-                </div>
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <button class="text-center rounded-4 shadow btn-square btn" type="button">
-                        <img src="media/svg/dest-ico.svg" alt="" width="35" height="35">
-                        <h5>Destination</h5>
-                    </button>
-                </div>
-            </div>
+            @include('menus.menu_footer_categories')
             <!-- BOTONES CATEGORIAS -->
         </div>
     </main>

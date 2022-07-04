@@ -6,7 +6,7 @@
 <!-- content -->
 @section('content')
     <header>
-        @include('posts.menu_secundario')
+        @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 7rem;">
         <div class="container">
