@@ -1,7 +1,7 @@
 <!-- MENU -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4 menu-active" id="menu-secundario" style="margin-bottom: 7rem">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4" id="menu-header">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('posts.index') }}">
+        <a class="navbar-brand" href="{{ route('layouts.index') }}">
             <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="100"
                 class="d-inline-block align-top" alt="">
         </a>

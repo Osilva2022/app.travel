@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <header>
-        @include('posts.menu_secundario')
+        @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 7rem;">
         <div class="container">
             <div class="row">
-                <h4>Tribune {{$category}}</h4>
-                {{ $i = 1 }}
+                <h4>Tribune Reviews</h4>
+                <?php $i = 1; ?>
                 @foreach ($postscategory as $data)
                     @if ($i == 1)
                         <div class="col-12">
@@ -26,8 +26,8 @@
                                             @endforeach
                                             @if ($firstpostcategory->ID == $data->ID)
                                                 <span class="badge float-end">
-                                                    <img src="media/estrella.png" alt="destacada" width="25"
-                                                        height="25">
+                                                    <img src="{{ asset('img/estrella.png') }}" alt="destacada"
+                                                        width="25" height="25">
                                                 </span>
                                             @endif
                                             <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
@@ -49,21 +49,20 @@
                             </div>
                         </div>
                     @endif
+                    <?php $i++; ?>
                 @endforeach
                 <div class="col-lg-6 col-lg-12">
                     <div class="col-12">
                         <div class="row">
-                            {{ $i = 1 }}
+                            <?php $i = 1; ?>
                             @foreach ($postscategory as $data)
                                 @if ($firstpostcategory->ID != $data->ID)
                                     @if ($i >= 1 && $i <= 4)
                                         <div class="col-6 col-lg-3">
                                             <div class="card mb-3 border-0">
                                                 <div class="row g-0">
-                                                    <a href="{{ route('posts.show', $data) }}"
-                                                        title="Click to see more">
-                                                        <img src="{{ $data->image }}"
-                                                            class="img-fluid rounded-4 shadow"
+                                                    <a href="{{ route('posts.show', $data) }}" title="Click to see more">
+                                                        <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                             style="height: 150px; width: 100%; display: block;">
                                                     </a>
                                                     <div class="card-body">
@@ -82,14 +81,14 @@
                                         </div>
                                     @endif
                                 @endif
-                                {{ $i++ }}
+                                <?php $i++; ?>
                             @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-lg-12">
                     <div class="row">
-                        {{ $i = 1 }}
+                        <?php $i = 1; ?>
                         @foreach ($postscategory as $data)
                             @if ($firstpostcategory->ID != $data->ID)
                                 @if ($i >= 5 && $i <= 8)
@@ -113,7 +112,7 @@
                                     </div>
                                 @endif
                             @endif
-                            {{ $i++ }}
+                            <?php $i++; ?>
                         @endforeach
                     </div>
                 </div>

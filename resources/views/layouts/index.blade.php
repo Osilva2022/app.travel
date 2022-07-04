@@ -4,8 +4,8 @@
 <!-- content -->
 @section('content')
     <header>
-        @include('posts.menu')
-        @include('posts.carousel')
+        @include('menus.menu')
+        @include('layouts.carousel')
     </header>
     <main>
         <div class="container">
