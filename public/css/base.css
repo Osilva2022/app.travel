@@ -60,6 +60,10 @@ div.cont-pagination svg {
     width: 1.5rem;
 }
 
+.container-travel {
+    max-width: 1024px !important;
+}
+
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
