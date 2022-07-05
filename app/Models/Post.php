@@ -93,6 +93,33 @@ class Post extends Corcel
         'updated_at' => 'post_modified',
         'status' => 'post_status',
     ]; 
+
+    public function attachment()
+    {
+        return $this->hasMany(Post::class, 'post_parent')
+            ->where('post_type', 'attachment');
+    }
+
+    public function hasTerm($taxonomy, $term)
+    {
+        return isset($this->terms[$taxonomy]) &&
+            isset($this->terms[$taxonomy][$term]);
+    }
+    public function getMainCategoryAttribute()
+    {
+        $mainCategory = 'Uncategorized';
+
+        if (!empty($this->terms)) {
+            $taxonomies = array_values($this->terms);
+
+            if (!empty($taxonomies[0])) {
+                $terms = array_values($taxonomies[0]);
+                $mainCategory = $terms[0];
+            }
+        }
+
+        return $mainCategory;
+    }
     
    
 }

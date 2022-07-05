@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Taxonomy;
+use App\Models\Tag;
+use App\Models\TermRelationship;
+use App\Models\Attachment;
 use Illuminate\Contracts\View\View;
 use DB;
 
@@ -19,15 +22,22 @@ class PostsController extends Controller
                                         WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_destinos'");
 
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
+<<<<<<< HEAD
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
 
         //$posts = Taxonomy::all();        
+=======
+                                WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");               
+>>>>>>> 95c4ff867f5188f5351c97581fc37754d7bc01be
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $events = Post::taxonomy('category', 'Events')->latest()->get();
         $new = Post::taxonomy('category', 'News')->latest()->first();
+        $news = Post::taxonomy('category', 'News')->latest()->get();
+        
+        // dd(array_values($review->terms['post_destinos'])[0]);
         $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
 
         // dd($review->post_destinos);

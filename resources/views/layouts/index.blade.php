@@ -17,9 +17,11 @@
                         <div class="card border-0">
                             <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
-                            <a href="{{ route('post', $review) }}" title="{{ $review->title }}"
+                            <a href="{{ route('post', $review, "Destino") }}" title="{{ $review->title }}"
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
+                                    @foreach ($destinations_data as $dd)                                    
+                                        @if ($dd->name == array_values($review->terms['post_destinos'])[0])
                                     {{-- @foreach ($destinations_data as $dd)
                                         @if ($review->main_category == $dd->name)
                                             <span class="badge"
@@ -67,7 +69,7 @@
                                             <div class="col-6">
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
-                                                        @if ($data->main_category == $dd->name)
+                                                        @if ($dd->name == array_values($data->terms['post_destinos'])[0])
                                                             <span class="card-title badge fs-6"
                                                                 style="background:{{ $dd->meta_value }};">
                                                                 {{ $dd->name }}
