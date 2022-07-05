@@ -21,7 +21,7 @@ class PostsController extends Controller
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
 
-        $posts = Taxonomy::all();        
+        //$posts = Taxonomy::all();        
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
