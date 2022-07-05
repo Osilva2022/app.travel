@@ -31,10 +31,9 @@ class PostsController extends Controller
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $events = Post::taxonomy('category', 'Events')->latest()->get();
         $new = Post::taxonomy('category', 'News')->latest()->first();
-        $news = Post::taxonomy('category', 'News')->latest()->get();
+        $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
         
         // dd(array_values($review->terms['post_destinos'])[0]);
-        $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
 
         // dd($review);
 

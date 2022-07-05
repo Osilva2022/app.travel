@@ -212,10 +212,9 @@
                             class="text-decoration-none text-muted">
                             <div class="card-img-overlay text-white">
                                 @foreach ($destinations_data as $dd)
-                                    @if ($new->main_category == $dd->name)
-                                        <span class="badge" style="background:{{ $dd->meta_value }};">
-                                            {{ $dd->name }}
-                                        </span>
+                                    @if ($dd->name == array_values($new->terms['post_destinos'])[0])
+                                        <span class="badge"
+                                            style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                     @endif
                                 @endforeach
                                 <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $new->title }}
@@ -242,8 +241,8 @@
                                             <div class="col-6">
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
-                                                        @if ($data->main_category == $dd->name)
-                                                            <span class="badge"
+                                                        @if ($dd->name == array_values($data->terms['post_destinos'])[0])
+                                                            <span class="card-title badge fs-6"
                                                                 style="background:{{ $dd->meta_value }};">
                                                                 {{ $dd->name }}
                                                             </span>
