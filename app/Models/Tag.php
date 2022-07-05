@@ -1,7 +1,6 @@
 <?php
 
-namespace Corcel\Model;
-
+namespace App\Models;
 
 class Tag extends Taxonomy
 {

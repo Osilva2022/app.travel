@@ -1,6 +1,6 @@
 <?php
 
-namespace Corcel\Model;
+namespace App\Models;
 
 use Corcel\Model;
 
@@ -67,10 +67,7 @@ class Taxonomy extends Model
      * @param \Illuminate\Database\Query\Builder $query
      * @return TaxonomyBuilder
      */
-    public function newEloquentBuilder($query)
-    {
-        return new TaxonomyBuilder($query);
-    }
+   
 
     /**
      * @return TaxonomyBuilder
