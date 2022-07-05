@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\Category;
-// use Corcel\Post;
+use App\Models\Taxonomy;
 use Illuminate\Contracts\View\View;
 use DB;
 
@@ -14,18 +13,15 @@ class PostsController extends Controller
 
     public function index(): View
     {
-        $destinations_data = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
-                                            INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                            INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                            WHERE tm.meta_key = 'cc_color'
-                                            AND ttt.taxonomy = 'post_destinos'");
+        $destinations_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
+                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
+                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
+                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_destinos'");
 
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
-                                    WHERE t.term_id=ttt.term_id
-                                    AND ttt.taxonomy = 'post_tag'");
+                                WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
 
-        $posts = Post::status('publish')->orderBy('ID', 'DESC')->paginate(9);
-        $posts = Post::status('publish')->limit(10)->orderBy('ID', 'DESC')->get();
+        $posts = Taxonomy::all();        
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
