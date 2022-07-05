@@ -22,10 +22,12 @@
                                 <div class="card-img-overlay text-white h-100">
                                     @foreach ($destinations_data as $dd)                                    
                                         @if ($dd->name == array_values($review->terms['post_destinos'])[0])
+                                    {{-- @foreach ($destinations_data as $dd)
+                                        @if ($review->main_category == $dd->name)
                                             <span class="badge"
                                                 style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         @endif
-                                    @endforeach
+                                    @endforeach --}}
                                     <span class="badge float-end">
                                         <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="25"
                                             height="25">
@@ -39,8 +41,8 @@
                         <div class="card-body">
                             <p class="card-text">
                                 <a href="{{ route('post', $review) }}" title="{{ $review->title }}"
-                                    class="text-decoration-none text-muted">
-                                    {!! Str::limit($review->content, 175, ' ...') !!}
+                                    class="text-decoration-none text-muted test-error">
+                                    {!! Str::limit(strip_tags($review->excerpt), 175, ' ...') !!}
                                 </a>
                             </p>
                             <p class="card-text"><small
@@ -56,15 +58,15 @@
                                 @if ($review->ID != $data->ID)
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
-                                            <div class="col-5">
+                                            <div class="col-6">
                                                 <a href="{{ route('post', $data) }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
-                                                        width="100%" height="180">
+                                                        width="100%" height="150">
                                                 </a>
                                             </div>
-                                            <div class="col-7">
+                                            <div class="col-6">
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
                                                         @if ($dd->name == array_values($data->terms['post_destinos'])[0])
@@ -86,7 +88,6 @@
                                                         </small>
                                                     </p>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +97,7 @@
 
 
                         </div>
-                        <div class="col-12 mb-4">
+                        <div class="col-12 my-4">
                             <a href="{{ route('posts.category', 'Reviews') }}"
                                 class="btn btn-primary form-control rounded-pill" type="button">More
                                 Reviews</a>
@@ -230,7 +231,7 @@
                                 <div class="col-12">
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
-                                            <div class="col-5">
+                                            <div class="col-6">
                                                 <a href="{{ route('post', $data) }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
@@ -238,7 +239,7 @@
                                                         width="100%" height="180">
                                                 </a>
                                             </div>
-                                            <div class="col-7">
+                                            <div class="col-6">
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
                                                         @if ($data->main_category == $dd->name)
@@ -266,9 +267,10 @@
                                 </div>
                             @endif
                         @endforeach
-                        <div class="col-12 mb-4">
-                            <button class="btn btn-primary form-control rounded-pill" type="button">More
-                                news</button>
+                        <div class="col-12 my-4">
+                            <a href="{{ route('posts.category', 'News') }}"
+                                class="btn btn-primary form-control rounded-pill" type="button">More
+                                news</a>
                         </div>
                     </div>
                 </div>

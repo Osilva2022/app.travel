@@ -16,7 +16,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('posts.category', 'Reviews') }}">Reviews</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="{{ route('posts.category', $category) }}">{{ $category }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Post Title</li>
                         </ol>
                     </nav>
@@ -26,7 +27,8 @@
                     <h4>{{ $post->post_title }}</h4>
                 </div>
                 <div class="col-12">
-                    <img src="{{ $post->image }}" alt="" width="100%" height="auto" style="max-height: 410px; max-width: 720px;">
+                    <img src="{{ $post->image }}" alt="" width="100%" height="auto"
+                        style="max-height: 410px; max-width: 720px;">
                 </div>
                 <div class="col-12 mb-4">
                     <h6>Image Caption</h6>
