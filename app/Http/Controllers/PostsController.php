@@ -36,18 +36,17 @@ class PostsController extends Controller
         // dd(array_values($review->terms['post_destinos'])[0]);
         $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
 
-        // dd($review->post_destinos);
+        // dd($review);
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
 
-    public function post(string $slug): View
+    public function post($destino,$category,$slug): View
     {
         $post = Post::slug($slug)->status('publish')->firstOrFail();
-        $category = array_values($post->terms['category']);
-        $category = $category[0];
-        //dd($post);
-        return view('posts.index', compact('post', 'category'));
+        $category = array_values($post->terms['category'])[0];
+       
+        return view('posts.index', compact('post', 'category','destino'));
     }
 
     public function category(string $category): View

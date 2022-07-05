@@ -6,6 +6,10 @@
     <header>
         @include('menus.menu')
         @include('layouts.carousel')
+        @php 
+        $destino = array_keys($review->terms['post_destinos'])[0];
+        $category = array_keys($review->terms['category'])[0];
+        @endphp
     </header>
     <main>
         <div class="container">
@@ -17,14 +21,12 @@
                         <div class="card border-0">
                             <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
-                            <a href="{{ route('post', $review, "Destino") }}" title="{{ $review->title }}"
+                            <a href="{{ url("$destino/$category/$review->slug") }}" title="{{ $review->title }}"
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
                                     @foreach ($destinations_data as $dd)                                    
-                                        @if ($dd->name == array_values($review->terms['post_destinos'])[0])
-                                   
-                                            <span class="badge"
-                                                style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
+                                        @if ($dd->name == array_values($review->terms['post_destinos'])[0])                                   
+                                            <span class="badge" style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         @endif
                                     @endforeach
                                     <span class="badge float-end">
@@ -58,7 +60,7 @@
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-6">
-                                                <a href="{{ route('post', $data) }}"
+                                                <a href="{{ url("$destino/$category/$data->slug") }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -75,9 +77,8 @@
                                                             </span>
                                                         @endif
                                                     @endforeach
-                                                    <p class="card-text">
-                                                        <a href="{{ route('post', $data) }}"
-                                                            class="text-decoration-none text-muted">
+                                                    <p class="card-text">                                                        
+                                                        <a href="{{ url("$destino/$category/$data->slug") }}" class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
                                                     </p>
