@@ -22,13 +22,9 @@ class PostsController extends Controller
                                         WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_destinos'");
 
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
-<<<<<<< HEAD
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
 
         //$posts = Taxonomy::all();        
-=======
-                                WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");               
->>>>>>> 95c4ff867f5188f5351c97581fc37754d7bc01be
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
