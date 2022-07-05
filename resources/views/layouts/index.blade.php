@@ -22,12 +22,11 @@
                                 <div class="card-img-overlay text-white h-100">
                                     @foreach ($destinations_data as $dd)                                    
                                         @if ($dd->name == array_values($review->terms['post_destinos'])[0])
-                                    {{-- @foreach ($destinations_data as $dd)
-                                        @if ($review->main_category == $dd->name)
+                                   
                                             <span class="badge"
                                                 style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         @endif
-                                    @endforeach --}}
+                                    @endforeach
                                     <span class="badge float-end">
                                         <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="25"
                                             height="25">
