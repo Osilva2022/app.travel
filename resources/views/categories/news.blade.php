@@ -6,37 +6,24 @@
     <main style="margin-top: 7rem;">
         <div class="container">
             <div class="row">
-                <h4>Tribune Reviews</h4>
+                <h4>Tribune News</h4>
                 <?php $i = 1; ?>
                 @foreach ($postscategory as $data)
                     @if ($i == 1)
                         <div class="col-12">
                             <div class="card mb-3 border-0">
                                 <div class="card border-0">
-                                    <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
-                                        style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
                                     <a href="{{ route('post', $data) }}" title="Click to see more"
                                         class="text-decoration-none text-muted">
-                                        <div class="card-img-overlay text-white h-100">
-                                            @foreach ($destinations_data as $dd)
-                                                @if ($data->main_category == $dd->name)
-                                                    <span class="badge"
-                                                        style="background:{{ $dd->meta_value }};">{{ $data->main_category }}</span>
-                                                @endif
-                                            @endforeach
-                                            @if ($firstpostcategory->ID == $data->ID)
-                                                <span class="badge float-end">
-                                                    <img src="{{ asset('img/estrella.png') }}" alt="destacada"
-                                                        width="25" height="25">
-                                                </span>
-                                            @endif
-                                            <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
-                                                {{ $data->title }}
-                                            </h5>
-                                        </div>
+                                        <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
+                                            style="height: auto; max-height: 400px; width: 100%; display: block;"
+                                            id="img-review">
                                     </a>
                                 </div>
                                 <div class="card-body">
+                                    <h5 class="card-title" style="bottom: 1.5rem;">
+                                        {{ $data->title }}
+                                    </h5>
                                     <p class="card-text">
                                         <a href="{{ route('post', $data) }}" title="Click to see more"
                                             class="text-decoration-none text-muted">
@@ -57,22 +44,26 @@
                             <?php $i = 1; ?>
                             @foreach ($postscategory as $data)
                                 @if ($i >= 2 && $i <= 5)
-                                    <div class="col-6 col-lg-3">
+                                    <div class="col-12 col-lg-6">
                                         <div class="card mb-3 border-0">
                                             <div class="row g-0">
-                                                <a href="{{ route('post', $data) }}" title="Click to see more">
-                                                    <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
-                                                        style="height: 150px; width: 100%; display: block;">
-                                                </a>
-                                                <div class="card-body">
-                                                    <a href="{{ route('post', $data) }}" title="Click to see more"
-                                                        class="text-decoration-none text-muted">
-                                                        <h5 class="card-title">{{ $data->title }}
-                                                        </h5>
+                                                <div class="col-6 text-end">
+                                                    <div class="card-body">
+                                                        <a href="{{ route('post', $data) }}" title="Click to see more"
+                                                            class="text-decoration-none text-muted">
+                                                            <h5 class="card-title">{{ $data->title }}
+                                                            </h5>
+                                                        </a>
+                                                        <p class="card-text"><small
+                                                                class="text-muted">{{ $data->post_date->format('d M Y') }}</small>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <a href="{{ route('post', $data) }}" title="Click to see more">
+                                                        <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
+                                                            style="height: 120px; width: 100%; display: block;">
                                                     </a>
-                                                    <p class="card-text"><small
-                                                            class="text-muted">{{ $data->post_date->format('d M Y') }}</small>
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,14 +77,13 @@
                 <div class="col-lg-6 col-lg-12">
                     <div class="row">
                         <?php $i = 1; ?>
-                        <?php /* var_dump($postscategory[0]["title"]); */ ?>
                         @foreach ($postscategory as $data)
                             @if ($i >= 6)
-                                <div class="col-12 col-lg-4">
+                                <div class="col-6 col-lg-3">
                                     <div class="card mb-3 border-0">
                                         <a href="{{ route('post', $data) }}" title="Click to see more">
                                             <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
-                                                style="height: 250px; width: 100%; display: block;">
+                                                style="height: 150px; width: 100%; display: block;">
                                         </a>
                                         <div class="card-body">
                                             <a href="{{ route('post', $data) }}" title="Click to see more"

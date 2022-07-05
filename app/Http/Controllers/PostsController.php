@@ -28,11 +28,11 @@ class PostsController extends Controller
         $posts = Post::status('publish')->limit(10)->orderBy('ID', 'DESC')->get();
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
-        $reviews = Post::taxonomy('category', 'Reviews')->latest()->get();
+        $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $events = Post::taxonomy('category', 'Events')->latest()->get();
         $new = Post::taxonomy('category', 'News')->latest()->first();
-        $news = Post::taxonomy('category', 'News')->latest()->get();
+        $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
 
         // dd($review->post_destinos);
 
@@ -41,13 +41,23 @@ class PostsController extends Controller
 
     public function post(string $slug): View
     {
-        return view('posts.index', [
-            'post' => Post::slug($slug)->status('publish')->firstOrFail(),
-        ]);
+        $post = Post::slug($slug)->status('publish')->firstOrFail();
+        $category = array_values($post->terms['category']);
+        $category = $category[0];
+        //dd($post);
+        return view('posts.index', compact('post', 'category'));
     }
 
     public function category(string $category): View
     {
+        if ($category == "Reviews") {
+            $ruta = 'reviews';
+            $pagination = 8;
+        }
+        if ($category == "News") {
+            $ruta = 'news';
+            $pagination = 12;
+        }
         $destinations_data = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
                                             INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                             INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
@@ -55,11 +65,9 @@ class PostsController extends Controller
                                             AND ttt.taxonomy = 'post_destinos'");
 
         $firstpostcategory = Post::taxonomy('category', $category)->latest()->first();
-        $postscategory = Post::taxonomy('category', $category)->latest()->paginate(2);
+        $postscategory = Post::taxonomy('category', $category)->latest()->paginate($pagination);
         // dd($category);
-        if ($category == "Reviews") {
-            return view('categories.reviews', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category'));
-        }
+        return view('categories.' . $ruta, compact('destinations_data', 'firstpostcategory', 'postscategory', 'category'));
     }
 
     public function destiny($destiny)
