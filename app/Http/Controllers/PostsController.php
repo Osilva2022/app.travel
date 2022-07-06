@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Taxonomy;
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\TermRelationship;
 use App\Models\Attachment;
 use Illuminate\Contracts\View\View;
@@ -44,6 +45,7 @@ class PostsController extends Controller
     {
         $post = Post::slug($slug)->status('publish')->firstOrFail();
         $category = array_values($post->terms['category'])[0];
+        // dd($post);
        
         return view('posts.index', compact('post', 'category','destino'));
     }
@@ -70,8 +72,13 @@ class PostsController extends Controller
         return view('categories.' . $ruta, compact('destinations_data', 'firstpostcategory', 'postscategory', 'category'));
     }
 
-    public function destiny($destiny)
+    public function destination($destination)
     {
-        dd($destiny);
+        dd($destination);
+    }
+
+    public function destination_category($destination,$category)
+    {
+        dd($destination);
     }
 }
