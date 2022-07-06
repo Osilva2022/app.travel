@@ -91,6 +91,6 @@ class PostsController extends Controller
     public function events()
     {
         $events = Events::all();
-        dd($events);
+        dd("test");
     }
 }

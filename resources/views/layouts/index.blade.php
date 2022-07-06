@@ -270,8 +270,7 @@
                                                         @endif
                                                     @endforeach
                                                     <p class="card-text">
-                                                        <a href="{{ url("$destination/$category/$review->slug") }}"
-                                                            class="text-decoration-none text-muted">
+                                                        <a href="{{ url("$destination/$category/$review->slug") }}" class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
                                                     </p>
@@ -300,7 +299,7 @@
                 <div class="row justify-content-center">
                     <div class="col-4  pb-2 mb-2">
                         <hr>
-                        <a href="{{ route('events') }}"  class="btn btn-primary form-control rounded-pill" type="button">Events</a>
+                        <a href="{{ url("events") }}"  class="btn btn-primary form-control rounded-pill" type="button">Events</a>
                     </div>
                 </div>
             </div>
