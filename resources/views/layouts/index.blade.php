@@ -288,16 +288,19 @@
                             @endif
                         @endforeach
                         <div class="col-12 my-4">
-                            <a href="{{ route('category', 'News') }}"
+                            <a href="{{ route('events', 'News') }}"
                                 class="btn btn-primary form-control rounded-pill" type="button">More
                                 news</a>
                         </div>
                     </div>
                 </div>
                 <!-- NEWS -->
+
+                
                 <div class="row justify-content-center">
                     <div class="col-12  pb-2 mb-2">
                         <hr>
+                        <a href="{{ route('events') }}"  class="btn btn-primary form-control rounded-pill" type="button">Events</a>
                     </div>
                 </div>
             </div>
