@@ -7,7 +7,7 @@
         @include('menus.menu')
         @include('layouts.carousel')
         @php 
-        $destino = array_keys($review->terms['post_destinos'])[0];
+        $destiny = array_keys($review->terms['post_destinos'])[0];
         $category = array_keys($review->terms['category'])[0];
         @endphp
     </header>
@@ -21,7 +21,7 @@
                         <div class="card border-0">
                             <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
-                            <a href="{{ url("$destino/$category/$review->slug") }}" title="{{ $review->title }}"
+                            <a href="{{ url("$destiny/$category/$review->slug") }}" title="{{ $review->title }}"
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
                                     @foreach ($destinations_data as $dd)                                    
@@ -41,7 +41,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                <a href="{{ route('post', $review) }}" title="{{ $review->title }}"
+                                <a href="{{ url("$destiny/$category/$review->slug")  }}" title="{{ $review->title }}"
                                     class="text-decoration-none text-muted test-error">
                                     {!! Str::limit(strip_tags($review->excerpt), 175, ' ...') !!}
                                 </a>
@@ -56,11 +56,15 @@
                     <div class="row">
                         <div class="col-12">
                             @foreach ($reviews as $data)
+                            @php 
+                            $destiny = array_keys($data->terms['post_destinos'])[0];
+                            $category = array_keys($data->terms['category'])[0];
+                            @endphp
                                 @if ($review->ID != $data->ID)
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-6">
-                                                <a href="{{ url("$destino/$category/$data->slug") }}"
+                                                <a href="{{ url("$destiny/$category/$data->slug") }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -78,7 +82,7 @@
                                                         @endif
                                                     @endforeach
                                                     <p class="card-text">                                                        
-                                                        <a href="{{ url("$destino/$category/$data->slug") }}" class="text-decoration-none text-muted">
+                                                        <a href="{{ url("$destiny/$category/$data->slug") }}" class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
                                                     </p>
