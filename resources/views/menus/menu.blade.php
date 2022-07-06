@@ -12,13 +12,13 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Puerto Vallarta</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('destinations', ["puerto-vallarta"]) }}">Puerto Vallarta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Riviera Nayarit</a>
+                    <a class="nav-link" href="{{ route('destinations', ["riviera-nayarit"]) }}">Riviera Nayarit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Los Cabos</a>
+                    <a class="nav-link" href="{{ route('destinations', ["los-cabos"]) }}">Los Cabos</a>
                 </li>
             </ul>
             {{-- <form class="d-flex" role="search">

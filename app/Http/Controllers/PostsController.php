@@ -79,6 +79,16 @@ class PostsController extends Controller
 
     public function destination_category($destination,$category)
     {
-        dd($destination);
+        dd($category);
+    }
+
+    public function destination_tag($destination,$category,$tag)
+    {
+        dd($tag);
+    }
+
+    public function events($events)
+    {
+        dd($events);
     }
 }

@@ -17,7 +17,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a
-                                    href="{{ route('posts.category', $category) }}">{{ $category }}</a></li>
+                                    href="{{ route('category', $category) }}">{{ $category }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Post Title</li>
                         </ol>
                     </nav>
