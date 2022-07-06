@@ -214,6 +214,10 @@
             $category = array_keys($new->terms['category'])[0];
             @endphp
             <div class="row">
+                @php
+                    $destination = array_keys($new->terms['post_destinos'])[0];
+                    $category = array_keys($new->terms['category'])[0];
+                @endphp
                 <h4>News</h4>
                 <div class="col-lg-6">
                     <div class="card mb-4 border-0">

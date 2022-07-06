@@ -9,13 +9,17 @@
                 <h4>Tribune Reviews</h4>
                 <?php $i = 1; ?>
                 @foreach ($postscategory as $data)
+                    @php
+                        $destination = array_keys($data->terms['post_destinos'])[0];
+                        $category = array_keys($data->terms['category'])[0];
+                    @endphp
                     @if ($i == 1)
                         <div class="col-12">
                             <div class="card mb-3 border-0">
                                 <div class="card border-0">
                                     <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
                                         style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
-                                    <a href="{{ route('post', $data) }}" title="Click to see more"
+                                    <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more"
                                         class="text-decoration-none text-muted">
                                         <div class="card-img-overlay text-white h-100">
                                             @foreach ($destinations_data as $dd)
@@ -38,7 +42,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <a href="{{ route('post', $data) }}" title="Click to see more"
+                                        <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more"
                                             class="text-decoration-none text-muted">
                                             {!! Str::limit(strip_tags($data->excerpt), 225, ' ...') !!}
                                         </a>
@@ -56,16 +60,20 @@
                         <div class="row">
                             <?php $i = 1; ?>
                             @foreach ($postscategory as $data)
+                                @php
+                                    $destination = array_keys($data->terms['post_destinos'])[0];
+                                    $category = array_keys($data->terms['category'])[0];
+                                @endphp
                                 @if ($i >= 2 && $i <= 5)
                                     <div class="col-6 col-lg-3">
                                         <div class="card mb-3 border-0">
                                             <div class="row g-0">
-                                                <a href="{{ route('post', $data) }}" title="Click to see more">
+                                                <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more">
                                                     <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                         style="height: 150px; width: 100%; display: block;">
                                                 </a>
                                                 <div class="card-body">
-                                                    <a href="{{ route('post', $data) }}" title="Click to see more"
+                                                    <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more"
                                                         class="text-decoration-none text-muted">
                                                         <h5 class="card-title">{{ $data->title }}
                                                         </h5>
@@ -88,15 +96,19 @@
                         <?php $i = 1; ?>
                         <?php /* var_dump($postscategory[0]["title"]); */ ?>
                         @foreach ($postscategory as $data)
+                            @php
+                                $destination = array_keys($data->terms['post_destinos'])[0];
+                                $category = array_keys($data->terms['category'])[0];
+                            @endphp
                             @if ($i >= 6)
                                 <div class="col-12 col-lg-4">
                                     <div class="card mb-3 border-0">
-                                        <a href="{{ route('post', $data) }}" title="Click to see more">
+                                        <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more">
                                             <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                 style="height: 250px; width: 100%; display: block;">
                                         </a>
                                         <div class="card-body">
-                                            <a href="{{ route('post', $data) }}" title="Click to see more"
+                                            <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more"
                                                 class="text-decoration-none text-muted">
                                                 <h5 class="card-title">{{ $data->title }}
                                                 </h5>
