@@ -21,7 +21,7 @@
                         <div class="card border-0">
                             <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
-                            <a href="{{ url("$destiny/$category/$review->slug") }}" title="{{ $review->title }}"
+                            <a href="{{ url("$destination/$category/$review->slug") }}" title="{{ $review->title }}"
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
                                     @foreach ($destinations_data as $dd)
@@ -65,7 +65,7 @@
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-6">
-                                                <a href="{{ url("$destiny/$category/$data->slug") }}"
+                                                <a href="{{ url("$destination/$category/$data->slug") }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -83,7 +83,7 @@
                                                         @endif
                                                     @endforeach
                                                     <p class="card-text">                                                        
-                                                        <a href="{{ url("$destiny/$category/$data->slug") }}" class="text-decoration-none text-muted">
+                                                        <a href="{{ url("$destination/$category/$data->slug") }}" class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
                                                     </p>
