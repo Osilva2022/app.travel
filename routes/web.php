@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
-Route::get('/post/{post:slug}', [PostsController::class, 'post'])->name('post');
-Route::get('/category/{category}', [PostsController::class, 'category'])->name('posts.category');
-Route::get('/destiny', [PostsController::class, 'destiny'])->name('posts.destiny');
 
-Route::get('/{destino}/{category}/{slug}', [PostsController::class, 'post'])->name('post2');
+Route::get('/{category}', [PostsController::class, 'category'])->name('category');
+Route::get('/{destination}', [PostsController::class, 'destination'])->name('destination');
+Route::get('/{destination}/{category}', [PostsController::class, 'destinations'])->name('destination.category');
+Route::get('/{events}', [PostsController::class, 'events'])->name('events');
+Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');
