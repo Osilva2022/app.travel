@@ -7,7 +7,7 @@
         @include('menus.menu')
         @include('layouts.carousel')
         @php
-            $destino = array_keys($review->terms['post_destinos'])[0];
+            $destination = array_keys($review->terms['post_destinos'])[0];
             $category = array_keys($review->terms['category'])[0];
         @endphp
     </header>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                <a href="{{ url("$destino/$category/$review->slug") }}" title="{{ $review->title }}"
+                                <a href="{{ url("$destination/$category/$review->slug") }}" title="{{ $review->title }}"
                                     class="text-decoration-none text-muted test-error">
                                     {!! Str::limit(strip_tags($review->excerpt), 175, ' ...') !!}
                                 </a>
@@ -58,7 +58,7 @@
                         <div class="col-12">
                             @foreach ($reviews as $data)
                                 @php
-                                    $destino = array_keys($data->terms['post_destinos'])[0];
+                                    $destination = array_keys($data->terms['post_destinos'])[0];
                                     $category = array_keys($data->terms['category'])[0];
                                 @endphp
                                 @if ($review->ID != $data->ID)
@@ -209,7 +209,7 @@
             <!-- NEWS -->
             <div class="row">
                 @php
-                    $destino = array_keys($new->terms['post_destinos'])[0];
+                    $destination = array_keys($new->terms['post_destinos'])[0];
                     $category = array_keys($new->terms['category'])[0];
                 @endphp
                 <h4>News</h4>
@@ -217,7 +217,7 @@
                     <div class="card mb-4 border-0">
                         <img src="{{ $new->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                             width="100%" height="220">
-                        <a href="{{ url("$destino/$category/$new->slug") }}" title="{{ $new->title }}"
+                        <a href="{{ url("$destination/$category/$new->slug") }}" title="{{ $new->title }}"
                             class="text-decoration-none text-muted">
                             <div class="card-img-overlay text-white">
                                 @foreach ($destinations_data as $dd)
@@ -236,7 +236,7 @@
                     <div class="row">
                         @foreach ($news as $data)
                         @php
-                            $destino = array_keys($data->terms['post_destinos'])[0];
+                            $destination = array_keys($data->terms['post_destinos'])[0];
                             $category = array_keys($data->terms['category'])[0];
                         @endphp
                             @if ($new->ID != $data->ID)
@@ -244,7 +244,7 @@
                                     <div class="card mb-3 border-0">
                                         <div class="row g-0">
                                             <div class="col-6">
-                                                <a href="{{ url("$destino/$category/$data->slug") }}"
+                                                <a href="{{ url("$destination/$category/$data->slug") }}"
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -262,7 +262,7 @@
                                                         @endif
                                                     @endforeach
                                                     <p class="card-text">
-                                                        <a href="{{ url("$destino/$category/$data->slug") }}"
+                                                        <a href="{{ url("$destination/$category/$data->slug") }}"
                                                             class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
