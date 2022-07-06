@@ -72,7 +72,7 @@ class PostsController extends Controller
         return view('categories.' . $ruta, compact('destinations_data', 'firstpostcategory', 'postscategory', 'category'));
     }
 
-    public function destination($destination)
+    public function destinations($destination)
     {
         dd($destination);
     }
