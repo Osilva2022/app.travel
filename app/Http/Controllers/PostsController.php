@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Taxonomy;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Events;
 use App\Models\TermRelationship;
 use App\Models\Attachment;
 use Illuminate\Contracts\View\View;
@@ -97,8 +98,9 @@ class PostsController extends Controller
         /* dd($tag); */
     }
 
-    public function events($events)
+    public function events()
     {
-        dd($events);
+        $events = Events::all();
+        dd("test");
     }
 }
