@@ -107,7 +107,7 @@
                         <div class="col-12 my-4">
                             <a href="{{ route('category', 'Reviews') }}"
                                 class="btn btn-primary form-control rounded-pill" type="button">More
-                                Reviews</a>
+                                Reviews of Destination</a>
                         </div>
                     </div>
                 </div>
