@@ -102,6 +102,17 @@ class PostsController extends Controller
 
     public function events()
     {       
+        $events = Post::published()->where('post_type','tribe_events')->first();   
+      
+        dd($events->meta);
+        foreach($events->meta as $meta)
+        {
+            var_dump($meta->meta_key['_EventStartDate']);
+        }
+        dd($events->meta);
+    }
+    public function event()
+    {    
         dd("test");
     }
 }
