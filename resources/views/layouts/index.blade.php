@@ -299,7 +299,7 @@
                 <div class="row justify-content-center">
                     <div class="col-4  pb-2 mb-2">
                         <hr>
-                        <a href="{{ route("post.events") }}"  class="btn btn-primary form-control rounded-pill" type="button">Events</a>
+                        <a href="{{ route("events") }}"  class="btn btn-primary form-control rounded-pill" type="button">Events</a>
                     </div>
                 </div>
             </div>
