@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Models;
+use Corcel\Model;
 
-class Events extends Taxonomy
+class Events extends Model
 {
     /**
      * @var string

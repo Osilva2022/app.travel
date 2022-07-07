@@ -38,8 +38,10 @@ class PostsController extends Controller
         $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
 
         // dd(array_values($review->terms['post_destinos'])[0]);
-
-        // dd($review);
+        $events = Post::published()->where('post_type','tribe_events')->first();
+       
+        // dd($events->meta);
+        
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
@@ -105,17 +107,27 @@ class PostsController extends Controller
 
     public function destination_category($destination, $category)
     {
-        dd($category);
+        dd("destination_category");
     }
 
     public function destination_tag($destination, $category, $tag)
     {
-        /* dd($tag); */
+         dd("destination_tag"); 
     }
 
     public function events()
-    {
-        $events = Events::all();
+    {       
+        $events = Post::published()->where('post_type','tribe_events')->first();   
+      
+        dd($events->meta);
+        foreach($events->meta as $meta)
+        {
+            var_dump($meta->meta_key['_EventStartDate']);
+        }
+        dd($events->meta);
+    }
+    public function event()
+    {    
         dd("test");
     }
 }
