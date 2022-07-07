@@ -37,11 +37,8 @@ class PostsController extends Controller
 
         // dd(array_values($review->terms['post_destinos'])[0]);
         $events = Post::published()->where('post_type','tribe_events')->first();
-        foreach($events->meta as $even)
-        {
-            echo $even;
-        }
-        dd($events->meta);
+       
+        // dd($events->meta);
         
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
