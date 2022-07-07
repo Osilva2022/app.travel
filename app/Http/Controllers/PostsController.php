@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Taxonomy;
 use App\Models\Tag;
+use App\Models\Term;
 use App\Models\User;
 use App\Models\Events;
 use App\Models\TermRelationship;
 use App\Models\Attachment;
+use Attribute;
 use Illuminate\Contracts\View\View;
 use DB;
 
@@ -82,10 +84,23 @@ class PostsController extends Controller
         $category_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
                                         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                         INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'category'");
-        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->limit(4)->get();
-        //dd($destinationposts);
-        return view('destinations.index', compact('destinationposts', 'tag_data' , 'category_data'));
+                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'category'
+                                        AND t.slug != 'sin-categoria'");
+        $destination_img = DB::select("SELECT t.term_id,t.name, tm.meta_value, p.guid as img FROM test_terms t 
+                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
+                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
+                                        left JOIN test_posts p ON tm.meta_value=p.ID
+                                        WHERE tm.meta_key = 'imagen_destino'
+                                        AND ttt.taxonomy = 'post_destinos'
+                                        AND t.slug = '$destination'");
+        $destinations_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
+                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
+                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
+                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_destinos'");
+        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->paginate(3);
+
+        //dd($destination_img);
+        return view('destinations.index', compact('destinationposts', 'tag_data', 'category_data', 'destination_img', 'destinations_data'));
     }
 
     public function destination_category($destination, $category)
