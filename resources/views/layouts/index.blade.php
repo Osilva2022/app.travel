@@ -270,7 +270,8 @@
                                                         @endif
                                                     @endforeach
                                                     <p class="card-text">
-                                                        <a href="{{ url("$destination/$category/$review->slug") }}"class="text-decoration-none text-muted">
+                                               
+                                                        <a href="{{ route('post',['destino'=>$destination,'category'=>$category,'post'=>$review->slug]) }}"class="text-decoration-none text-muted">
                                                             {!! Str::limit($data->title, 100, ' ...') !!}
                                                         </a>
                                                     </p>
