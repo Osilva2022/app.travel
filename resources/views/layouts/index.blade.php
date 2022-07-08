@@ -215,31 +215,33 @@
                 </div>
             </div>
             <!-- EVENTS -->
-            <div class="row">
+            <div class="row mb-3">
                 <h4 class="text-center mb-3">Featured Events</h4>
                 <div class="col-12">
-                    @foreach ($events as $event)
-                    <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    
-                    <div class="col-2">
-                        {{ $event->start_event }}
+                    <div class="row">
+                        @foreach ($events as $event)
+                            <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid" aria-hidden="true"
+                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <div class="col-3 border-end border-primary border-3 text-end py-0 h-50">
+                                <h1 class="align-middle">JAN</h1>
+                                <h1 class="align-middle"><b>13</b></h1>
+                            </div>
+                            <div class="col-9 py-0">
+                                <h5>{{ $event->title }}</h5>
+                                <p>{{ $event->start_event }}
+                                    <br> {{ $event->city }}
+                                </p>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="col-10">
-                        {{ $event->title }}<br>
-                        {{ $event->content }}<br>                       
-                        {{ $event->city }}<br>
-                    </div>
-                    @endforeach
-
-                 
-                    <a href="{{ route("events") }}"  class="btn btn-primary form-control rounded-pill" type="button">See the calendar</a>
-                    
+                    <a href="{{ route('events') }}" class="btn btn-primary form-control rounded-pill"
+                        type="button">See the calendar</a>
                 </div>
             </div>
             <!-- EVENTS -->
 
             <div class="row justify-content-center">
-                <div class="col-12 mb-4">                   
+                <div class="col-12 mb-4">
                     <hr>
                 </div>
             </div>
@@ -332,11 +334,11 @@
                     </div>
                 </div>
                 <!-- NEWS -->
-                
+
                 <div class="row justify-content-center">
                     <div class="col-4  pb-2 mb-2">
                         <hr>
-                   </div>
+                    </div>
                 </div>
             </div>
     </main>
