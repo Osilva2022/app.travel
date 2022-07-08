@@ -17,31 +17,32 @@ use DB;
 
 class PostsController extends Controller
 {
+    
+    function color($taxonomy){
 
-    public function index(): View
-    {
-        $destinations_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
+        $taxonomy_color = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
                                         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                         INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_destinos'");
+                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = '$taxonomy'");
+        
+        return $taxonomy_color;
+    }
+
+    public function index(): View
+    {        
+        $destinations_data=$this->color('post_destinos');
+            
 
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
-                                WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
-
-        //$posts = Taxonomy::all();        
+                                WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");    
 
         $review = Post::taxonomy('category', 'Reviews')->latest()->first();
         $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $events = Post::taxonomy('category', 'Events')->latest()->get();
         $new = Post::taxonomy('category', 'News')->latest()->first();
-        $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();
-
-        // dd(array_values($review->terms['post_destinos'])[0]);
-        $events = Post::published()->where('post_type','tribe_events')->first();
-       
-        // dd($events->meta);
-        
+        $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get();       
+        // dd($events->meta);        
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'events', 'news', 'new', 'destinations_data', 'tags_data'));
     }
@@ -65,11 +66,8 @@ class PostsController extends Controller
             $ruta = 'news';
             $pagination = 12;
         }
-        $destinations_data = DB::select("SELECT t.term_id,t.name, tm.meta_value FROM test_terms t 
-                                            INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                            INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                            WHERE tm.meta_key = 'cc_color'
-                                            AND ttt.taxonomy = 'post_destinos'");
+        $destinations_data=$this->color('post_destinos');
+   
 
         $firstpostcategory = Post::taxonomy('category', $category)->latest()->first();
         $postscategory = Post::taxonomy('category', $category)->latest()->paginate($pagination);
@@ -79,29 +77,26 @@ class PostsController extends Controller
 
     public function destinations($destination)
     {
-        $tag_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
-                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_tag'");
+        $tag_data=$this->color('post_tag');
+        $destinations_data=$this->color('post_destinos');       
+
         $category_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
                                         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                         INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
                                         WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'category'
                                         AND t.slug != 'sin-categoria'");
+
         $destination_img = DB::select("SELECT t.term_id,t.name, tm.meta_value, p.guid as img FROM test_terms t 
                                         INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                         INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
                                         left JOIN test_posts p ON tm.meta_value=p.ID
                                         WHERE tm.meta_key = 'imagen_destino'
                                         AND ttt.taxonomy = 'post_destinos'
-                                        AND t.slug = '$destination'");
-        $destinations_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
-                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_destinos'");
-        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->paginate(3);
+                                        AND t.slug = '$destination'");       
 
-        //dd($destination_img);
+      
+        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->paginate(3);
+        
         return view('destinations.index', compact('destinationposts', 'tag_data', 'category_data', 'destination_img', 'destinations_data'));
     }
 
@@ -126,8 +121,5 @@ class PostsController extends Controller
         }
         dd($events->meta);
     }
-    public function event()
-    {    
-        dd("test");
-    }
+  
 }
