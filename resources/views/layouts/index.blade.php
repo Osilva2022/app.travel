@@ -223,12 +223,15 @@
                             <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid" aria-hidden="true"
                                 preserveAspectRatio="xMidYMid slice" focusable="false">
                             <div class="col-3 border-end border-primary border-3 text-end py-0 h-50">
-                                <h1 class="align-middle">JAN</h1>
-                                <h1 class="align-middle"><b>13</b></h1>
+                                @php
+                                $time = strtotime($event->start_event);                                
+                                @endphp
+                                <h1 class="align-middle">{{ date('M',$time) }}</h1>
+                                <h1 class="align-middle"><b>{{ date('d',$time) }}</b></h1>
                             </div>
                             <div class="col-9 py-0">
                                 <h5>{{ $event->title }}</h5>
-                                <p>{{ $event->start_event }}
+                                <p>{{ date('M d, Y',$time) }}
                                     <br> {{ $event->city }}
                                 </p>
                             </div>
