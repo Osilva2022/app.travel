@@ -19,8 +19,11 @@
                 <div class="col-lg-6">
                     <div class="card mb-3 border-0">
                         <div class="card border-0">
-                            <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
+                            <a href="{{ url("$destination/$category/post/$review->slug") }}"
+                                class="text-decoration-none text-muted">
+                                <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
+                            </a>
                             <a href="{{ url("$destination/$category/post/$review->slug") }}" title="{{ $review->title }}"
                                 class="text-decoration-none text-muted">
                                 <div class="card-img-overlay text-white h-100">
@@ -33,8 +36,8 @@
                                         @endif
                                     @endforeach
                                     <span class="badge float-end">
-                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="25"
-                                            height="25">
+                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="35"
+                                            height="35">
                                     </span>
                                     <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
                                         {{ $review->title }}
