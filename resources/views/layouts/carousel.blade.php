@@ -1,10 +1,50 @@
 <!-- SLIDER -->
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-            aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <?php $i = 0; ?>
+        @foreach ($destinations_data as $dd)
+            <?php
+            $active = '';
+            $true = '';
+            if ($dd->slug == 'puerto-vallarta') {
+                $active = 'active';
+                $true = 'true';
+            }
+            ?>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $i }}"
+                class="{{ $active }}" aria-current="{{ $true }}"></button>
+            <?php $i++; ?>
+        @endforeach
+    </div>
+    <div class="carousel-inner">
+        @foreach ($destinations_data as $dd)
+            @php
+                $active = '';
+                if ($dd->slug == 'puerto-vallarta') {
+                    $active = 'active';
+                }
+            @endphp
+
+            <div class="carousel-item {{ $active }}">
+                @foreach ($destinations_img as $di)
+                    @if ($dd->name == $di->name)
+                        <img src="{{ $di->img }}" class="bd-placeholder-img-lg" width="100%" height="100%"
+                            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    @endif
+                @endforeach
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1 class="t1">{{ $dd->name }}</h1>
+                        <p>Some representative placeholder content for the second slide of the carousel.</p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    {{-- <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item">
@@ -48,6 +88,6 @@
     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
-    </button>
+    </button> --}}
 </div>
 <!-- SLIDER -->

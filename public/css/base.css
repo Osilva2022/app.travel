@@ -69,6 +69,24 @@ div.post-cont img {
     max-width: 1024px !important;
 }
 
+
+/* MENUS */
+
+
+/* MENUS */
+
+
+/* HOME */
+
+.t1 {
+    font-family: objektiv-mk2;
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+/* HOME */
+
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;

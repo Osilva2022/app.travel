@@ -35,8 +35,10 @@
                                     @foreach (array_slice($data->terms['category'], 0, 1) as $category)
                                         @foreach ($category_data as $cd)
                                             @if ($category == $cd->name)
-                                                <span class="badge"
-                                                    style="background:{{ $cd->meta_value }};">{{ $cd->name }}</span>
+                                                <a href="{{ route('category', ["$cd->slug"]) }}">
+                                                    <span class="badge"
+                                                        style="background:{{ $cd->meta_value }};">{{ $cd->name }}</span>
+                                                </a>
                                             @endif
                                         @endforeach
                                     @endforeach

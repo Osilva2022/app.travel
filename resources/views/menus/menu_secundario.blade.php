@@ -6,18 +6,41 @@
             <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="100" class="d-inline-block align-top"
                 alt="">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                @foreach ($destinations_data as $dd)
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page"
-                            href="{{ route('destinations', ["$dd->slug"]) }}">{{ $dd->name }}</a>
-                    </li>
-                @endforeach
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="destination-dropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Destination
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="destination-dropdown">
+                        @foreach ($destinations_data as $dd)
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('destinations', ["$dd->slug"]) }}">{{ $dd->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="categories-dropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="categories-dropdown">
+                        @foreach ($categories_data as $cd)
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('category', ["$cd->slug"]) }}">{{ $cd->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
             {{-- <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
