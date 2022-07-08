@@ -211,6 +211,35 @@
                     <hr>
                 </div>
             </div>
+            <!-- EVENTS -->
+            <div class="row">
+                <h4 class="text-center mb-3">Featured Events</h4>
+                <div class="col-12">
+                    @foreach ($events as $event)
+                    <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    
+                    <div class="col-2">
+                        {{ $event->start_event }}
+                    </div>
+                    <div class="col-10">
+                        {{ $event->title }}<br>
+                        {{ $event->content }}<br>                       
+                        {{ $event->city }}<br>
+                    </div>
+                    @endforeach
+
+                 
+                    <a href="{{ route("events") }}"  class="btn btn-primary form-control rounded-pill" type="button">See the calendar</a>
+                    
+                </div>
+            </div>
+            <!-- EVENTS -->
+
+            <div class="row justify-content-center">
+                <div class="col-12 mb-4">                   
+                    <hr>
+                </div>
+            </div>
             <!-- NEWS -->
             @php
                 $destination = array_keys($new->terms['post_destinos'])[0];
@@ -300,14 +329,11 @@
                     </div>
                 </div>
                 <!-- NEWS -->
-
-
+                
                 <div class="row justify-content-center">
                     <div class="col-4  pb-2 mb-2">
                         <hr>
-                        <a href="{{ route('events') }}" class="btn btn-primary form-control rounded-pill"
-                            type="button">Events</a>
-                    </div>
+                   </div>
                 </div>
             </div>
     </main>
