@@ -212,7 +212,7 @@
                 </div>
             </div>
             <!-- EVENTS -->
-            <div class="row mb-3">
+            <div class="row mb-3" style="max-width: 370px;">
                 <h4 class="text-center mb-3">Featured Events</h4>
                 <div class="col-12">
                     <div class="row">
