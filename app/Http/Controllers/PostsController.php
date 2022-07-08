@@ -77,7 +77,7 @@ class PostsController extends Controller
                             
         // dd($events);        
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations_data', 'tags_data', 'events'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations_data', 'tags_data', 'events', 'categories_data', 'destinations_img'));
     }
 
     public function post($destino, $category, $slug): View
