@@ -99,11 +99,7 @@ class PostsController extends Controller
         
         return view('destinations.index', compact('destinationposts', 'tag_data', 'category_data', 'destination_img', 'destinations_data'));
     }
-
-    public function destination_category($destination, $category)
-    {
-        dd("destination_category");
-    }
+    
 
     public function destination_tag($destination, $category, $tag)
     {
@@ -112,14 +108,19 @@ class PostsController extends Controller
 
     public function events()
     {       
-        $events = Post::published()->where('post_type','tribe_events')->first();   
+        $events = DB::select("SELECT DISTINCT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, pm.meta_value as start_event, pm2.meta_value as end_event, te.name as city
+                            FROM test_posts as a
+                            LEFT JOIN test_posts as p ON p.ID = a.post_parent AND a.post_type = 'attachment'
+                            INNER JOIN test_postmeta pm ON pm.post_id = a.post_parent AND pm.meta_key = '_EventStartDate' 
+                            INNER JOIN test_postmeta pm2 ON pm2.post_id = a.post_parent AND pm2.meta_key = '_EventEndDate'
+                            INNER JOIN test_term_relationships tr ON tr.object_id = p.ID
+                            INNER JOIN test_term_taxonomy tt ON tt.term_id = tr.term_taxonomy_id AND tt.taxonomy ='post_destinos'
+                            INNER JOIN test_terms te ON te.term_id = tt.term_id
+                            WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) >= current_date()
+                            ORDER BY pm.meta_value DESC");  
       
-        dd($events->meta);
-        foreach($events->meta as $meta)
-        {
-            var_dump($meta->meta_key['_EventStartDate']);
-        }
-        dd($events->meta);
+        
+        dd($events);
     }
   
 }
