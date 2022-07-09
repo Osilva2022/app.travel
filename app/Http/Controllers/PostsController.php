@@ -58,11 +58,11 @@ class PostsController extends Controller
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
         $categories_data = $this->returndata('category');
 
-        $review = Post::taxonomy('category', 'Reviews')->latest()->first();
-        $reviews = Post::taxonomy('category', 'Reviews')->latest()->limit(4)->get();
+        $review = Post::taxonomy('category', 'Reviews')->status('publish')->latest()->first();
+        $reviews = Post::taxonomy('category', 'Reviews')->status('publish')->latest()->limit(4)->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();        
-        $new = Post::taxonomy('category', 'News')->latest()->first();
-        $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get(); 
+        $new = Post::taxonomy('category', 'News')->latest()->status('publish')->first();
+        $news = Post::taxonomy('category', 'News')->latest()->status('publish')->limit(4)->get(); 
         
         $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
         CONVERT(pm.meta_value, datetime) as start_event, pm2.meta_value as end_event, te.name as city
@@ -132,7 +132,7 @@ class PostsController extends Controller
                                         AND t.slug = '$destination'");
 
 
-        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->where('post_type', 'post')->paginate(9);
+        $destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(9);
         //dd($destination_img);
         $categories_data = $this->returndata('category');
 
