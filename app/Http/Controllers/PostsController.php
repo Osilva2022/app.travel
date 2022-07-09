@@ -161,6 +161,16 @@ class PostsController extends Controller
                             ORDER BY start_event, a.post_date DESC");  
       
         return view('categories.events', compact('events','categories_data','destinations_data'));
-        dd($events);
+    }
+
+    public function things()
+    {
+        $destinations_data = $this->color('post_destinos');
+        $categories_data = $this->returndata('category');
+        $things='';
+
+
+        return view('things_to_do.index', compact('things','categories_data','destinations_data'));
+
     }
 }

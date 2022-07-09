@@ -20,4 +20,5 @@ Route::get('category/{category}', [PostsController::class, 'category'])->name('c
 Route::get('{destination}/{category}/{tag}', [PostsController::class, 'destination_tag'])->name('destination.tag');
 Route::get('events', [PostsController::class, 'events'])->name('events');
 
+Route::get('things-to-do', [PostsController::class, 'things'])->name('things');
 Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');

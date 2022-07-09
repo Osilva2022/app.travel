@@ -198,9 +198,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <a class="btn btn-primary form-control rounded-pill" type="button">More
-                                            things
-                                            to do</a>
+                                        <a href="{{ route('things') }}" class="btn btn-primary form-control rounded-pill" type="button">More
+                                            things to do</a>
                                     </div>
                                 </div>
                             </div>

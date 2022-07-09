@@ -42,7 +42,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Things to Do</a>
+                    <a class="nav-link" href="{{ route('things') }}">Things to Do</a>
                 </li>
             </ul>
             {{-- <form class="d-flex" role="search">
