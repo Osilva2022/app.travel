@@ -24,7 +24,7 @@
                             <div class="card-img-overlay text-white h-100">
                                 @foreach ($destinations_data as $dd)
                                     @if ($dd->name == array_values($review->terms['post_destinos'])[0])
-                                        <a href="{{ url("$destination/$category") }}">
+                                        <a href="{{ route('destinations', ["$destination"]) }}">
                                             <span class="badge"
                                                 style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         </a>
@@ -78,7 +78,7 @@
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
                                                         @if ($dd->name == array_values($data->terms['post_destinos'])[0])
-                                                            <a href="{{ url("$destination/$category") }}">
+                                                            <a href="{{ route('destinations', ["$destination"]) }}">
                                                                 <span class="card-title badge fs-6"
                                                                     style="background:{{ $dd->meta_value }};">
                                                                     {{ $dd->name }}
@@ -195,7 +195,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <a href="{{ route('things') }}" class="btn btn-primary form-control rounded-pill" type="button">More
+                                        <a href="{{ route('things') }}"
+                                            class="btn btn-primary form-control rounded-pill" type="button">More
                                             things to do</a>
                                     </div>
                                 </div>
@@ -255,7 +256,7 @@
                         <div class="card-img-overlay text-white">
                             @foreach ($destinations_data as $dd)
                                 @if ($dd->name == array_values($new->terms['post_destinos'])[0])
-                                    <a href="{{ url("$destination/$category") }}">
+                                    <a href="{{ route('destinations', ["$destination"]) }}">
                                         <span class="badge"
                                             style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                     </a>
@@ -292,7 +293,7 @@
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
                                                         @if ($dd->name == array_values($data->terms['post_destinos'])[0])
-                                                            <a href="{{ url("$destination/$category") }}">
+                                                            <a href="{{ route('destinations', ["$destination"]) }}">
                                                                 <span class="card-title badge fs-6"
                                                                     style="background:{{ $dd->meta_value }};">
                                                                     {{ $dd->name }}
