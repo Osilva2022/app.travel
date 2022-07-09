@@ -11,7 +11,7 @@
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto text-white">
-                        <h1 class="fw-light">Album example</h1>
+                        <h1 class="fw-light">{{ $destination_img[0]->name }}</h1>
                         <p class="lead">
                             Something short and leading about the collection below—its contents, the
                             creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
@@ -27,6 +27,10 @@
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                     @foreach ($destinationposts as $data)
+                        @php
+                            $destination = array_keys($data->terms['post_destinos'])[0];
+                            $category = array_keys($data->terms['category'])[0];
+                        @endphp
                         <div class="col">
                             <div class="card shadow-sm" style="height: 400px;">
                                 <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top" width="100%"
@@ -44,8 +48,11 @@
                                     @endforeach
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $data->title }}</h5>
-                                    <p class="card-text">{{ $data->excerpt }}</p>
+                                    <a href="{{ url("$destination/$category/post/$data->slug") }}"
+                                        class="text-decoration-none text-muted">
+                                        <h5 class="card-title">{{ $data->title }}</h5>
+                                    </a>
+                                    <p class="card-text">{!! Str::limit($data->excerpt, 50, ' ...') !!}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="position-relative">
                                             @isset($data->terms['tag'])

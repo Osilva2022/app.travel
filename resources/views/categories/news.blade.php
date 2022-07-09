@@ -16,12 +16,8 @@
                         <div class="col-12">
                             <div class="card mb-3 border-0">
                                 <div class="card border-0">
-                                    <a href="{{ url("$destination/$category/$data->slug") }}" title="Click to see more"
-                                        class="text-decoration-none text-muted">
-                                        <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
-                                            style="height: auto; max-height: 400px; width: 100%; display: block;"
-                                            id="img-review">
-                                    </a>
+                                    <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
+                                        style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
                                     <div class="card-img-overlay text-white h-00">
                                         @foreach ($destinations_data as $dd)
                                             @if (array_values($data->terms['post_destinos'])[0] == $dd->name)
@@ -34,11 +30,14 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title" style="bottom: 1.5rem;">
-                                        {{ $data->title }}
-                                    </h5>
+                                    <a href="{{ url("$destination/$category/post/$data->slug") }}" title="Click to see more"
+                                        class="text-decoration-none text-muted">
+                                        <h5 class="card-title" style="bottom: 1.5rem;">
+                                            {{ $data->title }}
+                                        </h5>
+                                    </a>
                                     <p class="card-text">
-                                        <a href="{{ url("$destination/$category/$data->slug") }}"
+                                        <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                             title="Click to see more" class="text-decoration-none text-muted">
                                             {!! Str::limit(strip_tags($data->excerpt), 225, ' ...') !!}
                                         </a>
@@ -65,7 +64,7 @@
                                         <div class="row g-0">
                                             <div class="col-6 col-lg-12 order-lg-2">
                                                 <div class="card-body py-3 px-1">
-                                                    <a href="{{ url("$destination/$category/$data->slug") }}"
+                                                    <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                         title="Click to see more" class="text-decoration-none text-muted">
                                                         <h5 class="card-title">{{ $data->title }}
                                                         </h5>
@@ -77,7 +76,7 @@
                                             </div>
                                             <div class="col-6 col-lg-12 order-lg-1">
                                                 <div class="card m-0 p-0 border-0">
-                                                    <a href="{{ url("$destination/$category/$data->slug") }}"
+                                                    <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                         title="Click to see more">
                                                         <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
                                                             style="height: 120px; width: 100%; display: block;">
@@ -115,7 +114,7 @@
                                 <div class="col-6 col-lg-3">
                                     <div class="card mb-3 border-0">
                                         <div class="card m-0 p-0 border-0">
-                                            <a href="{{ url("$destination/$category/$data->slug") }}"
+                                            <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                 title="Click to see more">
                                                 <img src="{{ $data->image }}" class="img-fluid shadow"
                                                     style="height: 150px; width: 100%; display: block;">
@@ -132,7 +131,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <a href="{{ url("$destination/$category/$data->slug") }}"
+                                            <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                 title="Click to see more" class="text-decoration-none text-muted">
                                                 <h5 class="card-title">{{ $data->title }}
                                                 </h5>
