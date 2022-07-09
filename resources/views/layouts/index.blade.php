@@ -212,7 +212,6 @@
                 </div>
             </div>
             <!-- EVENTS -->
-
             <div class="row mb-4">
                 <h3 class="text-center mb-3">Featured Events</h3>
                 <div class="col-12">
@@ -238,7 +237,6 @@
                 </div>
             </div>
             <!-- EVENTS -->
-
             <div class="row justify-content-center">
                 <div class="col-12 mb-4">
                     <hr>
@@ -288,7 +286,7 @@
                                                     class="text-decoration-none text-muted">
                                                     <img src="{{ $data->image }}"
                                                         class="bd-placeholder-img card-img-top rounded-4 shadow"
-                                                        width="100%" height="180">
+                                                        width="100%" height="150">
                                                 </a>
                                             </div>
                                             <div class="col-6">
