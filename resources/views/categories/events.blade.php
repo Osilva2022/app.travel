@@ -18,8 +18,8 @@
 
                     <h4>Featured Events</h4>
                     <div class="col-12">
-                        <div class="row" style="max-width: 370px;">
-                            @foreach ($events as $event)
+                        @foreach ($events as $event)
+                            <div class="row" style="max-width: 370px;">
                                 <div class="col-12">
                                     <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid mb-3"
                                         aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -35,8 +35,8 @@
                                     <h5>{{ $event->title }}</h5>
                                     <p>{{ date('M d, Y', $date) }}<br>{{ $event->city }}</p>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
 
                     <div class="maring" style="margin-bottom: 10%"> ... </div>
