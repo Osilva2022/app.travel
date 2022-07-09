@@ -64,7 +64,8 @@ class PostsController extends Controller
         $new = Post::taxonomy('category', 'News')->latest()->first();
         $news = Post::taxonomy('category', 'News')->latest()->limit(4)->get(); 
         
-        $events = DB::select("SELECT DISTINCT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, pm.meta_value as start_event, pm2.meta_value as end_event, te.name as city
+        $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
+        CONVERT(pm.meta_value, datetime) as start_event, pm2.meta_value as end_event, te.name as city
                             FROM test_posts as a
                             LEFT JOIN test_posts as p ON p.ID = a.post_parent AND a.post_type = 'attachment'
                             INNER JOIN test_postmeta pm ON pm.post_id = a.post_parent AND pm.meta_key = '_EventStartDate' 
@@ -73,7 +74,7 @@ class PostsController extends Controller
                             INNER JOIN test_term_taxonomy tt ON tt.term_id = tr.term_taxonomy_id AND tt.taxonomy ='post_destinos'
                             INNER JOIN test_terms te ON te.term_id = tt.term_id
                             WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) = current_date()
-                            ORDER BY pm.meta_value DESC LIMIT 1");  
+                            ORDER BY start_event, a.post_date DESC LIMIT 1");  
                             
         // dd($events);        
 
@@ -146,7 +147,11 @@ class PostsController extends Controller
 
     public function events()
     {       
-        $events = DB::select("SELECT DISTINCT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, pm.meta_value as start_event, pm2.meta_value as end_event, te.name as city
+        $destinations_data = $this->color('post_destinos');
+        $categories_data = $this->returndata('category');
+
+        $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
+        CONVERT(pm.meta_value, datetime) as start_event, pm2.meta_value as end_event, te.name as city
                             FROM test_posts as a
                             LEFT JOIN test_posts as p ON p.ID = a.post_parent AND a.post_type = 'attachment'
                             INNER JOIN test_postmeta pm ON pm.post_id = a.post_parent AND pm.meta_key = '_EventStartDate' 
@@ -155,9 +160,9 @@ class PostsController extends Controller
                             INNER JOIN test_term_taxonomy tt ON tt.term_id = tr.term_taxonomy_id AND tt.taxonomy ='post_destinos'
                             INNER JOIN test_terms te ON te.term_id = tt.term_id
                             WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) >= current_date()
-                            ORDER BY pm.meta_value DESC");  
+                            ORDER BY start_event, a.post_date DESC");  
       
-        
+        return view('categories.events', compact('events','categories_data','destinations_data'));
         dd($events);
     }
 }

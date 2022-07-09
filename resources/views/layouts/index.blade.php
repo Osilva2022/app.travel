@@ -212,20 +212,25 @@
                 </div>
             </div>
             <!-- EVENTS -->
-            <div class="row mb-3" style="max-width: 370px;">
-                <h4 class="text-center mb-3">Featured Events</h4>
+          
+            <div class="row">           
+                <h3 class="text-center mb-3" >Featured Events</h3>
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row justify-content-center" style="max-width: 370px;">
                         @foreach ($events as $event)
-                            <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid" aria-hidden="true"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <img src="{{ $event->image }}" class="bd-placeholder-img-lg img-fluid mb-3" aria-hidden="true"
+                                preserveAspectRatio="xMidYMid slice" focusable="false" >
                             <div class="col-3 border-end border-primary border-3 text-end py-0 h-50">
-                                <h1 class="align-middle">JAN</h1>
-                                <h1 class="align-middle"><b>13</b></h1>
+                                @php
+                                $date = strtotime($event->start_event);                                
+                                @endphp
+                                <h3 class="align-middle">{{ date('M',$date) }}</h3>
+                                <h3 class="align-middle"><b>{{ date('d',$date) }}</b></h3>
                             </div>
                             <div class="col-9 py-0">
                                 <h5>{{ $event->title }}</h5>
-                                <p>{{ $event->start_event }}
+                                <p>{{ $event->content }}</p>
+                                <p>{{ date('M d, Y',$date) }}
                                     <br> {{ $event->city }}
                                 </p>
                             </div>
@@ -330,7 +335,7 @@
 
                 <div class="row justify-content-center">
                     <div class="col-4  pb-2 mb-2">
-                        <hr>
+                    
                     </div>
                 </div>
             </div>
