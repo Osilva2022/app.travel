@@ -19,31 +19,28 @@
                 <div class="col-lg-6">
                     <div class="card mb-3 border-0">
                         <div class="card border-0">
-                            <a href="{{ url("$destination/$category/post/$review->slug") }}"
-                                class="text-decoration-none text-muted">
-                                <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
+                            <img src="{{ $review->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
-                            </a>
-                            <a href="{{ url("$destination/$category/post/$review->slug") }}" title="{{ $review->title }}"
-                                class="text-decoration-none text-muted">
-                                <div class="card-img-overlay text-white h-100">
-                                    @foreach ($destinations_data as $dd)
-                                        @if ($dd->name == array_values($review->terms['post_destinos'])[0])
-                                            <a href="{{ url("$destination/$category") }}">
-                                                <span class="badge"
-                                                    style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
-                                            </a>
-                                        @endif
-                                    @endforeach
-                                    <span class="badge float-end">
-                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="35"
-                                            height="35">
-                                    </span>
-                                    <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
+                            <div class="card-img-overlay text-white h-100">
+                                @foreach ($destinations_data as $dd)
+                                    @if ($dd->name == array_values($review->terms['post_destinos'])[0])
+                                        <a href="{{ url("$destination/$category") }}">
+                                            <span class="badge"
+                                                style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
+                                        </a>
+                                    @endif
+                                @endforeach
+                                <span class="badge float-end">
+                                    <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="35"
+                                        height="35">
+                                </span>
+                                <a href="{{ url("$destination/$category/post/$review->slug") }}"
+                                    class="text-decoration-none">
+                                    <h5 class="card-title position-absolute text-white" style="bottom: 1.5rem;">
                                         {{ $review->title }}
                                     </h5>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <p class="card-text">
@@ -113,7 +110,7 @@
                         <div class="col-12 my-4">
                             <a href="{{ route('category', 'reviews') }}"
                                 class="btn btn-primary form-control rounded-pill" type="button">More
-                                Reviews of Destination</a>
+                                Reviews</a>
                         </div>
                     </div>
                 </div>
@@ -251,30 +248,26 @@
                 $category = array_keys($new->terms['category'])[0];
             @endphp
             <div class="row">
-                @php
-                    $destination = array_keys($new->terms['post_destinos'])[0];
-                    $category = array_keys($new->terms['category'])[0];
-                @endphp
                 <h4>News</h4>
                 <div class="col-lg-6">
                     <div class="card mb-4 border-0">
                         <img src="{{ $new->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                             width="100%" height="220">
-                        <a href="{{ url("$destination/$category/post/$review->slug") }}" title="{{ $new->title }}"
-                            class="text-decoration-none text-muted">
-                            <div class="card-img-overlay text-white">
-                                @foreach ($destinations_data as $dd)
-                                    @if ($dd->name == array_values($new->terms['post_destinos'])[0])
-                                        <a href="{{ url("$destination/$category") }}">
-                                            <span class="badge"
-                                                style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
-                                        </a>
-                                    @endif
-                                @endforeach
+                        <div class="card-img-overlay text-white">
+                            @foreach ($destinations_data as $dd)
+                                @if ($dd->name == array_values($new->terms['post_destinos'])[0])
+                                    <a href="{{ url("$destination/$category") }}">
+                                        <span class="badge"
+                                            style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
+                                    </a>
+                                @endif
+                            @endforeach
+                            <a href="{{ url("$destination/$category/post/$review->slug") }}"
+                                title="{{ $new->title }}" class="text-decoration-none text-white">
                                 <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $new->title }}
                                 </h5>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">

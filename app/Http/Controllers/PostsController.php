@@ -85,26 +85,28 @@ class PostsController extends Controller
         $post = Post::slug($slug)->status('publish')->firstOrFail();
         $category = array_values($post->terms['category'])[0];
         $destinations_data = $this->color('post_destinos');
-        // dd($post);
+        $categories_data = $this->returndata('category');
+        //dd($post->terms);
 
-        return view('posts.index', compact('post', 'category', 'destino', 'destinations_data'));
+        return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
     public function category(string $category): View
     {
-        if ($category == "reviews") {
+        $pagination = 0;
+        if ($category == "reviews" || $category == "Reviews") {
             $ruta = 'reviews';
             $pagination = 8;
         }
-        if ($category == "news") {
+        if ($category == "news" || $category == "News") {
             $ruta = 'news';
             $pagination = 12;
         }
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
 
-        $firstpostcategory = Post::taxonomy('category', $category)->latest()->first();
-        $postscategory = Post::taxonomy('category', $category)->latest()->paginate($pagination);
+        $firstpostcategory = Post::taxonomy('category', $category)->status('publish')->latest()->first();
+        $postscategory = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
         //dd($postscategory);
         return view('categories.' . $ruta, compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
     }
@@ -129,8 +131,8 @@ class PostsController extends Controller
                                         AND t.slug = '$destination'");
 
 
-        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->where('post_type', 'post')->paginate(3);
-        //dd($destinationposts[0]->terms);
+        $destinationposts = Post::taxonomy('post_destinos', $destination)->latest()->where('post_type', 'post')->paginate(9);
+        //dd($destination_img);
         $categories_data = $this->returndata('category');
 
         return view('destinations.index', compact('destinationposts', 'tag_data', 'category_data', 'destination_img', 'destinations_data', 'categories_data'));
