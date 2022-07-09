@@ -151,7 +151,7 @@
             </div>
             <div class="row mb-4">
                 <div class="col-12 cont-pagination text-center">
-                    {{ $postscategory->links() }}
+                    {{ $postscategory->links('pagination::bootstrap-4') }}
                 </div>
             </div>
             <!-- BOTONES CATEGORIAS -->
