@@ -103,6 +103,10 @@ class PostsController extends Controller
             $ruta = 'news';
             $pagination = 12;
         }
+        if ($category == "events" || $category == "Events") {
+            $ruta = 'events';
+            $pagination = 7;
+        }
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
 
