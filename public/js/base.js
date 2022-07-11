@@ -14,4 +14,15 @@ $(document).ready(function() {
         });
     });
 
+    $(".filtrar-categoria").click(function(e) {
+        var categoria = $(this).data('categoria');
+        console.log(categoria);
+        if (categoria == "x") {
+            $(".cont-categoria").delay(250).fadeIn();
+        } else {
+            $(".cont-categoria").delay(50).fadeOut();
+            $(".cat-" + categoria).delay(200).fadeIn();
+        }
+    });
+
 });

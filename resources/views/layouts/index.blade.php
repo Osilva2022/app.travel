@@ -15,7 +15,7 @@
         <div class="container">
             <!-- REVIEWS -->
             <div class="row">
-                <h4>Tribune Reviews</h4>
+                <h2>Tribune Reviews</h2>
                 <div class="col-lg-6">
                     <div class="card mb-3 border-0">
                         <div class="card border-0">
@@ -24,7 +24,7 @@
                             <div class="card-img-overlay text-white h-100">
                                 @foreach ($destinations_data as $dd)
                                     @if ($dd->name == array_values($review->terms['post_destinos'])[0])
-                                        <a href="{{ url("$destination/$category") }}">
+                                        <a href="{{ route('destinations', ["$destination"]) }}">
                                             <span class="badge"
                                                 style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                         </a>
@@ -36,9 +36,9 @@
                                 </span>
                                 <a href="{{ url("$destination/$category/post/$review->slug") }}"
                                     class="text-decoration-none">
-                                    <h5 class="card-title position-absolute text-white" style="bottom: 1.5rem;">
+                                    <h3 class="card-title position-absolute text-white" style="bottom: 1.5rem;">
                                         {{ $review->title }}
-                                    </h5>
+                                    </h3>
                                 </a>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
                                                         @if ($dd->name == array_values($data->terms['post_destinos'])[0])
-                                                            <a href="{{ url("$destination/$category") }}">
+                                                            <a href="{{ route('destinations', ["$destination"]) }}">
                                                                 <span class="card-title badge fs-6"
                                                                     style="background:{{ $dd->meta_value }};">
                                                                     {{ $dd->name }}
@@ -89,7 +89,7 @@
                                                     <p class="card-text">
                                                         <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                             class="text-decoration-none text-muted">
-                                                            {!! Str::limit($data->title, 100, ' ...') !!}
+                                                            <h3>{!! Str::limit($data->title, 100, ' ...') !!}</h3>
                                                         </a>
                                                     </p>
                                                     <p class="card-text">
@@ -123,7 +123,7 @@
             </div>
             <!-- TTD -->
             <div class="row">
-                <h4 class="text-center mb-3">Things To Do</h4>
+                <h2 class="text-center mb-3">Things To Do</h2>
                 <div class="col-12">
                     <div class="" style="overflow-x: auto;">
                         <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
@@ -212,7 +212,7 @@
             </div>
             <!-- EVENTS -->
             <div class="row mb-4">
-                <h3 class="text-center mb-3">Featured Events</h3>
+                <h2 class="text-center mb-3">Featured Events</h2>
                 <div class="col-12">
                     <div class="row justify-content-center" style="max-width: 370px;">
                         @foreach ($events as $event)
@@ -226,7 +226,7 @@
                                 <h3 class="align-middle"><b>{{ date('d', $date) }}</b></h3>
                             </div>
                             <div class="col-9 py-0">
-                                <h5>{{ $event->title }}</h5>
+                                <h3>{{ $event->title }}</h3>
                                 <p>{{ date('M d, Y', $date) }}<br>{{ $event->city }}</p>
                             </div>
                         @endforeach
@@ -242,12 +242,12 @@
                 </div>
             </div>
             <!-- NEWS -->
-            @php
-                $destination = array_keys($new->terms['post_destinos'])[0];
-                $category = array_keys($new->terms['category'])[0];
-            @endphp
             <div class="row">
-                <h4>News</h4>
+                @php
+                    $destination = array_keys($new->terms['post_destinos'])[0];
+                    $category = array_keys($new->terms['category'])[0];
+                @endphp
+                <h2>News</h2>
                 <div class="col-lg-6">
                     <div class="card mb-4 border-0">
                         <img src="{{ $new->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
@@ -255,7 +255,7 @@
                         <div class="card-img-overlay text-white">
                             @foreach ($destinations_data as $dd)
                                 @if ($dd->name == array_values($new->terms['post_destinos'])[0])
-                                    <a href="{{ url("$destination/$category") }}">
+                                    <a href="{{ route('destinations', ["$destination"]) }}">
                                         <span class="badge"
                                             style="background:{{ $dd->meta_value }};">{{ $dd->name }}</span>
                                     </a>
@@ -263,8 +263,8 @@
                             @endforeach
                             <a href="{{ url("$destination/$category/post/$review->slug") }}"
                                 title="{{ $new->title }}" class="text-decoration-none text-white">
-                                <h5 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $new->title }}
-                                </h5>
+                                <h3 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $new->title }}
+                                </h3>
                             </a>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                                                 <div class="card-body">
                                                     @foreach ($destinations_data as $dd)
                                                         @if ($dd->name == array_values($data->terms['post_destinos'])[0])
-                                                            <a href="{{ url("$destination/$category") }}">
+                                                            <a href="{{ route('destinations', ["$destination"]) }}">
                                                                 <span class="card-title badge fs-6"
                                                                     style="background:{{ $dd->meta_value }};">
                                                                     {{ $dd->name }}
@@ -303,7 +303,7 @@
                                                     <p class="card-text">
                                                         <a
                                                             href="{{ url("$destination/$category/post/$review->slug") }}"class="text-decoration-none text-muted">
-                                                            {!! Str::limit($data->title, 100, ' ...') !!}
+                                                            <h3>{!! Str::limit($data->title, 100, ' ...') !!}</h3>
                                                         </a>
                                                     </p>
                                                     <p class="card-text">
