@@ -14,6 +14,8 @@ use App\Models\Attachment;
 use Attribute;
 use Illuminate\Contracts\View\View;
 use DB;
+use Illuminate\Support\Facades\Log;
+
 
 class PostsController extends Controller
 {
@@ -149,8 +151,9 @@ class PostsController extends Controller
         dd("destination_tag");
     }
 
-    public function events()
-    {       
+    public function events(Request $request)
+    {
+        dd($request->all());       
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
 
@@ -167,15 +170,10 @@ class PostsController extends Controller
                             ORDER BY start_event, a.post_date DESC");  
       
         return view('categories.events', compact('events','categories_data','destinations_data'));
-    }
-    public function events_destination($destination)
-    { 
-        Log::debug('An informational message.');  
-    }
+    }  
 
-    public function things($destination)
-    {
-        dd($destination);
+    public function things(Request $request)
+    {        
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
         $things='';

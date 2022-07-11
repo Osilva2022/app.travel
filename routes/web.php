@@ -19,7 +19,5 @@ Route::get('destination/{destination}', [PostsController::class, 'destinations']
 Route::get('category/{category}', [PostsController::class, 'category'])->name('category');
 Route::get('{destination}/{category}/{tag}', [PostsController::class, 'destination_tag'])->name('destination.tag');
 Route::get('events', [PostsController::class, 'events'])->name('events');
-Route::get('events/{destination}', [PostsController::class, 'events_destination'])->name('events_destination');
-
-Route::get('things-to-do/{destination}', [PostsController::class, 'things'])->name('things');
+Route::get('things-to-do}', [PostsController::class, 'things'])->name('things');
 Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');
