@@ -6,7 +6,7 @@
     <main style="margin-top: 7rem;">
         <div class="container">
             <div class="row">
-                <h4>Tribune Reviews</h4>
+                <h2>Tribune Reviews</h2>
                 <?php $i = 1; ?>
                 @foreach ($postscategory as $data)
                     @php
@@ -36,9 +36,9 @@
                                                         width="25" height="25">
                                                 </span>
                                             @endif
-                                            <h5 class="card-title position-absolute" style="bottom: 1.5rem;">
+                                            <h3 class="card-title position-absolute" style="bottom: 1.5rem;">
                                                 {{ $data->title }}
-                                            </h5>
+                                            </h3>
                                         </div>
                                     </a>
                                 </div>
@@ -90,8 +90,8 @@
                                                 <div class="card-body">
                                                     <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                         title="Click to see more" class="text-decoration-none text-muted">
-                                                        <h5 class="card-title">{{ $data->title }}
-                                                        </h5>
+                                                        <h3 class="card-title">{{ $data->title }}
+                                                        </h3>
                                                     </a>
                                                     <p class="card-text"><small
                                                             class="text-muted">{{ $data->post_date->format('d M Y') }}</small>
@@ -138,8 +138,8 @@
                                         <div class="card-body">
                                             <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                                 title="Click to see more" class="text-decoration-none text-muted">
-                                                <h5 class="card-title">{{ $data->title }}
-                                                </h5>
+                                                <h3 class="card-title">{{ $data->title }}
+                                                </h3>
                                             </a>
                                             <p class="card-text"><small
                                                     class="text-muted">{{ $data->post_date->format('d M Y') }}</small>

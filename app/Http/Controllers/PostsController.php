@@ -136,7 +136,7 @@ class PostsController extends Controller
                                         AND t.slug = '$destination'");
 
 
-        $destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(9);
+        $destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
         //dd($destination_img);
         $categories_data = $this->returndata('category');
 

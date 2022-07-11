@@ -18,13 +18,13 @@
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a
                                     href="{{ route('category', $category) }}">{{ $category }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Post Title</li>
+                            <li class="breadcrumb-item" aria-current="page">{{ $post->post_title }}</li>
                         </ol>
                     </nav>
                 </div>
                 <!-- MENU RUTA -->
                 <div class="col-12">
-                    <h4>{{ $post->post_title }}</h4>
+                    <h1>{{ $post->post_title }}</h1>
                 </div>
                 <div class="col-12">
                     <img src="{{ $post->image }}" alt="" width="100%" height="auto"

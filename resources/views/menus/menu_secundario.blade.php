@@ -13,39 +13,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                @foreach ($categories_data as $cd)
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('category', ["$cd->slug"]) }}">{{ $cd->name }}</a>
+                    </li>
+                @endforeach
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('things') }}">Things to Do</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('events') }}">Events</a>
+                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="destination-dropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="destination-dropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Destination
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="destination-dropdown">
                         @foreach ($destinations_data as $dd)
                             <li>
-                                <a class="dropdown-item"
+                                <a class="dropdown-item text-white"
                                     href="{{ route('destinations', ["$dd->slug"]) }}">{{ $dd->name }}</a>
                             </li>
                         @endforeach
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="categories-dropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Categories
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="categories-dropdown">
-                        @foreach ($categories_data as $cd)
-                            <li>
-                                <a class="dropdown-item"
-                                    href="{{ route('category', ["$cd->slug"]) }}">{{ $cd->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('things') }}">Things to Do</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('events') }}">Events</a>
                 </li>
             </ul>
             {{-- <form class="d-flex" role="search">

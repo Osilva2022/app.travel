@@ -10,6 +10,50 @@
     background-color: #243A85;
 }
 
+.nav-link:focus,
+.nav-link:hover {
+    color: #243A85 !important;
+}
+
+.menu-active .nav-link:focus,
+.menu-active .nav-link:hover {
+    color: #243A85 !important;
+    background-color: #e9ecef;
+}
+
+.dropdown-menu {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+}
+
+.dropdown-item {
+    color: #fff;
+    background-color: transparent;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #243A85 !important;
+    background-color: transparent;
+}
+
+.menu-active .dropdown-menu {
+    background-color: #243A85;
+    border: 0;
+    color: #fff;
+}
+
+.menu-active .dropdown-item {
+    color: #fff;
+}
+
+.menu-active .dropdown-item:focus,
+.menu-active .dropdown-item:hover {
+    color: #243A85 !important;
+    background-color: #e9ecef;
+}
+
 #myCarousel2>.carousel-inner>.carousel-item {
     height: 17rem;
 }
@@ -72,24 +116,86 @@ div.post-cont img {
 
 /* MENUS */
 
+.breadcrumb-item *,
+.breadcrumb-item {
+    font-family: objektiv-mk2;
+    font-size: 12px;
+    color: #585858;
+    text-decoration: none;
+}
+
 
 /* MENUS */
 
 
-/* HOME */
+/* FONTS */
 
-.t1 {
+:root {
+    --tt-light: 300;
+    --tt-regular: 400;
+    --tt-medium: 500;
+    --tt-bold: 700;
+    --tt-xbold: 800;
+}
+
+h1 {
     font-family: objektiv-mk2;
-    font-weight: 800;
+    font-size: 2rem;
     font-style: normal;
+    font-weight: var(--tt-bold);
 }
 
-h2,h3,h4{
-    color: #243A85 !important;
+h2 {
+    font-family: objektiv-mk2;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: var(--tt-medium);
+}
+
+h3 {
+    font-family: objektiv-mk2;
+    font-size: 1.17rem;
+    font-style: normal;
+    font-weight: var(--tt-medium);
+}
+
+h4 {
+    font-family: objektiv-mk2;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: var(--tt-medium);
+}
+
+h5 {
+    font-family: objektiv-mk2;
+    font-size: 0.83rem;
+    font-style: normal;
+    font-weight: var(--tt-medium);
+}
+
+h6 {
+    font-family: objektiv-mk2;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: var(--tt-medium);
+}
+
+p {
+    font-family: objektiv-mk2;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: var(--tt-regular);
+}
+
+small {
+    font-family: objektiv-mk2;
+    font-size: 0.83rem;
+    font-style: normal;
+    font-weight: var(--tt-regular);
 }
 
 
-/* HOME */
+/* FONTS */
 
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {

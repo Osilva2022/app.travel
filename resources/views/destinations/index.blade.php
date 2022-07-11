@@ -11,7 +11,7 @@
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto text-white">
-                        <h1 class="fw-light">{{ $destination_img[0]->name }}</h1>
+                        <h1>{{ $destination_img[0]->name }}</h1>
                         <p class="lead">
                             Something short and leading about the collection below—its contents, the
                             creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
@@ -24,6 +24,17 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <button class="btn btn-primary filtrar-categoria" data-categoria="x">All</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-primary filtrar-categoria" data-categoria="reviews">reviews</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-danger filtrar-categoria" data-categoria="news">news</button>
+                    </div>
+                </div>
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                     @foreach ($destinationposts as $data)
@@ -31,7 +42,7 @@
                             $destination = array_keys($data->terms['post_destinos'])[0];
                             $category = array_keys($data->terms['category'])[0];
                         @endphp
-                        <div class="col">
+                        <div class="col cat-{{ $category }} cont-categoria">
                             <div class="card shadow-sm" style="height: 400px;">
                                 <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top" width="100%"
                                     height="225">
@@ -50,7 +61,7 @@
                                 <div class="card-body">
                                     <a href="{{ url("$destination/$category/post/$data->slug") }}"
                                         class="text-decoration-none text-muted">
-                                        <h5 class="card-title">{{ $data->title }}</h5>
+                                        <h3 class="card-title">{{ $data->title }}</h3>
                                     </a>
                                     <p class="card-text">{!! Str::limit($data->excerpt, 50, ' ...') !!}</p>
                                     <div class="d-flex justify-content-between align-items-center">
