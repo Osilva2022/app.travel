@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-6 text-center mb-4">
-                    <a href="{{ route('things') }}">
+                    <a href="{{ route('things',"puerto-vallarta") }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <img src="{{ asset('img/svg/ttd-ico.svg') }}" alt="" width="35" height="35">
                             <h5>Things to Do</h5>

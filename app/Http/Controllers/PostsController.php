@@ -168,9 +168,14 @@ class PostsController extends Controller
       
         return view('categories.events', compact('events','categories_data','destinations_data'));
     }
+    public function events_destination($destination)
+    { 
+        Log::debug('An informational message.');  
+    }
 
-    public function things()
+    public function things($destination)
     {
+        dd($destination);
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
         $things='';

@@ -195,7 +195,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <a href="{{ route('things') }}" class="btn btn-primary form-control rounded-pill" type="button">More
+                                        <a href="{{ route('things',"puerto-vallarta") }}" class="btn btn-primary form-control rounded-pill" type="button">More
                                             things to do</a>
                                     </div>
                                 </div>
