@@ -24,18 +24,6 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
-                <div class="row">
-                    <div class="col-4">
-                        <button class="btn btn-primary filtrar-categoria" data-categoria="x">All</button>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-primary filtrar-categoria" data-categoria="reviews">reviews</button>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-danger filtrar-categoria" data-categoria="news">news</button>
-                    </div>
-                </div>
-
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                     @foreach ($destinationposts as $data)
                         @php

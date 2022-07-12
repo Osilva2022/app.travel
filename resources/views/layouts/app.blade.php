@@ -137,7 +137,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>    
     <script src="{{ asset('js/jQuery.js') }}"></script>
-    <script src="{{ asset('js/base.js') }}"></script>
+    <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script>
         $(function() {
             $(window).on("scroll", function() {

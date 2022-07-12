@@ -108,7 +108,7 @@
 
                         </div>
                         <div class="col-12 my-4">
-                            <a href="{{ route('category', 'reviews') }}"
+                            <a href="{{ route('reviews') }}"
                                 class="btn btn-primary form-control rounded-pill" type="button">More
                                 Reviews</a>
                         </div>
@@ -319,7 +319,7 @@
                             @endif
                         @endforeach
                         <div class="col-12 my-4">
-                            <a href="{{ route('category', 'news') }}" class="btn btn-primary form-control rounded-pill"
+                            <a href="{{ route('news') }}" class="btn btn-primary form-control rounded-pill"
                                 type="button">More
                                 news</a>
                         </div>

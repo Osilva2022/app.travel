@@ -5,6 +5,30 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container">
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="cont-menu-destination" style="overflow-x: auto; height: 60px;">
+                        <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist" style="min-width: 550px;">
+                            <li class="nav-item nav-test mx-1" role="presentation">
+                                <a class="nav-link" id="all-tab" href="{{ url('reviews') }}" type="button"><small>All</small></a>
+                            </li>
+                            @foreach ($destinations_data as $data)
+                                <?php $active = ''; ?>
+                                <?php $selected = 'false'; ?>
+                                {{-- @if ($data->name == 'Puerto Vallarta')
+                                    <?php $active = 'active'; ?>
+                                    <?php $selected = 'true'; ?>
+                                @endif --}}
+                                <li class="nav-item nav-test mx-1" role="presentation">
+                                    <a class="nav-link" id="{{ $data->slug }}-tab"
+                                        href="{{ url('reviews') }}?destination={{ $data->slug }}" type="button">
+                                        <small>{{ $data->name }}</small></a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <h2>Tribune Reviews</h2>
                 <?php $i = 1; ?>
@@ -18,9 +42,10 @@
                             <div class="card mb-3 border-0">
                                 <div class="card border-0">
                                     <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
-                                        style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
-                                    <a href="{{ url("$destination/$category/post/$data->slug") }}" title="Click to see more"
-                                        class="text-decoration-none text-muted">
+                                        style="height: auto; max-height: 400px; width: 100%; display: block;"
+                                        id="img-review">
+                                    <a href="{{ url("$destination/$category/post/$data->slug") }}"
+                                        title="Click to see more" class="text-decoration-none text-muted">
                                         <div class="card-img-overlay text-white h-100">
                                             @foreach ($destinations_data as $dd)
                                                 @if (array_values($data->terms['post_destinos'])[0] == $dd->name)

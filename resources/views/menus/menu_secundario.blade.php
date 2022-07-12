@@ -15,7 +15,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 @foreach ($categories_data as $cd)
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('category', ["$cd->slug"]) }}">{{ $cd->name }}</a>
+                        <a class="nav-link text-white" href="{{ route("$cd->slug") }}">{{ $cd->name }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item">
