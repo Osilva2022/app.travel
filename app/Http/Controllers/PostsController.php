@@ -153,7 +153,14 @@ class PostsController extends Controller
 
     public function events(Request $request)
     {
-        dd($request->all());       
+        // dd($request->all());    
+        $query='';          
+        if(isset($request->destination)){
+            $query="AND te.slug = '$request->destination'";
+        } 
+        // dd($query); 
+        
+
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
 
@@ -166,7 +173,7 @@ class PostsController extends Controller
                             INNER JOIN test_term_relationships tr ON tr.object_id = p.ID
                             INNER JOIN test_term_taxonomy tt ON tt.term_id = tr.term_taxonomy_id AND tt.taxonomy ='post_destinos'
                             INNER JOIN test_terms te ON te.term_id = tt.term_id
-                            WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) >= current_date()
+                            WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) >= current_date() $query
                             ORDER BY start_event, a.post_date DESC");  
       
         return view('categories.events', compact('events','categories_data','destinations_data'));
