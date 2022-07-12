@@ -5,6 +5,7 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container">
+            @include('menus.sub_menu_destinations')
             <div class="row">
                 <?php $i = 1; ?>
                 @foreach ($postscategory as $data)
