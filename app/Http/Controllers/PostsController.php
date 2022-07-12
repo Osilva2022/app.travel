@@ -47,6 +47,26 @@ class PostsController extends Controller
         return $taxonomy_color;
     }
 
+    function category($category, $destination)
+    {
+        $pagination = 0;
+        if ($category == "reviews" || $category == "Reviews") {
+            $ruta = 'reviews';
+            $pagination = 8;
+        }
+        if ($category == "news" || $category == "News") {
+            $ruta = 'news';
+            $pagination = 12;
+        }
+
+        $data = Post::taxonomy('category', $category)->taxonomy('post_destinos',"$destination")->status('publish')->latest()->paginate($pagination);
+        
+        if ($destination == '') {
+            $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+        }
+        return $data;
+    }
+
     public function index(): View
     {
         $destinations_data = $this->color('post_destinos');
@@ -94,44 +114,35 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
-    function category($category)
-    {
-        $pagination = 0;
-        if ($category == "reviews" || $category == "Reviews") {
-            $ruta = 'reviews';
-            $pagination = 8;
-        }
-        if ($category == "news" || $category == "News") {
-            $ruta = 'news';
-            $pagination = 12;
-        }
-     
-        $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
-        return $data;
-    }
+    
 
     public function reviews(Request $request)
     {
         $category = 'reviews';
+        $destination ='';
+        if (isset($request->destination)) {
+            $destination=$request->destination;
+        }
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
-        $firstpostcategory = $this->category('reviews')->first();
-        $postscategory = $this->category('reviews');       
-        // $firstpostcategory = Post::taxonomy('category', "reviews")->status('publish')->latest()->first();
-        // $postscategory = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
-        // dd($postscategory); 
+        $firstpostcategory = $this->category($category,$destination)->first();
+        $postscategory = $this->category($category,$destination);         
+        
+        // dd($categories_data); 
         return view('categories.reviews', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
     }
 
     public function news(Request $request)
     {
+        $category = 'news';
+        $destination ='';
+        if (isset($request->destination)) {
+            $destination=$request->destination;
+        }
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
-        $postscategory = $this->category('reviews');
-
-        $firstpostcategory = Post::taxonomy('category', "reviews")->status('publish')->latest()->first();
-        // $postscategory = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
-        dd($postscategory);
+        $firstpostcategory = $this->category($category,$destination)->first();
+        $postscategory = $this->category($category,$destination);  
         return view('categories.news', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
     }
 
