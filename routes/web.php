@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
-Route::get('category/{category}', [PostsController::class, 'category'])->name('category');
-Route::get('{destination}/{category}/{tag}', [PostsController::class, 'destination_tag'])->name('destination.tag');
+Route::get('reviews', [PostsController::class, 'reviews'])->name('reviews');
+Route::get('news', [PostsController::class, 'news'])->name('news');
 Route::get('events', [PostsController::class, 'events'])->name('events');
-Route::get('things-to-do}', [PostsController::class, 'things'])->name('things');
+Route::get('things-to-do', [PostsController::class, 'things'])->name('things');
 Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');
+Route::get('{destination}/{category}/{tag}', [PostsController::class, 'destination_tag'])->name('destination.tag');
+  

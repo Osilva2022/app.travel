@@ -94,7 +94,7 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
-    public function category(string $category): View
+    function category($category)
     {
         $pagination = 0;
         if ($category == "reviews" || $category == "Reviews") {
@@ -105,17 +105,34 @@ class PostsController extends Controller
             $ruta = 'news';
             $pagination = 12;
         }
-        if ($category == "events" || $category == "Events") {
-            $ruta = 'events';
-            $pagination = 7;
-        }
+     
+        $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+        return $data;
+    }
+
+    public function reviews(Request $request)
+    {
+        $category = 'reviews';
         $destinations_data = $this->color('post_destinos');
         $categories_data = $this->returndata('category');
+        $firstpostcategory = $this->category('reviews')->first();
+        $postscategory = $this->category('reviews');       
+        // $firstpostcategory = Post::taxonomy('category', "reviews")->status('publish')->latest()->first();
+        // $postscategory = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+        // dd($postscategory); 
+        return view('categories.reviews', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
+    }
 
-        $firstpostcategory = Post::taxonomy('category', $category)->status('publish')->latest()->first();
-        $postscategory = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
-        //dd($postscategory);
-        return view('categories.' . $ruta, compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
+    public function news(Request $request)
+    {
+        $destinations_data = $this->color('post_destinos');
+        $categories_data = $this->returndata('category');
+        $postscategory = $this->category('reviews');
+
+        $firstpostcategory = Post::taxonomy('category', "reviews")->status('publish')->latest()->first();
+        // $postscategory = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+        dd($postscategory);
+        return view('categories.news', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
     }
 
     public function destinations($destination)
