@@ -25,9 +25,15 @@ class PostsController extends Controller
 
     public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+        //dd(['path' => Paginator::resolveCurrentPath()]);
+        return new LengthAwarePaginator(
+            $items->forPage($page, $perPage),
+            $items->count(),
+            $perPage,
+            Paginator::resolveCurrentPage(),
+            ['path' => Paginator::resolveCurrentPath()]
+        );
     }
 
     function returndata($typedata)
@@ -63,23 +69,21 @@ class PostsController extends Controller
         $pagination = 0;
         if ($category == "reviews" || $category == "Reviews") {
             $ruta = 'reviews';
-            $pagination = 8;
+            $pagination = 2;
         }
         if ($category == "news" || $category == "News") {
             $ruta = 'news';
             $pagination = 12;
         }
 
-        $data = Post::taxonomy('category', $category)->taxonomy('post_destinos', "$destination")->status('publish')->latest()->paginate($pagination);
-        //$post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
-        //dd($destination);
+        //$data = Post::taxonomy('category', $category)->taxonomy('post_destinos', "$destination")->status('publish')->latest()->paginate($pagination);
+        $post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
         if ($destination == '') {
-            $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+            //$data = Post::taxonomy('category', $category)->status('publish')->latest();
             $post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
         }
-        //$data = new Paginator($post, $pagination);
-        $data = $this->paginate($post,$pagination);
-        dd($data);
+        $data = $this->paginate($post, $pagination);
+        //dd($data);
         return $data;
     }
 
