@@ -14,6 +14,7 @@ use App\Models\Attachment;
 use Attribute;
 use Illuminate\Contracts\View\View;
 use DB;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Log;
 
 
@@ -62,7 +63,9 @@ class PostsController extends Controller
         $data = Post::taxonomy('category', $category)->taxonomy('post_destinos', "$destination")->status('publish')->latest()->paginate($pagination);
 
         if ($destination == '') {
-            $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+            // $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+            $post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC");
+            $data = new Paginator($post, $pagination);
         }
         return $data;
     }
@@ -70,8 +73,10 @@ class PostsController extends Controller
     public function index(): View
     {
 
-        $posts = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
-        //dd($posts[0]);
+        $posts = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
+
+        $page1 = new Paginator($posts, 10);
+        // dd($page1);
         $destinations = DB::select("SELECT * FROM test_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
@@ -114,7 +119,7 @@ class PostsController extends Controller
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
 
-        // dd($categories_data); 
+        // dd($firstpostcategory); 
         return view('categories.reviews', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
     }
 
