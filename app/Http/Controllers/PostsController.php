@@ -45,22 +45,17 @@ class PostsController extends Controller
             case 'destinations':
                 $data = DB::select("SELECT * FROM tribunet_test.test_destinations;");
                 break;
+            case 'tags':
+                    $data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
+                                INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
+                                INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
+                                WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_tag'");
+                    break;
             default:
                 break;
         }
         return $data;
-    }
-
-    function color($taxonomy)
-    {
-
-        $taxonomy_color = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
-                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = '$taxonomy'");
-
-        return $taxonomy_color;
-    }
+    }   
 
     function category($category, $destination)
     {
@@ -161,7 +156,7 @@ class PostsController extends Controller
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
-        $tag_data = $this->color('post_tag');
+        $tag_data = $this->returndata('tags');
         //dd($destinationposts);
 
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
