@@ -15,11 +15,21 @@ use Attribute;
 use Illuminate\Contracts\View\View;
 use DB;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
 
 
 class PostsController extends Controller
 {
+
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
     function returndata($typedata)
     {
         switch ($typedata) {
@@ -61,12 +71,15 @@ class PostsController extends Controller
         }
 
         $data = Post::taxonomy('category', $category)->taxonomy('post_destinos', "$destination")->status('publish')->latest()->paginate($pagination);
-
+        //$post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
+        //dd($destination);
         if ($destination == '') {
-            // $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
-            $post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC");
-            $data = new Paginator($post, $pagination);
+            $data = Post::taxonomy('category', $category)->status('publish')->latest()->paginate($pagination);
+            $post = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
         }
+        //$data = new Paginator($post, $pagination);
+        $data = $this->paginate($post,$pagination);
+        dd($data);
         return $data;
     }
 
@@ -119,8 +132,8 @@ class PostsController extends Controller
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
 
-        // dd($firstpostcategory); 
-        return view('categories.reviews', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
+        //dd($postscategory); 
+        return view('categories.reviews', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
 
     public function news(Request $request)
