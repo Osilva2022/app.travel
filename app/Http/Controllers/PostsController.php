@@ -25,13 +25,13 @@ class PostsController extends Controller
 
     public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
-        //dd(['path' => Paginator::resolveCurrentPath()]);
         return new LengthAwarePaginator(
             $items->forPage($page, $perPage),
             $items->count(),
             $perPage,
-            Paginator::resolveCurrentPage(),
+            $page,
             ['path' => Paginator::resolveCurrentPath()]
         );
     }
@@ -39,14 +39,12 @@ class PostsController extends Controller
     function returndata($typedata)
     {
         switch ($typedata) {
-            case 'category':
-                $data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
-                                    INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                    INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                    WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'category'
-                                    AND t.slug != 'sin-categoria'");
+            case 'categories':
+                $data = DB::select("SELECT * FROM tribunet_test.test_categories WHERE slug != 'sin-categoria'");
                 break;
-
+            case 'destinations':
+                $data = DB::select("SELECT * FROM tribunet_test.test_destinations;");
+                break;
             default:
                 break;
         }
@@ -90,14 +88,14 @@ class PostsController extends Controller
     public function index(): View
     {
 
-        $posts = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
+        //$posts = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
 
-        $page1 = new Paginator($posts, 10);
+        //$page1 = new Paginator($posts, 10);
         // dd($page1);
         $destinations = DB::select("SELECT * FROM test_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
-        $categories_data = $this->returndata('category');
+        $categories_data = $this->returndata('categories');
 
         $review = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 4");
@@ -115,8 +113,8 @@ class PostsController extends Controller
     {
         $post = Post::slug($slug)->status('publish')->firstOrFail();
         $category = array_values($post->terms['category'])[0];
-        $destinations_data = $this->color('post_destinos');
-        $categories_data = $this->returndata('category');
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
         //dd($post->terms);
 
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
@@ -131,8 +129,8 @@ class PostsController extends Controller
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
-        $destinations_data = $this->color('post_destinos');
-        $categories_data = $this->returndata('category');
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
 
@@ -147,8 +145,8 @@ class PostsController extends Controller
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
-        $destinations_data = $this->color('post_destinos');
-        $categories_data = $this->returndata('category');
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
         return view('categories.news', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
@@ -156,29 +154,17 @@ class PostsController extends Controller
 
     public function destinations($destination)
     {
+
+        //$destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
+        $posts = DB::select("SELECT * FROM test_all_posts WHERE destination_slug = '$destination';");
+        $destinationposts = $this->paginate($posts, 2);
+        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
+        $categories_data = $this->returndata('categories');
+        $destinations_data = $this->returndata('destinations');
         $tag_data = $this->color('post_tag');
-        $destinations_data = $this->color('post_destinos');
+        //dd($destinationposts);
 
-        $category_data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
-                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'category'
-                                        AND t.slug != 'sin-categoria'");
-
-        $destination_img = DB::select("SELECT t.term_id,t.name, tm.meta_value, p.guid as img FROM test_terms t 
-                                        INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                        INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                        left JOIN test_posts p ON tm.meta_value=p.ID
-                                        WHERE tm.meta_key = 'imagen_destino'
-                                        AND ttt.taxonomy = 'post_destinos'
-                                        AND t.slug = '$destination'");
-
-
-        $destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
-        //dd($destination_img);
-        $categories_data = $this->returndata('category');
-
-        return view('destinations.index', compact('destinationposts', 'tag_data', 'category_data', 'destination_img', 'destinations_data', 'categories_data'));
+        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
     }
 
 
@@ -197,8 +183,8 @@ class PostsController extends Controller
         // dd($query); 
 
 
-        $destinations_data = $this->color('post_destinos');
-        $categories_data = $this->returndata('category');
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
         $category = 'events';
 
         $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
@@ -222,11 +208,9 @@ class PostsController extends Controller
 
     public function things(Request $request)
     {
-        $destinations_data = $this->color('post_destinos');
-        $categories_data = $this->returndata('category');
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
         $things = '';
-
-
         return view('things_to_do.index', compact('things', 'categories_data', 'destinations_data'));
     }
 }

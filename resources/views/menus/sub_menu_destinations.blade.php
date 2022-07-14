@@ -7,12 +7,6 @@
                         type="button"><small>All</small></a>
                 </li>
                 @foreach ($destinations_data as $data)
-                    <?php $active = ''; ?>
-                    <?php $selected = 'false'; ?>
-                    {{-- @if ($data->name == 'Puerto Vallarta')
-                                    <?php $active = 'active'; ?>
-                                    <?php $selected = 'true'; ?>
-                                @endif --}}
                     <li class="nav-item nav-test mx-1" role="presentation">
                         <a class="nav-link" id="{{ $data->slug }}-tab"
                             href="{{ url("$category") }}?destination={{ $data->slug }}" type="button">
