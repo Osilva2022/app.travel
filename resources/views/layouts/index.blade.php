@@ -105,7 +105,6 @@
                             @endforeach
 
 
-
                         </div>
                         <div class="col-12 my-4">
                             <a href="{{ route('reviews') }}"

@@ -81,6 +81,7 @@ class PostsController extends Controller
         $categories_data = $this->returndata('category');
 
         $review = Post::taxonomy('category', 'Reviews')->status('publish')->latest()->first();
+        // dd($review->meta);
         $reviews = Post::taxonomy('category', 'Reviews')->status('publish')->latest()->limit(4)->get();
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();        
         $new = Post::taxonomy('category', 'News')->latest()->status('publish')->first();
