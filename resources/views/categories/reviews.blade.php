@@ -164,4 +164,5 @@
             <!-- BOTONES CATEGORIAS -->
         </div>
     </main>
+    <script src="{{ asset('js/submenu.js') }}" version="1"></script>
 @endsection

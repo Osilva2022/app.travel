@@ -31,8 +31,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <a href="{{ url("$destination/$category/post/$data->slug") }}" title="Click to see more"
-                                        class="text-decoration-none text-muted">
+                                    <a href="{{ url("$destination/$category/post/$data->slug") }}"
+                                        title="Click to see more" class="text-decoration-none text-muted">
                                         <h3 class="card-title" style="bottom: 1.5rem;">
                                             {{ $data->title }}
                                         </h3>
@@ -159,4 +159,5 @@
             <!-- BOTONES CATEGORIAS -->
         </div>
     </main>
+    <script src="{{ asset('js/submenu.js') }}" version="1"></script>
 @endsection

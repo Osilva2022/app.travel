@@ -28,7 +28,7 @@
                         Destinations
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="destination-dropdown">
-                        @foreach ($destinations_data as $dd)
+                        @foreach ($destinations as $dd)
                             <li>
                                 <a class="dropdown-item text-white"
                                     href="{{ route('destinations', ["$dd->slug"]) }}">{{ $dd->name }}</a>

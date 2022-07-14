@@ -11,7 +11,7 @@
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
-    <!-- Bootstrap --> 
+    <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.css') }}" rel="stylesheet">
@@ -25,7 +25,25 @@
     {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 
     <!-- Scripts -->
-    
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jQuery.js') }}"></script>
+    <script src="{{ asset('js/base.js') }}" version="1"></script>
+    <script>
+        $(function() {
+            $(window).on("scroll", function() {
+                if ($(window).scrollTop() > 200) {
+                    $("#menu-header").addClass("menu-active");
+
+                } else {
+                    $("#menu-header").removeClass("menu-active");
+                }
+            });
+
+            $("#navbar-toggler").click(function(e) {
+                $("#menu-header").addClass('menu-active');
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -133,27 +151,6 @@
             </div>
         </div>
     </footer>
-    
-    <!-- Scripts -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>    
-    <script src="{{ asset('js/jQuery.js') }}"></script>
-    <script src="{{ asset('js/base.js') }}" version="1"></script>
-    <script>
-        $(function() {
-            $(window).on("scroll", function() {
-                if ($(window).scrollTop() > 200) {
-                    $("#menu-header").addClass("menu-active");
-
-                } else {
-                    $("#menu-header").removeClass("menu-active");
-                }
-            });
-
-            $("#navbar-toggler").click(function(e) {
-                $("#menu-header").addClass('menu-active');
-            });
-        });
-    </script>
 </body>
 
 </html>
