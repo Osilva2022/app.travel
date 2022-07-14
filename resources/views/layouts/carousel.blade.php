@@ -2,7 +2,7 @@
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <?php $i = 0; ?>
-        @foreach ($destinations_data as $dd)
+        @foreach ($destinations as $dd)
             <?php
             $active = '';
             $true = '';
@@ -17,7 +17,7 @@
         @endforeach
     </div>
     <div class="carousel-inner">
-        @foreach ($destinations_data as $dd)
+        @foreach ($destinations as $dd)
             @php
                 $active = '';
                 if ($dd->slug == 'puerto-vallarta') {
@@ -26,12 +26,8 @@
             @endphp
 
             <div class="carousel-item {{ $active }}">
-                @foreach ($destinations_img as $di)
-                    @if ($dd->name == $di->name)
-                        <img src="{{ $di->img }}" class="bd-placeholder-img-lg" width="100%" height="100%"
-                            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    @endif
-                @endforeach
+                <img src="{{ $dd->image }}" class="bd-placeholder-img-lg" width="100%" height="100%"
+                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1 class="t1">{{ $dd->name }}</h1>
