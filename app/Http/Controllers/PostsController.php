@@ -46,16 +46,16 @@ class PostsController extends Controller
                 $data = DB::select("SELECT * FROM tribunet_test.test_destinations;");
                 break;
             case 'tags':
-                    $data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
+                $data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
                                 INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
                                 INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
                                 WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_tag'");
-                    break;
+                break;
             default:
                 break;
         }
         return $data;
-    }   
+    }
 
     function category($category, $destination)
     {
@@ -89,7 +89,19 @@ class PostsController extends Controller
 
         $review = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 4");
-        $things = Post::taxonomy('category', 'Things to do')->latest()->get();
+        //$things = Post::taxonomy('category', 'Things to do')->latest()->get();
+        DB::statement(DB::raw('set @n_max:=1'));
+        DB::statement(DB::raw('set @n:=1'));
+        DB::statement(DB::raw('set @cat_previa=NULL'));
+        $things = DB::select("SELECT * FROM (
+                SELECT *,
+                IF(category=@cat_previa,@n:=@n+1,@n:=1) n,
+                @cat_previa:=category
+                FROM test_things_to_do
+                ORDER BY category,post_date  
+            ) c1 WHERE n<=@n_max;
+        ");
+        //dd($things);
         $new = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 4");
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 1");
@@ -182,16 +194,30 @@ class PostsController extends Controller
     public function things(Request $request)
     {
         $category = 'things-to-do';
-        $destination = '';
+        $destination = 'puerto-vallarta';
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
         $destinations_data = $this->returndata('destinations');
-        $destination = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $categories_data = $this->returndata('categories');
+        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
+        //$things_categories = DB::select("SELECT * FROM test_things_categories;");
+        DB::statement(DB::raw('set @n_max:=1'));
+        DB::statement(DB::raw('set @n:=1'));
+        DB::statement(DB::raw('set @cat_previa=NULL'));
+        $things_categories = DB::select("SELECT c1.destination_slug, c1.category, c1.category_slug, tc.color, tc.image 
+                                FROM (
+                                SELECT category_slug,category, category_color, destination_slug,
+                                IF(category=@cat_previa,@n:=@n+1,@n:=1) n,
+                                @cat_previa:=category
+                                FROM test_things_to_do
+                                ORDER BY category,post_date  
+                            ) c1 INNER JOIN test_things_categories as tc ON c1.category_slug = tc.slug
+                            WHERE n<=@n_max AND destination_slug = '$destination';
+        ");
 
         // dd($destination);
-        
-        return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data','destination'));
+
+        return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
     }
 }
