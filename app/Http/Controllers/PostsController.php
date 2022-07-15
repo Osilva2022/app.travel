@@ -203,9 +203,17 @@ class PostsController extends Controller
 
     public function things(Request $request)
     {
+        $category = 'things-to-do';
+        $destination = '';
+        if (isset($request->destination)) {
+            $destination = $request->destination;
+        }
         $destinations_data = $this->returndata('destinations');
+        $destination = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $categories_data = $this->returndata('categories');
-        $things = '';
-        return view('things_to_do.index', compact('things', 'categories_data', 'destinations_data'));
+
+        // dd($destination);
+        
+        return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data','destination'));
     }
 }
