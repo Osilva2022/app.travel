@@ -43,7 +43,7 @@
                                     </a>
                                 </p>
                                 <p class="card-text"><small
-                                        class="text-muted">{{ $data->post_date }}</small>
+                                        class="text-muted">{{  date('d/M/Y', strtotime($data->post_date))  }}</small>
                                 </p>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                                     </p>
                                                     <p class="card-text">
                                                         <small class="text-muted">
-                                                            {{ $data->post_date }}
+                                                            {{  date('d/M/Y', strtotime($data->post_date))  }}
                                                         </small>
                                                     </p>
                                                 </div>
@@ -248,6 +248,17 @@
                                     </h3>
                                 </a>
                             </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <a href="{{ url("$data->url") }}"
+                                        title="{{ $data->title }}" class="text-decoration-none text-muted test-error">
+                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                    </a>
+                                </p>
+                                <p class="card-text"><small
+                                        class="text-muted">{{  date('d/M/Y', strtotime($data->post_date))  }}</small>
+                                </p>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -282,7 +293,7 @@
                                                     </p>
                                                     <p class="card-text">
                                                         <small class="text-muted">
-                                                            {{ $data->post_date }}
+                                                            {{  date('d/M/Y', strtotime($data->post_date))  }}
                                                         </small>
                                                     </p>
                                                 </div>

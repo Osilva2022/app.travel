@@ -7,14 +7,13 @@
         <div class="container">
             @include('menus.sub_menu_destinations')
             <div class="row mb-4">
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <h2>Calendar</h2>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quidem temporibus sint atque non
-                    eligendi molestiae alias reprehenderit, magnam aliquid, id minima corporis amet aut! Non harum velit
-                    numquam error?
+                    eligendi molestiae alias reprehenderit, magnam aliquid, id minima
                 </div>
             </div>
-            <h2>Featured Events</h2>
+            <h3>Featured Events</h3>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 ">
                 @foreach ($events as $event)
                     <div class="col px-4">
@@ -31,8 +30,8 @@
                                             $date = strtotime($event->start_date);
                                             $date2 = strtotime($event->end_date);
                                         @endphp
-                                        <h3 class="align-middle">{{ date('M', $date) }}</h3>
-                                        <h3 class="align-middle"><b>{{ date('d', $date) }}</b></h3>
+                                        <h2 class="align-middle">{{ date('M', $date) }}</h2>
+                                        <h2 class="align-middle"><b>{{ date('d', $date) }}</b></h2>
                                     </div>
                                     <div class="col-10 py-0 text-start">
                                         <h3>{{ $event->title }}</h3>
@@ -45,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <p>{{ $event->content }}</p>
+                                <p>{{ $event->content }}</p><br>
                             </div>
                         </div>
                     </div>
