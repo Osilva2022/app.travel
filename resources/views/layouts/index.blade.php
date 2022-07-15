@@ -21,7 +21,7 @@
                                 <div class="card-img-overlay text-white h-100">
                                     <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                         <span class="badge"
-                                            style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                            style="font-size:16px; background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                     </a>
                                     <span class="badge float-end">
                                         <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="35"
