@@ -18,13 +18,13 @@
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a
                                     href="{{ route( $category) }}">{{ $category }}</a></li>
-                            <li class="breadcrumb-item" aria-current="page">{{ $post->post_title }}</li>
+                            <li class="breadcrumb-item" aria-current="page">{{ $post->title }}</li>
                         </ol>
                     </nav>
                 </div>
                 <!-- MENU RUTA -->
                 <div class="col-12">
-                    <h1>{{ $post->post_title }}</h1>
+                    <h1>{{ $post->title }}</h1>
                 </div>
                 <div class="col-12">
                     <img src="{{ $post->image }}" alt="" width="100%" height="auto"
@@ -41,8 +41,8 @@
                                     width="60" height="60">
                             </div>
                             <div class="col-8">
-                                <h5 class="card-title">By <b>{{$post->author->display_name}}</b></h5>
-                                <p class="card-text"><small class="text-muted">{{$post->post_date->format('M d, Y')}}</small></p>
+                                <h5 class="card-title">By <b>{{$post->author_name}}</b></h5>
+                                <p class="card-text"><small class="text-muted">{{$post->post_date}}</small></p>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                     width="60" height="60">
                             </div>
                             <div class="col-12">
-                                <h5 class="card-title text-center">By Author</h5>
+                                <h5 class="card-title text-center">By {{$post->author_name}}</h5>
                                 <p class="card-text">
                                     <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
                                         officiis pariatur autem quae quo ipsam soluta error cupiditate id beatae rem
