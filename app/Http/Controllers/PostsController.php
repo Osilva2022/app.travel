@@ -82,11 +82,6 @@ class PostsController extends Controller
 
     public function index(): View
     {
-
-        //$posts = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
-
-        //$page1 = new Paginator($posts, 10);
-        // dd($page1);
         $destinations = DB::select("SELECT * FROM test_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
@@ -97,7 +92,7 @@ class PostsController extends Controller
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $new = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 4");
-        $event = DB::select("SELECT * FROM test_events LIMIT 1");
+        $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 1");
 
         // dd($events);        
 
@@ -106,12 +101,10 @@ class PostsController extends Controller
 
     public function post($destino, $category, $slug): View
     {
-        //$post = Post::slug($slug)->status('publish')->firstOrFail();
-        $posts = DB::select("SELECT * FROM test_all_posts WHERE slug = '$slug';");
+        $posts = DB::select("SELECT * FROM test_all_posts WHERE slug = '$slug' ORDER BY post_date DESC;");
         $post = $posts[0];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        //dd($category);
 
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
@@ -150,9 +143,9 @@ class PostsController extends Controller
     {
 
         //$destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
-        $posts = DB::select("SELECT * FROM test_all_posts WHERE destination_slug = '$destination';");
+        $posts = DB::select("SELECT * FROM test_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
         $destinationposts = $this->paginate($posts, 3);
-        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
+        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');

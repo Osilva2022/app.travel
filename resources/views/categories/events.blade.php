@@ -45,9 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, qui id. Tenetur rerum,
-                                    suscipit ratione incidunt quia hic. Temporibus cumque dolorem voluptatibus earum, sequi
-                                    facere eveniet ex rem nobis? Rerum.</p>
+                                <p>{{ $event->content }}</p>
                             </div>
                         </div>
                     </div>
