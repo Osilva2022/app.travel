@@ -21,7 +21,7 @@
                                 <div class="card-img-overlay text-white h-100">
                                     <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                         <span class="badge"
-                                            style="font-size:16px; background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                            style="font-size:1rem; background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                     </a>
                                     <span class="badge float-end">
                                         <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="35"
@@ -78,7 +78,7 @@
                                                     </p>
                                                     <p class="card-text">
                                                         <small class="text-muted">
-                                                            {{ $data->post_date }}
+                                                            {{  date('d/M/Y', strtotime($data->post_date))  }}
                                                         </small>
                                                     </p>
                                                 </div>
@@ -202,10 +202,11 @@
                 </div>
             </div>
             <!-- EVENTS -->
-            <div class="row mb-4">
+            <div class="row">
                 <h2 class="text-center mb-3">Featured Events</h2>
-                <div class="col-12">
-                    <div class="row justify-content-center" style="max-width: 370px;">
+                <div class="col-12" style="text-align: -webkit-center;">
+                  
+                    <div class="row justify-content-center" style="max-width: 420px;">
                         @foreach ($event as $data)
                             <img src="{{ $data->image }}" class="bd-placeholder-img-lg img-fluid mb-3"
                                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -213,15 +214,16 @@
                                 @php
                                     $date = strtotime($data->start_date);
                                 @endphp
-                                <h3 class="align-middle">{{ date('M', $date) }}</h3>
-                                <h3 class="align-middle"><b>{{ date('d', $date) }}</b></h3>
+                                <h2 class="align-middle">{{ date('M', $date) }}</h2>
+                                <h2 class="align-middle"><b>{{ date('d', $date) }}</b></h2>
                             </div>
                             <div class="col-9 py-0">
                                 <h3>{{ $data->title }}</h3>
                                 <p>{{ date('M d, Y', $date) }}<br>{{ $data->destination }}</p>
                             </div>
                         @endforeach
-                    </div>
+                    </div>                   
+                    
                     <a href="{{ route('events') }}" class="btn btn-primary form-control rounded-pill"
                         type="button">See the calendar</a>
                 </div>
@@ -237,19 +239,32 @@
                 <h2>News</h2>
                 <div class="col-lg-6">
                     @foreach ($new as $data)
-                        <div class="card mb-4 border-0">
+                        <div class="card mb-3 border-0">
+                            <div class="card border-0">
                             <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
                             <div class="card-img-overlay text-white">
                                 <a href="{{ route('destinations', ["$data->destination"]) }}">
                                     <span class="badge"
-                                        style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                        style="font-size:1rem;background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                 </a>
                                 <a href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}"
                                     title="{{ $data->title }}" class="text-decoration-none text-white">
                                     <h3 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $data->title }}
                                     </h3>
                                 </a>
+                            </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <a href="{{ url("$data->url") }}"
+                                        title="{{ $data->title }}" class="text-decoration-none text-muted test-error">
+                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                    </a>
+                                </p>
+                                <p class="card-text"><small
+                                        class="text-muted">{{  date('d/M/Y', strtotime($data->post_date))  }}</small>
+                                </p>
                             </div>
                         </div>
                     @endforeach
@@ -285,7 +300,7 @@
                                                     </p>
                                                     <p class="card-text">
                                                         <small class="text-muted">
-                                                            {{ $data->post_date }}
+                                                            {{  date('d/M/Y', strtotime($data->post_date))  }}
                                                         </small>
                                                     </p>
                                                 </div>
