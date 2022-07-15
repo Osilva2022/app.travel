@@ -234,7 +234,8 @@
                 <h2>News</h2>
                 <div class="col-lg-6">
                     @foreach ($new as $data)
-                        <div class="card mb-4 border-0">
+                        <div class="card mb-3 border-0">
+                            <div class="card border-0">
                             <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top rounded-4 shadow"
                                 width="100%" height="220">
                             <div class="card-img-overlay text-white">
@@ -247,6 +248,7 @@
                                     <h3 class="card-title position-absolute" style="bottom: 1.5rem;">{{ $data->title }}
                                     </h3>
                                 </a>
+                            </div>
                             </div>
                             <div class="card-body">
                                 <p class="card-text">
