@@ -62,7 +62,7 @@ class PostsController extends Controller
         $pagination = 0;
         if ($category == "reviews" || $category == "Reviews") {
             $ruta = 'reviews';
-            $pagination = 2;
+            $pagination = 8;
         }
         if ($category == "news" || $category == "News") {
             $ruta = 'news';
@@ -82,11 +82,6 @@ class PostsController extends Controller
 
     public function index(): View
     {
-
-        //$posts = DB::select("SELECT * FROM test_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
-
-        //$page1 = new Paginator($posts, 10);
-        // dd($page1);
         $destinations = DB::select("SELECT * FROM test_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM test_terms t , test_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
@@ -97,7 +92,7 @@ class PostsController extends Controller
         $things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $new = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 4");
-        $event = DB::select("SELECT * FROM test_events LIMIT 1");
+        $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 1");
 
         // dd($events);        
 
@@ -106,16 +101,13 @@ class PostsController extends Controller
 
     public function post($destino, $category, $slug): View
     {
-        $post = Post::slug($slug)->status('publish')->firstOrFail();
-        $category = array_values($post->terms['category'])[0];
+        $posts = DB::select("SELECT * FROM test_all_posts WHERE slug = '$slug' ORDER BY post_date DESC;");
+        $post = $posts[0];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        // dd($post->terms);
 
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
-
-
 
     public function reviews(Request $request)
     {
@@ -151,9 +143,9 @@ class PostsController extends Controller
     {
 
         //$destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
-        $posts = DB::select("SELECT * FROM test_all_posts WHERE destination_slug = '$destination';");
-        $destinationposts = $this->paginate($posts, 2);
-        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
+        $posts = DB::select("SELECT * FROM test_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
+        $destinationposts = $this->paginate($posts, 3);
+        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
@@ -162,27 +154,16 @@ class PostsController extends Controller
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
     }
 
-
-    public function destination_tag($destination, $category, $tag)
-    {
-        dd("destination_tag");
-    }
-
     public function events(Request $request)
     {
-        // dd($request->all());    
         $query = '';
         if (isset($request->destination)) {
-            $query = "AND te.slug = '$request->destination'";
+            $query = "AND destination_slug = '$request->destination'";
         }
-        // dd($query); 
-
-
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        $category = 'events';
-
-        $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
+        $category = "events";
+        /* $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
         CONVERT(pm.meta_value, datetime) as start_event, pm2.meta_value as end_event, te.name as city
                             FROM test_posts as a
                             LEFT JOIN test_posts as p ON p.ID = a.post_parent AND a.post_type = 'attachment'
@@ -192,11 +173,8 @@ class PostsController extends Controller
                             INNER JOIN test_term_taxonomy tt ON tt.term_id = tr.term_taxonomy_id AND tt.taxonomy ='post_destinos'
                             INNER JOIN test_terms te ON te.term_id = tt.term_id
                             WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) >= current_date() $query
-                            ORDER BY start_event, a.post_date DESC");
-        $events_categories = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM test_terms t 
-                                            INNER JOIN test_termmeta tm ON t.term_id=tm.term_id
-                                            INNER JOIN test_term_taxonomy ttt ON t.term_id=ttt.term_id
-                                            WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'tribe_events_cat'");
+                            ORDER BY start_event, a.post_date DESC"); */
+        $events = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
 
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
     }
