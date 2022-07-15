@@ -110,7 +110,7 @@ class PostsController extends Controller
         $category = array_values($post->terms['category'])[0];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        //dd($post->terms);
+        // dd($post->terms);
 
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
