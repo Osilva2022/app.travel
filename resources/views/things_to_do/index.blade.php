@@ -49,7 +49,9 @@
                         <div class="card border-0">
                             <img src="{{$tc->image}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h3 class="card-title">{{$tc->category}}</h3>
+                                <a href="{{ route('things_category',["$destination","$tc->category_slug"]) }}" class="text-decoration-none">
+                                    <h3 class="card-title">{{$tc->category}}</h3>
+                                </a>
                                 <p class="card-text">Lorem ipsum dolor sit amet, 
                                     consetetur sadipscing elitr, sed diam 
                                     nonumy eirmod tempor invidunt ut 

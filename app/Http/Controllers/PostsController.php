@@ -90,17 +90,14 @@ class PostsController extends Controller
         $review = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 4");
         //$things = Post::taxonomy('category', 'Things to do')->latest()->get();
-        DB::statement(DB::raw('set @n_max:=1'));
-        DB::statement(DB::raw('set @n:=1'));
-        DB::statement(DB::raw('set @cat_previa=NULL'));
         $things = DB::select("SELECT * FROM (
-                SELECT *,
-                IF(category=@cat_previa,@n:=@n+1,@n:=1) n,
-                @cat_previa:=category
-                FROM test_things_to_do
-                ORDER BY category,post_date  
-            ) c1 WHERE n<=@n_max;
-        ");
+                                SELECT category_slug,category, category_color, destination_slug, title, tc.image
+                                ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
+                                FROM test_things_to_do
+                                inner join test_things_categories tc on tc.slug = category_slug
+                                ) t
+                                WHERE t.orden = 1
+                                ORDER BY destination_slug, category;");
         //dd($things);
         $new = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 4");
@@ -201,23 +198,29 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
-        //$things_categories = DB::select("SELECT * FROM test_things_categories;");
-        DB::statement(DB::raw('set @n_max:=1'));
-        DB::statement(DB::raw('set @n:=1'));
-        DB::statement(DB::raw('set @cat_previa=NULL'));
-        $things_categories = DB::select("SELECT c1.destination_slug, c1.category, c1.category_slug, tc.color, tc.image 
-                                FROM (
-                                SELECT category_slug,category, category_color, destination_slug,
-                                IF(category=@cat_previa,@n:=@n+1,@n:=1) n,
-                                @cat_previa:=category
-                                FROM test_things_to_do
-                                ORDER BY category,post_date  
-                            ) c1 INNER JOIN test_things_categories as tc ON c1.category_slug = tc.slug
-                            WHERE n<=@n_max AND destination_slug = '$destination';
+        $things_categories = DB::select("SELECT * FROM (
+            SELECT category_slug,category, category_color, destination_slug, title, tc.image
+            ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
+            FROM test_things_to_do
+            inner join test_things_categories tc on tc.slug = category_slug
+            ) t
+            WHERE t.orden = 1
+            AND destination_slug = '$destination'
         ");
-
-        // dd($destination);
+        //dd($things_categories);
 
         return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
+    }
+
+    public function things_category($destination, $category)
+    {
+        $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $things_category = DB::select("SELECT * FROM test_things_categories WHERE slug = '$category';");
+        $posts = DB::select("SELECT * FROM test_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
+        $things = $this->paginate($posts, 3);
+        //dd($posts);
+        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category'));
     }
 }
