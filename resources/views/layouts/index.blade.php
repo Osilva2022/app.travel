@@ -321,4 +321,30 @@
                 </div>
             </div>
     </main>
+    <ul id="galeria-instagram"></ul>
+
+    {{-- <script defer>
+
+        alert("ok");
+    var clientid = 'CLIENT ID',
+    username = 'tribunetravel',
+    num_photos = 5;
+ 
+$.ajax({
+  url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
+  dataType: 'jsonp',
+  type: 'GET',
+  data: {client_id: clientid, count: num_photos},
+  success: function(data){
+     console.log(data);
+    for( x in data.data ){
+      $('#galeria-instagram').append('<li><img src="'+data.data[x].images.thumbnail.url+'"></li>');
+    }
+  },
+  error: function(data){
+    console.log(data);
+  }
+});
+    </script> --}}
 @endsection
+
