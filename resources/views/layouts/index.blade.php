@@ -27,8 +27,7 @@
                                         <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="35"
                                             height="35">
                                     </span>
-                                    <a href="{{ url("$data->url") }}"
-                                        class="text-decoration-none">
+                                    <a href="{{ url("$data->url") }}" class="text-decoration-none">
                                         <h3 class="card-title position-absolute text-white" style="bottom: 1.5rem;">
                                             {{ $data->title }}
                                         </h3>
@@ -37,13 +36,12 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">
-                                    <a href="{{ url("$data->url") }}"
-                                        title="{{ $data->title }}" class="text-decoration-none text-muted test-error">
+                                    <a href="{{ url("$data->url") }}" title="{{ $data->title }}"
+                                        class="text-decoration-none text-muted test-error">
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </a>
                                 </p>
-                                <p class="card-text"><small
-                                        class="text-muted">{{  date('d/M/Y', strtotime($data->post_date))  }}</small>
+                                <p class="card-text"><small class="text-muted">{{ $data->post_date }}</small>
                                 </p>
                             </div>
                         </div>
@@ -112,7 +110,7 @@
                 <div class="col-12">
                     <div class="" style="overflow-x: auto;">
                         <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
-                            style="min-width: 390px;">
+                            style="min-width: 660px;">
                             @foreach ($destinations as $data)
                                 <?php $active = ''; ?>
                                 <?php $selected = 'false'; ?>
@@ -137,44 +135,51 @@
                             @endif
                             <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}"
                                 role="tabpanel" aria-labelledby="{{ $data->term_id }}-tab">
+                                <div class="row my-3">
+                                    <div class="col-12">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-12 mb-2">
                                         <div id="tag-carousel" class="carousel slide mb-2" data-bs-ride="carousel">
                                             <div class="carousel-inner shadow rounded-4">
                                                 <?php $i = 1; ?>
-                                                @foreach ($tags_data as $data_tag)
-                                                    <?php $active = ''; ?>
-                                                    @if ($i == 1)
-                                                        <?php $active = 'active show'; ?>
-                                                    @endif
-                                                    <div class="carousel-item {{ $active }}">
-                                                        <img src="{{ asset('img/slider-1.jpg') }}"
-                                                            class="bd-placeholder-img-lg" width="100%" height="100%"
-                                                            aria-hidden="true" preserveAspectRatio="xMidYMid slice"
-                                                            focusable="false">
-                                                        <div class="container">
-                                                            <div class="carousel-caption text-start bottom-0">
-                                                                <h5>{{ $data_tag->name }}</h5>
-                                                                <p>Some representative placeholder content for the first
-                                                                    slide.</p>
+                                                @foreach ($things as $ttd)
+                                                    @if ($data->slug == $ttd->destination_slug)
+                                                        <?php $active = ''; ?>
+                                                        @if ($i == 1)
+                                                            <?php $active = 'active show'; ?>
+                                                        @endif
+                                                        <div class="carousel-item {{ $active }}">
+                                                            <img src="{{ $ttd->image }}" class="bd-placeholder-img-lg"
+                                                                width="100%" height="100%" aria-hidden="true"
+                                                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                                                            <div class="container">
+                                                                <div class="carousel-caption text-start bottom-0">
+                                                                    <h4>{{ $ttd->category }}</h4>
+                                                                    <p>{{ $ttd->title }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <?php $i++; ?>
+                                                        <?php $i++; ?>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                             <div class="carousel-indicators position-relative">
                                                 <?php $i = 0; ?>
-                                                @foreach ($tags_data as $data_tag)
-                                                    <?php $active = ''; ?>
-                                                    @if ($i == 0)
-                                                        <?php $active = 'active'; ?>
+                                                @foreach ($things as $ttd)
+                                                    @if ($data->slug == $ttd->destination_slug)
+                                                        <?php $active = ''; ?>
+                                                        @if ($i == 0)
+                                                            <?php $active = 'active'; ?>
+                                                        @endif
+                                                        <button type="button" data-bs-target="#tag-carousel"
+                                                            data-bs-slide-to="{{ $i }}"
+                                                            class="bg-primary  {{ $active }}" aria-current="true"
+                                                            aria-label="Slide 1"></button>
+                                                        <?php $i++; ?>
                                                     @endif
-                                                    <button type="button" data-bs-target="#tag-carousel"
-                                                        data-bs-slide-to="{{ $i }}"
-                                                        class="bg-primary  {{ $active }}" aria-current="true"
-                                                        aria-label="Slide 1"></button>
-                                                    <?php $i++; ?>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -182,7 +187,7 @@
                                     <div class="col-12 mb-3">
                                         <a href="{{ route('things') }}"
                                             class="btn btn-primary form-control rounded-pill" type="button">More
-                                            things to do</a>
+                                            things to do {{ $data->name }}</a>
                                     </div>
                                 </div>
                             </div>
