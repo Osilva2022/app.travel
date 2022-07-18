@@ -1,6 +1,7 @@
-body{
-   font-family: 'objektiv-mk2'; 
+body {
+    font-family: 'objektiv-mk2';
 }
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -127,6 +128,30 @@ div.post-cont img {
     text-decoration: none;
 }
 
+.etiqueta-img {
+    position: absolute;
+    border-radius: 50rem !important;
+    font-size: .83rem !important;
+    padding-left: .55rem;
+    padding-right: .55rem;
+    padding-top: .25rem;
+    padding-bottom: 0;
+    line-height: 0.875rem;
+    top: 1.5rem;
+    left: 1rem;
+    z-index: 2;
+}
+
+.etiqueta-post {
+    border-radius: 50rem !important;
+    font-size: .75rem !important;
+    padding-left: .55rem;
+    padding-right: .55rem;
+    padding-top: .25rem;
+    padding-bottom: 0;
+    line-height: 0.995rem;
+}
+
 
 /* MENUS */
 
@@ -196,6 +221,12 @@ small {
     font-style: normal;
     font-weight: var(--tt-regular);
 }
+
+
+/* HOME */
+
+
+/* HOME */
 
 
 /* FONTS */

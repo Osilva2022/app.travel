@@ -91,10 +91,9 @@ class PostsController extends Controller
         $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 4");
         //$things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $things = DB::select("SELECT * FROM (
-                                SELECT category_slug,category, category_color, destination_slug, title, tc.image
+                                SELECT category_slug,category, category_color, destination_slug, title, image
                                 ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
                                 FROM test_things_to_do
-                                inner join test_things_categories tc on tc.slug = category_slug
                                 ) t
                                 WHERE t.orden = 1
                                 ORDER BY destination_slug, category;");
@@ -199,10 +198,9 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $things_categories = DB::select("SELECT * FROM (
-            SELECT category_slug,category, category_color, destination_slug, title, tc.image
+            SELECT category_slug,category, category_color, destination_slug, title, image
             ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
             FROM test_things_to_do
-            inner join test_things_categories tc on tc.slug = category_slug
             ) t
             WHERE t.orden = 1
             AND destination_slug = '$destination'
@@ -218,9 +216,17 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $things_category = DB::select("SELECT * FROM test_things_categories WHERE slug = '$category';");
+        $things_categories = DB::select("SELECT * FROM (
+            SELECT category_slug,category, category_color, destination_slug
+            ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
+            FROM test_things_to_do
+            ) t
+            WHERE t.orden = 1
+            AND destination_slug = '$destination'
+        ");
         $posts = DB::select("SELECT * FROM test_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
         $things = $this->paginate($posts, 3);
         //dd($posts);
-        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category'));
+        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
     }
 }

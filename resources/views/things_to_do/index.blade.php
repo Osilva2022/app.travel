@@ -47,14 +47,16 @@
                 @foreach ($things_categories as $tc)
                     <div class="col">
                         <div class="card border-0">
-                            <img src="{{$tc->image}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <a href="{{ route('things_category',["$destination","$tc->category_slug"]) }}" class="text-decoration-none">
-                                    <h3 class="card-title">{{$tc->category}}</h3>
+                                <img src="{{ $tc->image }}" class="card-img-top rounded-4 mb-3" alt="..."
+                                    style=" margin-left:auto; margin-right:auto;">
+                                <a href="{{ route('things_category', ["$destination", "$tc->category_slug"]) }}"
+                                    class="text-decoration-none">
+                                    <h3 class="card-title">{{ $tc->category }}</h3>
                                 </a>
-                                <p class="card-text">Lorem ipsum dolor sit amet, 
-                                    consetetur sadipscing elitr, sed diam 
-                                    nonumy eirmod tempor invidunt ut 
+                                <p class="card-text">Lorem ipsum dolor sit amet,
+                                    consetetur sadipscing elitr, sed diam
+                                    nonumy eirmod tempor invidunt ut
                                     labore.</p>
                             </div>
                         </div>
