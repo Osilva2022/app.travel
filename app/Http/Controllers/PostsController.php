@@ -22,6 +22,31 @@ use Illuminate\Support\Facades\Log;
 
 class PostsController extends Controller
 {
+    function wp_get_custom_css($stylesheet = '')
+    {
+        $css = '';
+
+        if (empty($stylesheet)) {
+            $stylesheet = get_stylesheet();
+        }
+
+        $post = wp_get_custom_css_post($stylesheet);
+        if ($post) {
+            $css = $post->post_content;
+        }
+
+        /**
+         * Filters the custom CSS output into the head element.
+         *
+         * @since 4.7.0
+         *
+         * @param string $css        CSS pulled in from the Custom CSS post type.
+         * @param string $stylesheet The theme stylesheet name.
+         */
+        $css = apply_filters('wp_get_custom_css', $css, $stylesheet);
+
+        return $css;
+    }
 
     public function paginate($items, $perPage = 5, $page = null, $options = [])
     {

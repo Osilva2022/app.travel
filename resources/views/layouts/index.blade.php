@@ -27,7 +27,7 @@
                                 <a href="{{ url("$data->url") }}">
                                     <img src="{{ $data->image }}" class="card-img">
                                 </a>
-                                <div class="card-img-overlay">
+                                <div class="card-img-overlay" style="top: auto;">
                                     <a href="{{ url("$data->url") }}">
                                         <h3 class="card-title-overlay">
                                             {{ $data->title }}
@@ -238,7 +238,7 @@
                                 <a href="{{ url("$data->url") }}" class="">
                                     <img src="{{ $data->image }}" class="card-img">
                                 </a>
-                                <div class="card-img-overlay">
+                                <div class="card-img-overlay" style="top: auto;">
                                     <a
                                         href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
                                         <h3 class="card-title-overlay">
