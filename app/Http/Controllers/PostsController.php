@@ -198,9 +198,10 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $things_categories = DB::select("SELECT * FROM (
-            SELECT category_slug,category, category_color, destination_slug, title, image
-            ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
-            FROM test_things_to_do
+            SELECT tt.category_slug,tt.category, tt.category_color, tt.destination_slug, tt.title, ttc.image
+            ,ROW_NUMBER() over(partition by tt.category_slug,tt.destination_slug ORDER BY tt.destination_slug DESC) as orden
+            FROM test_things_to_do as tt
+            inner join test_things_categories as ttc on tt.category_slug = ttc.slug
             ) t
             WHERE t.orden = 1
             AND destination_slug = '$destination'
@@ -224,7 +225,13 @@ class PostsController extends Controller
             WHERE t.orden = 1
             AND destination_slug = '$destination'
         ");
-        $posts = DB::select("SELECT * FROM test_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
+        //$posts = DB::select("SELECT * FROM test_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
+        $posts = DB::select("SELECT 
+                                    *, IF(orden > 0, orden, 10) AS o
+                                FROM
+                                    test_things_to_do
+                                WHERE destination_slug = '$destination' AND category_slug = '$category'
+                                ORDER BY CAST(o AS DECIMAL) ASC, post_date desc;");
         $things = $this->paginate($posts, 3);
         //dd($posts);
         return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
