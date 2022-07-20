@@ -21,46 +21,26 @@
                 </div>
             </section>
         </div>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
-                    @foreach ($things as $data)
-                        <div class="col">
-                            <div class="card shadow-sm" style="height: 400px;">
-                                <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top" width="100%"
-                                    height="225">
-                                <div class="card-img-overlay text-white h-50">
-                                        <span class="badge"
-                                            style="background:{{ $data->category_color }};">{{ $data->category }}</span>
-                                </div>
-                                <div class="card-body">
-                                        <h3 class="card-title">{{ $data->title }}</h3>
-                                    <p class="card-text">{!! Str::limit($data->content, 50, ' ...') !!}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="position-relative">
-                                            @isset($data->terms['tag'])
-                                                @foreach (array_slice($data->terms['tag'], 0, 2) as $tag)
-                                                    @foreach ($tag_data as $td)
-                                                        @if ($tag == $td->name)
-                                                            <a href="#" type="button" class="btn btn-sm p-1 text-light"
-                                                                style=" font-size: small; background: {{ $td->meta_value }}">{{ $tag }}</a>
-                                                        @endif
-                                                    @endforeach
-                                                @endforeach
-                                            @endisset
-                                        </div>
-                                        <small class="text-muted">{{ $data->post_date }}</small>
-                                    </div>
-                                </div>
+        <div class="container">
+            @include('menus.submenu_things')
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
+                @foreach ($things as $data)
+                    <div class="col" style="min-height: 400px;">
+                        <div class="card border-0">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ $data->title }}</h3>
+                                <p class="card-text">{!! strip_tags($data->content) !!}</p>                                
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                <div class="d-flex justify-content-center justify-content-lg-start mb-4">
-                    {{ $things->links('pagination::bootstrap-4') }}
-                </div>
+                        <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top rounded-0" width="100%"
+                            height="225">
+                    </div>
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center justify-content-lg-start mb-4">
+                {{ $things->links('pagination::bootstrap-4') }}
             </div>
         </div>
+        <script src="{{ asset('js/submenu_things.js') }}" version="1"></script>
     </main>
 @endsection

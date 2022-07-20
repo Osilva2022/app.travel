@@ -23,6 +23,31 @@ use Vinkla\Instagram\Instagram;
 
 class PostsController extends Controller
 {
+    function wp_get_custom_css($stylesheet = '')
+    {
+        $css = '';
+
+        if (empty($stylesheet)) {
+            $stylesheet = get_stylesheet();
+        }
+
+        $post = wp_get_custom_css_post($stylesheet);
+        if ($post) {
+            $css = $post->post_content;
+        }
+
+        /**
+         * Filters the custom CSS output into the head element.
+         *
+         * @since 4.7.0
+         *
+         * @param string $css        CSS pulled in from the Custom CSS post type.
+         * @param string $stylesheet The theme stylesheet name.
+         */
+        $css = apply_filters('wp_get_custom_css', $css, $stylesheet);
+
+        return $css;
+    }
 
     public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
@@ -92,10 +117,9 @@ class PostsController extends Controller
         $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 4");
         //$things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $things = DB::select("SELECT * FROM (
-                                SELECT category_slug,category, category_color, destination_slug, title, tc.image
+                                SELECT category_slug,category, category_color, destination_slug, title, image
                                 ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
                                 FROM test_things_to_do
-                                inner join test_things_categories tc on tc.slug = category_slug
                                 ) t
                                 WHERE t.orden = 1
                                 ORDER BY destination_slug, category;");
@@ -200,10 +224,10 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $things_categories = DB::select("SELECT * FROM (
-            SELECT category_slug,category, category_color, destination_slug, title, tc.image
-            ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
-            FROM test_things_to_do
-            inner join test_things_categories tc on tc.slug = category_slug
+            SELECT tt.category_slug,tt.category, tt.category_color, tt.destination_slug, tt.title, ttc.image
+            ,ROW_NUMBER() over(partition by tt.category_slug,tt.destination_slug ORDER BY tt.destination_slug DESC) as orden
+            FROM test_things_to_do as tt
+            inner join test_things_categories as ttc on tt.category_slug = ttc.slug
             ) t
             WHERE t.orden = 1
             AND destination_slug = '$destination'
@@ -219,10 +243,24 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $things_category = DB::select("SELECT * FROM test_things_categories WHERE slug = '$category';");
-        $posts = DB::select("SELECT * FROM test_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
+        $things_categories = DB::select("SELECT * FROM (
+            SELECT category_slug,category, category_color, destination_slug
+            ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
+            FROM test_things_to_do
+            ) t
+            WHERE t.orden = 1
+            AND destination_slug = '$destination'
+        ");
+        //$posts = DB::select("SELECT * FROM test_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
+        $posts = DB::select("SELECT 
+                                    *, IF(orden > 0, orden, 10) AS o
+                                FROM
+                                    test_things_to_do
+                                WHERE destination_slug = '$destination' AND category_slug = '$category'
+                                ORDER BY CAST(o AS DECIMAL) ASC, post_date desc;");
         $things = $this->paginate($posts, 3);
         //dd($posts);
-        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category'));
+        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
     }
 
     public function instagram()
