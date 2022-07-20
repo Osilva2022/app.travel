@@ -297,7 +297,6 @@
     </main>
     <ul id="galeria-instagram"></ul>
 
-<<<<<<< HEAD
 <script>
 var token = 'IGQVJYeE9qMmp1Y3VvVEtNRmhkTGhZAVklOWHBUeHdQX014X0tjYjZAHODV4YURlS1d5TjhFXzcydWlSeUtwX0tzckJZARDdLT05ralNnaWYycDAyRTZAVbmdOcFdoMTF3QS1TWUpReWdyOUZAfT3doNk5uNwZDZD',
     username = 'danielruiz5328', // rudrastyh - my username :)
@@ -333,31 +332,4 @@ $.ajax({ // the first ajax request returns the ID of user rudrastyh
 </script>
 
 
-=======
-    <script defer>
-        var token =
-            'IGQVJYRnVVWlVKZADhDeVgyaEJ5dDh3QUp6RlFjRGhmaVlsLV9iNVdiMVBzbG1IVkdKZAjIyUUxxejFvSk41WHBKS19EMXJDXzczb3QwdkFlV0I0UEh0LXd4WGh4a2tQUTZAVZAEd4THk1M25Mbi1UNmpvUQZDZD',
-            hashtag = 'puertovallarta', // hashtag without # symbol
-            num_photos = '4';
-
-        $.ajax({
-            url: 'https://api.instagram.com/v1/tags/' + hashtag + '/media/recent',
-            dataType: 'jsonp',
-            type: 'GET',
-            data: {
-                access_token: token,
-                count: num_photos
-            },
-            success: function(data) {
-                console.log(data);
-                for (x in data.data) {
-                    $('ul').append('<li><img src="' + data.data[x].images.standard_resolution.url + '"></li>');
-                }
-            },
-            error: function(data) {
-                console.log(data);
-            }
-        });
-    </script>
->>>>>>> a404eeb01bde100fbd390c0f6ea36f27525e2a01
 @endsection
