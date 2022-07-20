@@ -48,7 +48,8 @@ return [
     */
 
     'shortcodes' => [
-//        'foo' => App\Shortcodes\FooShortcode::class,
+    //    'foo' => App\Shortcodes\FooShortcode::class,
+    //    'instagram' => App\Providers\ShortcodesServiceProvider::class,
     ],
 
     /*

@@ -18,6 +18,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
+use Vinkla\Instagram\Instagram;
 
 
 class PostsController extends Controller
@@ -223,4 +224,13 @@ class PostsController extends Controller
         //dd($posts);
         return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category'));
     }
+
+    public function instagram()
+    {        
+        dd("Hola Mundo!!!");
+	    
+           
+
+    }
+
 }
