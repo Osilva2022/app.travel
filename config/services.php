@@ -29,5 +29,8 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'instagram_api' => [
+        'token' => 'EAAIiQ9ViUaIBAJnWIbUVZA27breHT5zNyplZASPaRxJZAZBT5WaFpPPu5tTbMT1BCG3E3bKPnKH1zlo9ZAZCEofBUjVB6EP3NRvMPsEJH81zXyZCAyYpuDGNrqGJz7yiwtNIEueXN0oKj7sMpsB9PIec7F4TfIhFVANk0RPeiA1WZByBI0Ujfh3NxsCxxmPY9SavFM2ZAF3bmwZBMgchsO35ZCV', // paste your access token inside quotes
+    ],
 
 ];

@@ -23,8 +23,4 @@ Route::get('things-to-do', [PostsController::class, 'things'])->name('things');
 Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');
 Route::get('{destination}/things-to-do/{tag}', [PostsController::class, 'things_category'])->name('things_category');
 
-Route::get('test', function()
-{
-    return view('test');
-});
   
