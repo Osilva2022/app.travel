@@ -1,6 +1,31 @@
 @extends('layouts.app')
 <!-- Metadatos -->
+{{-- @push('metatags') --}}
+   
+    <meta name="description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <link rel="canonical" href="https://app.tribune.travel/">
+    <meta property="og:title" content="App Tribune Travel | Your gateway to México">
+    <meta property="og:description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <meta property="og:url" content="https://app.tribune.travel/">
+    <meta property="og:image" content="{{ asset('storage/tribuna-de-la-bahia.jpg') }}">
+    <meta property="og:image:secure_url" content="{{ asset('img/svg/tribune-travel-color.svg') }}">
 
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ config('app.name') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CpsNoticias">
+    <meta name="twitter:creator" content="@CpsNoticias">
+
+    <meta name="twitter:title" content="App Tribune Travel | Your gateway to México">
+    <meta name="twitter:description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <meta name="twitter:image" content="{{ asset('img/svg/tribune-travel-color.svg') }}">
+
+{{-- @endpush --}}
 <!-- content -->
 @section('content')
     <header>
