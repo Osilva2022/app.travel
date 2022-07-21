@@ -10,7 +10,7 @@
     <main>
         <div class="container">
             <!-- REVIEWS -->
-            <div class="row my-4">
+            <div class="row py-4">
                 <h2 class="mb-4">Tribune Reviews</h2>
                 <div class="col-lg-6">
                     @foreach ($review as $data)
@@ -27,13 +27,11 @@
                                 <a href="{{ url("$data->url") }}">
                                     <img src="{{ $data->image }}" class="card-img">
                                 </a>
-                                <div class="card-img-overlay" style="top: auto;">
-                                    <a href="{{ url("$data->url") }}">
-                                        <h3 class="card-title-overlay">
-                                            {{ $data->title }}
-                                        </h3>
-                                    </a>
-                                </div>
+                                <a href="{{ url("$data->url") }}">
+                                    <h3 class="card-title-overlay">
+                                        {{ $data->title }}
+                                    </h3>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
@@ -48,40 +46,40 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-12">
-                            @foreach ($reviews as $data)
-                                @if ($review[0]->id_post != $data->id_post)
+                        @foreach ($reviews as $data)
+                            @if ($review[0]->id_post != $data->id_post)
+                                <div class="col-12 col-md-4">
                                     <div class="row card-secundario">
-                                        <div class="col-auto">
+                                        <div class="col-6 col-md-12 card-head-secundario">
                                             <a
                                                 href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
                                                 <img src="{{ $data->image }}" class="card-img-secundario">
                                             </a>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-6 col-md-12 card-body-secundario">
                                             <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                <span class="etiqueta-post mb-2"
+                                                <span class="etiqueta-post"
                                                     style="background:{{ $data->destination_color }};">
                                                     {{ $data->destination }}
                                                 </span>
                                             </a>
                                             <a
                                                 href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                <h3 class="mb-1">{{ $data->title }}</h3>
+                                                <h3 class="card-title-secundario">{{ $data->title }}</h3>
                                             </a>
                                             <small>
                                                 {{ date('M/d/y', strtotime($data->post_date)) }}
                                             </small>
                                         </div>
                                     </div>
-                                @endif
-                            @endforeach
+                                </div>
+                            @endif
+                        @endforeach
+                        <div class="col-12 my-2">
+                            <a href="{{ route('reviews') }}" class="btn-view-more" type="button">More
+                                Reviews</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 my-2">
-                    <a href="{{ route('reviews') }}" class="btn-view-more" type="button">More
-                        Reviews</a>
                 </div>
             </div>
             <!-- REVIEWS -->
@@ -91,9 +89,9 @@
                 </div>
             </div>
             <!-- TTD -->
-            <div class="row my-4">
-                <h2 class="text-center mb-4">Things To Do</h2>
+            <div class="row py-4">
                 <div class="col-12">
+                    <h2 class="text-center mb-4">Things To Do</h2>
                     <div class="" style="overflow-x: auto;">
                         <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
                             style="min-width: 660px;">
@@ -119,8 +117,8 @@
                             @if ($data->name == 'Puerto Vallarta')
                                 <?php $active = 'active show'; ?>
                             @endif
-                            <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}"
-                                role="tabpanel" aria-labelledby="{{ $data->term_id }}-tab">
+                            <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}" role="tabpanel"
+                                aria-labelledby="{{ $data->term_id }}-tab">
                                 <div class="row my-3">
                                     <div class="col-12">
                                         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -128,58 +126,38 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 mb-2">
-                                        <div id="tag-carousel" class="carousel slide mb-2" data-bs-ride="carousel">
-                                            <div class="carousel-inner shadow rounded-4">
-                                                <?php $i = 1; ?>
-                                                @foreach ($things as $ttd)
-                                                    @if ($data->slug == $ttd->destination_slug)
-                                                        <?php $active = ''; ?>
-                                                        @if ($i == 1)
-                                                            <?php $active = 'active show'; ?>
-                                                        @endif
-                                                        <div class="carousel-item {{ $active }}">
-                                                            {{-- <div class="w-100 h-100"
-                                                                style="background-color: {{ $ttd->category_color }}; bottom:0; left:0; z-index:12; opacity:50%;">
-                                                            </div> --}}
-                                                            <img src="{{ $ttd->image }}" class="bd-placeholder-img-lg"
-                                                                width="100%" height="100%" aria-hidden="true"
-                                                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <div class="owl-carousel owl-theme ttd-carousel" id="">
+                                            <?php $i = 1; ?>
+                                            @foreach ($things as $ttd)
+                                                @if ($data->slug == $ttd->destination_slug)
+                                                    <?php $active = ''; ?>
+                                                    @if ($i == 1)
+                                                        <?php $active = 'active show'; ?>
+                                                    @endif
+                                                    <div class="">
+                                                        <a
+                                                            href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
+                                                            <img src="{{ $ttd->image }}" class="carousel-img">
                                                             <div class="container">
-                                                                <div class="position-absolute w-100 h-100"
+                                                                {{-- <div class="position-absolute w-100 h-100"
                                                                     style="background-color: {{ $ttd->category_color }}; top:0; left:0; z-index:1; opacity:50%;">
-                                                                </div>
-                                                                <div class="carousel-caption text-start"
-                                                                    style="bottom:4px; z-index:2;">
+                                                                </div> --}}
+                                                                <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                                     <h4>{{ $ttd->title }}</h4>
-                                                                    <p style="bottom:4px;">{{ $ttd->category }}</p>
+                                                                    <p style="bottom:4px; color: white;">
+                                                                        {{ $ttd->category }}</p>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <?php $i++; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            <div class="carousel-indicators position-relative">
-                                                <?php $i = 0; ?>
-                                                @foreach ($things as $ttd)
-                                                    @if ($data->slug == $ttd->destination_slug)
-                                                        <?php $active = ''; ?>
-                                                        @if ($i == 0)
-                                                            <?php $active = 'active'; ?>
-                                                        @endif
-                                                        <button type="button" data-bs-target="#tag-carousel"
-                                                            data-bs-slide-to="{{ $i }}"
-                                                            class="bg-primary  {{ $active }}" aria-current="true"
-                                                            aria-label="Slide 1"></button>
-                                                        <?php $i++; ?>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <?php $i++; ?>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="col-12 mb-3">
-                                        <a href="{{ route('things') }}" class="btn-view-more" type="button">More
-                                            things to do {{ $data->name }}</a>
+                                    <div class="col-12 my-3">
+                                        <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
+                                            {{ $data->name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -194,29 +172,30 @@
                 </div>
             </div>
             <!-- EVENTS -->
-            <div class="row my-4">
+            <div class="row py-4">
                 <h2 class="text-center mb-4">Featured Events</h2>
-                <div class="col-12" style="text-align: -webkit-center;">
-                    <div class="row" style="max-width: 420px;">
-                        @foreach ($event as $data)
-                            <img src="{{ $data->image }}" class="bd-placeholder-img-lg img-fluid mb-3"
-                                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <div class="col-3 border-end border-primary border-3 py-0 h-50">
-                                @php
-                                    $date = strtotime($data->start_date);
-                                @endphp
-                                <h2 class="align-middle">{{ date('M', $date) }}</h2>
-                                <h2 class="align-middle"><b>{{ date('d', $date) }}</b></h2>
+                <div class="owl-carousel owl-theme" id="events-carousel">
+                    @foreach ($event as $data)
+                        <div class="col-12" style="text-align: -webkit-center;">
+                            <div class="row" style="max-width: 420px;">
+                                <img src="{{ $data->image }}" class="img-event">
+                                <div class="col-3 py-0 h-50">
+                                    @php
+                                        $date = strtotime($data->start_date);
+                                    @endphp
+                                    <h2 class="align-middle">{{ date('M', $date) }}</h2>
+                                    <h2 class="align-middle"><b>{{ date('d', $date) }}</b></h2>
+                                </div>
+                                <div class="col-9 py-0 text-start">
+                                    <h3>{{ $data->title }}</h3>
+                                    <span>{{ $data->destination }}</span><br>
+                                    <small>{{ date('M d, Y', $date) }}</small>
+                                </div>
                             </div>
-                            <div class="col-9 py-0 text-start">
-                                <h3>{{ $data->title }}</h3>
-                                <p>{{ date('M d, Y', $date) }}<br>{{ $data->destination }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    <a href="{{ route('events') }}" class="btn-view-more" type="button">See the calendar</a>
+                        </div>
+                    @endforeach
                 </div>
+                <a href="{{ route('events') }}" class="btn-view-more my-3" type="button">See the calendar</a>
             </div>
             <!-- EVENTS -->
             <div class="row">
@@ -225,7 +204,7 @@
                 </div>
             </div>
             <!-- NEWS -->
-            <div class="row my-4">
+            <div class="row py-4">
                 <h2 class="mb-4">News</h2>
                 <div class="col-lg-6">
                     @foreach ($new as $data)
@@ -238,14 +217,13 @@
                                 <a href="{{ url("$data->url") }}" class="">
                                     <img src="{{ $data->image }}" class="card-img">
                                 </a>
-                                <div class="card-img-overlay" style="top: auto;">
-                                    <a
-                                        href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                        <h3 class="card-title-overlay">
-                                            {{ $data->title }}
-                                        </h3>
-                                    </a>
-                                </div>
+                                {{-- <div class="card-img-overlay" style="top: auto;"> --}}
+                                <a href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                    <h3 class="card-title-overlay">
+                                        {{ $data->title }}
+                                    </h3>
+                                </a>
+                                {{-- </div> --}}
                             </div>
                             <div class="card-body">
                                 <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
@@ -262,26 +240,28 @@
                     <div class="row">
                         @foreach ($news as $data)
                             @if ($new[0]->id_post != $data->id_post)
-                                <div class="row card-secundario">
-                                    <div class="col-auto">
-                                        <a
-                                            href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                            <img src="{{ $data->image }}" class="card-img-secundario">
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                            <span class="etiqueta-post mb-2"
-                                                style="background:{{ $data->destination_color }};">
-                                                {{ $data->destination }}
-                                            </span>
-                                        </a>
-                                        <a href="{{ url("$data->url") }}">
-                                            <h3 class="mb-1">{{ $data->title }}</h3>
-                                        </a>
-                                        <small class="text-muted">
-                                            {{ date('M/d/y', strtotime($data->post_date)) }}
-                                        </small>
+                                <div class="col-12 col-md-4">
+                                    <div class="row card-secundario">
+                                        <div class="col-6 col-md-12 card-head-secundario">
+                                            <a
+                                                href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                <img src="{{ $data->image }}" class="card-img-secundario">
+                                            </a>
+                                        </div>
+                                        <div class="col-6 col-md-12 card-body-secundario">
+                                            <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                <span class="etiqueta-post mb-2"
+                                                    style="background:{{ $data->destination_color }};">
+                                                    {{ $data->destination }}
+                                                </span>
+                                            </a>
+                                            <a href="{{ url("$data->url") }}">
+                                                <h3 class="mb-1">{{ $data->title }}</h3>
+                                            </a>
+                                            <small class="text-muted">
+                                                {{ date('M/d/y', strtotime($data->post_date)) }}
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
@@ -295,31 +275,5 @@
             </div>
             <!-- NEWS -->
     </main>
-    <ul id="galeria-instagram"></ul>
-
-    <script defer>
-        var token =
-            'IGQVJYRnVVWlVKZADhDeVgyaEJ5dDh3QUp6RlFjRGhmaVlsLV9iNVdiMVBzbG1IVkdKZAjIyUUxxejFvSk41WHBKS19EMXJDXzczb3QwdkFlV0I0UEh0LXd4WGh4a2tQUTZAVZAEd4THk1M25Mbi1UNmpvUQZDZD',
-            hashtag = 'puertovallarta', // hashtag without # symbol
-            num_photos = '4';
-
-        $.ajax({
-            url: 'https://api.instagram.com/v1/tags/' + hashtag + '/media/recent',
-            dataType: 'jsonp',
-            type: 'GET',
-            data: {
-                access_token: token,
-                count: num_photos
-            },
-            success: function(data) {
-                console.log(data);
-                for (x in data.data) {
-                    $('ul').append('<li><img src="' + data.data[x].images.standard_resolution.url + '"></li>');
-                }
-            },
-            error: function(data) {
-                console.log(data);
-            }
-        });
-    </script>
+    
 @endsection

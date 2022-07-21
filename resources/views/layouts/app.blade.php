@@ -13,14 +13,16 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
 
     <!-- Fonts -->
     {{-- <link rel="preconnect" href="https://fonts.gstatic.com"> --}}
     <link rel="stylesheet" href="https://use.typekit.net/qfr3cjd.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
 
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
@@ -28,7 +30,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jQuery.js') }}"></script>
-    <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script>
         $(function() {
             $(window).on("scroll", function() {
@@ -47,17 +48,17 @@
     </script>
 </head>
 
-<body>
+<body class="p-0">
     {{-- HEADER & MAIN --}}
     @yield('content')
     {{-- HEADER & MAIN --}}
     <!-- FOOTER -->
-    <footer class="pt-4 mt-2 border-top border-4" style="border-top-color: #243A85 !important;">
+    <footer class="pt-4 mt-2 border-top border-4" style="background: #243A85 !important; color:#fff;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 text-center  pb-2 mb-2">
                     <a class="text-muted" href="#">
-                        <img src="{{ asset('img/svg/tribune-travel-color.svg') }}" width="125" alt="">
+                        <img src="{{ asset('img/svg/tribune-white.svg') }}" width="125" alt="">
                     </a>
                 </div>
                 <div class="col-12 text-center">
@@ -77,20 +78,20 @@
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
                             <a class="text-muted" href="https://www.facebook.com/TribuneTravel/">
-                                <img src="{{ asset('img/svg/face-ico.svg') }}" alt="facebook-icon" width="24"
+                                <img src="{{ asset('img/svg/face-white-ico.svg') }}" alt="facebook-icon" width="24"
                                     height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="https://www.youtube.com/channel/UCqHGXwbsSrkAjnr3kVFcOdA"
                                 target="_blank">
-                                <img src="{{ asset('img/youtube.png') }}" alt="facebook-icon" width="24"
+                                <img src="{{ asset('img/svg/pint-white-ico.svg') }}" alt="facebook-icon" width="24"
                                     height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="https://www.instagram.com/tribunetravel/">
-                                <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="facebook-icon" width="24"
+                                <img src="{{ asset('img/svg/inst-white-ico.svg') }}" alt="facebook-icon" width="24"
                                     height="24">
                             </a>
                         </li>
@@ -103,7 +104,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center  pb-2 mb-2">
                     <a class="" href="#">
-                        <img src="{{ asset('img/svg/cps-media-color.svg') }}" width="100" alt="">
+                        <img src="{{ asset('img/svg/cps-media-white.svg') }}" width="100" alt="">
                     </a>
                 </div>
             </div>
@@ -112,23 +113,23 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="https://tvmar.tv/" target="_blank">
-                                <img src="{{ asset('img/svg/tv-mar-black.svg') }}" width="100%" alt="">
+                                <img src="{{ asset('img/svg/tv-mar-white.svg') }}" width="100%" alt="">
                             </a>
                         </div>
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="https://radiante.fm/" target="_blank">
-                                <img src="{{ asset('img/svg/radiante-fm-horizontal-black.svg') }}" width="100%"
+                                <img src="{{ asset('img/svg/radiante-white-horizontal.svg') }}" width="100%"
                                     alt="">
                             </a>
                         </div>
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="https://tribunadelabahia.com.mx/" target="_blank">
-                                <img src="{{ asset('img/svg/tribuna-color.svg') }}" width="100%" alt="">
+                                <img src="{{ asset('img/svg/tribuna-white.svg') }}" width="100%" alt="">
                             </a>
                         </div>
                         <div class="col-lg-1 col-3 text-center">
                             <a class="" href="#">
-                                <img src="{{ asset('img/svg/tribune-travel-black.svg') }}" width="100%"
+                                <img src="{{ asset('img/svg/tribune-white.svg') }}" width="100%"
                                     alt="">
                             </a>
                         </div>
@@ -138,20 +139,23 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <ul class="nav justify-content-center">
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Aviso de
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Aviso de
                                 privacidad</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Políticas de
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Políticas de
                                 accesibilidad</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Derecho de
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Derecho de
                                 réplica</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Términos y
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Términos y
                                 condiciones</a></li>
                     </ul>
                 </div>
-                <p class="text-center text-muted mt-4 fs-6">&copy; 2022 CPS Media. Todos Los Derechos Reservados</p>
+                <p class="text-center mt-4 fs-6 text-white">&copy; 2022 CPS Media. Todos Los Derechos Reservados</p>
             </div>
         </div>
     </footer>
+    <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
+    <script src="{{ asset('js/base.js') }}" version="1"></script>
+    <script src="{{ asset('js/carousels.js') }}" version="1"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <!-- SLIDER -->
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <?php $i = 0; ?>
         @foreach ($destinations as $dd)
