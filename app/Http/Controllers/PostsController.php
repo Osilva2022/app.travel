@@ -17,12 +17,12 @@ use DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Log;
-use Vinkla\Instagram\Instagram;
+use EspressoDev\InstagramBasicDisplay\InstagramBasicDisplay;
 
 
 class PostsController extends Controller
 {
+    
     function wp_get_custom_css($stylesheet = '')
     {
         $css = '';
@@ -104,6 +104,30 @@ class PostsController extends Controller
         $data = $this->paginate($post, $pagination);
         //dd($data);
         return $data;
+    }
+
+    function instagram()
+    {   
+        $instagram = new InstagramBasicDisplay([
+            'appId' => env('INSTAGRAM_APP_ID'),
+            'appSecret' => env('INSTAGRAM_SECRET_KEY'),
+            'redirectUri' => env('INSTAGRAM_VALID_OAUTH_URI')
+        ]);   
+        
+        // echo "<a href='{$instagram->getLoginUrl()}'>Login with Instagram</a>";
+        // $code = 'AQCQs9DL1DS4mV7XAY_RhMall-FpDnfIuUKl9tJbAJk6fUsYFEyomP_xv5RUUs1AZQPEOR_pbemVdWCiNhMw8op65YH3XoAAEqHwbgBn7E5xYbfXrnj6RS203qQnFQpMVLOiIcDdEaXpr7qKeZLCmSC5VfIn6ugpJIcApGzxuO0mXH_n7eGpVdemP-GTBUzOkk_BfjY69gDxcBiscIKvGBAlNswQiplecGkwEq6xIgnjCQ';
+        // $instagram = new InstagramBasicDisplay($token);
+
+        // $token = $instagram->getOAuthToken($code, true);
+        // $token = $instagram->getLongLivedToken($token, true);       
+
+        // token is
+        $token = 'IGQVJXZAnloZAXl1MkRWRzZAHbF9YNzJsMDdvWXVCZAk1Db1ZAqUWlfY3pOc25vcGlJeV9NUUVaT2t1N1hUQTJXRGVXRHFjbHhodUMwbWRIVE9yS093OGc2ZA1RmNWVsaXEyZATE0b0pvaVB3';
+        $instagram->setAccessToken($token);
+
+        $media = $instagram->getUserMedia();
+        
+        return $media;
     }
 
     public function index(): View
@@ -263,12 +287,6 @@ class PostsController extends Controller
         return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
     }
 
-    public function instagram()
-    {        
-        dd("Hola Mundo!!!");
-	    
-           
-
-    }
+  
 
 }
