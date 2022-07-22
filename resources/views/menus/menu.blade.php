@@ -1,6 +1,6 @@
 <!-- MENU -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4" id="menu-header">
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="100" class="d-inline-block align-top"
                 alt="">
@@ -9,8 +9,8 @@
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav mb-2 mb-md-0">
                 @foreach ($categories_data as $cd)
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route("$cd->slug") }}">{{ $cd->name }}</a>

@@ -29,7 +29,7 @@
                         <div class="card border-0">
                             <div class="card-body">
                                 <h3 class="card-title">{{ $data->title }}</h3>
-                                <p class="card-text">{!! strip_tags($data->content) !!}</p>                                
+                                <p class="card-text">{!! $data->content !!}</p>
                             </div>
                         </div>
                         <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top rounded-0" width="100%"
