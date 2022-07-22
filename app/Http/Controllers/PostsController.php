@@ -186,13 +186,9 @@ class PostsController extends Controller
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 4");
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
 
-<<<<<<< HEAD
         $this->metadatos('home','home');
         
         // dd($events);        
-=======
-        //dd($event);        
->>>>>>> 437e7c31b8b9b5faad9a34a05104cba2f274b89a
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data'));
     }
