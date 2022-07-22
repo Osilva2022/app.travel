@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "artesaos/seotools": "^0.22.1",
         "chill-pills/laravel-instagram-basic-feed": "^0.3.0",
         "espresso-dev/instagram-basic-display-php": "^1.1",
         "fruitcake/laravel-cors": "^2.0",
