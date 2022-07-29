@@ -188,14 +188,14 @@ class PostsController extends Controller
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
         $gallery = $this->instagram();
         $gallery = $gallery->data;
-        //dd($gallery);        
+        // dd($gallery);        
 
         // dd($event);
 
         $this->metadatos('home','home');   
         // dd($events);        
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data','gallery'));
     }
 
     public function post($destino, $category, $slug): View
