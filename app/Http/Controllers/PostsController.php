@@ -18,6 +18,13 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use EspressoDev\InstagramBasicDisplay\InstagramBasicDisplay;
+use URL;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 
 class PostsController extends Controller
@@ -130,6 +137,33 @@ class PostsController extends Controller
         return $media;
     }
 
+    function metadatos($data,$type)
+    {
+        if ($type == 'home') {
+
+            SEOTools::setTitle('Home Tribune Travel');
+            SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
+            SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
+            SEOTools::setCanonical('https://app.tribune.travel/');    
+            SEOTools::jsonLd()->addImage(URL::to('/public/img/tribune-travel.png'));
+            OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'),['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
+
+        }elseif($type == 'post')
+        {
+            // dd($data);
+            SEOTools::setTitle($data->title);
+            SEOTools::setDescription($data->post_excerpt);
+            SEOTools::opengraph()->setUrl(URL::to($data->url));
+            SEOTools::setCanonical(URL::to($data->url));    
+            SEOTools::jsonLd()->addImage($data->image);            
+            OpenGraph::addImage($data->image,['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage($data->image);
+
+        }       
+        
+    }
+
     public function index(): View
     {
         $destinations = DB::select("SELECT * FROM test_destinations");
@@ -164,6 +198,7 @@ class PostsController extends Controller
         $post = $posts[0];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+        $this->metadatos($post,'post');
 
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
