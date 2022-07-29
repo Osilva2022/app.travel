@@ -30,7 +30,7 @@
                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1 class="t1">{{ $dd->name }}</h1>
+                        <h1 id="t1">{{ $dd->name }}</h1>
                         <p class="text-white">Some representative placeholder content for the second slide of the carousel.</p>
                     </div>
                 </div>
