@@ -133,7 +133,7 @@ class PostsController extends Controller
         $token = 'IGQVJXZAnloZAXl1MkRWRzZAHbF9YNzJsMDdvWXVCZAk1Db1ZAqUWlfY3pOc25vcGlJeV9NUUVaT2t1N1hUQTJXRGVXRHFjbHhodUMwbWRIVE9yS093OGc2ZA1RmNWVsaXEyZATE0b0pvaVB3';
         $instagram->setAccessToken($token);
 
-        $media = $instagram->getUserMedia();
+        $media = $instagram->getUserMedia('me',6);
         
         return $media;
     }
@@ -173,7 +173,7 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
 
         $review = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
-        $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 4");
+        $reviews = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
         //$things = Post::taxonomy('category', 'Things to do')->latest()->get();
         $things = DB::select("SELECT * FROM (
                                 SELECT category_slug,category, category_color, destination_slug, title, image
@@ -184,8 +184,11 @@ class PostsController extends Controller
                                 ORDER BY destination_slug, category;");
         //dd($things);
         $new = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
-        $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 4");
+        $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
+        $gallery = $this->instagram();
+        $gallery = $gallery->data;
+        //dd($gallery);        
 
         // dd($event);
 
