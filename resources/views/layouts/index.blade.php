@@ -44,7 +44,7 @@
                                         {{ $data->destination }}</span>
                                 </a>
                                 <span class="badge etiqueta-destacado">
-                                    <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="30"
+                                    <img src="{{ asset('img/estrella.png') }}" alt="{{$data->title}}" width="30"
                                         height="30">
                                 </span>
                                 <a href="{{ url("$data->url") }}">
@@ -76,7 +76,7 @@
                                         <div class="col-6 col-md-12 card-head-secundario">
                                             <a
                                                 href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                <img src="{{ $data->image }}" class="card-img-secundario">
+                                                <img src="{{ $data->image }}" alt="{{$data->title}}" class="card-img-secundario">
                                             </a>
                                         </div>
                                         <div class="col-6 col-md-12 card-body-secundario">
@@ -160,7 +160,7 @@
                                                     <div class="">
                                                         <a
                                                             href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
-                                                            <img src="{{ $ttd->image }}" class="carousel-img">
+                                                            <img src="{{ $ttd->image }}" alt="{{ $ttd->title }}" class="carousel-img">
                                                             <div class="container">
                                                                 {{-- <div class="position-absolute w-100 h-100"
                                                                     style="background-color: {{ $ttd->category_color }}; top:0; left:0; z-index:1; opacity:50%;">
@@ -201,7 +201,7 @@
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img src="{{ $data->image }}" class="img-event">
+                                <img src="{{ $data->image }}" alt="{{ $data->title }}" class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
@@ -238,7 +238,7 @@
                                         style="font-size:1rem;background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                 </a>
                                 <a href="{{ url("$data->url") }}" class="">
-                                    <img src="{{ $data->image }}" class="card-img">
+                                    <img src="{{ $data->image }}" alt="{{ $data->title }}" class="card-img">
                                 </a>
                                 {{-- <div class="card-img-overlay" style="top: auto;"> --}}
                                 <a href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
@@ -268,7 +268,7 @@
                                         <div class="col-6 col-md-12 card-head-secundario">
                                             <a
                                                 href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                <img src="{{ $data->image }}" class="card-img-secundario">
+                                                <img src="{{ $data->image }}" alt="{{ $data->title }}" class="card-img-secundario">
                                             </a>
                                         </div>
                                         <div class="col-6 col-md-12 card-body-secundario">

@@ -14,7 +14,7 @@
                         <div class="col-12">
                             <div class="card mb-3 border-0">
                                 <div class="card border-0">
-                                    <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
+                                    <img src="{{ $data->image }}" alt="{{ $data->title }}" class="img-fluid rounded-4 shadow hover-zoom"
                                         style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
                                     <a href="{{ url("$data->url") }}" title="Click to see more"
                                         class="text-decoration-none text-muted">

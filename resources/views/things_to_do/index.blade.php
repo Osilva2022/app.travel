@@ -63,6 +63,9 @@
                     </div>
                 @endforeach
             </div>
+             <!-- BOTONES CATEGORIAS -->
+             @include('menus.menu_footer_categories')
+             <!-- BOTONES CATEGORIAS -->
         </div>
     </main>
     <script src="{{ asset('js/submenu.js') }}" version="1"></script>
