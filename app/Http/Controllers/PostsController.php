@@ -221,7 +221,7 @@ class PostsController extends Controller
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
 
-        //dd($postscategory); 
+        //dd($firstpostcategory); 
         return view('categories.reviews', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
 

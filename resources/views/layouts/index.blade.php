@@ -68,7 +68,7 @@
                     @endforeach
                 </div>
                 <div class="col-lg-8">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 d-flex justify-content-between">
                         @foreach ($reviews as $data)
                             @if ($review[0]->id_post != $data->id_post)
                                 <div class="col">
