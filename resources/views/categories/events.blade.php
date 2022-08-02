@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <header>
         @include('menus.menu_secundario')
     </header>
