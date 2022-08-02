@@ -129,7 +129,7 @@ class PostsController extends Controller
         // $token = $instagram->getLongLivedToken($token, true);       
 
         // token is
-        $token = 'IGQVJWVEo2QWlQS0MtaVUtQ3NBSGNMOHFwaTNHN2hWRTJ4S3VPV2FwMTNZAM0ZA5dk03Y2o3ZAmhpTTJmV0gxRnRFZATBXc1J6dVJEUU54aVJPbm1RbnVxS0Fub185TlNpX3NadEZAET0Jqc3RFZAU9XUG5yegZDZD';
+        $token = 'IGQVJYV1N6ZAWpfbjRkbm9LWnZAoZAHNYVUxZAR3VfenBHdGdNazNfNFcteDQ5ZAW1Jb2xzX3ZAEOXUyRGVBWm03UmFPX0pKWWJPMHBUeGdxTVlnclNPNnZAPUmhzWXZAUUHN4OGdVZAkR0b3luYm1zU3c0UURSZAzF0eUtlekZA0QTAw';
         $instagram->setAccessToken($token);
 
         $media = $instagram->getUserMedia('me', 6);
@@ -181,11 +181,9 @@ class PostsController extends Controller
         $new = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
+        
         $gallery = $this->instagram();
-        // dd($gallery); 
-        $gallery = $gallery->data;        
-
-               
+        $gallery = $gallery->data;              
 
         // dd($event);
 
