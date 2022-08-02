@@ -27,10 +27,9 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Storage;
 
-
 class PostsController extends Controller
 {
-    
+
     function wp_get_custom_css($stylesheet = '')
     {
         $css = '';
@@ -115,13 +114,13 @@ class PostsController extends Controller
     }
 
     function instagram()
-    {   
+    {
         $instagram = new InstagramBasicDisplay([
             'appId' => env('INSTAGRAM_APP_ID'),
             'appSecret' => env('INSTAGRAM_SECRET_KEY'),
             'redirectUri' => env('INSTAGRAM_VALID_OAUTH_URI')
-        ]);   
-        
+        ]);
+
         // echo "<a href='{$instagram->getLoginUrl()}'>Login with Instagram</a>";
         // $code = 'AQCQs9DL1DS4mV7XAY_RhMall-FpDnfIuUKl9tJbAJk6fUsYFEyomP_xv5RUUs1AZQPEOR_pbemVdWCiNhMw8op65YH3XoAAEqHwbgBn7E5xYbfXrnj6RS203qQnFQpMVLOiIcDdEaXpr7qKeZLCmSC5VfIn6ugpJIcApGzxuO0mXH_n7eGpVdemP-GTBUzOkk_BfjY69gDxcBiscIKvGBAlNswQiplecGkwEq6xIgnjCQ';
         // $instagram = new InstagramBasicDisplay($token);
@@ -133,36 +132,32 @@ class PostsController extends Controller
         $token = 'IGQVJXZAnloZAXl1MkRWRzZAHbF9YNzJsMDdvWXVCZAk1Db1ZAqUWlfY3pOc25vcGlJeV9NUUVaT2t1N1hUQTJXRGVXRHFjbHhodUMwbWRIVE9yS093OGc2ZA1RmNWVsaXEyZATE0b0pvaVB3';
         $instagram->setAccessToken($token);
 
-        $media = $instagram->getUserMedia('me',6);
-        
+        $media = $instagram->getUserMedia('me', 6);
+
         return $media;
     }
 
-    function metadatos($data,$type)
+    function metadatos($data, $type)
     {
         if ($type == 'home') {
 
             SEOTools::setTitle('Home Tribune Travel');
             SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
             SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
-            SEOTools::setCanonical('https://app.tribune.travel/');    
+            SEOTools::setCanonical('https://app.tribune.travel/');
             SEOTools::jsonLd()->addImage(URL::to('/public/img/tribune-travel.png'));
-            OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'),['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
-
-        }elseif($type == 'post')
-        {
+        } elseif ($type == 'post') {
             // dd($data);
             SEOTools::setTitle($data->title);
             SEOTools::setDescription($data->post_excerpt);
             SEOTools::opengraph()->setUrl(URL::to($data->url));
-            SEOTools::setCanonical(URL::to($data->url));    
-            SEOTools::jsonLd()->addImage($data->image);            
-            OpenGraph::addImage($data->image,['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            SEOTools::setCanonical(URL::to($data->url));
+            SEOTools::jsonLd()->addImage($data->image);
+            OpenGraph::addImage($data->image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage($data->image);
-
-        }       
-        
+        }
     }
 
     public function index(): View
@@ -193,10 +188,10 @@ class PostsController extends Controller
 
         // dd($event);
 
-        $this->metadatos('home','home');   
+        $this->metadatos('home', 'home');
         // dd($events);        
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data','gallery'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery'));
     }
 
     public function post($destino, $category, $slug): View
@@ -205,7 +200,7 @@ class PostsController extends Controller
         $post = $posts[0];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        $this->metadatos($post,'post');
+        $this->metadatos($post, 'post');
 
         return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
@@ -222,7 +217,7 @@ class PostsController extends Controller
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
 
-        //dd($postscategory); 
+        //dd($firstpostcategory); 
         return view('categories.reviews', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
 
@@ -245,15 +240,17 @@ class PostsController extends Controller
 
         //$destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
         $posts = DB::select("SELECT * FROM test_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
-        $destinationposts = $this->paginate($posts, 3);
+        $destinationposts = $this->paginate($posts, 9);
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
-        //dd($destinationposts);
+        //dd($destination_data);
 
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
     }
+
+    public $amount = 1;
 
     public function events(Request $request)
     {
@@ -264,18 +261,9 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $category = "events";
-        /* $events = DB::select("SELECT p.ID,p.post_title as title,p.post_name as slug,p.post_content as content,a.guid as image, 
-        CONVERT(pm.meta_value, datetime) as start_event, pm2.meta_value as end_event, te.name as city
-                            FROM test_posts as a
-                            LEFT JOIN test_posts as p ON p.ID = a.post_parent AND a.post_type = 'attachment'
-                            INNER JOIN test_postmeta pm ON pm.post_id = a.post_parent AND pm.meta_key = '_EventStartDate' 
-                            INNER JOIN test_postmeta pm2 ON pm2.post_id = a.post_parent AND pm2.meta_key = '_EventEndDate'
-                            INNER JOIN test_term_relationships tr ON tr.object_id = p.ID
-                            INNER JOIN test_term_taxonomy tt ON tt.term_id = tr.term_taxonomy_id AND tt.taxonomy ='post_destinos'
-                            INNER JOIN test_terms te ON te.term_id = tt.term_id
-                            WHERE p.post_type = 'tribe_events' AND date(pm.meta_value) >= current_date() $query
-                            ORDER BY start_event, a.post_date DESC"); */
-        $events = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
+        $e = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
+        $events = $this->paginate($e, 1);
+        //$events = DB::table('test_events')->take($this->amount)->get();
 
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
     }
@@ -291,7 +279,7 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM test_destinations WHERE slug = '$destination'");
         $things_categories = DB::select("SELECT * FROM (
-            SELECT tt.category_slug,tt.category, tt.category_color, tt.destination_slug, tt.title, ttc.image
+            SELECT tt.category_slug,tt.category, tt.category_color, tt.destination_slug, tt.title, ttc.image, ttc.description
             ,ROW_NUMBER() over(partition by tt.category_slug,tt.destination_slug ORDER BY tt.destination_slug DESC) as orden
             FROM test_things_to_do as tt
             inner join test_things_categories as ttc on tt.category_slug = ttc.slug
@@ -325,11 +313,8 @@ class PostsController extends Controller
                                     test_things_to_do
                                 WHERE destination_slug = '$destination' AND category_slug = '$category'
                                 ORDER BY CAST(o AS DECIMAL) ASC, post_date desc;");
-        $things = $this->paginate($posts, 3);
-        //dd($posts);
+        $things = $this->paginate($posts, 4);
+        //dd($things_category);
         return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
     }
-
-  
-
 }

@@ -24,13 +24,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
-
+    @livewireStyles
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jQuery.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
+    </script>
     <script>
         $(function() {
             $(window).on("scroll", function() {
@@ -46,7 +48,7 @@
                 $("#menu-header").addClass('menu-active');
             });
         });
-    </script>
+    </script>    
 </head>
 
 <body class="p-0">
@@ -56,107 +58,148 @@
     <!-- FOOTER -->
     <footer class="pt-4 mt-2 border-top border-4" style="background: #243A85 !important; color:#fff;">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center  pb-2 mb-2">
+            <div class="row row-cols-1 row-cols-md-5 justify-content-center g-4 align-items-center">
+                <div class="col text-center">
                     <a class="text-muted" href="#">
                         <img src="{{ asset('img/svg/tribune-white.svg') }}" width="125" alt="Tribune Travel">
                     </a>
                 </div>
-                <div class="col-12 text-center">
-                    <h5 class="">Contacto</h5>
-                    <address>
+                <div class="col text-md-start text-white text-center" style="font-weight:300;">
+                    <h3 class="text-white">Contacto</h3>
+                    <address class="mb-0">
                         <ul class="nav justify-content-center flex-column">
-                            <li class="nav-item px-2">322 226 3870</li>
-                            <li class="nav-item px-2">digital@cps.media</li>
-                            <li class="nav-item px-2">Proa 111, Marina Vallarta, CP. 48335 Puerto Vallarta, Jalisco
+                            <li class="nav-item">322 226 3870</li>
+                            <li class="nav-item">digital@cps.media</li>
+                            <li class="nav-item">Proa 111, Marina Vallarta, CP. 48335
+                            </li>
+                            <li class="nav-item">Puerto Vallarta, Jalisco, México.
                             </li>
                         </ul>
                     </address>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-12">
+                <div class="col text-md-start text-white text-center" style="font-size:9px; line-height: 10px;">
+                    <ul class="nav justify-content-center flex-column ">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('reviews') }}">
+                                <h3 class="text-white mb-2">Reviews</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('news') }}">
+                                <h3 class="text-white mb-2">News</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('things') }}">
+                                <h3 class="text-white mb-2">Things To Do</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('events') }}">
+                                <h3 class="text-white mb-2">Events</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col text-center text-white">
+                    <label class="text-white">Subscribe</label>
+                    <div class="input-group mb-3 justify-content-center">
+                        <input type="text" class="form-control" placeholder="example@example.com"
+                            aria-label="Recipient's username" aria-describedby="button-addon2" style="max-width: 200px">
+                        <button class="btn btn-light" style="color: #243A85" type="button" id="button-addon2"><i
+                                class="bi bi-send"></i></button>
+                    </div>
+                </div>
+                <div class="col text-center text-white">
+                    <h5 class="text-white text-center" style="padding: 2px;">Redes Sociales</h5>
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
                             <a class="text-muted" href="https://www.facebook.com/TribuneTravel/">
-                                <img src="{{ asset('img/svg/face-white-ico.svg') }}" alt="Tribune Travel facebook-icon" width="24"
-                                    height="24">
+                                <img src="{{ asset('img/svg/face-white-ico.svg') }}" alt="Tribune Travel facebook-icon"
+                                    width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="https://www.youtube.com/channel/UCqHGXwbsSrkAjnr3kVFcOdA"
                                 target="_blank">
-                                <img src="{{ asset('img/svg/pint-white-ico.svg') }}" alt="Tribune Travel pint-icon" width="24"
-                                    height="24">
+                                <img src="{{ asset('img/svg/pint-white-ico.svg') }}" alt="Tribune Travel pint-icon"
+                                    width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="https://www.instagram.com/tribunetravel/">
-                                <img src="{{ asset('img/svg/inst-white-ico.svg') }}" alt="Tribune Travel insta-icon" width="24"
-                                    height="24">
+                                <img src="{{ asset('img/svg/inst-white-ico.svg') }}" alt="Tribune Travel insta-icon"
+                                    width="24" height="24">
                             </a>
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div class="row justify-content-center">
                 <div class="col-10  pb-2 mb-2">
                     <hr>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-12 text-center  pb-2 mb-2">
-                    <a class="" href="#">
-                        <img src="{{ asset('img/svg/cps-media-white.svg') }}" width="100" alt="Cps Digital">
+            <div class="row row-cols-4 g-2 g-lg-3 justify-content-center mb-4">
+                <div class="col-12 col-footer text-center">
+                    <a href="https://cps.media/" target="_blank">
+                        <img src="{{ asset('img/svg/cps-media-white.svg') }}" class="img-footer"
+                            style="width: 25%;">
+                    </a>
+                </div>
+                <div class="col col-footer text-center">
+                    <a href="https://tribunadelabahia.com.mx/" target="_blank">
+                        <img src="{{ asset('img/svg/tribuna-white.svg') }}" class="img-footer">
+                    </a>
+                </div>
+                <div class="col col-footer text-center">
+                    <a href="https://radiante.fm/" target="_blank">
+                        <img src="{{ asset('img/svg/radiante-white-horizontal.svg') }}" class="img-footer">
+                    </a>
+                </div>
+                <div class="col col-footer text-center">
+                    <a href="https://tvmar.tv/" target="_blank">
+                        <img src="{{ asset('img/svg/tv-mar-white.svg') }}" class="img-footer">
                     </a>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class=" col-10 pb-2 mb-2">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-1 col-3 text-center">
-                            <a class="" href="https://tvmar.tv/" target="_blank">
-                                <img src="{{ asset('img/svg/tv-mar-white.svg') }}" width="100%" alt="Tv mar ">
+                <div class="col-12 mb-4">
+                    <div class="row row-cols-3 g-1 justify-content-center text-center">
+                        <div class="col-auto px-4">
+                            <a class="text-white" href="https://cps.media/aviso-de-privacidad"
+                                style="text-decoration: none;" target="_blank">
+                                Aviso de privacidad
                             </a>
                         </div>
-                        <div class="col-lg-1 col-3 text-center">
-                            <a class="" href="https://radiante.fm/" target="_blank">
-                                <img src="{{ asset('img/svg/radiante-white-horizontal.svg') }}" width="100%"
-                                    alt="radiante">
+                        <div class="col-auto px-4">
+                            <a class="text-white" href="https://cps.media/declaracion-de-accesibilidad"
+                                style="text-decoration: none;" target="_blank">
+                                Políticas de accesibilidad
                             </a>
                         </div>
-                        <div class="col-lg-1 col-3 text-center">
-                            <a class="" href="https://tribunadelabahia.com.mx/" target="_blank">
-                                <img src="{{ asset('img/svg/tribuna-white.svg') }}" width="100%" alt="Tribuna de la bahia">
+                        <div class="col-auto px-4">
+                            <a class="text-white" href="#" style="text-decoration: none;">
+                                Derecho de réplica
                             </a>
                         </div>
-                        <div class="col-lg-1 col-3 text-center">
-                            <a class="" href="#">
-                                <img src="{{ asset('img/svg/tribune-white.svg') }}" width="100%"
-                                    alt="Tribune Travel">
+                        <div class="col-auto px-4">
+                            <a class="text-white" href="#" style="text-decoration: none;">
+                                Términos y condiciones
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Aviso de
-                                privacidad</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Políticas de
-                                accesibilidad</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Derecho de
-                                réplica</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Términos y
-                                condiciones</a></li>
-                    </ul>
-                </div>
-                <p class="text-center mt-4 fs-6 text-white">&copy; 2022 CPS Media. Todos Los Derechos Reservados</p>
+                <p class="text-center text-white" style="font-size: 10px;">&copy; 2022 CPS Media. Todos Los Derechos
+                    Reservados
+                </p>
             </div>
         </div>
     </footer>
     <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
     <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.js') }}" version="1"></script>
+    @livewireScripts
 </body>
 
 </html>
