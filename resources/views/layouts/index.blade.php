@@ -31,7 +31,7 @@
         @include('layouts.carousel')
     </header>
     <main>
-        <div class="container" style="max-width: 1080px;">
+        <div class="container" style="max-width: 1024px;">
             <!-- REVIEWS -->
             <h2 class="my-4">Tribune Reviews</h2>
             <div class="row g-4">

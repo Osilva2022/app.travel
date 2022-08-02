@@ -9,21 +9,19 @@
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto text-white">
                         <h1>{{ $destination_data[0]->name }}</h1>
-                        <p class="lead">
-                            Something short and leading about the collection below—its contents, the
-                            creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
-                            entirely.
+                        <p class="text-white">
+                            Tribune Travel shows everything you like in Puerto Vallarta, the most Mexican of the beach
+                            destinations and the neighboring Riviera Nayarit.
                         </p>
                     </div>
                 </div>
             </section>
         </div>
-        <div class="container">
+        <div class="container" style="max-width: 1024px;">
             <div class="row mb-4">
                 <div class="col">
                     <div class="cont-menu-destination" style="overflow-x: auto; height: 60px;">
-                        <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist"
-                            style="min-width: 678px;">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="min-width: 678px;">
                             @foreach ($destinations_data as $data)
                                 <li class="nav-item nav-test mx-1" role="presentation">
                                     <a class="nav-link" id="{{ $data->slug }}-tab"
@@ -36,36 +34,34 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <h2>Puerto Vallarta Activities</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                <div class="col-lg-6">
+                    <h2>Things to Do</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum est, cumque dicta officiis fuga maiores? Quod esse et voluptatem corporis dolor deleniti reprehenderit incidunt iusto? Ad deserunt minus neque vero!</p>
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                 @foreach ($things_categories as $tc)
                     <div class="col">
-                        <div class="card border-0">
-                            <div class="card-body">
-                                <img src="{{ $tc->image }}" class="card-img-top rounded-4 mb-3" alt="..."
-                                    style=" margin-left:auto; margin-right:auto;">
-                                <a href="{{ route('things_category', ["$destination", "$tc->category_slug"]) }}"
-                                    class="text-decoration-none">
-                                    <h3 class="card-title">{{ $tc->category }}</h3>
-                                </a>
-                                <p class="card-text">Lorem ipsum dolor sit amet,
-                                    consetetur sadipscing elitr, sed diam
-                                    nonumy eirmod tempor invidunt ut
-                                    labore.</p>
+                        <a href="{{ route('things_category', ["$destination", "$tc->category_slug"]) }}"
+                            class="text-decoration-none">
+                            <div class="card border-0">
+                                <img src="{{ $tc->image }}" class="card-img-secundario">
+                                <div class="card-body">
+                                    <h3 class="card-title" style="color:{{ $tc->category_color }};">
+                                        {{ str_replace('&amp;', '&', $tc->category) }}
+                                    </h3>
+                                    <p class="card-text" style="color: #7B7F84;">
+                                        {{ $tc->description }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
-             <!-- BOTONES CATEGORIAS -->
-             @include('menus.menu_footer_categories')
-             <!-- BOTONES CATEGORIAS -->
+            <!-- BOTONES CATEGORIAS -->
+            @include('menus.menu_footer_categories')
+            <!-- BOTONES CATEGORIAS -->
         </div>
     </main>
     <script src="{{ asset('js/submenu.js') }}" version="1"></script>

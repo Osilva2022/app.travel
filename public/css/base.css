@@ -123,7 +123,7 @@ div.post-cont img {
 
 .hero-image {
     background-color: #cccccc;
-    /* height: 500px; */
+    height: 50vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -182,7 +182,7 @@ h3 {
     font-style: normal;
     font-weight: var(--tt-medium);
     line-height: 1.295rem;
-    color: #101820;
+    color: #243A85;
 }
 
 h4 {
@@ -274,7 +274,9 @@ small {
 .card-img {
     width: 100%;
     height: auto;
+    /* transition: transform .2s; */
     aspect-ratio: 16/9;
+    object-fit: cover;
     border-radius: 1rem 1rem 0 0;
     /* box-shadow: 1px 1px 6px rgba(0, 0, 0, .15)!important; */
 }
@@ -296,7 +298,7 @@ small {
 .card-body-secundario {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: .75rem;
@@ -310,10 +312,21 @@ small {
 
 .card-img-secundario {
     width: 100%;
-    height: 100%;
+    height: auto;
+    /* transition: transform .2s; */
     aspect-ratio: 4/3;
+    object-fit: cover;
     /* border-radius: .70rem 0 0 .7rem; */
     border-radius: 1rem;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
+}
+
+.card-img-estatica {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 8/5;
+    object-fit: cover;
+    /* transition: transform .2s; */
     box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
 }
 
@@ -359,7 +372,9 @@ a {
 .carousel-img {
     width: 100%;
     height: auto;
+    /* transition: transform .2s; */
     aspect-ratio: 6/7;
+    object-fit: cover;
     border-radius: 1rem;
 }
 
@@ -374,13 +389,16 @@ a {
 .img-event {
     width: 100%;
     height: auto;
+    /* transition: transform .2s; */
     aspect-ratio: 4/3;
+    object-fit: cover;
     margin-bottom: 1rem;
 }
 
 .img-gallery {
     width: 100%;
     height: 100%;
+    /* transition: transform .2s; */
     aspect-ratio: 2/1;
     object-fit: cover;
     margin-bottom: 0.25rem;
@@ -390,6 +408,7 @@ a {
 .img-gallery-2 {
     width: 100%;
     height: 100%;
+    /* transition: transform .2s; */
     aspect-ratio: 2/1;
     object-fit: cover;
     margin-bottom: 0.25rem;
@@ -415,37 +434,81 @@ a {
 .img-category-principal {
     width: 100%;
     height: auto;
+    /* transition: transform .2s; */
     aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 1rem;
 }
 
+.card-event {
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
+    padding: 1rem;
+}
 
-/* HOME */
+.card-especial {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 100%;
+    /* transition: transform .2s; */
+    border: 0;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
+}
+
+.card-principal-post,
+.img-event,
+.carousel-img,
+.card-secundario,
+.img-gallery,
+.img-gallery-2,
+.card-especial,
+.btn-view-more {
+    transition: transform .2s;
+}
+
+.card-principal-post:hover,
+.img-event:hover,
+.carousel-img:hover,
+.card-secundario:hover,
+.img-gallery:hover,
+.img-gallery-2:hover,
+.card-especial:hover,
+.btn-view-more:hover {
+    transform: scale(1.02);
+}
 
 
-/* RESPONSIVE */
+/* .card {
+    transition: transform .2s;
+}
 
-
-/* @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+.card:hover {
+    transform: scale(1.02);
 } */
 
+.opacity-effect {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.3;
+}
 
-/* SM */
+.img-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
 
-
-/* @media (min-width: 425px) {
-    .card-img-secundario {
-        width: 300px;
-        height: 200px;
-    }
-} */
-
-
-/* MD */
+.info-over {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    z-index: 3;
+    text-align: center;
+    padding: auto;
+}
 
 @media (min-width: 900px) {
     #t1 {
@@ -458,17 +521,3 @@ a {
         aspect-ratio: 2/1;
     }
 }
-
-
-/* LG */
-
-
-/* @media (min-width: 960px) {
-    .card-img {
-        height: 315px;
-    }
-    .card-img-secundario {
-        width: 300px;
-        height: 200px;
-    }
-} */

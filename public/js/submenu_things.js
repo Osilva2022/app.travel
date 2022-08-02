@@ -17,15 +17,8 @@ $(document).ready(function() {
     };
 
     function SetMenuOptionActive() {
-        var destino = getUrlParameter('destination');
-        console.log(document.URL);
-        if (!destino) {
-            destino = 'all';
-        }
-        $($("#" + destino + "-tab")).addClass('active');
-        var offset = $("#" + destino + "-tab").offset();
+        var offset = $(".tc-active").offset();
         var left = offset.left;
-        //console.log(left);
         $('.cont-menu-destination').scrollLeft(left);
     }
     SetMenuOptionActive();

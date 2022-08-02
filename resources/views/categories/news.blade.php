@@ -4,38 +4,45 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 7rem;">
-        <div class="container">
+        <div class="container" style="max-width: 1024px;">
             @include('menus.sub_menu_destinations')
-            <div class="row">
+            <div class="row g-4">
+                <h2 class="">Tribune News</h2>
                 <?php $i = 1; ?>
                 @foreach ($postscategory as $data)
                     @if ($i == 1)
                         <div class="col-12">
-                            <div class="card mb-3 border-0">
-                                <div class="card border-0">
-                                    <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow hover-zoom"
-                                        style="height: auto; max-height: 400px; width: 100%; display: block;" id="img-review">
-                                    <div class="card-img-overlay text-white h-00">
-                                        <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                            <span class="badge"
-                                                style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
-                                        </a>
+                            <div class="card card-principal-post">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="card border-0">
+                                            <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                <span class="badge etiqueta-img"
+                                                    style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                            </a>
+                                            <a href="{{ url("$data->url") }}" title="Click to see more"
+                                                class="text-decoration-none text-muted">
+                                                <img src="{{ $data->image }}" class="img-category-principal"
+                                                    id="img-review">
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-body">
-                                    <a href="{{ url("$data->url") }}" title="Click to see more"
-                                        class="text-decoration-none text-muted">
-                                        <h3 class="card-title" style="bottom: 1.5rem;">
-                                            {{ $data->title }}
-                                        </h3>
-                                    </a>
-                                    <p class="card-text">
+                                    <div class="col-md-4 d-flex align-items-center">
                                         <a href="{{ url("$data->url") }}" title="Click to see more"
                                             class="text-decoration-none text-muted">
-                                            {!! Str::limit(strip_tags($data->post_excerpt), 225, ' ...') !!}
+                                            <div class="card-body">
+                                                <h3 class="card-title" style="bottom: 1.5rem;">
+                                                    {{ $data->title }}
+                                                </h3>
+                                                <p class="card-text">
+                                                    {!! Str::limit(strip_tags($data->post_excerpt), 225, ' ...') !!}
+                                                </p>
+                                                <small class="text-muted text-end">
+                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
                                         </a>
-                                    </p>
-                                    <p class="card-text"><small class="text-muted">{{ $data->post_date }}</small></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -43,38 +50,33 @@
                     <?php $i++; ?>
                 @endforeach
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
                         <?php $i = 1; ?>
                         @foreach ($postscategory as $data)
                             @if ($i >= 2 && $i <= 5)
-                                <div class="col-12 col-lg-3">
-                                    <div class="card mb-3 border-0">
+                                <div class="col">
+                                    <div class="card card-secundario h-100">
                                         <div class="row g-0">
-                                            <div class="col-6 col-lg-12 order-lg-2">
-                                                <div class="card-body py-3 px-1">
-                                                    <a href="{{ url("$data->url") }}" title="Click to see more"
-                                                        class="text-decoration-none text-muted">
+                                            <div class="col-6">
+                                                <a href="{{ url("$data->url") }}" title="Click to see more"
+                                                    class="text-decoration-none text-muted">
+                                                    <div class="card-body-secundario h-100">
                                                         <h3 class="card-title">{{ $data->title }}
                                                         </h3>
-                                                    </a>
-                                                    <p class="card-text"><small
-                                                            class="text-muted">{{ $data->post_date }}</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-lg-12 order-lg-1">
-                                                <div class="card m-0 p-0 border-0">
-                                                    <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                        <img src="{{ $data->image }}" class="img-fluid rounded-4 shadow"
-                                                            style="height: 120px; width: 100%; display: block;">
-                                                    </a>
-                                                    <div class="card-img-overlay text-white h-00">
-                                                        <a
-                                                            href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                            <span class="badge"
-                                                                style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
-                                                        </a>
+                                                        <small
+                                                            class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
                                                     </div>
+                                                </a>
+                                            </div>
+                                            <div class="col card-head-secundario">
+                                                <div class="card m-0 p-0 border-0">
+                                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                        <span class="badge etiqueta-img"
+                                                            style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                                    </a>
+                                                    <a href="{{ url("$data->url") }}" title="Click to see more">
+                                                        <img src="{{ $data->image }}" class="card-img-secundario">
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,35 +87,34 @@
                         @endforeach
                     </div>
                 </div>
-                <h2 class="my-4">Tribune News</h2>
+                <h2 class="">More News</h2>
                 <div class="col-12">
                     <div class="row">
                         <?php $i = 1; ?>
                         @foreach ($postscategory as $data)
                             @if ($i >= 6)
-                                <div class="col-6 col-lg-3">
+                                <div class="col-6 col-md-4 col-lg-3">
                                     <div class="card mb-3 border-0">
                                         <div class="card m-0 p-0 border-0">
-                                            <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                <img src="{{ $data->image }}" class="img-fluid shadow"
-                                                    style="height: 150px; width: 100%; display: block;">
+                                            <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                <span class="badge etiqueta-img"
+                                                    style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                             </a>
-                                            <div class="card-img-overlay text-white h-00">
-                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="badge"
-                                                        style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
-                                                </a>
-                                            </div>
+                                            <a href="{{ url("$data->url") }}" title="Click to see more">
+                                                <img src="{{ $data->image }}" class="card-img-secundario"
+                                                    style="border-radius: 0%;">
+                                            </a>
                                         </div>
-                                        <div class="card-body">
-                                            <a href="{{ url("$data->url") }}" title="Click to see more"
-                                                class="text-decoration-none text-muted">
+                                        <a href="{{ url("$data->url") }}" title="Click to see more"
+                                            class="text-decoration-none text-muted">
+                                            <div class="card-body">
                                                 <h3 class="card-title">{{ $data->title }}
                                                 </h3>
-                                            </a>
-                                            <p class="card-text"><small class="text-muted">{{ $data->post_date }}</small>
-                                            </p>
-                                        </div>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             @endif
