@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
-    
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     <!-- Scripts -->
@@ -48,7 +47,7 @@
                 $("#menu-header").addClass('menu-active');
             });
         });
-    </script>    
+    </script>
 </head>
 
 <body class="p-0">
@@ -199,7 +198,10 @@
     <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
     <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.js') }}" version="1"></script>
+<<<<<<< HEAD
+=======
 
+>>>>>>> fa535c60be1ed240c97f52258298df252635731b
 </body>
 
 </html>
