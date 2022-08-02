@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <header>
         @include('menus.menu_secundario')
     </header>
@@ -44,9 +45,9 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <p>{{ $event->content }}</p><br>
-                            </div>
-                        </div>
+                                <p>{{ $event->content }}</p><br>                       
+                            </div>                      
+                        </div>                         
                     </div>
                 @endforeach
             </div>

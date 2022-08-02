@@ -187,7 +187,8 @@ class PostsController extends Controller
         $news = DB::select("SELECT * FROM test_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
         $gallery = $this->instagram();
-        $gallery = $gallery->data;
+        $gallery = $gallery->data;        
+
         // dd($gallery);        
 
         // dd($event);
