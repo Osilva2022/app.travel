@@ -106,8 +106,6 @@ footer .nav-link:hover {
 
 .btn-square {
     width: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
     height: 100% !important;
     aspect-ratio: 1/1;
     text-align: center;
@@ -161,6 +159,7 @@ div.post-cont img {
 
 h1 {
     font-family: objektiv-mk2;
+    color: #243A85;
     font-size: 2rem;
     font-style: normal;
     font-weight: var(--tt-bold);
@@ -243,14 +242,24 @@ small {
     line-height: 0.875rem;
     top: 1rem;
     left: 1rem;
-    z-index: 2;
+    z-index: 3;
 }
 
 .etiqueta-destacado {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    z-index: 2;
+    z-index: 3;
+}
+
+.etiqueta-categoria {
+    border-radius: 50rem !important;
+    font-size: .83rem !important;
+    padding-left: .55rem;
+    padding-right: .55rem;
+    padding-top: .25rem;
+    padding-bottom: 0;
+    line-height: 0.875rem;
 }
 
 .etiqueta-post {
@@ -268,6 +277,7 @@ small {
 .card-principal-post {
     border: solid #fff;
     border-radius: 1rem;
+    height: 100%;
     box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
 }
 
@@ -284,6 +294,7 @@ small {
 .card-secundario {
     border: solid #fff;
     border-radius: 1rem;
+    height: 100%;
     box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
 }
 
@@ -336,6 +347,7 @@ small {
     left: 1rem;
     color: #fff;
     margin: 0;
+    z-index: 3;
 }
 
 .card-principal-post .card-text {
@@ -454,24 +466,55 @@ a {
     box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
 }
 
+.card-more-posts {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border: 2px solid #E2E2E2;
+}
+
+.text-caption {
+    font-size: 0.75rem;
+    font-weight: var(--tt-light);
+    color: #243A85;
+}
+
+.post-cont {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #101820;
+    letter-spacing: 3;
+}
+
+.post-cont img {
+    display: block;
+    width: 80%;
+    aspect-ratio: 16/9;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
 .card-principal-post,
 .img-event,
-.carousel-img,
+.ttd-slider-item,
 .card-secundario,
 .img-gallery,
 .img-gallery-2,
 .card-especial,
+.zoom,
 .btn-view-more {
     transition: transform .2s;
 }
 
 .card-principal-post:hover,
 .img-event:hover,
-.carousel-img:hover,
+.ttd-slider-item:hover,
 .card-secundario:hover,
 .img-gallery:hover,
 .img-gallery-2:hover,
 .card-especial:hover,
+.zoom:hover,
 .btn-view-more:hover {
     transform: scale(1.02);
 }
@@ -486,11 +529,21 @@ a {
 } */
 
 .opacity-effect {
+    position: absolute;
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #000;
-    opacity: 0.3;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 1) 75%);
+    opacity: 20%;
+    z-index: 2;
+}
+
+.img-slider-home {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .img-back {
@@ -504,15 +557,23 @@ a {
 .info-over {
     position: absolute;
     width: 100%;
-    top: 50%;
+    top: 30%;
     z-index: 3;
     text-align: center;
-    padding: auto;
+}
+
+.breadcrumb-item {
+    font-size: 0.75rem;
+    color: #243A85;
 }
 
 @media (min-width: 900px) {
     #t1 {
         font-size: 54px;
+        line-height: 60px;
+    }
+    .info-over p {
+        font-size: 1.25rem;
     }
     .icon-gallery {
         font-size: 30px;

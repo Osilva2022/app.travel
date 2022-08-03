@@ -2,22 +2,16 @@
 @section('content')
     <header>
         @include('menus.menu_secundario')
-        @php
-            //var_dump($destination_img);
-        @endphp
     </header>
     <main style="margin-top: 5.2rem;">
         <div class="bg-light hero-image" style="background-image: url({{ $things_category[0]->image }})">
-            <section class="py-5 text-center container h-100">
-                <div class="row py-lg-5 align-items-center h-100">
-                    <div class="col-lg-6 col-md-8 mx-auto text-white">
-                        <h1>{{ $things_category[0]->name }}</h1>
-                        <p class="text-white">
-                            {{ $things_category[0]->description }}
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <div class="opacity-effect"></div>
+            <div class="info-over text-white">
+                <h1 id="t1" class="text-white">{{ $things_category[0]->name }}</h1>
+                <p class="text-white">
+                    {{ $things_category[0]->description }}
+                </p>
+            </div>
         </div>
         <div class="container">
             @include('menus.submenu_things')

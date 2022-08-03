@@ -7,7 +7,7 @@
         <div class="bg-light hero-image" style="background-image: url({{ $destination_data[0]->image }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
-                <h1 id="t1">{{ $destination_data[0]->name }}</h1><br>
+                <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
                 <p class="text-white">
                     {{ $destination_data[0]->description }}
                 </p>

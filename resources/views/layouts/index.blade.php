@@ -1,11 +1,13 @@
 @extends('layouts.app')
 <!-- Metadatos -->
 
-@push('metatags')   
-    <meta name="description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+@push('metatags')
+    <meta name="description"
+        content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <link rel="canonical" href="https://app.tribune.travel/">
     <meta property="og:title" content="App Tribune Travel | Your gateway to México">
-    <meta property="og:description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <meta property="og:description"
+        content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <meta property="og:url" content="https://app.tribune.travel/">
     <meta property="og:image" content="{{ asset('storage/tribuna-de-la-bahia.jpg') }}">
     <meta property="og:image:secure_url" content="{{ asset('img/svg/tribune-travel-color.svg') }}">
@@ -21,7 +23,8 @@
     <meta name="twitter:creator" content="@CpsNoticias">
 
     <meta name="twitter:title" content="App Tribune Travel | Your gateway to México">
-    <meta name="twitter:description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <meta name="twitter:description"
+        content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <meta name="twitter:image" content="{{ asset('img/svg/tribune-travel-color.svg') }}">
 @endpush
 <!-- content -->
@@ -44,10 +47,11 @@
                                         {{ $data->destination }}</span>
                                 </a>
                                 <span class="badge etiqueta-destacado">
-                                    <img src="{{ asset('img/estrella.png') }}" alt="{{$data->title}}" width="30"
+                                    <img src="{{ asset('img/estrella.png') }}" alt="{{ $data->title }}" width="30"
                                         height="30">
                                 </span>
                                 <a href="{{ url("$data->url") }}">
+                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
                                     <img src="{{ $data->image }}" class="card-img">
                                 </a>
                                 <a href="{{ url("$data->url") }}">
@@ -68,11 +72,11 @@
                     @endforeach
                 </div>
                 <div class="col-lg-8">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 d-flex justify-content-between">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 d-flex justify-content-between h-100">
                         @foreach ($reviews as $data)
                             @if ($review[0]->id_post != $data->id_post)
                                 <div class="col">
-                                    <div class="card card-secundario h-100">
+                                    <div class="card card-secundario">
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a
@@ -161,14 +165,13 @@
                                                     @if ($i == 1)
                                                         <?php $active = 'active show'; ?>
                                                     @endif
-                                                    <div class="">
+                                                    <div class="ttd-slider-item">
+                                                        <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                         <a
                                                             href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
-                                                            <img src="{{ $ttd->image }}" alt="{{ $ttd->title }}" class="carousel-img">
+                                                            <img src="{{ $ttd->image }}" alt="{{ $ttd->title }}"
+                                                                class="carousel-img">
                                                             <div class="container">
-                                                                {{-- <div class="position-absolute w-100 h-100"
-                                                                    style="background-color: {{ $ttd->category_color }}; top:0; left:0; z-index:1; opacity:50%;">
-                                                                </div> --}}
                                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                                     <h4>{{ $ttd->title }}</h4>
                                                                     <p style="bottom:4px; color: white;">
@@ -294,9 +297,9 @@
                                         style="font-size:1rem;background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                 </a>
                                 <a href="{{ url("$data->url") }}" class="">
+                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
                                     <img src="{{ $data->image }}" alt="{{ $data->title }}" class="card-img">
                                 </a>
-                                {{-- <div class="card-img-overlay" style="top: auto;"> --}}
                                 <a href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
                                     <h3 class="card-title-overlay">
                                         {{ $data->title }}
@@ -316,7 +319,7 @@
                     @endforeach
                 </div>
                 <div class="col-lg-8">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
                         @foreach ($news as $data)
                             @if ($new[0]->id_post != $data->id_post)
                                 <div class="col">

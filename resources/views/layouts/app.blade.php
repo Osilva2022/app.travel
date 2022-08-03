@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/qfr3cjd.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css?ver=1.1') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
@@ -100,7 +100,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col text-center text-white">
+                {{-- <div class="col text-center text-white">
                     <label class="text-white">Subscribe</label>
                     <div class="input-group mb-3 justify-content-center">
                         <input type="text" class="form-control" placeholder="example@example.com"
@@ -108,7 +108,7 @@
                         <button class="btn btn-light" style="color: #243A85" type="button" id="button-addon2"><i
                                 class="bi bi-send"></i></button>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col text-center text-white">
                     <h5 class="text-white text-center" style="padding: 2px;">Redes Sociales</h5>
                     <ul class="nav pb-2 mb-2 justify-content-center">

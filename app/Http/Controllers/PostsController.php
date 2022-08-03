@@ -186,11 +186,16 @@ class PostsController extends Controller
     {
         $posts = DB::select("SELECT * FROM test_all_posts WHERE slug = '$slug' ORDER BY post_date DESC;");
         $post = $posts[0];
+        $more_posts = DB::select("SELECT * FROM test_all_posts 
+                                    WHERE category_slug = '$post->category_slug'
+                                        ORDER BY post_date DESC
+                                        LIMIT 3;");
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $this->metadatos($post, 'post');
+        //dd($more_posts);
 
-        return view('posts.index', compact('post', 'category', 'destino', 'destinations_data', 'categories_data'));
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
     public function reviews(Request $request)

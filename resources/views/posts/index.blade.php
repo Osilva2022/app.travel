@@ -9,67 +9,109 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 7rem;">
-        <div class="container">
-            <div class="row mb-2">
+        <div class="container" style="max-width: 1024px;">
+            <div class="row mb-3">
+                <div class="col col-md-4 col-lg-6">
+                    <span class="badge etiqueta-categoria"
+                        style="background-color: {{ $post->category_color }}">{{ $post->category }}</span>
+                </div>
+                <div class="col-auto col-md-3 col-lg-2">
+                    Share:
+                    <a class="text-muted" href="https://www.facebook.com/TribuneTravel/">
+                        <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon" width="17"
+                            height="17">
+                    </a>
+                    <a class="text-muted" href="https://www.youtube.com/channel/UCqHGXwbsSrkAjnr3kVFcOdA" target="_blank">
+                        <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon" width="17"
+                            height="17">
+                    </a>
+                    <a class="text-muted" href="https://www.instagram.com/tribunetravel/">
+                        <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="Tribune Travel insta-icon" width="17"
+                            height="17">
+                    </a>
+                </div>
+            </div>
+            <div class="row">
                 <!-- MENU RUTA -->
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a
-                                    href="{{ route( $category) }}">{{ $category }}</a></li>
-                            <li class="breadcrumb-item" aria-current="page">{{ $post->title }}</li>
+                            <li class="breadcrumb-item"><a href="{{ route($category) }}">{{ $post->category }}</a></li>
+                            <li class="breadcrumb-item fw-bold" aria-current="page">{{ $post->title }}</li>
                         </ol>
                     </nav>
                 </div>
                 <!-- MENU RUTA -->
-                <div class="col-12">
-                    <h1>{{ $post->title }}</h1>
-                </div>
-                <div class="col-12">
-                    <img src="{{ $post->image }}" alt="" width="100%" height="auto"
-                        style="max-height: 410px; max-width: 720px;">
-                </div>
-                <div class="col-12 mb-4">
-                    <h6>Image Caption</h6>
-                </div>
-                <div class="col-12">
-                    <div class="card mb-3 border-0" style="max-width: 540px;">
-                        <div class="row">
-                            <div class="col-2 text-end">
-                                <img src="{{ asset('img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
-                                    width="60" height="60">
-                            </div>
-                            <div class="col-8">
-                                <h5 class="card-title">By <b>{{$post->author_name}}</b></h5>
-                                <p class="card-text"><small class="text-muted">{{$post->post_date}}</small></p>
+            </div>
+            <div class="row g-4 mb-4">
+                <div class="col-md-7 col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <img src="{{ $post->image }}" alt="" width="100%" height="auto"
+                                style="aspect-ratio:16/9;">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p>
+                        </div>
+                        <div class="col-12">
+                            <h1>{{ $post->title }}</h1>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-auto text-end">
+                                    <img src="{{ asset('img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
+                                        width="56" height="56">
+                                </div>
+                                <div class="col d-flex flex-column justify-content-center">
+                                    <p class="card-title" style="color: #243A85">By
+                                        <b>{{ $post->author_name }}</b>
+                                    </p>
+                                    <p class="card-text"><small
+                                            class="text-muted">{{ date('F d, Y', strtotime($post->post_date)) }}</small>
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                        <!-- POST / NOTA -->
+                        <div class="col-12 mb-4 post-cont">
+                            {!! $post->content !!}
+                        </div>
+                        <!-- POST / NOTA -->
                     </div>
                 </div>
-                <!-- POST / NOTA -->
-                <div class="col-12 mb-4 post-cont">
-                    {!! $post->content !!}
-                </div>
-                <!-- POST / NOTA -->
-                <div class="col-12  pb-2 mb-2">
-                    <hr>
-                </div>
-                <div class="col-12 mb-4">
-                    <div class="card border-0">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <img src="{{ asset('img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
-                                    width="60" height="60">
-                            </div>
-                            <div class="col-12">
-                                <h5 class="card-title text-center">By {{$post->author_name}}</h5>
-                                <p class="card-text">
-                                    <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-                                        officiis pariatur autem quae quo ipsam soluta error cupiditate id beatae rem
-                                        laudantium, veniam maiores eligendi nobis, dolor possimus sunt tenetur! </small>
-                                </p>
-                            </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="card-more-posts p-4">
+                        <div class="row row-cols-1 g-4 pb-4">
+                            <h2 class="mb-0">More {{ $post->category }}</h2>
+                            @foreach ($more_posts as $data)
+                                <div class="col">
+                                    <div class="card card-secundario">
+                                        <div class="row">
+                                            <div class="col card-head-secundario">
+                                                <a
+                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                    <img src="{{ $data->image }}" class="card-img-secundario">
+                                                </a>
+                                            </div>
+                                            <div class="col-6 card-body-secundario">
+                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="etiqueta-post mb-2"
+                                                        style="background:{{ $data->destination_color }};">
+                                                        {{ $data->destination }}
+                                                    </span>
+                                                </a>
+                                                <a href="{{ url("$data->url") }}">
+                                                    <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                </a>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

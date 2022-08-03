@@ -16,6 +16,7 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="card border-0">
+                                            <div class="opacity-effect" style="border-radius: 1rem"></div>
                                             <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                                 <span class="badge etiqueta-img"
                                                     style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
