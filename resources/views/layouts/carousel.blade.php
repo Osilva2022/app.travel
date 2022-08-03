@@ -1,5 +1,5 @@
 <!-- SLIDER -->
-<div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-interval="false">
     <div class="carousel-indicators">
         <?php $i = 0; ?>
         @foreach ($destinations as $dd)
@@ -26,11 +26,12 @@
             @endphp
 
             <div class="carousel-item {{ $active }}">
-                <img src="{{ $dd->image }}" alt="{{ $dd->name }}" class="bd-placeholder-img-lg" width="100%" height="100%"
+                <div class="opacity-effect"></div>
+                <img src="{{ $dd->image }}" alt="{{ $dd->name }}" class="img-slider-home" width="100%" height="100%"
                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1 id="t1">{{ $dd->name }}</h1>
+                        <h1 id="t1" class="text-white">{{ $dd->name }}</h1>
                         <p class="text-white">Some representative placeholder content for the second slide of the carousel.</p>
                     </div>
                 </div>

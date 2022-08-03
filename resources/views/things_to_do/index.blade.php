@@ -5,17 +5,13 @@
     </header>
     <main style="margin-top: 5.2rem;">
         <div class="bg-light hero-image" style="background-image: url({{ $destination_data[0]->image }})">
-            <section class="py-5 text-start container">
-                <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto text-white">
-                        <h1>{{ $destination_data[0]->name }}</h1>
-                        <p class="text-white">
-                            Tribune Travel shows everything you like in Puerto Vallarta, the most Mexican of the beach
-                            destinations and the neighboring Riviera Nayarit.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <div class="opacity-effect"></div>
+            <div class="info-over text-white">
+                <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
+                <p class="text-white">
+                    {{ $destination_data[0]->description }}
+                </p>
+            </div>
         </div>
         <div class="container" style="max-width: 1024px;">
             <div class="row mb-4">
@@ -36,7 +32,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Things to Do</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum est, cumque dicta officiis fuga maiores? Quod esse et voluptatem corporis dolor deleniti reprehenderit incidunt iusto? Ad deserunt minus neque vero!</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum est, cumque dicta officiis fuga
+                        maiores? Quod esse et voluptatem corporis dolor deleniti reprehenderit incidunt iusto? Ad deserunt
+                        minus neque vero!</p>
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
@@ -45,7 +43,11 @@
                         <a href="{{ route('things_category', ["$destination", "$tc->category_slug"]) }}"
                             class="text-decoration-none">
                             <div class="card border-0">
-                                <img src="{{ $tc->image }}" class="card-img-secundario">
+                                <div class="position-relative zoom">
+                                    <div class="opacity-effect"
+                                        style="border-radius: 1rem; background:{{ $tc->category_color }};"></div>
+                                    <img src="{{ $tc->image }}" class="card-img-secundario">
+                                </div>
                                 <div class="card-body">
                                     <h3 class="card-title" style="color:{{ $tc->category_color }};">
                                         {{ str_replace('&amp;', '&', $tc->category) }}
