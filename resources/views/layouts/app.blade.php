@@ -199,5 +199,4 @@
     <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.js') }}" version="1"></script>
 </body>
-
 </html>
