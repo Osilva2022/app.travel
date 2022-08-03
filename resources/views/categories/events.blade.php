@@ -64,7 +64,6 @@
 
                                             {{-- <a rel="noopener" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z%2F20220112T200000Z&location=PuertoVallarta&details=Descripcion&text=Nombre%20de%20Evento" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 12px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Google Calendar</span></a> --}}
                    
-
                                         </div>
                                     </div>
                                 </div>

@@ -118,13 +118,13 @@ class PostsController extends Controller
     {
         $instagramtoken = InstagramTokens::find(1);
         $token = $instagramtoken->token;
-        
-        $instagram = new InstagramBasicDisplay(env('INSTAGRAM_VALID_OAUTH_URI'));
+
+        $instagram = new InstagramBasicDisplay($token);
         $instagram->setAccessToken($token);
         // $t = $instagram->getAccessToken();
         // $tt = $instagram->refreshToken($token,true);        
         $media = $instagram->getUserMedia('me', 6);
-
+        // dd($media);
         return $media;
     }
 
@@ -174,7 +174,8 @@ class PostsController extends Controller
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
         
         $gallery = $this->instagram();
-        $gallery = $gallery->data;                   
+        $gallery = $gallery->data;        
+               
 
         $this->metadatos('home', 'home');
             

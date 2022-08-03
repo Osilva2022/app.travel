@@ -22,10 +22,11 @@ class Instagram extends Command
     public function handle()
     {
         //seccion refresacar tokens instagram 
-        $instagrambasic = new InstagramBasicDisplay(env('INSTAGRAM_VALID_OAUTH_URI'));
         
         $instagramtoken = InstagramTokens::find(1);
         $tokenold = $instagramtoken->token;    
+        $instagrambasic = new InstagramBasicDisplay($tokenold);
+        
 
         $instagrambasic->setAccessToken($tokenold);        
         $token = $instagrambasic->refreshToken($tokenold,true);             
