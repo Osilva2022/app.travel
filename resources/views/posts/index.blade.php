@@ -65,8 +65,11 @@
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <b>{{ $post->author_name }}</b></p>
-                                    <p class="card-text"><small class="text-muted">{{ $post->post_date }}</small></p>
+                                        <b>{{ $post->author_name }}</b>
+                                    </p>
+                                    <p class="card-text"><small
+                                            class="text-muted">{{ date('F d, Y', strtotime($post->post_date)) }}</small>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -78,41 +81,44 @@
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-4">
-                    <div class="row row-cols-1 g-4 card-more-posts pb-4">
-                        <h2 class="mb-0">More {{ $post->category }}</h2>
-                        @foreach ($more_posts as $data)
-                            <div class="col">
-                                <div class="card card-secundario">
-                                    <div class="row">
-                                        <div class="col card-head-secundario">
-                                            <a
-                                                href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                <img src="{{ $data->image }}" class="card-img-secundario">
-                                            </a>
-                                        </div>
-                                        <div class="col-6 card-body-secundario">
-                                            <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                <span class="etiqueta-post mb-2"
-                                                    style="background:{{ $data->destination_color }};">
-                                                    {{ $data->destination }}
-                                                </span>
-                                            </a>
-                                            <a href="{{ url("$data->url") }}">
-                                                <h3 class="card-title-secundario">{{ $data->title }}</h3>
-                                            </a>
-                                            <small class="text-muted">
-                                                {{ date('M/d/y', strtotime($data->post_date)) }}
-                                            </small>
+                    <div class="card-more-posts p-4">
+                        <div class="row row-cols-1 g-4 pb-4">
+                            <h2 class="mb-0">More {{ $post->category }}</h2>
+                            @foreach ($more_posts as $data)
+                                <div class="col">
+                                    <div class="card card-secundario">
+                                        <div class="row">
+                                            <div class="col card-head-secundario">
+                                                <a
+                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                    <img src="{{ $data->image }}" class="card-img-secundario">
+                                                </a>
+                                            </div>
+                                            <div class="col-6 card-body-secundario">
+                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="etiqueta-post mb-2"
+                                                        style="background:{{ $data->destination_color }};">
+                                                        {{ $data->destination }}
+                                                    </span>
+                                                </a>
+                                                <a href="{{ url("$data->url") }}">
+                                                    <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                </a>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- BOTONES CATEGORIAS -->
             @include('menus.menu_footer_categories')
             <!-- BOTONES CATEGORIAS -->
+        </div>
     </main>
 @endsection
