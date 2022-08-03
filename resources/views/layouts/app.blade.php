@@ -198,10 +198,5 @@
     <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
     <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.js') }}" version="1"></script>
-<<<<<<< HEAD
-=======
-
->>>>>>> fa535c60be1ed240c97f52258298df252635731b
 </body>
-
 </html>

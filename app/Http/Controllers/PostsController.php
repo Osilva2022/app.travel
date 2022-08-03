@@ -26,6 +26,7 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\JsonLdMulti;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Storage;
+use App\Models\InstagramTokens;
 
 class PostsController extends Controller
 {
@@ -115,23 +116,13 @@ class PostsController extends Controller
 
     function instagram()
     {
-        $instagram = new InstagramBasicDisplay([
-            'appId' => env('INSTAGRAM_APP_ID'),
-            'appSecret' => env('INSTAGRAM_SECRET_KEY'),
-            'redirectUri' => env('INSTAGRAM_VALID_OAUTH_URI')
-        ]);
-
-        // echo "<a href='{$instagram->getLoginUrl()}'>Login with Instagram</a>";
-        // $code = 'AQCQs9DL1DS4mV7XAY_RhMall-FpDnfIuUKl9tJbAJk6fUsYFEyomP_xv5RUUs1AZQPEOR_pbemVdWCiNhMw8op65YH3XoAAEqHwbgBn7E5xYbfXrnj6RS203qQnFQpMVLOiIcDdEaXpr7qKeZLCmSC5VfIn6ugpJIcApGzxuO0mXH_n7eGpVdemP-GTBUzOkk_BfjY69gDxcBiscIKvGBAlNswQiplecGkwEq6xIgnjCQ';
-        // $instagram = new InstagramBasicDisplay($token);
-
-        // $token = $instagram->getOAuthToken($code, true);
-        // $token = $instagram->getLongLivedToken($token, true);       
-
-        // token is
-        $token = 'IGQVJYV1N6ZAWpfbjRkbm9LWnZAoZAHNYVUxZAR3VfenBHdGdNazNfNFcteDQ5ZAW1Jb2xzX3ZAEOXUyRGVBWm03UmFPX0pKWWJPMHBUeGdxTVlnclNPNnZAPUmhzWXZAUUHN4OGdVZAkR0b3luYm1zU3c0UURSZAzF0eUtlekZA0QTAw';
+        $instagramtoken = InstagramTokens::find(1);
+        $token = $instagramtoken->token;
+        
+        $instagram = new InstagramBasicDisplay(env('INSTAGRAM_VALID_OAUTH_URI'));
         $instagram->setAccessToken($token);
-
+        // $t = $instagram->getAccessToken();
+        // $tt = $instagram->refreshToken($token,true);        
         $media = $instagram->getUserMedia('me', 6);
 
         return $media;
@@ -183,12 +174,10 @@ class PostsController extends Controller
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
         
         $gallery = $this->instagram();
-        $gallery = $gallery->data;              
-
-        // dd($event);
+        $gallery = $gallery->data;                   
 
         $this->metadatos('home', 'home');
-        // dd($events);        
+            
 
         return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery'));
     }

@@ -7,27 +7,19 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    /**
-     * Define the application's command schedule.
-     *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
-     */
+
+    protected $commands = [
+        Commands\Instagram::class
+    ];
+
+    protected function scheduleTimezone()
+    {
+        return 'America/Mexico_City';
+    }
+
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(InstagramCrawlFeed::class)->hourly();
-        $schedule->command(InstagramRefreshAccessToken::class)->monthly();
+        $schedule->command('instagram:task')->everyMinute();   
     }
-
-    /**
-     * Register the commands for the application.
-     *
-     * @return void
-     */
-    protected function commands()
-    {
-        $this->load(__DIR__.'/Commands');
-
-        require base_path('routes/console.php');
-    }
+      
 }
