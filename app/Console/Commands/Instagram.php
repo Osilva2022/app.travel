@@ -31,8 +31,10 @@ class Instagram extends Command
         $instagrambasic->setAccessToken($tokenold);        
         $token = $instagrambasic->refreshToken($tokenold,true);             
             
-        $instagram = InstagramTokens::find(1);      
-        $instagram->token = $token;
+        // $instagram = InstagramTokens::find(1); 
+        $instagram = new InstagramTokens();     
+        // $instagram->token = $token;
+        $instagram->token = date('Ymd His');
         $instagram->save();
         return 0;
     }

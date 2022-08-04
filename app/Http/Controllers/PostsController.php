@@ -174,7 +174,8 @@ class PostsController extends Controller
         $event = DB::select("SELECT * FROM test_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
         
         $gallery = $this->instagram();
-        $gallery = $gallery->data;        
+        $gallery = $gallery->data;  
+        dd(date('Ymd His'));      
                
 
         $this->metadatos('home', 'home');
