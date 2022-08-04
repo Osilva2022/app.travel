@@ -175,8 +175,7 @@ class PostsController extends Controller
         
         $gallery = $this->instagram();
         $gallery = $gallery->data;  
-        dd(date('Ymd His'));      
-               
+              
 
         $this->metadatos('home', 'home');
             
