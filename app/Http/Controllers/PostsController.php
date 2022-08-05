@@ -119,12 +119,12 @@ class PostsController extends Controller
         $instagramtoken = InstagramTokens::find(1);
         $token = $instagramtoken->token;
 
-        $instagram = new InstagramBasicDisplay(env('INSTAGRAM_VALID_OAUTH_URI'));
+        $instagram = new InstagramBasicDisplay($token);
         $instagram->setAccessToken($token);
         // $t = $instagram->getAccessToken();
         // $tt = $instagram->refreshToken($token,true);        
         $media = $instagram->getUserMedia('me', 6);
-
+        // dd($media);
         return $media;
     }
 
