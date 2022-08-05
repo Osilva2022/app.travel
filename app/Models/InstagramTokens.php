@@ -9,7 +9,7 @@ class InstagramTokens extends Model
 {
     use HasFactory;
 
-    protected $table = 'test_instagram_tokens';
+    protected $table = 'travel_instagram_tokens';
 
     public $timestamps = true;
     protected $primaryKey = 'id';

@@ -22,7 +22,7 @@
                                             </a>
                                             <a href="{{ url("$data->url") }}" title="Click to see more"
                                                 class="text-decoration-none text-muted">
-                                                <img src="{{ $data->image }}" class="img-category-principal"
+                                                <img src="{{ images($data->image) }}" class="img-category-principal"
                                                     id="img-review">
                                             </a>
                                         </div>
@@ -75,7 +75,7 @@
                                                             style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                                     </a>
                                                     <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                        <img src="{{ $data->image }}" class="card-img-secundario">
+                                                        <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                     </a>
                                                 </div>
                                             </div>
@@ -101,7 +101,7 @@
                                                     style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                             </a>
                                             <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                <img src="{{ $data->image }}" class="card-img-secundario"
+                                                <img src="{{ images($data->image) }}" class="card-img-secundario"
                                                     style="border-radius: 0%;">
                                             </a>
                                         </div>

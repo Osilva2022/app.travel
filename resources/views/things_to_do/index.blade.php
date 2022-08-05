@@ -4,7 +4,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.2rem;">
-        <div class="bg-light hero-image" style="background-image: url({{ $destination_data[0]->image }})">
+        <div class="bg-light hero-image" style="background-image: url({{ images($destination_data[0]->image) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
                 <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
@@ -46,7 +46,7 @@
                                 <div class="position-relative zoom">
                                     <div class="opacity-effect"
                                         style="border-radius: 1rem; background:{{ $tc->category_color }};"></div>
-                                    <img src="{{ $tc->image }}" class="card-img-secundario">
+                                    <img src="{{ images($tc->image) }}" class="card-img-secundario">
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-title" style="color:{{ $tc->category_color }};">

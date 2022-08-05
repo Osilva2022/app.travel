@@ -29,7 +29,7 @@
                                                             width="25" height="25">
                                                     </span>
                                                 @endif
-                                                <img src="{{ $data->image }}" alt="{{ $data->title }}"
+                                                <img src="{{ images($data->image) }}" alt="{{ $data->title }}"
                                                     class="img-category-principal">
                                                 <h3 class="card-title-overlay">
                                                     {{ $data->title }}
@@ -70,7 +70,7 @@
                                                             style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                                     </a>
                                                     <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                        <img src="{{ $data->image }}" class="card-img-secundario">
+                                                        <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                     </a>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-12">
@@ -107,7 +107,7 @@
                                         </a>
                                         <div class="card m-0 p-0 border-0">
                                             <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                <img src="{{ $data->image }}" class="img-category-principal">
+                                                <img src="{{ images($data->image) }}" class="img-category-principal">
                                             </a>
                                         </div>
                                         <div class="card-body">
