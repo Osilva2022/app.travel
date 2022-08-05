@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/qfr3cjd.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css?ver=1.1') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css?ver=1.2') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
@@ -63,8 +63,8 @@
                         <img src="{{ asset('img/svg/tribune-white.svg') }}" width="125" alt="Tribune Travel">
                     </a>
                 </div>
-                <div class="col text-md-start text-white text-center" style="font-weight:300;">
-                    <h3 class="text-white">Contacto</h3>
+                <div class="col text-white text-center" style="font-weight:300;">
+                    <h3 class="text-white">Contact Us</h3>
                     <address class="mb-0">
                         <ul class="nav justify-content-center flex-column">
                             <li class="nav-item">322 226 3870</li>
@@ -76,7 +76,7 @@
                         </ul>
                     </address>
                 </div>
-                <div class="col text-md-start text-white text-center" style="font-size:9px; line-height: 10px;">
+                {{-- <div class="col text-md-start text-white text-center">
                     <ul class="nav justify-content-center flex-column ">
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('reviews') }}">
@@ -99,7 +99,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 {{-- <div class="col text-center text-white">
                     <label class="text-white">Subscribe</label>
                     <div class="input-group mb-3 justify-content-center">
@@ -110,23 +110,22 @@
                     </div>
                 </div> --}}
                 <div class="col text-center text-white">
-                    <h5 class="text-white text-center" style="padding: 2px;">Redes Sociales</h5>
+                    <h5 class="text-white text-center" style="padding: 2px;">Social Media</h5>
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
-                            <a class="text-muted" href="https://www.facebook.com/TribuneTravel/">
+                            <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}" target="_blank">
                                 <img src="{{ asset('img/svg/face-white-ico.svg') }}" alt="Tribune Travel facebook-icon"
                                     width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
-                            <a class="text-muted" href="https://www.youtube.com/channel/UCqHGXwbsSrkAjnr3kVFcOdA"
-                                target="_blank">
+                            <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
                                 <img src="{{ asset('img/svg/pint-white-ico.svg') }}" alt="Tribune Travel pint-icon"
                                     width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
-                            <a class="text-muted" href="https://www.instagram.com/tribunetravel/">
+                            <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <img src="{{ asset('img/svg/inst-white-ico.svg') }}" alt="Tribune Travel insta-icon"
                                     width="24" height="24">
                             </a>
@@ -168,29 +167,28 @@
                         <div class="col-auto px-4">
                             <a class="text-white" href="https://cps.media/aviso-de-privacidad"
                                 style="text-decoration: none;" target="_blank">
-                                Aviso de privacidad
+                                Notice of Privacy
                             </a>
                         </div>
                         <div class="col-auto px-4">
                             <a class="text-white" href="https://cps.media/declaracion-de-accesibilidad"
                                 style="text-decoration: none;" target="_blank">
-                                Políticas de accesibilidad
+                                Accessibility Policies
                             </a>
                         </div>
                         <div class="col-auto px-4">
                             <a class="text-white" href="#" style="text-decoration: none;">
-                                Derecho de réplica
+                                Right of reply
                             </a>
                         </div>
                         <div class="col-auto px-4">
                             <a class="text-white" href="#" style="text-decoration: none;">
-                                Términos y condiciones
+                                Terms and Conditions
                             </a>
                         </div>
                     </div>
                 </div>
-                <p class="text-center text-white" style="font-size: 10px;">&copy; 2022 CPS Media. Todos Los Derechos
-                    Reservados
+                <p class="text-center text-white" style="font-size: 11px;">&copy; 2022 CPS Media. All rights reserved
                 </p>
             </div>
         </div>
@@ -199,4 +197,5 @@
     <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.js') }}" version="1"></script>
 </body>
+
 </html>

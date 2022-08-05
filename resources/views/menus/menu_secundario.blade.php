@@ -3,7 +3,7 @@
     style="margin-bottom: 7rem">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="100" class="d-inline-block align-top"
+            <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="125" class="d-inline-block align-top"
                 alt="">
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
