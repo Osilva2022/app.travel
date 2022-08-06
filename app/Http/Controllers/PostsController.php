@@ -140,7 +140,7 @@ class PostsController extends Controller
             OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
         } elseif ($type == 'post') {
-            // dd($data);
+            
             SEOTools::setTitle($data->title);
             SEOTools::setDescription($data->post_excerpt);
             SEOTools::opengraph()->setUrl(URL::to($data->url));
