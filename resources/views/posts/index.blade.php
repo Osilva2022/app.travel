@@ -17,15 +17,19 @@
                 </div>
                 <div class="col-auto col-md-3 col-lg-2">
                     Share:
-                    <a class="text-muted" href="https://www.facebook.com/TribuneTravel/">
+                    <a rel="nofollow" class="fb-btn" href="javascript: void(0)"
+                        onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ url("$post->url") }}','sharer','toolbar=0,status=0,width=548,height=325');">
                         <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon" width="17"
                             height="17">
                     </a>
-                    <a class="text-muted" href="https://www.youtube.com/channel/UCqHGXwbsSrkAjnr3kVFcOdA" target="_blank">
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
+                    </a>
+                    <a class="text-muted" href="{{ config('constants.PINTERES_URL') }}" target="_blank">
                         <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon" width="17"
                             height="17">
                     </a>
-                    <a class="text-muted" href="https://www.instagram.com/tribunetravel/">
+                    <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                         <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="Tribune Travel insta-icon" width="17"
                             height="17">
                     </a>
@@ -48,7 +52,7 @@
                 <div class="col-md-7 col-lg-8">
                     <div class="row g-4">
                         <div class="col-12">
-                            <img src="{{ $post->image }}" alt="" width="100%" height="auto"
+                            <img src="{{ images($post->image) }}" alt="" width="100%" height="auto"
                                 style="aspect-ratio:16/9;">
                         </div>
                         <div class="col-12 mt-2">
@@ -60,7 +64,7 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
-                                    <img src="{{ asset('img/xd.png') }}" class="img-fluid rounded-circle" alt="..."
+                                    <img src="{{ images($post->avatar) }}" class="img-fluid rounded-circle" alt="..."
                                         width="56" height="56">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
@@ -91,7 +95,7 @@
                                             <div class="col card-head-secundario">
                                                 <a
                                                     href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                    <img src="{{ $data->image }}" class="card-img-secundario">
+                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">

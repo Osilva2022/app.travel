@@ -21,7 +21,7 @@
                         <div class="card-event">
                             <div class="row g-4">
                                 <div class="col-md-5 d-flex align-items-center">
-                                    <img src="{{ $event->image }}" class="card-img-estatica">
+                                    <img src="{{ images($event->image) }}" class="card-img-estatica">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row g-4">
@@ -45,26 +45,26 @@
                                         <div class="col-12">
                                             <p>{{ $event->content }}</p><br>
                                         </div>
-                                        {{-- <div class="col-12 text-end">
-                                            <button class="btn btn-success"><i class="bi bi-calendar-plus"></i> Add Google
-                                                Calendar</button>
-                                        </div> --}}
+                                        <!--Gmail Button--> 
+                                        @php
+                                            $startDate = date('Ymd', strtotime($event->start_date));
+                                            $startTime = date('His', strtotime($event->start_date));
+                                            $endDate = date('Ymd', strtotime($event->end_date));
+                                            $endTime = date('His', strtotime($event->end_date));
+                                            $allday = $event->all_day;
 
-                                        <!--Gmail Button-->                           
-
-                                        <div class="gmail" style="display: block;">
-                                            @php
-                                                $startDate = date('Ymd', strtotime($event->start_date));
-                                                $startTime = date('His', strtotime($event->start_date));
-                                                $endDate = date('Ymd', strtotime($event->end_date));
-                                                $endTime = date('His', strtotime($event->end_date));
-                                                $dates = urldecode($startDate).'T'.urldecode($startTime).'/'.urldecode($endDate).'T'.urldecode($endTime);
-                                            @endphp
-                                            <a target="_blank" class="btn btn-warning" href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates={{$dates}}&timeZone=America/Mexico_City&location={{ $event->destination }}&text={{ $event->title }}&details=ok"style="background-color: #F4D66C; font-size: 12px; font-weight:bold; text-decoration: none; padding: 12px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Google Calendar</a><br>
-
-                                            {{-- <a rel="noopener" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z%2F20220112T200000Z&location=PuertoVallarta&details=Descripcion&text=Nombre%20de%20Evento" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 12px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Google Calendar</span></a> --}}
-                   
-                                        </div>
+                                            $dates = urldecode($startDate).'T'.urldecode($startTime).'/'.urldecode($endDate).'T'.urldecode($endTime);
+                                            if ($allday != NULL ) {
+                                                $dates = urldecode($startDate).'/'.urldecode($endDate);
+                                            }
+                                            
+                                        @endphp  
+                                        <div class="col-12 text-end">                                            
+                                            <a target="_blank" class="btn btn-outline-primary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates={{$dates}}&timeZone=America/Mexico_City&location={{ $event->destination }}&text={{ $event->title }}&details={{ $event->content }}">
+                                            <i class="bi bi-calendar"></i>  Add to Calendar 
+                                            </a>
+                                        </div>                                     
+                                       
                                     </div>
                                 </div>
                             </div>

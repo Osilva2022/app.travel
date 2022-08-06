@@ -52,9 +52,7 @@
                                 </span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img src="{{ $data->image }}" class="card-img">
-                                </a>
-                                <a href="{{ url("$data->url") }}">
+                                    <img src="{{ images($data->image) }}" class="card-img">
                                     <h3 class="card-title-overlay">
                                         {{ $data->title }}
                                     </h3>
@@ -81,7 +79,7 @@
                                             <div class="col card-head-secundario">
                                                 <a
                                                     href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                    <img src="{{ $data->image }}" class="card-img-secundario">
+                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -169,7 +167,7 @@
                                                         <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                         <a
                                                             href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
-                                                            <img src="{{ $ttd->image }}" alt="{{ $ttd->title }}"
+                                                            <img src="{{ images($ttd->image) }}" alt="{{ $ttd->title }}"
                                                                 class="carousel-img">
                                                             <div class="container">
                                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
@@ -202,49 +200,71 @@
                 </div>
             </div>
             <!-- Gallery -->
+            <?php if ($gallery): ?>
             <div class="row py-4">
                 <div class="col">
                     <h2 class="text-center mb-4">Visit Mexico!</h2>
                     <div class="row g-1">
-                        <div class="col-7 col-md-3 position-relative">
+                        <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[0]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[0]->media_url }}" class="img-gallery-2" alt="" />
                             </a>
                         </div>
-                        <div class="col-5 col-md-6 position-relative">
+                        <div class="col-5 col-md-6 position-relative zoom">
                             <a href="{{ $gallery[1]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[1]->media_url }}" class="img-gallery" alt="" />
                             </a>
                         </div>
-                        <div class="col-5 col-md-3 position-relative">
+                        <div class="col-5 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[2]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[2]->media_url }}" class="img-gallery" alt="" />
                             </a>
                         </div>
-                        <div class="col-7 col-md-3 position-relative">
+                        <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[3]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[3]->media_url }}" class="img-gallery-2" alt="" />
                             </a>
                         </div>
-                        <div class="col-7 col-md-3 position-relative">
+                        <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[4]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[4]->media_url }}" class="img-gallery" alt="" />
                             </a>
                         </div>
-                        <div class="col-5 col-md-6 position-relative">
+                        <div class="col-5 col-md-6 position-relative zoom">
                             <a href="{{ $gallery[5]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[5]->media_url }}" class="img-gallery-2" alt="" />
                             </a>
                         </div>
                     </div>
+                    <div class="row p-4">
+                        <div class="col d-flex flex-column align-items-center">
+                            <h3>Follow Us!</h3>
+                            <div class="">
+
+                                <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
+                                    <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon"
+                                        width="24" height="24">
+                                </a>
+                                <a class="text-muted" href="{{ config('constants.PINTERES_URL') }}" target="_blank">
+                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon"
+                                        width="24" height="24">
+                                </a>
+                                <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}">
+                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="Tribune Travel insta-icon"
+                                        width="24" height="24">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <?php endif; ?>
             <!-- Gallery -->
             <div class="row">
                 <div class="col-12">
@@ -258,7 +278,7 @@
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img src="{{ $data->image }}" alt="{{ $data->title }}" class="img-event">
+                                <img src="{{ images($data->image) }}" alt="{{ $data->title }}" class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
@@ -292,20 +312,17 @@
                     @foreach ($new as $data)
                         <div class="card card-principal-post">
                             <div class="card border-0">
-                                <a href="{{ route('destinations', ["$data->destination"]) }}">
-                                    <span class="badge etiqueta-img"
-                                        style="font-size:1rem;background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                        {{ $data->destination }}</span>
                                 </a>
-                                <a href="{{ url("$data->url") }}" class="">
+                                <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img src="{{ $data->image }}" alt="{{ $data->title }}" class="card-img">
-                                </a>
-                                <a href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                    <img src="{{ images($data->image) }}" class="card-img">
                                     <h3 class="card-title-overlay">
                                         {{ $data->title }}
                                     </h3>
                                 </a>
-                                {{-- </div> --}}
                             </div>
                             <div class="card-body">
                                 <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
@@ -328,7 +345,7 @@
                                             <div class="col card-head-secundario">
                                                 <a
                                                     href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                    <img src="{{ $data->image }}" class="card-img-secundario">
+                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">

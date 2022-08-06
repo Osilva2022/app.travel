@@ -4,7 +4,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.2rem;">
-        <div class="bg-light hero-image" style="background-image: url({{ $destination_data[0]->image }})">
+        <div class="bg-light hero-image" style="background-image: url({{ images($destination_data[0]->image) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
                 <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
@@ -25,7 +25,7 @@
                                         style="background:{{ $data->category_color }};">{{ $data->category }}</span>
                                 </a>
                                 <a href="{{ url("$data->url") }}" class="text-decoration-none text-muted">
-                                    <img src="{{ $data->image }}" class="bd-placeholder-img card-img-top" width="100%"
+                                    <img src="{{ images($data->image) }}" class="bd-placeholder-img card-img-top" width="100%"
                                         height="225">
                                     <div class="card-body">
                                         <h3 class="card-title">{{ $data->title }}</h3>
