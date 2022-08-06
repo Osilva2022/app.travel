@@ -153,7 +153,7 @@ class PostsController extends Controller
 
     public function index(): View
     {
-        $destinations = DB::select("SELECT * FROM travel_destinations");
+        $destinations = DB::select("SELECT * FROM travel_destinations");//Aqui el error***
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
         $categories_data = $this->returndata('categories');
