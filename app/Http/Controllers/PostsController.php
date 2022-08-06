@@ -110,7 +110,7 @@ class PostsController extends Controller
             $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
         }
         $data = $this->paginate($post, $pagination);
-        //dd($data);
+        //dd($data); 
         return $data;
     }
 

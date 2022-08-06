@@ -116,7 +116,10 @@
                                                 <h3 class="card-title">{{ $data->title }}
                                                 </h3>
                                             </a>
-                                            <p class="card-text"><small class="text-muted">{{ $data->post_date }}</small>
+                                            <p class="card-text">
+                                            <small class="text-muted">   
+                                                {{ date('M/d/y', strtotime($data->post_date)) }}
+                                            </small>
                                             </p>
                                         </div>
                                     </div>
