@@ -215,7 +215,7 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $this->metadatos($post, 'post');
-        //dd($more_posts);
+        //dd($post->content);
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }

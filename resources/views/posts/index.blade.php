@@ -79,8 +79,17 @@
                         </div>
                         <!-- POST / NOTA -->
                         <div class="col-12 mb-4 px-4 mx-2 post-cont">
-                            {!! $post->content !!}
+                            {!! str_replace(
+                                'caption',
+                                'div class="sp-caption"',
+                                str_replace('[', '<', str_replace(']', '>', $post->content)),
+                            ) !!}
                         </div>
+                        {{-- <div class="col-12 mb-4 px-4 mx-2 post-cont">
+                            <pre>
+                                {{ $post->content }}
+                            </pre>
+                        </div> --}}
                         <!-- POST / NOTA -->
                     </div>
                 </div>
@@ -93,8 +102,7 @@
                                     <div class="card card-secundario">
                                         <div class="row">
                                             <div class="col card-head-secundario">
-                                                <a
-                                                    href="{{ url("$data->url") }}">
+                                                <a href="{{ url("$data->url") }}">
                                                     <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>
