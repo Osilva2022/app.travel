@@ -14,16 +14,28 @@
                 [728, 90]
             ], 'div-gpt-ad-1620253079354-0').addService(googletag.pubads());
             googletag.defineSlot('/21855382314/tt-interior-lb-footer', [
-                [300, 250],
+                [250, 225],
                 [728, 90]
             ], 'div-gpt-ad-1620254429918-0').addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-interior-mr-1', [300, 250], 'div-gpt-ad-1620254953532-0')
+            googletag.defineSlot('/21855382314/tt-interior-mr-1', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620254953532-0')
                 .addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-interior-mr-2', [300, 250], 'div-gpt-ad-1620256146834-0')
+            googletag.defineSlot('/21855382314/tt-interior-mr-2', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620256146834-0')
                 .addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-interior-mr-3', [300, 250], 'div-gpt-ad-1620256332338-0')
+            googletag.defineSlot('/21855382314/tt-interior-mr-3', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620256332338-0')
                 .addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-interior-mr-4', [300, 250], 'div-gpt-ad-1620256703184-0')
+            googletag.defineSlot('/21855382314/tt-interior-mr-4', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620256703184-0')
                 .addService(googletag.pubads());
             googletag.defineSlot('/21855382314/tt-interior-lb-2', [
                 [320, 50],
@@ -42,14 +54,16 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container" style="max-width: 1024px;">
-            <div class="row">
-                <!--ads /21855382314/tt-interior-lb-1 -->
-                <div id='div-gpt-ad-1620253079354-0' class="col d-flex justify-content-center" style='width: 300px;'>
-                    <script>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620253079354-0');
-                        });
-                    </script>
+            <div class="row mb-3">
+                <div class="col">
+                    <!--ads /21855382314/tt-interior-lb-1 -->
+                    <div id="div-gpt-ad-1620253079354-0" class="text-center">
+                        <script>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620253079354-0');
+                            });
+                        </script>
+                    </div>
                 </div>
             </div>
             <div class="row mb-3">
@@ -91,7 +105,7 @@
                 <!-- MENU RUTA -->
             </div>
             <div class="row g-4 mb-4">
-                <div class="col-md-7 col-lg-8">
+                <div class="col-md-7 col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
                             <img src="{{ images($post->image) }}" alt="" width="100%" height="auto"
@@ -120,108 +134,108 @@
                             </div>
                         </div>
                         <!-- POST / NOTA -->
-                        <div class="col-12 mb-4 px-4 mx-2 post-cont">
+                        <div class="col-12 px-4 post-cont">
                             {!! str_replace(
                                 'caption',
                                 'div class="sp-caption"',
                                 str_replace('[', '<', str_replace(']', '>', $post->content)),
                             ) !!}
                         </div>
-                        {{-- <div class="col-12 mb-4 px-4 mx-2 post-cont">
-                            <pre>
-                                {{ $post->content }}
-                            </pre>
-                        </div> --}}
                         <!-- POST / NOTA -->
+                        <div class="col-12">
+                            <!--ads /21855382314/tt-interior-lb-2 -->
+                            <div id="div-gpt-ad-1636587242560-0" class="add-banner text-center">
+                                <script>
+                                    googletag.cmd.push(function() {
+                                        googletag.display('div-gpt-ad-1636587242560-0');
+                                    });
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-lg-4">
-                    <div class="card-more-posts p-4">
-                        <div class="row row-cols-1 g-4 pb-4">
-                            <h2 class="mb-0">More {{ $post->category }}</h2>
-                            @foreach ($more_posts as $data)
-                                <div class="col">
-                                    <div class="card card-secundario">
-                                        <div class="row">
-                                            <div class="col card-head-secundario">
-                                                <a href="{{ url("$data->url") }}">
-                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
-                                                </a>
-                                            </div>
-                                            <div class="col-6 card-body-secundario">
-                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="etiqueta-post mb-2"
-                                                        style="background:{{ $data->destination_color }};">
-                                                        {{ $data->destination }}
-                                                    </span>
-                                                </a>
-                                                <a href="{{ url("$data->url") }}">
-                                                    <h3 class="card-title-secundario">{{ $data->title }}</h3>
-                                                </a>
-                                                <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
-                                                </small>
+                <div class="col-md-5 col-lg-4 g-4">
+                    <div class="row row-cols-1 g-4">
+                        <div class="col">
+                            <div class="card-more-posts p-4">
+                                <div class="row row-cols-1 g-4 pb-4">
+                                    <h2 class="mb-0">More {{ $post->category }}</h2>
+                                    @foreach ($more_posts as $data)
+                                        <div class="col">
+                                            <div class="card card-secundario">
+                                                <div class="row">
+                                                    <div class="col card-head-secundario">
+                                                        <a href="{{ url("$data->url") }}">
+                                                            <img src="{{ images($data->image) }}"
+                                                                class="card-img-secundario">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-6 card-body-secundario">
+                                                        <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                            <span class="etiqueta-post mb-2"
+                                                                style="background:{{ $data->destination_color }};">
+                                                                {{ $data->destination }}
+                                                            </span>
+                                                        </a>
+                                                        <a href="{{ url("$data->url") }}">
+                                                            <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                        </a>
+                                                        <small class="text-muted">
+                                                            {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                        </small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div id='div-gpt-ad-1620254429918-0' class="col d-flex justify-content-center">
-                            <script>
-                                googletag.cmd.push(function() {
-                                    googletag.display('div-gpt-ad-1620254429918-0');
-                                });
-                            </script>
-                        </div>
-                        <!-- /21855382314/tt-interior-mr-1 -->
-                        <div id='div-gpt-ad-1620254953532-0' style='width: 300px; height: 250px;'>
-                            <script>
-                                googletag.cmd.push(function() {
-                                    googletag.display('div-gpt-ad-1620254953532-0');
-                                });
-                            </script>
-                        </div>
-                        <!-- /21855382314/tt-interior-mr-2 -->
-                        <div id='div-gpt-ad-1620256146834-0' style='width: 300px; height: 250px;'>
-                            <script>
-                                googletag.cmd.push(function() {
-                                    googletag.display('div-gpt-ad-1620256146834-0');
-                                });
-                            </script>
+                    <div class="row row-cols-1 py-4 px-0 g-4">
+                        <div class="col">
+                            <!-- /21855382314/tt-interior-mr-1 -->
+                            <div id="div-gpt-ad-1620254953532-0" class="text-center">
+                                <script>
+                                    googletag.cmd.push(function() {
+                                        googletag.display('div-gpt-ad-1620254953532-0');
+                                    });
+                                </script>
+                            </div>
                         </div>
 
-                        <!-- /21855382314/tt-interior-mr-3 -->
-                        <div id='div-gpt-ad-1620256332338-0' style='width: 300px; height: 250px;'>
-                            <script>
-                                googletag.cmd.push(function() {
-                                    googletag.display('div-gpt-ad-1620256332338-0');
-                                });
-                            </script>
+                        <div class="col">
+                            <!-- /21855382314/tt-interior-mr-2 -->
+                            <div id="div-gpt-ad-1620256146834-0" class="text-center">
+                                <script>
+                                    googletag.cmd.push(function() {
+                                        googletag.display('div-gpt-ad-1620256146834-0');
+                                    });
+                                </script>
+                            </div>
                         </div>
 
-                        <!-- /21855382314/tt-interior-mr-4 -->
-                        <div id='div-gpt-ad-1620256703184-0' style='width: 300px; height: 250px;'>
-                            <script>
-                                googletag.cmd.push(function() {
-                                    googletag.display('div-gpt-ad-1620256703184-0');
-                                });
-                            </script>
+                        <div class="col">
+                            <!-- /21855382314/tt-interior-mr-3 -->
+                            <div id="div-gpt-ad-1620256332338-0" class="text-center">
+                                <script>
+                                    googletag.cmd.push(function() {
+                                        googletag.display('div-gpt-ad-1620256332338-0');
+                                    });
+                                </script>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-
-                <!--ads /21855382314/tt-interior-lb-2 -->
-                <div class="row">
-                    <div id='div-gpt-ad-1636587242560-0' style='min-width: 320px; min-height: 50px;'>
-                        <script>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1636587242560-0');
-                            });
-                        </script>
+                        <div class="col">
+                            <!-- /21855382314/tt-interior-mr-4 -->
+                            <div id="div-gpt-ad-1620256703184-0" class="text-center">
+                                <script>
+                                    googletag.cmd.push(function() {
+                                        googletag.display('div-gpt-ad-1620256703184-0');
+                                    });
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
