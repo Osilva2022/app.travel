@@ -1,7 +1,39 @@
 @extends('layouts.app')
 
-<!-- Metadatos -->
-
+<!-- ads -->
+@push('ads')
+    <!-- Tribune Top Leaderboard Interior Notas -->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || {
+            cmd: []
+        };
+        googletag.cmd.push(function() {
+            googletag.defineSlot('/21855382314/tt-interior-lb-1', [
+                [320, 50],
+                [728, 90]
+            ], 'div-gpt-ad-1620253079354-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-lb-footer', [
+                [300, 250],
+                [728, 90]
+            ], 'div-gpt-ad-1620254429918-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-1', [300, 250], 'div-gpt-ad-1620254953532-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-2', [300, 250], 'div-gpt-ad-1620256146834-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-3', [300, 250], 'div-gpt-ad-1620256332338-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-4', [300, 250], 'div-gpt-ad-1620256703184-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-lb-2', [
+                [320, 50],
+                [728, 90]
+            ], 'div-gpt-ad-1636587242560-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+@endpush
 
 <!-- content -->
 @section('content')
@@ -10,6 +42,16 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container" style="max-width: 1024px;">
+            <div class="row">
+                <!--ads /21855382314/tt-interior-lb-1 -->
+                <div id='div-gpt-ad-1620253079354-0' class="col d-flex justify-content-center" style='width: 300px;'>
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620253079354-0');
+                        });
+                    </script>
+                </div>
+            </div>
             <div class="row mb-3">
                 <div class="col col-md-4 col-lg-6">
                     <span class="badge etiqueta-categoria"
@@ -125,6 +167,61 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                    <div class="row">
+                        <div id='div-gpt-ad-1620254429918-0' class="col d-flex justify-content-center">
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620254429918-0');
+                                });
+                            </script>
+                        </div>
+                        <!-- /21855382314/tt-interior-mr-1 -->
+                        <div id='div-gpt-ad-1620254953532-0' style='width: 300px; height: 250px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620254953532-0');
+                                });
+                            </script>
+                        </div>
+                        <!-- /21855382314/tt-interior-mr-2 -->
+                        <div id='div-gpt-ad-1620256146834-0' style='width: 300px; height: 250px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620256146834-0');
+                                });
+                            </script>
+                        </div>
+
+                        <!-- /21855382314/tt-interior-mr-3 -->
+                        <div id='div-gpt-ad-1620256332338-0' style='width: 300px; height: 250px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620256332338-0');
+                                });
+                            </script>
+                        </div>
+
+                        <!-- /21855382314/tt-interior-mr-4 -->
+                        <div id='div-gpt-ad-1620256703184-0' style='width: 300px; height: 250px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620256703184-0');
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--ads /21855382314/tt-interior-lb-2 -->
+                <div class="row">
+                    <div id='div-gpt-ad-1636587242560-0' style='min-width: 320px; min-height: 50px;'>
+                        <script>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1636587242560-0');
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

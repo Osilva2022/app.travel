@@ -77,7 +77,7 @@
                         </ul>
                     </address>
                 </div>
-                {{-- <div class="col text-md-start text-white text-center">
+                <div class="col text-md-start text-white text-center">
                     <ul class="nav justify-content-center flex-column ">
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('reviews') }}">
@@ -100,7 +100,7 @@
                             </a>
                         </li>
                     </ul>
-                </div> --}}
+                </div>
                 {{-- <div class="col text-center text-white">
                     <label class="text-white">Subscribe</label>
                     <div class="input-group mb-3 justify-content-center">
@@ -109,7 +109,7 @@
                         <button class="btn btn-light" style="color: #243A85" type="button" id="button-addon2"><i
                                 class="bi bi-send"></i></button>
                     </div>
-                </div> --}}
+                </div>  --}}
                 <div class="col text-center text-white">
                     <h5 class="text-white text-center" style="padding: 2px;">Social Media</h5>
                     <ul class="nav pb-2 mb-2 justify-content-center">

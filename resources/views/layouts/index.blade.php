@@ -164,7 +164,7 @@
             </div>
             <!-- ads /21855382314/tt-home-lb-2 -->
             <div class="row">
-                <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px">
+                <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px" style='width: 300px; height: 250px;'>
                     <script>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620235535381-0');
