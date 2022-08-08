@@ -48,6 +48,7 @@
             });
         });
     </script>
+    @stack('ads')
 </head>
 
 <body class="p-0">

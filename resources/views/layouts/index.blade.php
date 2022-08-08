@@ -26,7 +26,29 @@
     <meta name="twitter:description"
         content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <meta name="twitter:image" content="{{ asset('img/svg/tribune-travel-color.svg') }}">
+
 @endpush
+
+<!-- ads -->
+@push('ads')
+<!-- Tribune Top Leaderboard Home-->
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21855382314/tt-home-lb-1', [[728, 90], [320, 50]], 'div-gpt-ad-1620235812535-0').addService(googletag.pubads());
+    googletag.defineSlot('/21855382314/tt-home-lb-2', [[728, 90], [320, 50]], 'div-gpt-ad-1620235535381-0').addService(googletag.pubads());
+    googletag.defineSlot('/21855382314/tt-home-lb-3', [[728, 90], [320, 50]], 'div-gpt-ad-1620236451767-0').addService(googletag.pubads());
+    googletag.defineSlot('/21855382314/tt-home-lb-4', [[320, 50], [728, 90]], 'div-gpt-ad-1620236955324-0').addService(googletag.pubads());
+    googletag.defineSlot('/21855382314/tt-home-lb-5', [[320, 50], [728, 90]], 'div-gpt-ad-1620239881317-0').addService(googletag.pubads());
+    googletag.defineSlot('/21855382314/tt-home-lb-footer', [[728, 90], [320, 50]], 'div-gpt-ad-1620253311869-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+@endpush
+
 <!-- content -->
 @section('content')
     <header>
@@ -35,6 +57,13 @@
     </header>
     <main>
         <div class="container" style="max-width: 1024px;">
+
+            <!--ads /21855382314/tt-home-lb-1 -->
+            <div id='div-gpt-ad-1620235812535-0' class="text-center" style="margin-top: 10px">
+                <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1620235812535-0'); });
+                </script>
+            </div>
             <!-- REVIEWS -->
             <h2 class="my-4">Tribune Reviews</h2>
             <div class="row g-4">
@@ -110,6 +139,12 @@
                     <a href="{{ route('reviews') }}" class="btn-view-more" type="button">More
                         Reviews</a>
                 </div>
+                <!-- ads /21855382314/tt-home-lb-2 -->
+                <div id='div-gpt-ad-1620235535381-0' class="text-center" style="margin-top: 10px">
+                    <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1620235535381-0'); });
+                    </script>
+                </div>
             </div>
             <!-- REVIEWS -->
             <div class="row">
@@ -178,9 +213,17 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    <div class="col-12 my-4 d-flex justify-content-center">
-                                        <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
-                                            {{ $data->name }}</a>
+                                    <div class="row">
+                                        <div class="col my-4 d-flex justify-content-center">
+                                            <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
+                                                {{ $data->name }}</a>
+                                        </div>
+                                        <!-- ads /21855382314/tt-home-lb-3 -->
+                                        <div id='div-gpt-ad-1620236451767-0' class="text-center">
+                                            <script>
+                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1620236451767-0'); });
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -257,6 +300,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ads /21855382314/tt-home-lb-5 -->
+                    <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
+                        <script>
+                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1620239881317-0'); });
+                        </script>
+                    </div>
                 </div>
             </div>
             <?php endif; ?>
@@ -292,6 +341,12 @@
                 </div>
                 <div class="col my-4 d-flex justify-content-center">
                     <a href="{{ route('events') }}" class="btn-view-more" type="button">See the calendar</a>
+                </div>
+                <!-- ads /21855382314/tt-home-lb-4 -->
+                <div id='div-gpt-ad-1620236955324-0' class="text-center">
+                    <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1620236955324-0'); });
+                    </script>
                 </div>
             </div>
             <!-- EVENTS -->
@@ -368,15 +423,18 @@
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
                     <a href="{{ route('news') }}" class="btn-view-more" type="button">More
-                        news</a>
+                        News</a>
                 </div>
+                <!--ads /21855382314/tt-home-lb-footer -->
+                <div id='div-gpt-ad-1620253311869-0' class="text-center">
+                    <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1620253311869-0'); });
+                    </script>
+                </div>
+
             </div>
             <!-- NEWS -->
-            <div class="row">
-                <div class="col-12">
-                    <hr>
-                </div>
-            </div>
+           
 
     </main>
 @endsection
