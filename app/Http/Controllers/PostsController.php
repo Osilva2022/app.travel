@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\PostAll;
 use App\Models\Taxonomy;
 use App\Models\Tag;
 use App\Models\Term;
@@ -151,9 +152,59 @@ class PostsController extends Controller
         }
     }
 
-    public function index(): View
+    function preview($id)
     {
-        $destinations = DB::select("SELECT * FROM travel_destinations");//Aqui el error***
+        $posts = DB::select("SELECT 
+            *
+        FROM
+            travel_all_posts
+                LEFT JOIN
+            (SELECT 
+                u.user_id,
+                    p.meta_value AS avatar
+            FROM
+                travel_usermeta AS u, travel_postmeta AS p
+            WHERE
+                u.meta_key = 'travel_user_avatar'
+                    AND u.meta_value = p.post_id
+                    AND p.meta_key = '_wp_attached_file') AS q ON travel_all_posts.author_id = q.user_id
+        WHERE
+            id_post = $id
+        ORDER BY post_date DESC;");   
+
+        $post = $posts[0];
+        $category = $post->category_slug;
+        $destino = $post->destination_slug;
+        $more_posts = DB::select("SELECT * FROM travel_all_posts 
+            WHERE category_slug = '$post->category_slug'
+            AND id_post != $post->id_post
+                ORDER BY post_date DESC
+                LIMIT 3;");
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $this->metadatos($post, 'post');
+        //dd($more_posts);
+
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
+
+    }
+
+    public function index(Request $request)
+    {
+        if (isset($request->p)) {            
+            $id = $request->p;
+            
+            $validate = PostAll::where('id_post', $id)->first();
+
+            if(is_null($validate)) {
+                // return abort(404);
+                return redirect()->route('home');
+            }
+            return $this->preview($id);
+        }
+        
+
+        $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
         $categories_data = $this->returndata('categories');
@@ -188,7 +239,7 @@ class PostsController extends Controller
     }
 
     public function post($destino, $category, $slug): View
-    {
+    {        
         $posts = DB::select("SELECT 
                                     *
                                 FROM
@@ -207,6 +258,7 @@ class PostsController extends Controller
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
         $post = $posts[0];
+        
         $more_posts = DB::select("SELECT * FROM travel_all_posts 
                                     WHERE category_slug = '$post->category_slug'
                                     AND id_post != $post->id_post
