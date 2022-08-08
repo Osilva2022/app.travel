@@ -16,7 +16,6 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="card border-0">
-                                            <div class="opacity-effect" style="border-radius: 1rem"></div>
                                             <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                                 <span class="badge etiqueta-img"
                                                     style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
@@ -29,6 +28,7 @@
                                                             width="25" height="25">
                                                     </span>
                                                 @endif
+                                                <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                 <img src="{{ images($data->image) }}" alt="{{ $data->title }}"
                                                     class="img-category-principal">
                                                 <h3 class="card-title-overlay">
@@ -65,13 +65,13 @@
                                     <div class="card card-secundario h-100">
                                         <div class="row g-0">
                                             <div class="col-12 col-sm-6 col-lg-12">
-                                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                        <span class="badge etiqueta-img"
-                                                            style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
-                                                    </a>
-                                                    <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                        <img src="{{ images($data->image) }}" class="card-img-secundario">
-                                                    </a>
+                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="badge etiqueta-img"
+                                                        style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                                </a>
+                                                <a href="{{ url("$data->url") }}" title="Click to see more">
+                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
+                                                </a>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-12">
                                                 <div class="card-body-secundario h-100">
@@ -117,9 +117,9 @@
                                                 </h3>
                                             </a>
                                             <p class="card-text">
-                                            <small class="text-muted">   
-                                                {{ date('M/d/y', strtotime($data->post_date)) }}
-                                            </small>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                </small>
                                             </p>
                                         </div>
                                     </div>

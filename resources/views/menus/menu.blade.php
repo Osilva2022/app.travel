@@ -23,8 +23,8 @@
                     <a class="nav-link text-white" href="{{ route('events') }}">Events</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="destination-dropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="destination-dropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Destinations
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="destination-dropdown">

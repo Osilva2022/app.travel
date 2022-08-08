@@ -56,7 +56,7 @@
                                 style="aspect-ratio:16/9;">
                         </div>
                         <div class="col-12 mt-2">
-                            <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p>
+                            {{-- <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p> --}}
                         </div>
                         <div class="col-12">
                             <h1>{{ $post->title }}</h1>
@@ -78,9 +78,18 @@
                             </div>
                         </div>
                         <!-- POST / NOTA -->
-                        <div class="col-12 mb-4 post-cont">
-                            {!! $post->content !!}
+                        <div class="col-12 mb-4 px-4 mx-2 post-cont">
+                            {!! str_replace(
+                                'caption',
+                                'div class="sp-caption"',
+                                str_replace('[', '<', str_replace(']', '>', $post->content)),
+                            ) !!}
                         </div>
+                        {{-- <div class="col-12 mb-4 px-4 mx-2 post-cont">
+                            <pre>
+                                {{ $post->content }}
+                            </pre>
+                        </div> --}}
                         <!-- POST / NOTA -->
                     </div>
                 </div>
@@ -93,8 +102,7 @@
                                     <div class="card card-secundario">
                                         <div class="row">
                                             <div class="col card-head-secundario">
-                                                <a
-                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                <a href="{{ url("$data->url") }}">
                                                     <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>

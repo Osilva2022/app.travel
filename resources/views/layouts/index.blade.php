@@ -183,11 +183,6 @@
                             @endif
                             <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}"
                                 role="tabpanel" aria-labelledby="{{ $data->term_id }}-tab">
-                                <div class="row my-3">
-                                    <div class="col-12">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class="col-sm-12 mb-2">
                                         <div class="owl-carousel owl-theme ttd-carousel" id="">

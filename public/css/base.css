@@ -165,7 +165,7 @@ p {
     font-style: normal;
     font-weight: var(--tt-regular);
     color: #101820;
-    line-height: 1.150rem;
+    line-height: 1.5rem;
 }
 
 small {
@@ -433,7 +433,7 @@ a {
     font-size: 1rem;
     line-height: 1.5rem;
     color: #101820;
-    letter-spacing: 3;
+    letter-spacing: 3 !important;
 }
 
 .post-cont img {
@@ -444,6 +444,22 @@ a {
     margin-right: auto;
     margin-top: 24px;
     margin-bottom: 24px;
+}
+
+.post-cont blockquote {
+    font-style: italic;
+    color: rgba(var(33, 37, 41), .75)!important;
+}
+
+.post-cont .sp-caption {
+    font-size: smaller;
+    font-style: italic;
+    color: rgba(var(33, 37, 41), .75)!important;
+    text-align: center;
+}
+
+.post-cont .sp-caption img {
+    margin-bottom: 10px;
 }
 
 .card-principal-post,

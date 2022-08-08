@@ -32,7 +32,7 @@
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1 id="t1" class="text-white">{{ $dd->name }}</h1>
-                        <p class="text-white">Some representative placeholder content for the second slide of the carousel.</p>
+                        <p class="text-white">{{ $dd->description }}</p>
                     </div>
                 </div>
             </div>
