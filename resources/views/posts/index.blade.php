@@ -105,7 +105,7 @@
                 <!-- MENU RUTA -->
             </div>
             <div class="row g-4 mb-4">
-                <div class="col-md-7 col-lg-8 g-4">
+                <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
                             <img src="{{ images($post->image) }}" alt="" width="100%" height="auto"
@@ -125,7 +125,9 @@
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <b>{{ $post->author_name }}</b>
+                                        <a href="{{ route('author', $post->author_id) }}">
+                                            <b>{{ $post->author_name }}</b>
+                                        </a>
                                     </p>
                                     <p class="card-text"><small
                                             class="text-muted">{{ date('F d, Y', strtotime($post->post_date)) }}</small>
@@ -154,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-lg-4 g-4">
+                <div class="col-lg-4 g-4">
                     <div class="row row-cols-1 g-4">
                         <div class="col">
                             <div class="card-more-posts p-4">
@@ -192,48 +194,60 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row row-cols-1 py-4 px-0 g-4">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 p-4 px-0 g-4">
                         <div class="col">
-                            <!-- /21855382314/tt-interior-mr-1 -->
-                            <div id="div-gpt-ad-1620254953532-0" class="text-center">
-                                <script>
-                                    googletag.cmd.push(function() {
-                                        googletag.display('div-gpt-ad-1620254953532-0');
-                                    });
-                                </script>
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-1 -->
+                                <div id="div-gpt-ad-1620254953532-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620254953532-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
                             </div>
                         </div>
 
                         <div class="col">
-                            <!-- /21855382314/tt-interior-mr-2 -->
-                            <div id="div-gpt-ad-1620256146834-0" class="text-center">
-                                <script>
-                                    googletag.cmd.push(function() {
-                                        googletag.display('div-gpt-ad-1620256146834-0');
-                                    });
-                                </script>
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-2 -->
+                                <div id="div-gpt-ad-1620256146834-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620256146834-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
                             </div>
                         </div>
 
                         <div class="col">
-                            <!-- /21855382314/tt-interior-mr-3 -->
-                            <div id="div-gpt-ad-1620256332338-0" class="text-center">
-                                <script>
-                                    googletag.cmd.push(function() {
-                                        googletag.display('div-gpt-ad-1620256332338-0');
-                                    });
-                                </script>
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-3 -->
+                                <div id="div-gpt-ad-1620256332338-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620256332338-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
                             </div>
                         </div>
 
                         <div class="col">
-                            <!-- /21855382314/tt-interior-mr-4 -->
-                            <div id="div-gpt-ad-1620256703184-0" class="text-center">
-                                <script>
-                                    googletag.cmd.push(function() {
-                                        googletag.display('div-gpt-ad-1620256703184-0');
-                                    });
-                                </script>
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-4 -->
+                                <div id="div-gpt-ad-1620256703184-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620256703184-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
                             </div>
                         </div>
                     </div>

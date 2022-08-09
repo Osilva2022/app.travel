@@ -335,16 +335,18 @@ class PostsController extends Controller
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
     }
 
-    public function author($author)
+    public function author($author_id)
     {     
         
-        $posts = DB::select("SELECT * FROM travel_all_posts WHERE author_name = '$author' ORDER BY post_date DESC;");
-        $destinationposts = $this->paginate($posts, 12);       
+        $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE author_id = '$author_id' ORDER BY post_date DESC;");
+        $author_info = DB::select("SELECT * FROM travel_users_info WHERE ID = '$author_id';");
+        $author = $author_info[0];
+        $posts = $this->paginate($posts_info, 6);       
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
         
-        return view('authors.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data'));
+        return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author'));
     }
 
     public function things(Request $request)
