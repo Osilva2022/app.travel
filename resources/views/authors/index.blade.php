@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Authors'])
 
 <!-- ads -->
 @push('ads')
@@ -46,7 +46,9 @@
         });
     </script>
 @endpush
-
+@section('page-title')
+Author |
+@endsection
 <!-- content -->
 @section('content')
     <header>
