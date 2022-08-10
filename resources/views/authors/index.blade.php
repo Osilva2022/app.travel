@@ -58,15 +58,16 @@
             <div class="row g-4">
                 <div class="col-12">
                     <div class="card-estatica p-4">
-                        <h1 class="text-center">Author</h1>
                         <div class="row">
-                            <div class="col-auto d-flex justify-content-center align-items-center">
+                            <div class="col-lg-auto d-flex justify-content-center align-items-center">
                                 <img src="{{ images($author->image) }}" class="img-fluid rounded-circle" alt="img_author"
-                                    width="150" height="150">
+                                width="150" height="150">
                             </div>
-                            <div class="col d-flex flex-column justify-content-center">
+                            <div class="col d-flex flex-column justify-content-center text-center text-lg-start">
+                                <h1 class="">Author</h1>
                                 <h2>{{ $author->first_name }} {{ $author->last_name }}</h2>
-                                <p>{{ $author->description }}</p>
+                                <p style="margin-bottom: .5rem;">{{ $author->description }}</p>
+                                <span class="text-muted" style="font-size: small;">{{ count($posts) }} Posts</span>
                             </div>
                         </div>
                     </div>
