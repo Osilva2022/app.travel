@@ -547,6 +547,8 @@ a {
     max-width: 1024px;
     z-index: 3;
     text-align: center;
+    padding-left: .75rem;
+    padding-right: .75rem;
 }
 
 .breadcrumb-item {
