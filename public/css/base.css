@@ -541,7 +541,7 @@ a {
 .info-over {
     position: absolute;
     width: 100%;
-    top: 30%;
+    max-width: 1024px;
     z-index: 3;
     text-align: center;
 }
