@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-title')
+{{ $destination_data[0]->name }} |
+@endsection
 @section('content')
     <header>
         @include('menus.menu_secundario')
