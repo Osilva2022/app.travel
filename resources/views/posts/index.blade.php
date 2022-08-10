@@ -1,7 +1,51 @@
 @extends('layouts.app')
 
-<!-- Metadatos -->
-
+<!-- ads -->
+@push('ads')
+    <!-- Tribune Top Leaderboard Interior Notas -->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || {
+            cmd: []
+        };
+        googletag.cmd.push(function() {
+            googletag.defineSlot('/21855382314/tt-interior-lb-1', [
+                [320, 50],
+                [728, 90]
+            ], 'div-gpt-ad-1620253079354-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-lb-footer', [
+                [250, 225],
+                [728, 90]
+            ], 'div-gpt-ad-1620254429918-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-1', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620254953532-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-2', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620256146834-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-3', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620256332338-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-mr-4', [
+                    [250, 225],
+                    [300, 250]
+                ], 'div-gpt-ad-1620256703184-0')
+                .addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-interior-lb-2', [
+                [320, 50],
+                [728, 90]
+            ], 'div-gpt-ad-1636587242560-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+@endpush
 
 <!-- content -->
 @section('content')
@@ -10,6 +54,18 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container" style="max-width: 1024px;">
+            <div class="row mb-3">
+                <div class="col">
+                    <!--ads /21855382314/tt-interior-lb-1 -->
+                    <div id="div-gpt-ad-1620253079354-0" class="text-center">
+                        <script>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620253079354-0');
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
             <div class="row mb-3">
                 <div class="col col-md-4 col-lg-6">
                     <span class="badge etiqueta-categoria"
@@ -49,14 +105,14 @@
                 <!-- MENU RUTA -->
             </div>
             <div class="row g-4 mb-4">
-                <div class="col-md-7 col-lg-8">
+                <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
                             <img src="{{ images($post->image) }}" alt="" width="100%" height="auto"
                                 style="aspect-ratio:16/9;">
                         </div>
                         <div class="col-12 mt-2">
-                            <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p>
+                            {{-- <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p> --}}
                         </div>
                         <div class="col-12">
                             <h1>{{ $post->title }}</h1>
@@ -69,7 +125,9 @@
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <b>{{ $post->author_name }}</b>
+                                        <a href="{{ route('author', $post->author_id) }}">
+                                            <b>{{ $post->author_name }}</b>
+                                        </a>
                                     </p>
                                     <p class="card-text"><small
                                             class="text-muted">{{ date('F d, Y', strtotime($post->post_date)) }}</small>
@@ -78,44 +136,119 @@
                             </div>
                         </div>
                         <!-- POST / NOTA -->
-                        <div class="col-12 mb-4 post-cont">
-                            {!! $post->content !!}
+                        <div class="col-12 px-4 post-cont">
+                            {!! str_replace(
+                                'caption',
+                                'div class="sp-caption"',
+                                str_replace('[', '<', str_replace(']', '>', $post->content)),
+                            ) !!}
                         </div>
                         <!-- POST / NOTA -->
+                        <div class="col-12">
+                            <!--ads /21855382314/tt-interior-lb-2 -->
+                            <div id="div-gpt-ad-1636587242560-0" class="add-banner text-center">
+                                <script>
+                                    googletag.cmd.push(function() {
+                                        googletag.display('div-gpt-ad-1636587242560-0');
+                                    });
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-lg-4">
-                    <div class="card-more-posts p-4">
-                        <div class="row row-cols-1 g-4 pb-4">
-                            <h2 class="mb-0">More {{ $post->category }}</h2>
-                            @foreach ($more_posts as $data)
-                                <div class="col">
-                                    <div class="card card-secundario">
-                                        <div class="row">
-                                            <div class="col card-head-secundario">
-                                                <a
-                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
-                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
-                                                </a>
-                                            </div>
-                                            <div class="col-6 card-body-secundario">
-                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="etiqueta-post mb-2"
-                                                        style="background:{{ $data->destination_color }};">
-                                                        {{ $data->destination }}
-                                                    </span>
-                                                </a>
-                                                <a href="{{ url("$data->url") }}">
-                                                    <h3 class="card-title-secundario">{{ $data->title }}</h3>
-                                                </a>
-                                                <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
-                                                </small>
+                <div class="col-lg-4 g-4">
+                    <div class="row row-cols-1 g-4">
+                        <div class="col">
+                            <div class="card-more-posts p-4">
+                                <div class="row row-cols-1 g-4 pb-4">
+                                    <h2 class="mb-0">More {{ $post->category }}</h2>
+                                    @foreach ($more_posts as $data)
+                                        <div class="col">
+                                            <div class="card card-secundario">
+                                                <div class="row">
+                                                    <div class="col card-head-secundario">
+                                                        <a href="{{ url("$data->url") }}">
+                                                            <img src="{{ images($data->image) }}"
+                                                                class="card-img-secundario">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-6 card-body-secundario">
+                                                        <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                            <span class="etiqueta-post mb-2"
+                                                                style="background:{{ $data->destination_color }};">
+                                                                {{ $data->destination }}
+                                                            </span>
+                                                        </a>
+                                                        <a href="{{ url("$data->url") }}">
+                                                            <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                        </a>
+                                                        <small class="text-muted">
+                                                            {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                        </small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 p-4 px-0 g-4">
+                        <div class="col">
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-1 -->
+                                <div id="div-gpt-ad-1620254953532-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620254953532-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-2 -->
+                                <div id="div-gpt-ad-1620256146834-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620256146834-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-3 -->
+                                <div id="div-gpt-ad-1620256332338-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620256332338-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card-add">
+                                <!-- /21855382314/tt-interior-mr-4 -->
+                                <div id="div-gpt-ad-1620256703184-0" class="text-center">
+                                    <script>
+                                        googletag.cmd.push(function() {
+                                            googletag.display('div-gpt-ad-1620256703184-0');
+                                        });
+                                    </script>
+                                </div>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                            </div>
                         </div>
                     </div>
                 </div>

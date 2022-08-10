@@ -22,6 +22,7 @@
                                             </a>
                                             <a href="{{ url("$data->url") }}" title="Click to see more"
                                                 class="text-decoration-none text-muted">
+                                                <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                 <img src="{{ images($data->image) }}" class="img-category-principal"
                                                     id="img-review">
                                             </a>

@@ -27,6 +27,46 @@
         content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <meta name="twitter:image" content="{{ asset('img/svg/tribune-travel-color.svg') }}">
 @endpush
+
+<!-- ads -->
+@push('ads')
+    <!-- Tribune Top Leaderboard Home-->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || {
+            cmd: []
+        };
+        googletag.cmd.push(function() {
+            googletag.defineSlot('/21855382314/tt-home-lb-1', [
+                [728, 90],
+                [320, 50]
+            ], 'div-gpt-ad-1620235812535-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-home-lb-2', [
+                [728, 90],
+                [320, 50]
+            ], 'div-gpt-ad-1620235535381-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-home-lb-3', [
+                [728, 90],
+                [320, 50]
+            ], 'div-gpt-ad-1620236451767-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-home-lb-4', [
+                [320, 50],
+                [728, 90]
+            ], 'div-gpt-ad-1620236955324-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-home-lb-5', [
+                [320, 50],
+                [728, 90]
+            ], 'div-gpt-ad-1620239881317-0').addService(googletag.pubads());
+            googletag.defineSlot('/21855382314/tt-home-lb-footer', [
+                [728, 90],
+                [320, 50]
+            ], 'div-gpt-ad-1620253311869-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+@endpush
+
 <!-- content -->
 @section('content')
     <header>
@@ -35,6 +75,17 @@
     </header>
     <main>
         <div class="container" style="max-width: 1024px;">
+
+            <!--ads /21855382314/tt-home-lb-1 -->
+            <div class="row">
+                <div id='div-gpt-ad-1620235812535-0' class="col text-center" style="margin-top: 10px">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620235812535-0');
+                        });
+                    </script>
+                </div>
+            </div>
             <!-- REVIEWS -->
             <h2 class="my-4">Tribune Reviews</h2>
             <div class="row g-4">
@@ -111,6 +162,16 @@
                         Reviews</a>
                 </div>
             </div>
+            <!-- ads /21855382314/tt-home-lb-2 -->
+            <div class="row">
+                <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px" style='width: 300px; height: 250px;'>
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620235535381-0');
+                        });
+                    </script>
+                </div>
+            </div>
             <!-- REVIEWS -->
             <div class="row">
                 <div class="col-12">
@@ -162,8 +223,8 @@
                                                         <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                         <a
                                                             href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
-                                                            <img src="{{ images($ttd->image) }}" alt="{{ $ttd->title }}"
-                                                                class="carousel-img">
+                                                            <img src="{{ images($ttd->image) }}"
+                                                                alt="{{ $ttd->title }}" class="carousel-img">
                                                             <div class="container">
                                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                                     <h4>{{ $ttd->title }}</h4>
@@ -178,9 +239,11 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    <div class="col-12 my-4 d-flex justify-content-center">
-                                        <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
-                                            {{ $data->name }}</a>
+                                    <div class="row">
+                                        <div class="col my-4 d-flex justify-content-center">
+                                            <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
+                                                {{ $data->name }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +252,16 @@
                 </div>
             </div>
             <!-- TTD -->
+            <!-- ads /21855382314/tt-home-lb-3 -->
+            <div class="row">
+                <div id='div-gpt-ad-1620236451767-0' class="col text-center">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620236451767-0');
+                        });
+                    </script>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <hr>
@@ -260,6 +333,16 @@
                 </div>
             </div>
             <?php endif; ?>
+            <!-- ads /21855382314/tt-home-lb-5 -->
+            <div class="row">
+                <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620239881317-0');
+                        });
+                    </script>
+                </div>
+            </div>
             <!-- Gallery -->
             <div class="row">
                 <div class="col-12">
@@ -292,6 +375,16 @@
                 </div>
                 <div class="col my-4 d-flex justify-content-center">
                     <a href="{{ route('events') }}" class="btn-view-more" type="button">See the calendar</a>
+                </div>
+            </div>
+            <!-- ads /21855382314/tt-home-lb-4 -->
+            <div class="row">
+                <div id='div-gpt-ad-1620236955324-0' class="col text-center">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620236955324-0');
+                        });
+                    </script>
                 </div>
             </div>
             <!-- EVENTS -->
@@ -368,15 +461,21 @@
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
                     <a href="{{ route('news') }}" class="btn-view-more" type="button">More
-                        news</a>
+                        News</a>
                 </div>
             </div>
             <!-- NEWS -->
+            <!--ads /21855382314/tt-home-lb-footer -->
             <div class="row">
-                <div class="col-12">
-                    <hr>
+                <div id='div-gpt-ad-1620253311869-0' class="col text-center">
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620253311869-0');
+                        });
+                    </script>
                 </div>
             </div>
+
 
     </main>
 @endsection
