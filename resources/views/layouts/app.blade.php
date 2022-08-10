@@ -81,22 +81,22 @@
                     <ul class="nav justify-content-center flex-column ">
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('reviews') }}">
-                                <h3 class="text-white mb-2">Reviews</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">Reviews</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('news') }}">
-                                <h3 class="text-white mb-2">News</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">News</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('things') }}">
-                                <h3 class="text-white mb-2">Things To Do</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">Things To Do</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('events') }}">
-                                <h3 class="text-white mb-2">Events</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">Events</h3>
                             </a>
                         </li>
                     </ul>
@@ -164,25 +164,20 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 mb-4">
-                    <div class="row row-cols-3 g-1 justify-content-center text-center">
-                        <div class="col-auto px-4">
+                    <div class="row  g-1 justify-content-center text-center">
+                        <div class="col-md-3 px-4">
                             <a class="text-white" href="https://cps.media/aviso-de-privacidad"
                                 style="text-decoration: none;" target="_blank">
                                 Notice of Privacy
                             </a>
                         </div>
-                        <div class="col-auto px-4">
+                        <div class="col-md-3 px-4">
                             <a class="text-white" href="https://cps.media/declaracion-de-accesibilidad"
                                 style="text-decoration: none;" target="_blank">
                                 Accessibility Policies
                             </a>
                         </div>
-                        <div class="col-auto px-4">
-                            <a class="text-white" href="#" style="text-decoration: none;">
-                                Right of reply
-                            </a>
-                        </div>
-                        <div class="col-auto px-4">
+                        <div class="col-md-3 px-4">
                             <a class="text-white" href="#" style="text-decoration: none;">
                                 Terms and Conditions
                             </a>
