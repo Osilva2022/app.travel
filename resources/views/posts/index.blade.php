@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <a href="{{ route('author', $post->author_id) }}">
+                                        <a href="{{ route('author', $post->user_nicename) }}">
                                             <b>{{ $post->author_name }}</b>
                                         </a>
                                     </p>
