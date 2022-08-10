@@ -60,7 +60,7 @@ Author |
             <div class="row g-4">
                 <div class="col-12">
                     <div class="card-estatica p-4">
-                        <div class="row">
+                        <div class="row g-3">
                             <div class="col-lg-auto d-flex justify-content-center align-items-center">
                                 <img src="{{ images($author->image) }}" class="img-fluid rounded-circle" alt="img_author"
                                 width="150" height="150">

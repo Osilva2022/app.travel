@@ -77,6 +77,9 @@ div.post-cont img {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-travel {
@@ -541,7 +544,7 @@ a {
 .info-over {
     position: absolute;
     width: 100%;
-    top: 30%;
+    max-width: 1024px;
     z-index: 3;
     text-align: center;
 }
