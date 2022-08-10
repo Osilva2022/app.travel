@@ -141,7 +141,7 @@ class PostsController extends Controller
             OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
         } elseif ($type == 'post') {
-            
+
             SEOTools::setTitle($data->title);
             SEOTools::setDescription($data->post_excerpt);
             SEOTools::opengraph()->setUrl(URL::to($data->url));
@@ -170,7 +170,7 @@ class PostsController extends Controller
                     AND p.meta_key = '_wp_attached_file') AS q ON travel_all_posts.author_id = q.user_id
         WHERE
             id_post = $id
-        ORDER BY post_date DESC;");   
+        ORDER BY post_date DESC;");
 
         $post = $posts[0];
         $category = $post->category_slug;
@@ -186,23 +186,22 @@ class PostsController extends Controller
         //dd($more_posts);
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
-
     }
 
     public function index(Request $request)
     {
-        if (isset($request->p)) {            
+        if (isset($request->p)) {
             $id = $request->p;
-            
+
             $validate = PostAll::where('id_post', $id)->first();
 
-            if(is_null($validate)) {
+            if (is_null($validate)) {
                 // return abort(404);
                 return redirect()->route('home');
             }
             return $this->preview($id);
         }
-        
+
 
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
@@ -239,26 +238,28 @@ class PostsController extends Controller
     }
 
     public function post($destino, $category, $slug): View
-    {        
+    {
         $posts = DB::select("SELECT 
                                     *
                                 FROM
                                     travel_all_posts
                                         LEFT JOIN
                                     (SELECT 
-                                        u.user_id,
-                                            p.meta_value AS avatar
+                                        u.user_id, p.meta_value AS avatar, us.user_nicename
                                     FROM
-                                        travel_usermeta AS u, travel_postmeta AS p
+                                        travel_usermeta AS u,
+                                        travel_users AS us,
+                                        travel_postmeta AS p
                                     WHERE
                                         u.meta_key = 'travel_user_avatar'
                                             AND u.meta_value = p.post_id
+                                            AND us.ID = u.user_id
                                             AND p.meta_key = '_wp_attached_file') AS q ON travel_all_posts.author_id = q.user_id
                                 WHERE
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
         $post = $posts[0];
-        
+
         $more_posts = DB::select("SELECT * FROM travel_all_posts 
                                     WHERE category_slug = '$post->category_slug'
                                     AND id_post != $post->id_post
@@ -336,17 +337,18 @@ class PostsController extends Controller
     }
 
     public function author($author_id)
-    {     
-        
-        $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE author_id = '$author_id' ORDER BY post_date DESC;");
-        $author_info = DB::select("SELECT * FROM travel_users_info WHERE ID = '$author_id';");
+    {
+
+        $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
+        //dd($posts_info);
+        $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");
         $author = $author_info[0];
         $no_posts = count($posts_info);
-        $posts = $this->paginate($posts_info, 6);       
+        $posts = $this->paginate($posts_info, 6);
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
-        
+
         return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author', 'no_posts'));
     }
 
