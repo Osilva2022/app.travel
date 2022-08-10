@@ -7,7 +7,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.2rem;">
-        <div class="bg-light hero-image d-flex justify-content-center align-items-center" style="background-image: url({{ images($destination_data[0]->image) }})">
+        <div class="bg-light hero-image" style="background-image: url({{ images($destination_data[0]->image) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
                 <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
