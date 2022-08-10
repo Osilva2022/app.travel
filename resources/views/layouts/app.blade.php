@@ -8,7 +8,7 @@
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
-    <title>Tribune Travel</title>
+    <title>@yield('page-title') Tribune Travel</title>
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 

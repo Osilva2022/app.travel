@@ -341,12 +341,13 @@ class PostsController extends Controller
         $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE author_id = '$author_id' ORDER BY post_date DESC;");
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE ID = '$author_id';");
         $author = $author_info[0];
+        $no_posts = count($posts_info);
         $posts = $this->paginate($posts_info, 6);       
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
         
-        return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author'));
+        return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author', 'no_posts'));
     }
 
     public function things(Request $request)

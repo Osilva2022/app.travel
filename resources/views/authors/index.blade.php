@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Authors'])
 
 <!-- ads -->
 @push('ads')
@@ -46,7 +46,9 @@
         });
     </script>
 @endpush
-
+@section('page-title')
+Author |
+@endsection
 <!-- content -->
 @section('content')
     <header>
@@ -67,7 +69,7 @@
                                 <h1 class="">Author</h1>
                                 <h2>{{ $author->first_name }} {{ $author->last_name }}</h2>
                                 <p style="margin-bottom: .5rem;">{{ $author->description }}</p>
-                                <span class="text-muted" style="font-size: small;">{{ count($posts) }} Posts</span>
+                                <span class="text-muted" style="font-size: small;">{{ $no_posts }} Posts</span>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-title')
+News |
+@endsection
 @section('content')
     <header>
         @include('menus.menu_secundario')

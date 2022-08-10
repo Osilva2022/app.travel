@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-title')
+Events |
+@endsection
 @section('content')
 
     <header>
