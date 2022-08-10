@@ -260,7 +260,7 @@ small {
 .card-body-secundario {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: .75rem;
@@ -270,6 +270,7 @@ small {
 .card-title-secundario {
     font-size: 0.875rem;
     margin: 0;
+    font-weight: 600;
 }
 
 .card-img-secundario {
