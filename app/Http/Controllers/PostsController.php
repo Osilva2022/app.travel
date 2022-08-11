@@ -392,13 +392,19 @@ class PostsController extends Controller
         ");
         //$posts = DB::select("SELECT * FROM travel_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
         $posts = DB::select("SELECT 
-                                    *, IF(orden > 0, orden, 10) AS o
+                                    *
                                 FROM
                                     travel_things_to_do
                                 WHERE destination_slug = '$destination' AND category_slug = '$category'
-                                ORDER BY CAST(o AS DECIMAL) ASC, post_date desc;");
+                                ORDER BY orden desc, title asc, post_date desc;");
         $things = $this->paginate($posts, 4);
-        //dd($things_category);
-        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
+        $things_vip = DB::select("SELECT 
+                                    *
+                                FROM
+                                    travel_things_to_do
+                                WHERE destination_slug = '$destination' AND category_slug = '$category' AND orden = '2'
+                                ORDER BY CAST(orden AS DECIMAL) ASC, post_date desc;");
+        //dd($posts);
+        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_vip', 'things_category', 'things_categories'));
     }
 }

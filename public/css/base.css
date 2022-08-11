@@ -600,6 +600,29 @@ footer .nav-link:hover {
     background-color: #2C449C;
 }
 
+.body-directory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+}
+
+.card-directory {
+    border: solid #fff;
+    border-radius: 1rem;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
+}
+
+.pre-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pre-content>* {
+    margin: 0 !important;
+}
+
 .menu-active .nav-link:hover,
 .menu-active .nav-link:focus,
 .menu-active .dropdown-item:focus,
