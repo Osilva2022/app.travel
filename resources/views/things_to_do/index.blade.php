@@ -10,9 +10,9 @@ Things to Do |
         <div class="bg-light hero-image" style="background-image: url({{ images($destination_data[0]->image) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
-                <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
+                <h1 id="t1" class="text-white">{!! $destination_data[0]->name !!}</h1>
                 <p class="text-white">
-                    {{ $destination_data[0]->description }}
+                    {!! $destination_data[0]->description !!}
                 </p>
             </div>
         </div>
@@ -48,15 +48,15 @@ Things to Do |
                             <div class="card border-0">
                                 <div class="position-relative zoom">
                                     <div class="opacity-effect"
-                                        style="border-radius: 1rem; background:{{ $tc->category_color }};"></div>
-                                    <img src="{{ images($tc->image) }}" class="card-img-secundario">
+                                        style="border-radius: 1rem; background:{!! $tc->category_color !!};"></div>
+                                    <img src="{!! images($tc->image) !!}" class="card-img-secundario">
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title" style="color:{{ $tc->category_color }};">
-                                        {{ str_replace('&amp;', '&', $tc->category) }}
+                                    <h3 class="card-title" style="color:{!! $tc->category_color !!};">
+                                        {!!  $tc->category !!}
                                     </h3>
                                     <p class="card-text" style="color: #7B7F84;">
-                                        {{ $tc->description }}
+                                        {!! $tc->description !!}
                                     </p>
                                 </div>
                             </div>

@@ -89,7 +89,7 @@
             <!-- TTD -->
             <div class="row py-4">
                 <div class="col-12">
-                    <h2 class="text-center mb-4">Things To Do</h2>
+                    <h2 class="text-center mb-4">Guide</h2>
                     <div class="" style="overflow-x: auto;">
                         <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
                             style="min-width: 660px;">
@@ -131,11 +131,11 @@
                                                         <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                         <a
                                                             href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
-                                                            <img src="{{ images($ttd->image) }}" alt="{{ $ttd->title }}"
+                                                            <img src="{{ images($ttd->image) }}" alt="{{ $ttd->post_title }}"
                                                                 class="carousel-img">
                                                             <div class="container">
                                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
-                                                                    <h4>{{ $ttd->title }}</h4>
+                                                                    <h4>{{ $ttd->post_title }}</h4>
                                                                     <p style="bottom:4px; color: white;">
                                                                         {{ $ttd->category }}</p>
                                                                 </div>
