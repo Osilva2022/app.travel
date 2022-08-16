@@ -58,7 +58,7 @@
                             <hr>
                         </div>
                     @endif
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="card-directory" id="directory-item-{!! $data->ID !!}">
                             <div class="row g-2">
                                 {{-- VIP --}}
@@ -69,7 +69,7 @@
                                     }
                                 @endphp
                                 @if ($vip)
-                                    <div class="col-4 d-flex justify-content-center align-items-center position-relative">
+                                    <div class="col-md-4 d-flex justify-content-center position-relative">
                                         <div class="owl-carousel owl-theme directory-carousel dc"
                                             id="dc-{!! $data->ID !!}">
                                             <div class="position-relative">
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                <div class="col-8">
+                                <div class="col-md-8">
                                     <div class="body-directory w-100 h-100 g-2">
                                         <h3 class="card-title mb-2">{!! $data->post_title !!}</h3>
                                         <span><i class="bi bi-info-square"></i> {!! $data->post_content !!}</span>
@@ -95,9 +95,16 @@
                                         @if ($vip)
                                             <div id="cont-info-{!! $data->ID !!}"
                                                 class="cont-info collapse multi-collapse">
+                                                <span><i class="bi bi-map"></i> <a
+                                                        href="https://maps.google.com/?q={{ $data->latitude }},{{ $data->longitude }}"
+                                                        target="_blank">
+                                                        Map View</a></span>
                                                 <span><i class="bi bi-telephone"></i><a href="tel:{!! $data->phone !!}">
                                                         {!! $data->phone !!}</a></span>
                                                 <div class="d-flex justify-content-evenly">
+                                                    <a target="_blank" href="{!! $data->website !!}">
+                                                        <i class="bi bi-house-door" style="font-size: 1.5rem;"></i>
+                                                    </a>
                                                     <a target="_blank" href="{!! $data->facebook !!}">
                                                         <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
                                                     </a>
@@ -108,9 +115,25 @@
                                                         <i class="bi bi-whatsapp" style="font-size: 1.5rem;"></i>
                                                     </a>
                                                 </div>
-                                                <span><i class="bi bi-map"></i> <a
-                                                        href="https://maps.google.com/?q={{ $data->latitude }},{{ $data->longitude }}">Map
-                                                        View</a></span>
+                                                <span><i class="bi bi-clock"></i> Work Hours</span>
+                                                @php
+                                                    $horario = unserialize($data->avaliable);
+                                                    /* var_dump($horario[1]); */
+                                                @endphp
+                                                <span class="ps-4" style="font-size: 14px;">Monday -
+                                                    {{ $horario[1]['off'] == 1 ? 'Close' : $horario[1]['hours'] }}</span>
+                                                <span class="ps-4" style="font-size: 14px;">Tuesday -
+                                                    {{ $horario[2]['off'] == 1 ? 'Close' : $horario[2]['hours'] }}</span>
+                                                <span class="ps-4" style="font-size: 14px;">Wednesday -
+                                                    {{ $horario[3]['off'] == 1 ? 'Close' : $horario[3]['hours'] }}</span>
+                                                <span class="ps-4" style="font-size: 14px;">Thursday -
+                                                    {{ $horario[4]['off'] == 1 ? 'Close' : $horario[4]['hours'] }}</span>
+                                                <span class="ps-4" style="font-size: 14px;">Friday -
+                                                    {{ $horario[5]['off'] == 1 ? 'Close' : $horario[5]['hours'] }}</span>
+                                                <span class="ps-4" style="font-size: 14px;">Saturday -
+                                                    {{ $horario[6]['off'] == 1 ? 'Close' : $horario[6]['hours'] }}</span>
+                                                <span class="ps-4" style="font-size: 14px;">Sunday -
+                                                    {{ $horario[7]['off'] == 1 ? 'Close' : $horario[7]['hours'] }}</span>
                                             </div>
                                             <div class="d-flex justify-content-end mt-2">
                                                 <button type="button" class="btn btn-info-dir text-white btn-sm"

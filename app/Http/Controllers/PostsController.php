@@ -413,18 +413,18 @@ class PostsController extends Controller
                                             FROM
                                                 travel_directory_category as dc,
                                             (SELECT * FROM (
-                                            SELECT location, category
+                                            SELECT location, category, category_id
                                             ,ROW_NUMBER() over(partition by category,location ORDER BY location DESC) as orden
                                             FROM travel_directory
                                             ) t
                                             WHERE t.orden = 1
-                                            AND location = $id_location) as q1 WHERE  dc.term_id = q1.category");
+                                            AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
         $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category';");
         $things = $this->paginate($posts, 10);
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        //dd($gallery);
+        //dd($things_categories);
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
     }
 

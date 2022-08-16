@@ -655,6 +655,12 @@ footer .nav-link:hover {
     margin: 0 !important;
 }
 
+.cont-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .menu-active .nav-link:hover,
 .menu-active .nav-link:focus,
 .menu-active .dropdown-item:focus,

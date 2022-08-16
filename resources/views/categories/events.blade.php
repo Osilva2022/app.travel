@@ -8,7 +8,7 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container" style="max-width: 1024px">
-            @include('menus.sub_menu_destinations')
+            @include('menus.sub_menu_events')
             <div class="row mb-4">
                 <div class="col-12">
                     <h2>Calendar</h2>

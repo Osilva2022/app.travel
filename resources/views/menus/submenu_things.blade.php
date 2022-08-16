@@ -18,7 +18,7 @@
                     ?>
                     <li class="nav-item nav-test mx-1" role="presentation">
                         <a class="nav-link {{ $active }} tc-{{$active}}" id="{!! $data->category_slug !!}-tab"
-                            href="{{ route('things_category', ["$destination", "$data->category_slug"]) }}"
+                            href="{{ route('guide_category', ["$destination", "$data->category_slug"]) }}"
                             type="button">
                             <small>{!! $data->category !!}</small></a>
                     </li>
