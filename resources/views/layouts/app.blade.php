@@ -8,7 +8,7 @@
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
-    <title>Tribune Travel</title>
+    <title>@yield('page-title') Tribune Travel</title>
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/qfr3cjd.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css?ver=1.2') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css?v='.mt_rand()) }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
@@ -81,22 +81,22 @@
                     <ul class="nav justify-content-center flex-column ">
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('reviews') }}">
-                                <h3 class="text-white mb-2">Reviews</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">Reviews</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('news') }}">
-                                <h3 class="text-white mb-2">News</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">News</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('things') }}">
-                                <h3 class="text-white mb-2">Things To Do</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">Things To Do</h3>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" style="padding: 2px;" href="{{ route('events') }}">
-                                <h3 class="text-white mb-2">Events</h3>
+                                <h3 class="text-white text-center fs-6 mb-2">Events</h3>
                             </a>
                         </li>
                     </ul>
@@ -164,25 +164,20 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 mb-4">
-                    <div class="row row-cols-3 g-1 justify-content-center text-center">
-                        <div class="col-auto px-4">
+                    <div class="row  g-1 justify-content-center text-center">
+                        <div class="col-md-3 px-4">
                             <a class="text-white" href="https://cps.media/aviso-de-privacidad"
                                 style="text-decoration: none;" target="_blank">
                                 Notice of Privacy
                             </a>
                         </div>
-                        <div class="col-auto px-4">
+                        <div class="col-md-3 px-4">
                             <a class="text-white" href="https://cps.media/declaracion-de-accesibilidad"
                                 style="text-decoration: none;" target="_blank">
                                 Accessibility Policies
                             </a>
                         </div>
-                        <div class="col-auto px-4">
-                            <a class="text-white" href="#" style="text-decoration: none;">
-                                Right of reply
-                            </a>
-                        </div>
-                        <div class="col-auto px-4">
+                        <div class="col-md-3 px-4">
                             <a class="text-white" href="#" style="text-decoration: none;">
                                 Terms and Conditions
                             </a>

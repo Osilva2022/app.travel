@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-title')
+Reviews |
+@endsection
 @section('content')
     <header>
         @include('menus.menu_secundario')
@@ -31,9 +34,6 @@
                                                 <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                 <img src="{{ images($data->image) }}" alt="{{ $data->title }}"
                                                     class="img-category-principal">
-                                                <h3 class="card-title-overlay">
-                                                    {{ $data->title }}
-                                                </h3>
                                             </a>
                                         </div>
                                     </div>
@@ -41,6 +41,9 @@
                                         <a href="{{ url("$data->url") }}" title="Click to see more"
                                             class="text-decoration-none">
                                             <div class="card-body">
+                                                <h3 class="">
+                                                    {{ $data->title }}
+                                                </h3>
                                                 <p class="card-text">
                                                     {!! Str::limit(strip_tags($data->post_excerpt), 225, ' ...') !!}
                                                 </p>

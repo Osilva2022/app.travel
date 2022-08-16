@@ -24,6 +24,9 @@ Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
 Route::get('things-to-do', [PostsController::class, 'things'])->name('things');
 Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');
 Route::get('{destination}/things-to-do/{tag}', [PostsController::class, 'things_category'])->name('things_category');
+Route::get('gallery', function () {
+    return view('things_to_do.gallery', ['gallery' => '{gallery}']);
+});
 
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 
