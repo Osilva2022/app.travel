@@ -94,17 +94,16 @@ class PostsController extends Controller
 
     function category($category, $destination)
     {
-        $pagination = 0;
-        if ($category == "reviews" || $category == "Reviews") {
-            $ruta = 'reviews';
-            $pagination = 8;
-        }
-        if ($category == "news" || $category == "News") {
-            $ruta = 'news';
-            $pagination = 12;
-        }
-
-        //$data = Post::taxonomy('category', $category)->taxonomy('post_destinos', "$destination")->status('publish')->latest()->paginate($pagination);
+        // $pagination = 0;
+        // if ($category == "reviews" || $category == "Reviews") {
+        //     $ruta = 'reviews';
+        //     $pagination = 8;
+        // }
+        // if ($category == "news" || $category == "News") {
+        //     $ruta = 'news';
+        //     $pagination = 12;
+        // }
+        $pagination = 8;
         $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
         if ($destination == '') {
             //$data = Post::taxonomy('category', $category)->status('publish')->latest();
@@ -190,6 +189,7 @@ class PostsController extends Controller
 
     public function index(Request $request)
     {
+        //Previews post
         if (isset($request->p)) {
             $id = $request->p;
 
@@ -208,16 +208,27 @@ class PostsController extends Controller
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
         $categories_data = $this->returndata('categories');
 
+        // dd($categories_data);
+
         $review = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
         //$things = Post::taxonomy('category', 'Things to do')->latest()->get();
-        $things = DB::select("SELECT * FROM (
+        /* $things = DB::select("SELECT * FROM (
                                 SELECT category_slug,category, category_color, destination_slug, title, image
                                 ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
                                 FROM travel_things_to_do
                                 ) t
                                 WHERE t.orden = 1
-                                ORDER BY destination_slug, category;");
+                                ORDER BY destination_slug, category;"); */
+        $things = DB::select("SELECT * FROM (
+            SELECT td.category_id, td.category,td.category_slug, dc.name, dc.slug, dc.color, td.destination_slug, td.post_title, td.label, dc.image, dc.description
+            ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
+            FROM travel_directory as td
+            inner join travel_directory_category as dc on td.category_id = dc.term_id
+            ) t
+            WHERE t.orden = 1
+            AND label = 22
+			ORDER BY destination_slug, category_id;"); //Label '22' = VIP+
         //dd($things);
         $new = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
@@ -229,7 +240,7 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
-        //dd($gallery);
+        // dd($things);
 
         $this->metadatos('home', 'home');
 
@@ -273,20 +284,20 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
-    public function reviews(Request $request)
-    {
-        $category = 'reviews';
+    public function categories(Request $request, $category)
+    {       
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
-
-        //dd($firstpostcategory); 
-        return view('categories.reviews', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
+      
+        // dd($firstpostcategory); 
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
 
     public function news(Request $request)
@@ -330,7 +341,7 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $category = "events";
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
-        $events = $this->paginate($e, 1);
+        $events = $this->paginate($e, 4);
         //$events = DB::table('travel_events')->take($this->amount)->get();
 
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
@@ -352,7 +363,7 @@ class PostsController extends Controller
         return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author', 'no_posts'));
     }
 
-    public function things(Request $request)
+    public function guide(Request $request)
     {
         $category = 'things-to-do';
         $destination = 'puerto-vallarta';
@@ -362,7 +373,7 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
-        $things_categories = DB::select("SELECT * FROM (
+        /* $things_categories = DB::select("SELECT * FROM (
             SELECT tt.category_slug,tt.category, tt.category_color, tt.destination_slug, tt.title, ttc.image, ttc.description
             ,ROW_NUMBER() over(partition by tt.category_slug,tt.destination_slug ORDER BY tt.destination_slug DESC) as orden
             FROM travel_things_to_do as tt
@@ -370,35 +381,72 @@ class PostsController extends Controller
             ) t
             WHERE t.orden = 1
             AND destination_slug = '$destination'
-        ");
+        "); */
+
+
+        $things_categories = DB::select("SELECT * FROM (
+                                            SELECT td.category_id, td.category,td.category_slug, 
+                                            dc.name, dc.slug, dc.color as category_color, td.destination_slug, td.post_title, td.label, dc.image, dc.description
+                                            ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
+                                            FROM travel_directory as td
+                                            inner join travel_directory_category as dc on td.category_id = dc.term_id
+                                            ) t
+                                            WHERE t.orden = 1
+                                            AND destination_slug = '$destination'
+                                            ORDER BY destination_slug, category_id;");
         //dd($things_categories);
 
-        return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
+        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
     }
 
-    public function things_category($destination, $category)
+    public function guide_category($destination, $category)
     {
-        $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
-        $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $things_category = DB::select("SELECT * FROM travel_things_categories WHERE slug = '$category';");
-        $things_categories = DB::select("SELECT * FROM (
-            SELECT category_slug,category, category_color, destination_slug
-            ,ROW_NUMBER() over(partition by category_slug,destination_slug ORDER BY destination_slug DESC) as orden
-            FROM travel_things_to_do
-            ) t
-            WHERE t.orden = 1
-            AND destination_slug = '$destination'
-        ");
-        //$posts = DB::select("SELECT * FROM travel_things_to_do WHERE destination_slug = '$destination' AND category_slug = '$category';");
-        $posts = DB::select("SELECT 
-                                    *, IF(orden > 0, orden, 10) AS o
-                                FROM
-                                    travel_things_to_do
-                                WHERE destination_slug = '$destination' AND category_slug = '$category'
-                                ORDER BY CAST(o AS DECIMAL) ASC, post_date desc;");
-        $things = $this->paginate($posts, 4);
-        //dd($things_category);
-        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'things_category', 'things_categories'));
+        $destinations_data = $this->returndata('destinations');
+        $directory_category_data = DB::select("SELECT * FROM travel_directory_category WHERE slug= '$category';");
+        $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
+        $id_location = $destination_data[0]->term_id;
+        $id_category = $directory_category_data[0]->term_id;
+        $things_categories = DB::select("SELECT 
+                                                dc.term_id, dc.name as category, dc.slug as category_slug
+                                            FROM
+                                                travel_directory_category as dc,
+                                            (SELECT * FROM (
+                                            SELECT location, category
+                                            ,ROW_NUMBER() over(partition by category,location ORDER BY location DESC) as orden
+                                            FROM travel_directory
+                                            ) t
+                                            WHERE t.orden = 1
+                                            AND location = $id_location) as q1 WHERE  dc.term_id = q1.category");
+        $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category';");
+        $things = $this->paginate($posts, 10);
+        $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
+
+        $gallery = $this->get_img_gallery($id_location, $id_category);
+        //dd($gallery);
+        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
+    }
+
+    public function get_img_gallery($destination, $category)
+    {
+        $galleries = [];
+        $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$destination' AND category_id = '$category' AND label IN (21,22);");
+        foreach ($posts as $post) {
+            $imgs = [];
+            $post_gallery = unserialize($post->gallery);
+            foreach ($post_gallery as $key) {
+                $data = DB::select("SELECT 
+                                        meta_value AS img
+                                    FROM
+                                        tribunetravel_wp.travel_postmeta
+                                    WHERE
+                                        post_id = $key
+                                            AND meta_key = '_wp_attached_file';");
+                array_push($imgs, $data[0]->img);
+            }
+            $galleries["gallery-" . $post->ID] = $imgs;
+        }
+        return $galleries;
     }
 }

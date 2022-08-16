@@ -29,6 +29,30 @@ $(document).ready(function() {
             }
         }
     });
+
+    $('.things-vip-carousel').owlCarousel({
+        loop: true,
+        margin: 15,
+        center: true,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        animateOut: 'fadeOut',
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            400: {
+                items: 2
+            },
+            700: {
+                items: 3
+            }
+        }
+    });
     $('#events-carousel').owlCarousel({
         loop: true,
         margin: 25,

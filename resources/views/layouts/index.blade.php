@@ -86,6 +86,96 @@
                     </script>
                 </div>
             </div>
+            <!-- TTD -->
+            <div class="row py-4">
+                <div class="col-12">
+                    <h2 class="text-center mb-4">Guide</h2>
+                    <div class="" style="overflow-x: auto;">
+                        <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
+                            style="min-width: 660px;">
+                            @foreach ($destinations as $data)
+                                <?php $active = ''; ?>
+                                <?php $selected = 'false'; ?>
+                                @if ($data->name == 'Puerto Vallarta')
+                                    <?php $active = 'active'; ?>
+                                    <?php $selected = 'true'; ?>
+                                @endif
+                                <li class="nav-item nav-test" role="presentation">
+                                    <a class="nav-link {{ $active }}" id="{{ $data->term_id }}-tab"
+                                        data-bs-toggle="tab" data-bs-target="#tag-{{ $data->term_id }}" type="button"
+                                        role="tab" aria-controls="tag-{{ $data->term_id }}"
+                                        aria-selected="true">{{ $data->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        @foreach ($destinations as $data)
+                            <?php $active = ''; ?>
+                            @if ($data->name == 'Puerto Vallarta')
+                                <?php $active = 'active show'; ?>
+                            @endif
+                            <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}" role="tabpanel"
+                                aria-labelledby="{{ $data->term_id }}-tab">
+                                <div class="row">
+                                    <div class="col-sm-12 mb-2">
+                                        <div class="owl-carousel owl-theme ttd-carousel" id="">
+                                            <?php $i = 1; ?>
+                                            @foreach ($things as $ttd)
+                                                @if ($data->slug == $ttd->destination_slug)
+                                                    <?php $active = ''; ?>
+                                                    @if ($i == 1)
+                                                        <?php $active = 'active show'; ?>
+                                                    @endif
+                                                    <div class="ttd-slider-item">
+                                                        <div class="opacity-effect" style="border-radius: 1rem"></div>
+                                                        <a
+                                                            href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
+                                                            <img src="{{ images($ttd->image) }}" alt="{{ $ttd->post_title }}"
+                                                                class="carousel-img">
+                                                            <div class="container">
+                                                                <div class="carousel-info" style="bottom:4px; z-index:2;">
+                                                                    <h4>{{ $ttd->post_title }}</h4>
+                                                                    <p style="bottom:4px; color: white;">
+                                                                        {{ $ttd->category }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <?php $i++; ?>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col my-4 d-flex justify-content-center">
+                                            <a href="{{ route('guide') }}" class="btn-view-more" type="button">Explore
+                                                {{ $data->name }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <!-- TTD -->
+            <!-- ads /21855382314/tt-home-lb-2 -->
+            <div class="row">
+                <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px"
+                    style='width: 300px; height: 250px;'>
+                    <script>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620235535381-0');
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
             <!-- REVIEWS -->
             <h2 class="my-4">Tribune Reviews</h2>
             <div class="row g-4">
@@ -129,7 +219,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a
-                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                    href="{{ url("$data->url") }}">
                                                     <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>
@@ -141,7 +231,7 @@
                                                     </span>
                                                 </a>
                                                 <a
-                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                    href="{{ url("$data->url") }}">
                                                     <h3 class="card-title-secundario">{{ $data->title }}</h3>
                                                 </a>
                                                 <small>
@@ -158,100 +248,11 @@
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('reviews') }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category',['reviews']) }}" class="btn-view-more" type="button">More
                         Reviews</a>
                 </div>
             </div>
-            <!-- ads /21855382314/tt-home-lb-2 -->
-            <div class="row">
-                <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px" style='width: 300px; height: 250px;'>
-                    <script>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620235535381-0');
-                        });
-                    </script>
-                </div>
-            </div>
             <!-- REVIEWS -->
-            <div class="row">
-                <div class="col-12">
-                    <hr>
-                </div>
-            </div>
-            <!-- TTD -->
-            <div class="row py-4">
-                <div class="col-12">
-                    <h2 class="text-center mb-4">Things To Do</h2>
-                    <div class="" style="overflow-x: auto;">
-                        <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist"
-                            style="min-width: 660px;">
-                            @foreach ($destinations as $data)
-                                <?php $active = ''; ?>
-                                <?php $selected = 'false'; ?>
-                                @if ($data->name == 'Puerto Vallarta')
-                                    <?php $active = 'active'; ?>
-                                    <?php $selected = 'true'; ?>
-                                @endif
-                                <li class="nav-item nav-test" role="presentation">
-                                    <a class="nav-link {{ $active }}" id="{{ $data->term_id }}-tab"
-                                        data-bs-toggle="tab" data-bs-target="#tag-{{ $data->term_id }}" type="button"
-                                        role="tab" aria-controls="tag-{{ $data->term_id }}"
-                                        aria-selected="true">{{ $data->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="tab-content" id="myTabContent">
-                        @foreach ($destinations as $data)
-                            <?php $active = ''; ?>
-                            @if ($data->name == 'Puerto Vallarta')
-                                <?php $active = 'active show'; ?>
-                            @endif
-                            <div class="tab-pane fade  {{ $active }}" id="tag-{{ $data->term_id }}"
-                                role="tabpanel" aria-labelledby="{{ $data->term_id }}-tab">
-                                <div class="row">
-                                    <div class="col-sm-12 mb-2">
-                                        <div class="owl-carousel owl-theme ttd-carousel" id="">
-                                            <?php $i = 1; ?>
-                                            @foreach ($things as $ttd)
-                                                @if ($data->slug == $ttd->destination_slug)
-                                                    <?php $active = ''; ?>
-                                                    @if ($i == 1)
-                                                        <?php $active = 'active show'; ?>
-                                                    @endif
-                                                    <div class="ttd-slider-item">
-                                                        <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                                        <a
-                                                            href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
-                                                            <img src="{{ images($ttd->image) }}"
-                                                                alt="{{ $ttd->title }}" class="carousel-img">
-                                                            <div class="container">
-                                                                <div class="carousel-info" style="bottom:4px; z-index:2;">
-                                                                    <h4>{{ $ttd->title }}</h4>
-                                                                    <p style="bottom:4px; color: white;">
-                                                                        {{ $ttd->category }}</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <?php $i++; ?>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col my-4 d-flex justify-content-center">
-                                            <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
-                                                {{ $data->name }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <!-- TTD -->
             <!-- ads /21855382314/tt-home-lb-3 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236451767-0' class="col text-center">
@@ -349,6 +350,91 @@
                     <hr>
                 </div>
             </div>
+
+                <!-- Things  -->
+                <h2 class="my-4">Things To Do</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        @foreach ($new as $data)
+                            <div class="card card-principal-post">
+                                <div class="card border-0">
+                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                        <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                            {{ $data->destination }}</span>
+                                    </a>
+                                    <a href="{{ url("$data->url") }}">
+                                        <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
+                                        <img src="{{ images($data->image) }}" class="card-img">
+                                        <h3 class="card-title-overlay">
+                                            {{ $data->title }}
+                                        </h3>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
+                                        <p class="card-text">
+                                            {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                        </p>
+                                    </a>
+                                    <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
+                            @foreach ($news as $data)
+                                @if ($new[0]->id_post != $data->id_post)
+                                    <div class="col">
+                                        <div class="card card-secundario h-100">
+                                            <div class="row h-100">
+                                                <div class="col card-head-secundario">
+                                                    <a
+                                                        href="{{ url("$data->url") }}">
+                                                        <img src="{{ images($data->image) }}" class="card-img-secundario">
+                                                    </a>
+                                                </div>
+                                                <div class="col-6 card-body-secundario">
+                                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                        <span class="etiqueta-post mb-2"
+                                                            style="background:{{ $data->destination_color }};">
+                                                            {{ $data->destination }}
+                                                        </span>
+                                                    </a>
+                                                    <a href="{{ url("$data->url") }}">
+                                                        <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                    </a>
+                                                    <small class="text-muted">
+                                                        {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col my-4 d-flex justify-content-center">
+                        <a href="{{ route('category',['news']) }}" class="btn-view-more" type="button">More
+                            Things to do</a>
+                    </div>
+                </div>               
+
+                <!--ads /21855382314/tt-home-lb-footer -->
+                {{-- <div class="row">
+                    <div id='div-gpt-ad-1620253311869-0' class="col text-center">
+                        <script>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620253311869-0');
+                            });
+                        </script>
+                    </div>
+                </div> --}}
+            <!-- End Things to do -->
+
             <!-- EVENTS -->
             <div class="row py-4">
                 <h2 class="text-center mb-4">Featured Events</h2>
@@ -432,7 +518,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a
-                                                    href="{{ url("$data->destination_slug/$data->category_slug/post/$data->slug") }}">
+                                                    href="{{ url("$data->url") }}">
                                                     <img src="{{ images($data->image) }}" class="card-img-secundario">
                                                 </a>
                                             </div>
@@ -460,7 +546,7 @@
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('news') }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category',['news']) }}" class="btn-view-more" type="button">More
                         News</a>
                 </div>
             </div>

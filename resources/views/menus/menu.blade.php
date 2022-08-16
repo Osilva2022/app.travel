@@ -13,11 +13,11 @@
             <ul class="navbar-nav mb-2 mb-md-0">
                 @foreach ($categories_data as $cd)
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route("$cd->slug") }}">{{ $cd->name }}</a>
+                        <a class="nav-link text-white" href="{{ route('category',["$cd->slug"]) }}">{{ $cd->name }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('things') }}">Things to Do</a>
+                    <a class="nav-link text-white" href="{{ route('guide') }}">Guide</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('events') }}">Events</a>
@@ -31,7 +31,7 @@
                         @foreach ($destinations as $dd)
                             <li>
                                 <a class="dropdown-item text-white"
-                                    href="{{ route('destinations', ["$dd->slug"]) }}">{{ $dd->name }}</a>
+                                    href="{{ route('destinations', ["$dd->slug"]) }}">{!! $dd->name !!}</a>
                             </li>
                         @endforeach
                     </ul>
