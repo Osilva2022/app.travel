@@ -67,9 +67,9 @@ Author |
                             </div>
                             <div class="col d-flex flex-column justify-content-center text-center text-lg-start">
                                 <h1 class="">Author</h1>
-                                <h2>{{ $author->first_name }} {{ $author->last_name }}</h2>
-                                <p style="margin-bottom: .5rem;">{{ $author->description }}</p>
-                                <span class="text-muted" style="font-size: small;">{{ $no_posts }} Posts</span>
+                                <h2>{!! $author->first_name !!} {!! $author->last_name !!}</h2>
+                                <p style="margin-bottom: .5rem;">{!! $author->description !!}</p>
+                                <span class="text-muted" style="font-size: small;">{!! $no_posts !!} Posts</span>
                             </div>
                         </div>
                     </div>
@@ -83,16 +83,16 @@ Author |
                                         <div class="card card-especial zoom">
                                             <a href="{{ route("$data->category_slug") }}">
                                                 <span class="badge etiqueta-img"
-                                                    style="background:{{ $data->category_color }};">{{ $data->category }}</span>
+                                                    style="background:{!! $data->category_color !!};">{!! $data->category !!}</span>
                                             </a>
                                             <a href="{{ url("$data->url") }}" class="text-decoration-none text-muted">
                                                 <img src="{{ images($data->image) }}"
                                                     class="bd-placeholder-img card-img-top" width="100%" height="225">
                                                 <div class="card-body">
-                                                    <h3 class="card-title">{{ $data->title }}</h3>
-                                                    <p class="card-text">{{ $data->post_excerpt }}</p>
+                                                    <h3 class="card-title">{!! $data->title !!}</h3>
+                                                    <p class="card-text">{!! $data->post_excerpt !!}</p>
                                                     <small
-                                                        class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                                        class="text-muted">{!! date('M/d/y', strtotime($data->post_date)) !!}</small>
                                                 </div>
                                             </a>
                                         </div>

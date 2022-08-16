@@ -90,7 +90,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('things') }}">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('things-to-do') }}">
                                 <h3 class="text-white text-center fs-6 mb-2">Things To Do</h3>
                             </a>
                         </li>

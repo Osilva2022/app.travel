@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-{{ $destination_data[0]->name }} |
+{!! $destination_data[0]->name !!} |
 @endsection
 @section('content')
     <header>
@@ -10,9 +10,9 @@
         <div class="bg-light hero-image" style="background-image: url({{ images($destination_data[0]->image) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
-                <h1 id="t1" class="text-white">{{ $destination_data[0]->name }}</h1>
+                <h1 id="t1" class="text-white">{!! $destination_data[0]->name !!}</h1>
                 <p class="text-white">
-                    {{ $destination_data[0]->description }}
+                    {!! $destination_data[0]->description !!}
                 </p>
             </div>
         </div>

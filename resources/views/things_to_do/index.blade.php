@@ -24,7 +24,7 @@ Things to Do |
                             @foreach ($destinations_data as $data)
                                 <li class="nav-item nav-test mx-1" role="presentation">
                                     <a class="nav-link" id="{{ $data->slug }}-tab"
-                                        href="{{ url("$category") }}?destination={{ $data->slug }}" type="button">
+                                        href="{{ url("guide") }}?destination={{ $data->slug }}" type="button">
                                         <small>{{ $data->name }}</small></a>
                                 </li>
                             @endforeach

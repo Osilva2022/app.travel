@@ -45,7 +45,7 @@
                                             </small>
                                         </div>
                                         <div class="col-12">
-                                            <p>{!! $event->content !!}</p><br>
+                                            {!! $event->content !!}
                                         </div>
                                         <!--Gmail Button-->
                                         @php
