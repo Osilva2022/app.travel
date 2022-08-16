@@ -676,6 +676,10 @@ footer .nav-link:hover {
     font-weight: var(--tt-bold);
 }
 
+.directory-carousel .owl-nav {
+    margin: 0 !important;
+}
+
 @media (min-width: 900px) {
     #t1 {
         font-size: 54px;

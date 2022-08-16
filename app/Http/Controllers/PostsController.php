@@ -363,7 +363,7 @@ class PostsController extends Controller
         return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author', 'no_posts'));
     }
 
-    public function things(Request $request)
+    public function guide(Request $request)
     {
         $category = 'things-to-do';
         $destination = 'puerto-vallarta';
@@ -396,7 +396,7 @@ class PostsController extends Controller
                                             ORDER BY destination_slug, category_id;");
         //dd($things_categories);
 
-        return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
+        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
     }
 
     public function guide_category($destination, $category)
@@ -425,7 +425,7 @@ class PostsController extends Controller
 
         $gallery = $this->get_img_gallery($id_location, $id_category);
         //dd($gallery);
-        return view('things_to_do.things_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
+        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
     }
 
     public function get_img_gallery($destination, $category)

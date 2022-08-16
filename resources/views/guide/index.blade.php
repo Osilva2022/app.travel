@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-Things to Do |
+Guide |
 @endsection
 @section('content')
     <header>
@@ -34,7 +34,7 @@ Things to Do |
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Things to Do</h2>
+                    <h2>Guide</h2>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum est, cumque dicta officiis fuga
                         maiores? Quod esse et voluptatem corporis dolor deleniti reprehenderit incidunt iusto? Ad deserunt
                         minus neque vero!</p>
@@ -43,7 +43,7 @@ Things to Do |
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                 @foreach ($things_categories as $tc)
                     <div class="col">
-                        <a href="{{ route('things_category', ["$destination", "$tc->category_slug"]) }}"
+                        <a href="{{ route('guide_category', ["$destination", "$tc->category_slug"]) }}"
                             class="text-decoration-none">
                             <div class="card border-0">
                                 <div class="position-relative zoom">

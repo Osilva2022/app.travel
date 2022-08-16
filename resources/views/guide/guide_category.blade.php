@@ -70,10 +70,20 @@
                                 @endphp
                                 @if ($vip)
                                     <div class="col-4 d-flex justify-content-center align-items-center position-relative">
-                                        <div class="position-relative">
-                                            <span class="etiqueta-vip">
-                                                <i class="bi bi-award"></i></span>
-                                            <img src="{{ images($data->image) }}" class="card-img-estatica">
+                                        <div class="owl-carousel owl-theme directory-carousel dc"
+                                            id="dc-{!! $data->ID !!}">
+                                            <div class="position-relative">
+                                                <span class="etiqueta-vip">
+                                                    <i class="bi bi-award"></i></span>
+                                                <img src="{{ images($data->image) }}" class="card-img-estatica">
+                                            </div>
+                                            @foreach ($gallery['gallery-' . $data->ID] as $img)
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img src="{{ images($img) }}" class="card-img-slider">
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 @endif
@@ -98,21 +108,9 @@
                                                         <i class="bi bi-whatsapp" style="font-size: 1.5rem;"></i>
                                                     </a>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="owl-carousel owl-theme directory-carousel dc"
-                                                            id="dc-{!! $data->ID !!}">
-                                                            @foreach ($gallery['gallery-' . $data->ID] as $img)
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <img src="{{ images($img) }}"
-                                                                            class="card-img-slider">
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <span><i class="bi bi-map"></i> <a
+                                                        href="https://maps.google.com/?q={{ $data->latitude }},{{ $data->longitude }}">Map
+                                                        View</a></span>
                                             </div>
                                             <div class="d-flex justify-content-end mt-2">
                                                 <button type="button" class="btn btn-info-dir text-white btn-sm"
