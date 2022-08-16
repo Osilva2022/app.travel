@@ -17,13 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
-Route::get('reviews', [PostsController::class, 'reviews'])->name('reviews');
-Route::get('news', [PostsController::class, 'news'])->name('news');
+
+Route::get('category/{category}', [PostsController::class, 'categories'])->name('category');
+// Route::get('reviews', [PostsController::class, 'reviews'])->name('reviews');
+// Route::get('news', [PostsController::class, 'reviews'])->name('news');
+
 Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
-Route::get('things-to-do', [PostsController::class, 'things'])->name('things');
+Route::get('guide', [PostsController::class, 'guide'])->name('guide');
 Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');
-Route::get('{destination}/things-to-do/{tag}', [PostsController::class, 'things_category'])->name('things_category');
+Route::get('{destination}/guide/{tag}', [PostsController::class, 'guide_category'])->name('guide_category');
 Route::get('gallery', function () {
     return view('things_to_do.gallery', ['gallery' => '{gallery}']);
 });

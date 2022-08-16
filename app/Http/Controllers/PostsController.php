@@ -94,17 +94,16 @@ class PostsController extends Controller
 
     function category($category, $destination)
     {
-        $pagination = 0;
-        if ($category == "reviews" || $category == "Reviews") {
-            $ruta = 'reviews';
-            $pagination = 8;
-        }
-        if ($category == "news" || $category == "News") {
-            $ruta = 'news';
-            $pagination = 12;
-        }
-
-        //$data = Post::taxonomy('category', $category)->taxonomy('post_destinos', "$destination")->status('publish')->latest()->paginate($pagination);
+        // $pagination = 0;
+        // if ($category == "reviews" || $category == "Reviews") {
+        //     $ruta = 'reviews';
+        //     $pagination = 8;
+        // }
+        // if ($category == "news" || $category == "News") {
+        //     $ruta = 'news';
+        //     $pagination = 12;
+        // }
+        $pagination = 8;
         $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
         if ($destination == '') {
             //$data = Post::taxonomy('category', $category)->status('publish')->latest();
@@ -190,6 +189,7 @@ class PostsController extends Controller
 
     public function index(Request $request)
     {
+        //Previews post
         if (isset($request->p)) {
             $id = $request->p;
 
@@ -207,6 +207,8 @@ class PostsController extends Controller
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
         $categories_data = $this->returndata('categories');
+
+        // dd($categories_data);
 
         $review = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
@@ -238,7 +240,7 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
-        //dd($things);
+        // dd($things);
 
         $this->metadatos('home', 'home');
 
@@ -282,20 +284,20 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
-    public function reviews(Request $request)
-    {
-        $category = 'reviews';
+    public function categories(Request $request, $category)
+    {       
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
-
-        //dd($firstpostcategory); 
-        return view('categories.reviews', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
+      
+        // dd($firstpostcategory); 
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
 
     public function news(Request $request)
@@ -397,7 +399,7 @@ class PostsController extends Controller
         return view('things_to_do.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
     }
 
-    public function things_category($destination, $category)
+    public function guide_category($destination, $category)
     {
         $categories_data = $this->returndata('categories');
         $things_category = DB::select("SELECT * FROM travel_things_categories WHERE slug = '$category';");

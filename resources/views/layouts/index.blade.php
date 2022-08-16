@@ -130,7 +130,7 @@
                                                     <div class="ttd-slider-item">
                                                         <div class="opacity-effect" style="border-radius: 1rem"></div>
                                                         <a
-                                                            href="{{ route('things_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
+                                                            href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
                                                             <img src="{{ images($ttd->image) }}" alt="{{ $ttd->post_title }}"
                                                                 class="carousel-img">
                                                             <div class="container">
@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col my-4 d-flex justify-content-center">
-                                            <a href="{{ route('things') }}" class="btn-view-more" type="button">Explore
+                                            <a href="{{ route('guide') }}" class="btn-view-more" type="button">Explore
                                                 {{ $data->name }}</a>
                                         </div>
                                     </div>
@@ -248,7 +248,7 @@
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('reviews') }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category',['reviews']) }}" class="btn-view-more" type="button">More
                         Reviews</a>
                 </div>
             </div>
@@ -350,6 +350,91 @@
                     <hr>
                 </div>
             </div>
+
+                <!-- Things  -->
+                <h2 class="my-4">Things To Do</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        @foreach ($new as $data)
+                            <div class="card card-principal-post">
+                                <div class="card border-0">
+                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                        <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                            {{ $data->destination }}</span>
+                                    </a>
+                                    <a href="{{ url("$data->url") }}">
+                                        <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
+                                        <img src="{{ images($data->image) }}" class="card-img">
+                                        <h3 class="card-title-overlay">
+                                            {{ $data->title }}
+                                        </h3>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
+                                        <p class="card-text">
+                                            {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                        </p>
+                                    </a>
+                                    <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
+                            @foreach ($news as $data)
+                                @if ($new[0]->id_post != $data->id_post)
+                                    <div class="col">
+                                        <div class="card card-secundario h-100">
+                                            <div class="row h-100">
+                                                <div class="col card-head-secundario">
+                                                    <a
+                                                        href="{{ url("$data->url") }}">
+                                                        <img src="{{ images($data->image) }}" class="card-img-secundario">
+                                                    </a>
+                                                </div>
+                                                <div class="col-6 card-body-secundario">
+                                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                        <span class="etiqueta-post mb-2"
+                                                            style="background:{{ $data->destination_color }};">
+                                                            {{ $data->destination }}
+                                                        </span>
+                                                    </a>
+                                                    <a href="{{ url("$data->url") }}">
+                                                        <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                    </a>
+                                                    <small class="text-muted">
+                                                        {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col my-4 d-flex justify-content-center">
+                        <a href="{{ route('category',['news']) }}" class="btn-view-more" type="button">More
+                            Things to do</a>
+                    </div>
+                </div>               
+
+                <!--ads /21855382314/tt-home-lb-footer -->
+                {{-- <div class="row">
+                    <div id='div-gpt-ad-1620253311869-0' class="col text-center">
+                        <script>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620253311869-0');
+                            });
+                        </script>
+                    </div>
+                </div> --}}
+            <!-- End Things to do -->
+
             <!-- EVENTS -->
             <div class="row py-4">
                 <h2 class="text-center mb-4">Featured Events</h2>
@@ -461,7 +546,7 @@
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('news') }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category',['news']) }}" class="btn-view-more" type="button">More
                         News</a>
                 </div>
             </div>
