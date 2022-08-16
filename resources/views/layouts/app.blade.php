@@ -80,18 +80,23 @@
                 <div class="col text-md-start text-white text-center">
                     <ul class="nav justify-content-center flex-column ">
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('reviews') }}">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('category',['reviews']) }}">
                                 <h3 class="text-white text-center fs-6 mb-2">Reviews</h3>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('news') }}">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('category',['news']) }}">
                                 <h3 class="text-white text-center fs-6 mb-2">News</h3>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('things-to-do') }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Things To Do</h3>
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('category',['things-to-do']) }}">
+                                <h3 class="text-white text-center fs-6 mb-2">Things to do</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('guide') }}">
+                                <h3 class="text-white text-center fs-6 mb-2">Guide</h3>
                             </a>
                         </li>
                         <li class="nav-item">
