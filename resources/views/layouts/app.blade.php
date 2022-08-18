@@ -205,7 +205,8 @@
         $(document).ready(function() {
             // alert("Hola");
             $(function() {
-                $('.lazy').Lazy();
+                $('img').Lazy();
+                $('iframe').Lazy();
             });
         });
     </script>
