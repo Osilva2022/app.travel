@@ -8,7 +8,7 @@
     </header>
     <main style="margin-top: 7rem;">
         <div class="container" style="max-width: 1024px">
-            @include('menus.sub_menu_destinations')
+            @include('menus.sub_menu_events')
             <div class="row mb-4">
                 <div class="col-12">
                     <h2>Calendar</h2>
@@ -23,7 +23,7 @@
                         <div class="card-event">
                             <div class="row g-4">
                                 <div class="col-md-5 d-flex align-items-center">
-                                    <img src="{{ images($event->image) }}" class="card-img-estatica">
+                                    <img src="{{ images($event->image) }}" class="card-img-estatica" style="object-fit: contain;">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row g-4">

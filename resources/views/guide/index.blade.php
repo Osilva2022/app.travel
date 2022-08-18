@@ -23,9 +23,9 @@ Guide |
                         <ul class="nav nav-tabs" id="myTab" role="tablist" style="min-width: 678px;">
                             @foreach ($destinations_data as $data)
                                 <li class="nav-item nav-test mx-1" role="presentation">
-                                    <a class="nav-link" id="{{ $data->slug }}-tab"
-                                        href="{{ url("guide") }}?destination={{ $data->slug }}" type="button">
-                                        <small>{{ $data->name }}</small></a>
+                                    <a class="nav-link" id="{!! $data->slug !!}-tab"
+                                        href="{{ url("guide") }}?destination={!! $data->slug !!}" type="button">
+                                        <small>{!! $data->name !!}</small></a>
                                 </li>
                             @endforeach
                         </ul>

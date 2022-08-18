@@ -81,7 +81,7 @@
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
                     </a>
-                    <a class="text-muted" href="{{ config('constants.PINTERES_URL') }}" target="_blank">
+                    <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
                         <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon" width="17"
                             height="17">
                     </a>
@@ -97,7 +97,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('category',[$category]) }}">{{ $post->category }}</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="{{ route('category', [$category]) }}">{{ $post->category }}</a></li>
                             <li class="breadcrumb-item fw-bold" aria-current="page">{{ $post->title }}</li>
                         </ol>
                     </nav>
@@ -109,7 +110,7 @@
                     <div class="row g-4">
                         <div class="col-12">
                             <img src="{{ images($post->image) }}" alt="" width="100%" height="auto"
-                                style="aspect-ratio:16/9;">
+                                style="aspect-ratio:16/9; object-fit: contain;">
                         </div>
                         <div class="col-12 mt-2">
                             {{-- <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p> --}}
@@ -161,7 +162,7 @@
                         <div class="col">
                             <div class="card-more-posts p-4">
                                 <div class="row row-cols-1 g-4 pb-4">
-                                    <h2 class="mb-0">More {{ $post->category }}</h2>
+                                    <h2 class="mb-0">More {!! $post->category !!}</h2>
                                     @foreach ($more_posts as $data)
                                         <div class="col">
                                             <div class="card card-secundario">
@@ -176,11 +177,11 @@
                                                         <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                                             <span class="etiqueta-post mb-2"
                                                                 style="background:{{ $data->destination_color }};">
-                                                                {{ $data->destination }}
+                                                                {!! $data->destination !!}
                                                             </span>
                                                         </a>
                                                         <a href="{{ url("$data->url") }}">
-                                                            <h3 class="card-title-secundario">{{ $data->title }}</h3>
+                                                            <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                         </a>
                                                         <small class="text-muted">
                                                             {{ date('M/d/y', strtotime($data->post_date)) }}
@@ -190,6 +191,10 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    <div class="col">
+                                        <a href="{{ route('category', [$post->category_slug]) }}" class="btn-view-more"
+                                            type="button">More {!! $post->category !!}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +210,8 @@
                                         });
                                     </script>
                                 </div>
-                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">
+                                    ------ADVERTISEMENT------</p>
                             </div>
                         </div>
 
@@ -219,7 +225,8 @@
                                         });
                                     </script>
                                 </div>
-                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">
+                                    ------ADVERTISEMENT------</p>
                             </div>
                         </div>
 
@@ -233,7 +240,8 @@
                                         });
                                     </script>
                                 </div>
-                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">
+                                    ------ADVERTISEMENT------</p>
                             </div>
                         </div>
 
@@ -247,7 +255,8 @@
                                         });
                                     </script>
                                 </div>
-                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">------ADVERTISEMENT------</p>
+                                <p class="text-muted text-center" style="font-size:10px; margin-bottom: 0;">
+                                    ------ADVERTISEMENT------</p>
                             </div>
                         </div>
                     </div>

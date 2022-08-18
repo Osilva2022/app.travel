@@ -1,14 +1,5 @@
 $(document).ready(function() {
 
-    $('.directory-carousel').owlCarousel({
-        loop: true,
-        margin: 25,
-        center: false,
-        nav: true,
-        dots: false,
-        items: 1
-    });
-
     $(".btn-info-dir").click(function(e) {
         e.preventDefault();
         var id = $(this).data('id');
