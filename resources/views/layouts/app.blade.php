@@ -61,7 +61,7 @@
             <div class="row row-cols-1 row-cols-md-5 justify-content-center g-4 align-items-center">
                 <div class="col text-center">
                     <a class="text-muted" href="#">
-                        <img src="{{ asset('img/svg/tribune-white.svg') }}" width="125" alt="Tribune Travel" loading="lazy">
+                        <img src="{{ asset('img/svg/tribune-white.svg') }}" width="125" alt="Tribune Travel">
                     </a>
                 </div>
                 <div class="col text-white text-center" style="font-weight:300;">
@@ -121,19 +121,19 @@
                         <li class="">
                             <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}" target="_blank">
                                 <img src="{{ asset('img/svg/face-white-ico.svg') }}" alt="Tribune Travel facebook-icon"
-                                    width="24" height="24" loading="lazy">
+                                    width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
                                 <img src="{{ asset('img/svg/pint-white-ico.svg') }}" alt="Tribune Travel pint-icon"
-                                    width="24" height="24" loading="lazy">
+                                    width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <img src="{{ asset('img/svg/inst-white-ico.svg') }}" alt="Tribune Travel insta-icon"
-                                    width="24" height="24" loading="lazy">
+                                    width="24" height="24">
                             </a>
                         </li>
                     </ul>
@@ -148,22 +148,22 @@
                 <div class="col-12 col-footer text-center">
                     <a href="https://cps.media/" target="_blank">
                         <img src="{{ asset('img/svg/cps-media-white.svg') }}" class="img-footer"
-                            style="width: 25%;" loading="lazy">
+                            style="width: 25%;">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tribunadelabahia.com.mx/" target="_blank">
-                        <img src="{{ asset('img/svg/tribuna-white.svg') }}" class="img-footer" loading="lazy">
+                        <img src="{{ asset('img/svg/tribuna-white.svg') }}" class="img-footer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://radiante.fm/" target="_blank">
-                        <img src="{{ asset('img/svg/radiante-white-horizontal.svg') }}" class="img-footer" loading="lazy">
+                        <img src="{{ asset('img/svg/radiante-white-horizontal.svg') }}" class="img-footer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tvmar.tv/" target="_blank">
-                        <img src="{{ asset('img/svg/tv-mar-white.svg') }}" class="img-footer" loading="lazy">
+                        <img src="{{ asset('img/svg/tv-mar-white.svg') }}" class="img-footer">
                     </a>
                 </div>
             </div>
