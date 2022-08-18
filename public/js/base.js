@@ -24,7 +24,7 @@ $(document).ready(function() {
             $(".cat-" + categoria).delay(200).fadeIn();
         }
     });
-    
-    $('img').lazyload();
+
+   
 
 });
