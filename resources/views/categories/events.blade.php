@@ -23,7 +23,7 @@
                         <div class="card-event">
                             <div class="row g-4">
                                 <div class="col-md-5 d-flex align-items-center">
-                                    <img src="{{ images($event->image) }}" class="card-img-estatica">
+                                    <img src="{{ images($event->image) }}" class="card-img-estatica" style="object-fit: contain;">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row g-4">

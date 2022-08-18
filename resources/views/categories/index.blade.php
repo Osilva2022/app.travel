@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-Reviews |
+    {!! isset($firstpostcategory->category) ? $firstpostcategory->category : 'Category' !!} |
 @endsection
 @section('content')
     <header>
@@ -10,53 +10,48 @@ Reviews |
         <div class="container" style="max-width: 1024px;">
             @include('menus.sub_menu_destinations')
             <div class="row g-4">
-                @isset($firstpostcategory)           
-              
-                <h2>Tribune {{$firstpostcategory->category}}</h2>              
-                        <div class="col-12">
-                            <div class="card card-principal-post">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="card border-0">
-                                            <a href="{{ route('destinations', ["$firstpostcategory->destination_slug"]) }}">
-                                                <span class="badge etiqueta-img"
-                                                    style="background:{{ $firstpostcategory->destination_color }};">{{ $firstpostcategory->destination }}</span>
-                                            </a>
-                                            <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
-                                                class="text-decoration-none text-muted">
-                                                {{-- @if ($firstpostcategory->id_post == $data->id_post) --}}
-                                                    <span class="badge etiqueta-destacado">
-                                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada"
-                                                            width="25" height="25">
-                                                    </span>
-                                                {{-- @endif --}}
-                                                <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                                <img src="{{ images($firstpostcategory->image) }}" alt="{{ $firstpostcategory->title }}"
-                                                    class="img-category-principal">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 d-flex align-items-center">
+                @isset($firstpostcategory)
+                    <h2>Tribune {!! $firstpostcategory->category !!}</h2>
+                    <div class="col-12">
+                        <div class="card card-principal-post">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card border-0">
+                                        <a href="{{ route('destinations', ["$firstpostcategory->destination_slug"]) }}">
+                                            <span class="badge etiqueta-img"
+                                                style="background:{{ $firstpostcategory->destination_color }};">{!! $firstpostcategory->destination !!}</span>
+                                        </a>
                                         <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
-                                            class="text-decoration-none">
-                                            <div class="card-body">
-                                                <h3 class="">
-                                                    {{ $firstpostcategory->title }}
-                                                </h3>
-                                                <p class="card-text">
-                                                    {!! Str::limit(strip_tags($firstpostcategory->post_excerpt), 225, ' ...') !!}
-                                                </p>
-                                                <small class="text-muted text-end">
-                                                    {{ date('M/d/y', strtotime($firstpostcategory->post_date)) }}
-                                                </small>
-                                            </div>
+                                            class="text-decoration-none text-muted">
+                                            <span class="badge etiqueta-destacado">
+                                                <img src="{{ asset('img/estrella.png') }}" alt="destacada" width="25"
+                                                    height="25">
+                                            </span>
+                                            <div class="opacity-effect" style="border-radius: 1rem"></div>
+                                            <img src="{{ images($firstpostcategory->image) }}" alt="{!! $firstpostcategory->title !!}"
+                                                class="img-category-principal">
                                         </a>
                                     </div>
                                 </div>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
+                                        class="text-decoration-none">
+                                        <div class="card-body">
+                                            <h3 class="">
+                                                {!! $firstpostcategory->title !!}
+                                            </h3>
+                                            <p class="card-text">
+                                                {!! Str::limit(strip_tags($firstpostcategory->post_excerpt), 225, ' ...') !!}
+                                            </p>
+                                            <small class="text-muted text-end">
+                                                {{ date('M/d/y', strtotime($firstpostcategory->post_date)) }}
+                                            </small>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                   
-                   
+                    </div>
                 @endisset
                 <div class="col-12">
                     <div class="row row-cols-2 row-cols-lg-4 g-3">
@@ -69,7 +64,7 @@ Reviews |
                                             <div class="col-12 col-sm-6 col-lg-12">
                                                 <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                                     <span class="badge etiqueta-img"
-                                                        style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                                        style="background:{{ $data->destination_color }};">{!! $data->destination !!}</span>
                                                 </a>
                                                 <a href="{{ url("$data->url") }}" title="Click to see more">
                                                     <img src="{{ images($data->image) }}" class="card-img-secundario">
@@ -79,7 +74,7 @@ Reviews |
                                                 <div class="card-body-secundario h-100">
                                                     <a href="{{ url("$data->url") }}" title="Click to see more"
                                                         class="text-decoration-none text-muted">
-                                                        <h3 class="card-title">{{ $data->title }}
+                                                        <h3 class="card-title">{!! $data->title !!}
                                                         </h3>
                                                     </a>
                                                     <small class="text-muted">
@@ -105,7 +100,7 @@ Reviews |
                                     <div class="card card-secundario h-100">
                                         <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                             <span class="badge etiqueta-img"
-                                                style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                                style="background:{{ $data->destination_color }};">{!! $data->destination !!}</span>
                                         </a>
                                         <div class="card m-0 p-0 border-0">
                                             <a href="{{ url("$data->url") }}" title="Click to see more">
@@ -115,7 +110,7 @@ Reviews |
                                         <div class="card-body">
                                             <a href="{{ url("$data->url") }}" title="Click to see more"
                                                 class="text-decoration-none text-muted">
-                                                <h3 class="card-title">{{ $data->title }}
+                                                <h3 class="card-title">{!! $data->title !!}
                                                 </h3>
                                             </a>
                                             <p class="card-text">

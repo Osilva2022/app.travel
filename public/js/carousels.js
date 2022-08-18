@@ -13,7 +13,7 @@ $(document).ready(function() {
         nav: false,
         dots: true,
         autoplay: true,
-        autoplayTimeout: 5000,
+        autoplayTimeout: 4000,
         autoplayHoverPause: true,
         animateOut: 'fadeOut',
         responsiveClass: true,
@@ -37,7 +37,7 @@ $(document).ready(function() {
         nav: false,
         dots: true,
         autoplay: true,
-        autoplayTimeout: 3000,
+        autoplayTimeout: 5000,
         autoplayHoverPause: true,
         animateOut: 'fadeOut',
         responsiveClass: true,
@@ -68,5 +68,14 @@ $(document).ready(function() {
                 items: 3
             }
         }
+    });
+
+    $('.directory-carousel').owlCarousel({
+        loop: true,
+        margin: 25,
+        center: false,
+        nav: true,
+        dots: false,
+        items: 1
     });
 });

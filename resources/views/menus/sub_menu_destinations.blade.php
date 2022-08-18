@@ -9,8 +9,8 @@
                 @foreach ($destinations_data as $data)
                     <li class="nav-item nav-test mx-1" role="presentation">
                         <a class="nav-link" id="{{ $data->slug }}-tab"
-                            href="{{ url("category/$category") }}?destination={{ $data->slug }}" type="button">
-                            <small>{{ $data->name }}</small></a>
+                            href="{{ url("category/$category") }}?destination={!! $data->slug !!}" type="button">
+                            <small>{!! $data->name !!}</small></a>
                     </li>
                 @endforeach
             </ul>
