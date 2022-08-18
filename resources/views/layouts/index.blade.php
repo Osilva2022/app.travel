@@ -157,7 +157,7 @@
                                         {!! $data->destination !!}</span>
                                 </a>
                                 <span class="badge etiqueta-destacado">
-                                    <img src="{{ asset('img/estrella.png') }}" alt="{!! $data->title !!}" width="30"
+                                    <img src="{{ asset('img/estrella.webp') }}" alt="{!! $data->title !!}" width="30"
                                         height="30">
                                 </span>
                                 <a href="{{ url("$data->url") }}">
