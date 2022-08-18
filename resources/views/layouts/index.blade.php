@@ -105,7 +105,7 @@
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
                                             <img src="{{ images($ttd->image) }}" alt="{!! $ttd->post_title !!}"
-                                                class="carousel-img">
+                                                class="carousel-img" loading="lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h4>{!! $ttd->post_title !!}</h4>
@@ -152,11 +152,11 @@
                                 </a>
                                 <span class="badge etiqueta-destacado">
                                     <img src="{{ asset('img/estrella.png') }}" alt="{!! $data->title !!}" width="30"
-                                        height="30">
+                                        height="30" loading="lazy">
                                 </span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img src="{{ images($data->image) }}" class="card-img">
+                                    <img src="{{ images($data->image) }}" class="card-img" loading="lazy">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -238,37 +238,37 @@
                         <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[0]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[0]->media_url }}" class="img-gallery-2" alt="" />
+                                <img src="{{ $gallery[0]->media_url }}" class="img-gallery-2" alt="" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
                             <a href="{{ $gallery[1]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[1]->media_url }}" class="img-gallery" alt="" />
+                                <img src="{{ $gallery[1]->media_url }}" class="img-gallery" alt="" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-5 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[2]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[2]->media_url }}" class="img-gallery" alt="" />
+                                <img src="{{ $gallery[2]->media_url }}" class="img-gallery" alt="" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[3]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[3]->media_url }}" class="img-gallery-2" alt="" />
+                                <img src="{{ $gallery[3]->media_url }}" class="img-gallery-2" alt="" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[4]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[4]->media_url }}" class="img-gallery" alt="" />
+                                <img src="{{ $gallery[4]->media_url }}" class="img-gallery" alt="" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
                             <a href="{{ $gallery[5]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[5]->media_url }}" class="img-gallery-2" alt="" />
+                                <img src="{{ $gallery[5]->media_url }}" class="img-gallery-2" alt="" loading="lazy" />
                             </a>
                         </div>
                     </div>
