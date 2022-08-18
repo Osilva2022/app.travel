@@ -170,7 +170,6 @@
                                             </div>
                                             <div
                                                 class="col-12 cont-info collapse multi-collapse cont-info-{!! $data->ID !!}">
-                                                <h4>Owner Message</h4>
                                                 {!! $data->remark !!}
                                             </div>
                                             <div class="col-12 d-flex justify-content-end align-items-center">

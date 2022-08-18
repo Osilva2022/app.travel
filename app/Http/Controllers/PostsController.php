@@ -209,7 +209,8 @@ class PostsController extends Controller
 
         $review = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
-        $things = DB::select("SELECT 
+        $things = DB::select("SELECT
+                                    td.ID,
                                     td.category_id,
                                     td.category,
                                     td.category_slug,
@@ -220,7 +221,7 @@ class PostsController extends Controller
                                     td.image
                                 FROM
                                     travel_directory as td 
-                                    WHERE td.label in (21,22)
+                                    WHERE td.label = 22
                                 ORDER BY td.destination_slug , td.category_id;"); //Label '22' = VIP+
         //dd($things);
         $new = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
@@ -278,7 +279,7 @@ class PostsController extends Controller
     }
 
     public function categories(Request $request, $category)
-    {       
+    {
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
@@ -288,7 +289,7 @@ class PostsController extends Controller
 
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
-      
+
         // dd($firstpostcategory); 
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
@@ -406,7 +407,7 @@ class PostsController extends Controller
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        
+        //dd($things->links());
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
     }
 
@@ -430,5 +431,10 @@ class PostsController extends Controller
             $galleries["gallery-" . $post->ID] = $imgs;
         }
         return $galleries;
+    }
+
+    public function ShowGuideItem($id_post)
+    {
+        # code...
     }
 }

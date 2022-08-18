@@ -58,6 +58,7 @@ body {
 .btn-square {
     width: 100% !important;
     height: 100% !important;
+    color: #243A85;
     aspect-ratio: 1/1;
     text-align: center;
     padding: 4px;
