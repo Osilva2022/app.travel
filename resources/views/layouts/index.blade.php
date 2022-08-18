@@ -102,7 +102,7 @@
                                     @endif
                                     <div class="ttd-slider-item">
                                         <a
-                                            href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
+                                            href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}#directory-item-{!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
                                             <img src="{{ images($ttd->image) }}.webp" alt="{!! $ttd->post_title !!}"
                                                 class="carousel-img lazy">
@@ -118,6 +118,12 @@
                                     <?php $i++; ?>
                                 @endforeach
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 my-4 d-flex justify-content-center">
+                            <a href="{{ url('guide') }}?destination=puerto-vallarta" class="btn-view-more"
+                                type="button">Show More</a>
                         </div>
                     </div>
                 </div>
