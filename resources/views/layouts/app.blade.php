@@ -14,21 +14,20 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
-
+    
     <!-- Fonts -->
-    {{-- <link rel="preconnect" href="https://fonts.gstatic.com"> --}}
     <link rel="stylesheet" href="https://use.typekit.net/qfr3cjd.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css?v='.mt_rand()) }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
     <!-- Styles -->
-    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/jQuery.js') }}"></script>
+    <script src="{{ asset('js/jQuery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
         integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
     </script>
@@ -80,17 +79,20 @@
                 <div class="col text-md-start text-white text-center">
                     <ul class="nav justify-content-center flex-column ">
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('category',['reviews']) }}">
+                            <a class="nav-link text-white" style="padding: 2px;"
+                                href="{{ route('category', ['reviews']) }}">
                                 <h3 class="text-white text-center fs-6 mb-2">Reviews</h3>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('category',['news']) }}">
+                            <a class="nav-link text-white" style="padding: 2px;"
+                                href="{{ route('category', ['news']) }}">
                                 <h3 class="text-white text-center fs-6 mb-2">News</h3>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('category',['things-to-do']) }}">
+                            <a class="nav-link text-white" style="padding: 2px;"
+                                href="{{ route('category', ['things-to-do']) }}">
                                 <h3 class="text-white text-center fs-6 mb-2">Things to do</h3>
                             </a>
                         </li>
@@ -114,7 +116,7 @@
                         <button class="btn btn-light" style="color: #243A85" type="button" id="button-addon2"><i
                                 class="bi bi-send"></i></button>
                     </div>
-                </div>  --}}
+                </div> --}}
                 <div class="col text-center text-white">
                     <h5 class="text-white text-center" style="padding: 2px;">Social Media</h5>
                     <ul class="nav pb-2 mb-2 justify-content-center">
@@ -197,6 +199,16 @@
     <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
     <script src="{{ asset('js/base.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.js') }}" version="1"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // alert("Hola");
+            $(function() {
+                $('img').Lazy();
+                $('iframe').Lazy();
+            });
+        });
+    </script>
 </body>
 
 </html>
