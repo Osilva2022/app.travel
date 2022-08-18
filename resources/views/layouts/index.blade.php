@@ -104,7 +104,7 @@
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img src="{{ images($ttd->image) }}" alt="{!! $ttd->post_title !!}"
+                                            <img src="{{ images($ttd->image) }}.webp" alt="{!! $ttd->post_title !!}"
                                                 class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
@@ -182,7 +182,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img src="{{ images($data->image) }}" class="card-img-secundario lazy">
+                                                    <img src="{{ images($data->image) }}.webp" class="card-img-secundario lazy">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
