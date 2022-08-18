@@ -1,0 +1,21 @@
+[02-Aug-2022 23:00:53 UTC] PHP Fatal error:  Uncaught Error: Class 'Artesaos\SEOTools\Providers\SEOToolsServiceProvider' not found in /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+Stack trace:
+#0 /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\Foundation\Application->resolveProvider('Artesaos\\SEOToo...')
+#1 /home/tribunetravel/app.tribune.travel/bootstrap/app.php(45): Illuminate\Foundation\Application->register('Artesaos\\SEOToo...')
+#2 /home/tribunetravel/app.tribune.travel/artisan(20): require_once('/home/tribunetr...')
+#3 {main}
+  thrown in /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 745
+[02-Aug-2022 23:02:06 UTC] PHP Fatal error:  Uncaught Error: Class 'Artesaos\SEOTools\Providers\SEOToolsServiceProvider' not found in /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+Stack trace:
+#0 /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\Foundation\Application->resolveProvider('Artesaos\\SEOToo...')
+#1 /home/tribunetravel/app.tribune.travel/bootstrap/app.php(45): Illuminate\Foundation\Application->register('Artesaos\\SEOToo...')
+#2 /home/tribunetravel/app.tribune.travel/artisan(20): require_once('/home/tribunetr...')
+#3 {main}
+  thrown in /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 745
+[02-Aug-2022 23:02:18 UTC] PHP Fatal error:  Uncaught Error: Class 'Artesaos\SEOTools\Providers\SEOToolsServiceProvider' not found in /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+Stack trace:
+#0 /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\Foundation\Application->resolveProvider('Artesaos\\SEOToo...')
+#1 /home/tribunetravel/app.tribune.travel/bootstrap/app.php(45): Illuminate\Foundation\Application->register('Artesaos\\SEOToo...')
+#2 /home/tribunetravel/app.tribune.travel/artisan(20): require_once('/home/tribunetr...')
+#3 {main}
+  thrown in /home/tribunetravel/app.tribune.travel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 745
