@@ -5,7 +5,7 @@
                 <li class="nav-item nav-test mx-1" role="presentation">
                     <a class="nav-link" id="1-tab" href="{{ url('guide') }}?destination={!! $destination !!}"
                         type="button">
-                        <small><i class="bi bi-arrow-left"></i> Things To Do</small></a>
+                        <small><i class="bi bi-arrow-left"></i> Categories</small></a>
                 </li>
                 <?php $n = 1; ?>
                 @foreach ($things_categories as $data)
