@@ -31,7 +31,7 @@
 <!-- ads -->
 @push('ads')
     <!-- Tribune Top Leaderboard Home-->
-    {{-- <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
         window.googletag = window.googletag || {
             cmd: []
@@ -64,7 +64,7 @@
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
         });
-    </script> --}}
+    </script>
 @endpush
 
 <!-- content -->
@@ -79,11 +79,11 @@
             <!--ads /21855382314/tt-home-lb-1 -->
             <div class="row">
                 <div id='div-gpt-ad-1620235812535-0' class="col text-center" style="margin-top: 10px">
-                    {{-- <script>
+                    <script>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620235812535-0');
                         });
-                    </script> --}}
+                    </script>
                 </div>
             </div>
             <!-- TTD -->
@@ -133,11 +133,11 @@
             <div class="row">
                 <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px"
                     style='width: 300px; height: 250px;'>
-                    {{-- <script async >
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620235535381-0');
                         });
-                    </script> --}}
+                    </script>
                 </div>
             </div>
             <div class="row">
@@ -227,11 +227,11 @@
             <!-- ads /21855382314/tt-home-lb-3 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236451767-0' class="col text-center">
-                    {{-- <script async >
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620236451767-0');
                         });
-                    </script> --}}
+                    </script>
                 </div>
             </div>
             <div class="row">
@@ -308,11 +308,11 @@
             <!-- ads /21855382314/tt-home-lb-5 -->
             <div class="row">
                 <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
-                    {{-- <script async >
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620239881317-0');
                         });
-                    </script> --}}
+                    </script>
                 </div>
             </div>
             <!-- Gallery -->
@@ -436,11 +436,11 @@
             <!-- ads /21855382314/tt-home-lb-4 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236955324-0' class="col text-center">
-                    {{-- <script async >
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620236955324-0');
                         });
-                    </script> --}}
+                    </script>
                 </div>
             </div>
             <!-- EVENTS -->
@@ -523,11 +523,11 @@
             <!--ads /21855382314/tt-home-lb-footer -->
             <div class="row">
                 <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                    {{-- <script async >
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620253311869-0');
                         });
-                    </script> --}}
+                    </script>
                 </div>
             </div>
 
