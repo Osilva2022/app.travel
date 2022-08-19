@@ -11,12 +11,9 @@
     <title>@yield('page-title') Tribune Travel</title>
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
-
     <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
-    
-    <!-- Styles -->    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">    
+    <!-- Styles -->   
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
@@ -30,7 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
         integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
     </script>
-    <script>
+    <script async>
         $(function() {
             $(window).on("scroll", function() {
                 if ($(window).scrollTop() > 200) {
@@ -199,9 +196,8 @@
     <script src="{{ asset('js/base.min.js') }}" version="1"></script>
     <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // alert("Hola");
+    <script async>
+        $(document).ready(function() {  
             $(function() {
                 $('img').Lazy();
                 $('iframe').Lazy();

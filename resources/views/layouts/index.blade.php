@@ -1,6 +1,5 @@
 @extends('layouts.app')
 <!-- Metadatos -->
-
 @push('metatags')
     <meta name="description"
         content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
