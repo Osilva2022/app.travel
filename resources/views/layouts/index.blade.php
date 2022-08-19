@@ -133,7 +133,7 @@
             <div class="row">
                 <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px"
                     style='width: 300px; height: 250px;'>
-                    <script>
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620235535381-0');
                         });
@@ -223,7 +223,7 @@
             <!-- ads /21855382314/tt-home-lb-3 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236451767-0' class="col text-center">
-                    <script>
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620236451767-0');
                         });
@@ -304,7 +304,7 @@
             <!-- ads /21855382314/tt-home-lb-5 -->
             <div class="row">
                 <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
-                    <script>
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620239881317-0');
                         });
@@ -392,7 +392,7 @@
             <!--ads /21855382314/tt-home-lb-footer -->
             {{-- <div class="row">
                     <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                        <script>
+                        <script async >
                             googletag.cmd.push(function() {
                                 googletag.display('div-gpt-ad-1620253311869-0');
                             });
@@ -432,7 +432,7 @@
             <!-- ads /21855382314/tt-home-lb-4 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236955324-0' class="col text-center">
-                    <script>
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620236955324-0');
                         });
@@ -519,7 +519,7 @@
             <!--ads /21855382314/tt-home-lb-footer -->
             <div class="row">
                 <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                    <script>
+                    <script async >
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620253311869-0');
                         });
@@ -527,7 +527,7 @@
                 </div>
             </div>
 
-            <script>
+            <script async >
                 $(document).ready(function() {
                     // alert("Hola");
                     $(function() {

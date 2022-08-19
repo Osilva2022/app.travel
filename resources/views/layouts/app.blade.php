@@ -18,8 +18,8 @@
     <!-- Styles -->    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet">
+    <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
@@ -196,8 +196,8 @@
         </div>
     </footer>
     <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
-    <script src="{{ asset('js/base.js') }}" version="1"></script>
-    <script src="{{ asset('js/carousels.js') }}" version="1"></script>
+    <script src="{{ asset('js/base.min.js') }}" version="1"></script>
+    <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
     <script>
         $(document).ready(function() {
