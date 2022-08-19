@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-Guide |
+    Guide |
 @endsection
 @section('content')
     <header>
@@ -24,7 +24,7 @@ Guide |
                             @foreach ($destinations_data as $data)
                                 <li class="nav-item nav-test mx-1" role="presentation">
                                     <a class="nav-link" id="{!! $data->slug !!}-tab"
-                                        href="{{ url("guide") }}?destination={!! $data->slug !!}" type="button">
+                                        href="{{ url('guide') }}?destination={!! $data->slug !!}" type="button">
                                         <small>{!! $data->name !!}</small></a>
                                 </li>
                             @endforeach
@@ -33,14 +33,14 @@ Guide |
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <h2>Guide</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum est, cumque dicta officiis fuga
-                        maiores? Quod esse et voluptatem corporis dolor deleniti reprehenderit incidunt iusto? Ad deserunt
-                        minus neque vero!</p>
+                    <p>There is always something new to discover. <br>
+                    Learn about the best spots you can visit to dine, sip, pamper yourself and have the best of times.
+                    </p>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
                 @foreach ($things_categories as $tc)
                     <div class="col">
                         <a href="{{ route('guide_category', ["$destination", "$tc->category_slug"]) }}"
@@ -53,7 +53,7 @@ Guide |
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-title" style="color:{!! $tc->category_color !!};">
-                                        {!!  $tc->category !!}
+                                        {!! $tc->category !!}
                                     </h3>
                                     <p class="card-text" style="color: #7B7F84;">
                                         {!! $tc->description !!}

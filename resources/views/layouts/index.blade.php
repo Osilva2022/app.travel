@@ -104,7 +104,7 @@
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img src="{{ images($ttd->image) }}.webp" alt="{!! $ttd->post_title !!}"
+                                            <img {!! img_meta($ttd->image_data) !!} src="{{ images($ttd->image) }}.webp" alt="{!! $ttd->post_title !!}"
                                                 class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
@@ -147,6 +147,9 @@
             </div>
             <!-- REVIEWS -->
             <h2 class="my-4">Tribune Reviews</h2>
+            <?php
+            //echo img_meta($reviews[0]->image_data);
+            ?>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($review as $data)
@@ -162,7 +165,7 @@
                                 </span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img src="{{ images($data->image) }}" class="card-img">
+                                    <img {!! img_meta($data->image_data) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -188,7 +191,8 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img src="{{ images($data->image) }}.webp" class="card-img-secundario lazy">
+                                                    <img {!! img_meta($data->image_data) !!}
+                                                        class="card-img-secundario lazy">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -331,7 +335,7 @@
                                 </a>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img src="{{ images($data->image) }}" class="card-img">
+                                    <img {!! img_meta($data->image_data) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -357,7 +361,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -408,7 +412,7 @@
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img src="{{ images($data->image) }}" alt="{!! $data->title !!}" class="img-event">
+                                <img {!! img_meta($data->image_data) !!} class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
@@ -458,7 +462,7 @@
                                 </a>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img src="{{ images($data->image) }}" class="card-img">
+                                    <img {!! img_meta($data->image_data) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -484,7 +488,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img src="{{ images($data->image) }}" class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -526,7 +530,5 @@
                     </script>
                 </div>
             </div>
-
-
     </main>
 @endsection

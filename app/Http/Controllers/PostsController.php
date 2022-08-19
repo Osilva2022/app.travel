@@ -218,7 +218,8 @@ class PostsController extends Controller
                                     td.destination_slug,
                                     td.post_title,
                                     td.label,
-                                    td.image
+                                    td.image,
+                                    td.image_data
                                 FROM
                                     travel_directory as td 
                                     WHERE td.label = 22
@@ -234,7 +235,7 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
-        // dd($things);
+         //dd($reviews[0]->image_data);
 
         $this->metadatos('home', 'home');
 

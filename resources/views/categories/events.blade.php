@@ -12,18 +12,19 @@
             <div class="row mb-4">
                 <div class="col-12">
                     <h2>Calendar</h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quidem temporibus sint atque non
-                    eligendi molestiae alias reprehenderit, magnam aliquid, id minima
+                    <p>Looking for what to do in Mexico’s top beach destinations? <br> 
+                        We got you covered with the best events. Find out what to do and where to go here.</p>
                 </div>
             </div>
-            <div class="row row-cols-1 g-4 mb-4">
+            <div class="row row-cols-1 g-4 my-4">
                 <h3>Featured Events</h3>
                 @foreach ($events as $event)
                     <div class="col">
                         <div class="card-event">
                             <div class="row g-4">
                                 <div class="col-md-5 d-flex align-items-center">
-                                    <img src="{{ images($event->image) }}" class="card-img-estatica" style="object-fit: contain;">
+                                    <img src="{{ images($event->image) }}" class="card-img-estatica"
+                                        style="object-fit: contain;">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row g-4">
