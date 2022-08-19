@@ -190,7 +190,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-center text-white" style="font-size: 11px;">&copy; 2022 CPS Media. All rights reserved
+                <p class="text-center text-white" style="font-size: 11px;">&copy; {{date('Y')}} CPS Media. All rights reserved
                 </p>
             </div>
         </div>
