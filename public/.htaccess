@@ -19,6 +19,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
+    ExpiresActive On
+    ExpiresDefault "access plus 6 months"
+    ExpiresByType text/css "access plus 2 weeks"
+    ExpiresByType text/javascript "access plus 4 weeks"
+
     # <filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|svg|js|css|swf)$">
     #     Header set Cache-Control "max-age=84600, public"
     # </filesMatch>
