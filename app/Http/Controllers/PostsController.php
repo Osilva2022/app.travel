@@ -386,7 +386,7 @@ class PostsController extends Controller
     public function guide_category($destination, $category)
     {
         $categories_data = $this->returndata('categories');
-        $things_category = DB::select("SELECT * FROM travel_things_categories WHERE slug = '$category';");
+        $things_category = DB::select("SELECT * FROM travel_directory_category WHERE slug = '$category';");
         $destinations_data = $this->returndata('destinations');
         $directory_category_data = DB::select("SELECT * FROM travel_directory_category WHERE slug= '$category';");
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
