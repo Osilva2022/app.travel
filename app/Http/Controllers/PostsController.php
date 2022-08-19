@@ -234,6 +234,7 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
+        $gallery = false;
         // dd($things);
 
         $this->metadatos('home', 'home');
