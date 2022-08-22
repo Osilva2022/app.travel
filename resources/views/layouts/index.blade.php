@@ -1,8 +1,7 @@
 @extends('layouts.app')
 <!-- Metadatos -->
 @push('metatags')
-    <meta name="description"
-        content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <meta name="description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <link rel="canonical" href="https://app.tribune.travel/">
     <meta property="og:title" content="App Tribune Travel | Your gateway to México">
     <meta property="og:description"

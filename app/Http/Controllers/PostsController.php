@@ -384,6 +384,7 @@ class PostsController extends Controller
 
     public function guide_category($destination, $category)
     {
+        
         $categories_data = $this->returndata('categories');
         $things_category = DB::select("SELECT * FROM travel_things_categories WHERE slug = '$category';");
         $destinations_data = $this->returndata('destinations');
@@ -403,7 +404,7 @@ class PostsController extends Controller
                                             WHERE t.orden = 1
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
         $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category';");
-        $things = $this->paginate($posts, 5);
+        $things = $this->paginate($posts, 5);        
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
         $gallery = $this->get_img_gallery($id_location, $id_category);

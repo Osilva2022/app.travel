@@ -12,15 +12,14 @@
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">    
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">  
     <!-- Styles -->   
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
-
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">    
+    <link href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jQuery.min.js') }}"></script>
@@ -65,10 +64,8 @@
                         <ul class="nav justify-content-center flex-column">
                             <li class="nav-item">322 226 3870</li>
                             <li class="nav-item">digital@cps.media</li>
-                            <li class="nav-item">Proa 111, Marina Vallarta, CP. 48335
-                            </li>
-                            <li class="nav-item">Puerto Vallarta, Jalisco, México.
-                            </li>
+                            <li class="nav-item">Proa 111, Marina Vallarta, CP. 48335 </li>
+                            <li class="nav-item">Puerto Vallarta, Jalisco, México. </li>
                         </ul>
                     </address>
                 </div>
@@ -145,8 +142,7 @@
             <div class="row row-cols-4 g-2 g-lg-3 justify-content-center mb-4">
                 <div class="col-12 col-footer text-center">
                     <a href="https://cps.media/" target="_blank">
-                        <img src="{{ asset('img/svg/cps-media-white.svg') }}" class="img-footer"
-                            style="width: 25%;">
+                        <img src="{{ asset('img/svg/cps-media-white.svg') }}" class="img-footer" style="width: 25%;">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
