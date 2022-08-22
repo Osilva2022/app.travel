@@ -36,7 +36,7 @@ function img_meta($data)
     $img_meta = [
         'width="' . $metadatos['width'] . '"',
         'height="' . $metadatos['height'] . '"',
-        'src="' . images($metadatos['s3']['formats']['webp']) . '"',
+        'src="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . '"',
         'alt="' . $metadatos['image_meta']['caption'] . '"',
         'loading="lazy"',
         'decoding="async"',

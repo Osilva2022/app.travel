@@ -14,6 +14,4 @@ $(document).ready(function() {
         }
     });
 
-    /* $(".cont-info").delay(1500).hide(); */
-    /* $(".dc").hide(); */
 });

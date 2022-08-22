@@ -102,8 +102,7 @@
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($ttd->image_data) !!} src="{{ images($ttd->image) }}.webp" alt="{!! $ttd->post_title !!}"
-                                                class="carousel-img lazy">
+                                            <img {!! img_meta($ttd->image_data) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h4>{!! $ttd->post_title !!}</h4>
@@ -131,7 +130,7 @@
             <div class="row">
                 <div id='div-gpt-ad-1620235535381-0' class="col text-center" style="margin-top: 10px"
                     style='width: 300px; height: 250px;'>
-                    <script async >
+                    <script async>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620235535381-0');
                         });
@@ -189,8 +188,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data) !!}
-                                                        class="card-img-secundario lazy">
+                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario lazy">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -225,7 +223,7 @@
             <!-- ads /21855382314/tt-home-lb-3 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236451767-0' class="col text-center">
-                    <script async >
+                    <script async>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620236451767-0');
                         });
@@ -246,37 +244,43 @@
                         <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[0]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[0]->media_url }}" width="100" height="100" class="lazy img-gallery-2" alt="" />
+                                <img src="{{ $gallery[0]->media_url }}" width="100" height="100"
+                                    class="lazy img-gallery-2" alt="" />
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
                             <a href="{{ $gallery[1]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[1]->media_url }}" width="100" height="100" class="lazy img-gallery" loading="lazy" />
+                                <img src="{{ $gallery[1]->media_url }}" width="100" height="100"
+                                    class="lazy img-gallery" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-5 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[2]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[2]->media_url }}" width="100" height="100" class="lazy img-gallery" loading="lazy" />
+                                <img src="{{ $gallery[2]->media_url }}" width="100" height="100"
+                                    class="lazy img-gallery" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[3]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[3]->media_url }}" width="100" height="100" class="lazy img-gallery-2" loading="lazy" />
+                                <img src="{{ $gallery[3]->media_url }}" width="100" height="100"
+                                    class="lazy img-gallery-2" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-7 col-md-3 position-relative zoom">
                             <a href="{{ $gallery[4]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[4]->media_url }}" width="100" height="100" class="lazy img-gallery" loading="lazy" />
+                                <img src="{{ $gallery[4]->media_url }}" width="100" height="100"
+                                    class="lazy img-gallery" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
                             <a href="{{ $gallery[5]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[5]->media_url }}" width="100" height="100" class="lazy img-gallery-2" loading="lazy" />
+                                <img src="{{ $gallery[5]->media_url }}" width="100" height="100"
+                                    class="lazy img-gallery-2" loading="lazy" />
                             </a>
                         </div>
                     </div>
@@ -306,7 +310,7 @@
             <!-- ads /21855382314/tt-home-lb-5 -->
             <div class="row">
                 <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
-                    <script async >
+                    <script async>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620239881317-0');
                         });
@@ -434,7 +438,7 @@
             <!-- ads /21855382314/tt-home-lb-4 -->
             <div class="row">
                 <div id='div-gpt-ad-1620236955324-0' class="col text-center">
-                    <script async >
+                    <script async>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620236955324-0');
                         });
@@ -521,7 +525,7 @@
             <!--ads /21855382314/tt-home-lb-footer -->
             <div class="row">
                 <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                    <script async >
+                    <script async>
                         googletag.cmd.push(function() {
                             googletag.display('div-gpt-ad-1620253311869-0');
                         });
@@ -529,7 +533,7 @@
                 </div>
             </div>
 
-            <script async >
+            <script async>
                 $(document).ready(function() {
                     // alert("Hola");
                     $(function() {

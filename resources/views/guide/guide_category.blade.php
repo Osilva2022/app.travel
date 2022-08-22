@@ -30,7 +30,8 @@
                                 <div class="owl-carousel owl-theme things-vip-carousel" id="">
                                     @foreach ($things_vip as $data)
                                         <div class="ttd-slider-item">
-                                            <div class="opacity-effect" style="border-radius: 1rem"></div>
+                                            <div class="opacity-effect item-directory" style="border-radius: 1rem"
+                                                data-id="{!! $data->ID !!}"></div>
                                             <img src="{!! images($data->image) !!}" alt="{!! $data->post_title !!}"
                                                 class="carousel-img">
                                             <div class="container">
@@ -65,8 +66,53 @@
             <div class="d-flex justify-content-center justify-content-lg-start mb-4">
                 {{ $things->links('pagination::bootstrap-4') }}
             </div>
+            <!-- Modal -->
+            <div class="modal fade" id="directory-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Top {!! $things_category[0]->name !!} <i
+                                    class="bi bi-stars"></i></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col directory-item-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="{{ asset('js/submenu_things.js') }}" version="1"></script>
         <script src="{{ asset('js/things-directory.js') }}" version="1"></script>
+        <script>
+            $(document).ready(function() {
+                $(".item-directory").click(function(e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    var ruta = window.location.pathname;
+
+                    $('#directory-modal').modal('show');
+                    $.ajax({
+                        type: "get",
+                        url: "{{ route('directory-item') }}",
+                        data: {
+                            id: id
+                        },
+                        beforeSend: function() {
+                            $('.directory-item-body').html(
+                                '<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="visually-hidden"> Loading... </span></div></div>'
+                            );
+                        },
+                        success: function(msg) {
+                            $('.directory-item-body').html(msg);
+                        }
+                    });
+                });
+            });
+        </script>
     </main>
-    @endsection
+@endsection
