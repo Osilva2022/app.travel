@@ -234,7 +234,7 @@ class PostsController extends Controller
             $gallery = $gallery->data;
         } else {
             $gallery = false;
-        }    
+        }
 
         $this->metadatos('home', 'home');
 
@@ -323,7 +323,6 @@ class PostsController extends Controller
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
     }
 
-    public $amount = 1;
 
     public function events(Request $request)
     {
@@ -336,7 +335,6 @@ class PostsController extends Controller
         $category = "events";
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5);
-        //$events = DB::table('travel_events')->take($this->amount)->get();
 
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
     }
@@ -382,8 +380,9 @@ class PostsController extends Controller
         return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
     }
 
-    public function guide_category($destination, $category)
+    public function guide_category($destination, $category, Request $request)
     {
+
         $categories_data = $this->returndata('categories');
         $things_category = DB::select("SELECT * FROM travel_directory_category WHERE slug = '$category';");
         $destinations_data = $this->returndata('destinations');
@@ -402,7 +401,7 @@ class PostsController extends Controller
                                             ) t
                                             WHERE t.orden = 1
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
-        $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category';");
+        $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' Order by post_title asc;");
         $things = $this->paginate($posts, 5);
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
@@ -433,8 +432,20 @@ class PostsController extends Controller
         return $galleries;
     }
 
-    public function ShowGuideItem($id_post)
+    public function ShowGuideItem(Request $request)
     {
-        # code...
+        if (isset($request->id)) {
+            $id = $request->id;
+
+            $directory_item = DB::select("SELECT * FROM travel_directory WHERE ID = $id;");
+
+            if (is_null($directory_item)) {
+                // return abort(404);
+                return redirect()->route('home');
+            }
+            $data = $directory_item[0];
+            return view('guide.directory_item', compact('data'));
+        }
+        /* return $request->id; */
     }
 }
