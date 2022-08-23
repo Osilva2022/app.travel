@@ -245,7 +245,7 @@
                             <a href="{{ $gallery[0]->permalink }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
                                 <img src="{{ $gallery[0]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery-2" alt="" />
+                                    class="lazy img-gallery-2" alt="" loading="lazy" />
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
