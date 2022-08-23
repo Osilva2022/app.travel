@@ -100,7 +100,7 @@
                                     @endif
                                     <div class="ttd-slider-item">
                                         <a
-                                            href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}">
+                                            href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}?p={!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
                                             <img {!! img_meta($ttd->image_data) !!} class="carousel-img lazy">
                                             <div class="container">

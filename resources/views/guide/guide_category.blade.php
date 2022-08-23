@@ -29,17 +29,18 @@
                             <div class="col-lg-9">
                                 <div class="owl-carousel owl-theme things-vip-carousel" id="">
                                     @foreach ($things_vip as $data)
-                                        <div class="ttd-slider-item">
-                                            <div class="opacity-effect item-directory" style="border-radius: 1rem"
-                                                data-id="{!! $data->ID !!}"></div>
-                                            <img src="{!! images($data->image) !!}" alt="{!! $data->post_title !!}"
-                                                class="carousel-img">
-                                            <div class="container">
-                                                <div class="carousel-info" style="bottom:4px; z-index:2;">
-                                                    <h4>{{ $data->post_title }}</h4>
+                                        <a class="item-directory" data-id="{!! $data->ID !!}">
+                                            <div class="ttd-slider-item">
+                                                <div class="opacity-effect" style="border-radius: 1rem"></div>
+                                                <img src="{!! images($data->image) !!}" alt="{!! $data->post_title !!}"
+                                                    class="carousel-img">
+                                                <div class="container">
+                                                    <div class="carousel-info" style="bottom:4px; z-index:2;">
+                                                        <h4>{{ $data->post_title }}</h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -90,11 +91,28 @@
         <script src="{{ asset('js/things-directory.js') }}" version="1"></script>
         <script>
             $(document).ready(function() {
-                $(".item-directory").click(function(e) {
-                    e.preventDefault();
-                    var id = $(this).data('id');
-                    var ruta = window.location.pathname;
+                function getUrlParameter(sParam) {
+                    var sPageURL = window.location.search.substring(1),
+                        sURLVariables = sPageURL.split('&'),
+                        sParameterName,
+                        i;
 
+                    for (i = 0; i < sURLVariables.length; i++) {
+                        sParameterName = sURLVariables[i].split('=');
+
+                        if (sParameterName[0] === sParam) {
+                            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                        }
+                    }
+                    return false;
+                };
+
+                if (getUrlParameter('p')) {
+                    console.log(getUrlParameter('p'));
+                    CargarDatosModal(getUrlParameter('p'));
+                }
+
+                function CargarDatosModal(id) {
                     $('#directory-modal').modal('show');
                     $.ajax({
                         type: "get",
@@ -111,6 +129,12 @@
                             $('.directory-item-body').html(msg);
                         }
                     });
+                }
+
+                $(".item-directory").click(function(e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    CargarDatosModal(id);
                 });
             });
         </script>

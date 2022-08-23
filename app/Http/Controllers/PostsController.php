@@ -32,31 +32,6 @@ use App\Helper\Helper;
 
 class PostsController extends Controller
 {
-    function wp_get_custom_css($stylesheet = '')
-    {
-        $css = '';
-
-        if (empty($stylesheet)) {
-            $stylesheet = get_stylesheet();
-        }
-
-        $post = wp_get_custom_css_post($stylesheet);
-        if ($post) {
-            $css = $post->post_content;
-        }
-
-        /**
-         * Filters the custom CSS output into the head element.
-         *
-         * @since 4.7.0
-         *
-         * @param string $css        CSS pulled in from the Custom CSS post type.
-         * @param string $stylesheet The theme stylesheet name.
-         */
-        $css = apply_filters('wp_get_custom_css', $css, $stylesheet);
-
-        return $css;
-    }
 
     public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
@@ -109,7 +84,7 @@ class PostsController extends Controller
             //$data = Post::taxonomy('category', $category)->status('publish')->latest();
             $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
         }
-        $data = $this->paginate($post, $pagination);
+        $data = $this->paginate($post, $pagination)->onEachSide(0);
         //dd($data); 
         return $data;
     }
@@ -313,7 +288,7 @@ class PostsController extends Controller
 
         //$destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
         $posts = DB::select("SELECT * FROM travel_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
-        $destinationposts = $this->paginate($posts, 9);
+        $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
@@ -334,7 +309,7 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $category = "events";
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
-        $events = $this->paginate($e, 5);
+        $events = $this->paginate($e, 5)->onEachSide(0);
 
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
     }
@@ -347,7 +322,7 @@ class PostsController extends Controller
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");
         $author = $author_info[0];
         $no_posts = count($posts_info);
-        $posts = $this->paginate($posts_info, 6);
+        $posts = $this->paginate($posts_info, 6)->onEachSide(0);
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
@@ -401,7 +376,7 @@ class PostsController extends Controller
                                             WHERE t.orden = 1
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
         $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' Order by post_title asc;");
-        $things = $this->paginate($posts, 5);
+        $things = $this->paginate($posts, 5)->onEachSide(0);
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
         $gallery = $this->get_img_gallery($id_location, $id_category);
@@ -443,7 +418,21 @@ class PostsController extends Controller
                 return redirect()->route('home');
             }
             $data = $directory_item[0];
-            return view('guide.directory_item', compact('data'));
+            $gallery = [];
+            $imgs = [];
+            $post_gallery = unserialize($data->gallery);
+            foreach ($post_gallery as $key) {
+                $info = DB::select("SELECT 
+                                        meta_value AS img
+                                    FROM
+                                        tribunetravel_wp.travel_postmeta
+                                    WHERE
+                                        post_id = $key
+                                            AND meta_key = '_wp_attached_file';");
+                array_push($imgs, $info[0]->img);
+            }
+            $gallery["gallery-" . $data->ID] = $imgs;
+            return view('guide.directory_item', compact('data', 'gallery'));
         }
         /* return $request->id; */
     }

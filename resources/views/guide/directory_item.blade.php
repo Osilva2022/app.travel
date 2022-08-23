@@ -7,35 +7,33 @@
                 $vip = true;
             }
         @endphp
-        @if ($vip)
-            <div class="col-md-4 d-flex justify-content-center position-relative">
-                <div class="owl-carousel owl-theme directory-carousel dc" id="dc-{!! $data->ID !!}">
-                    <div class="position-relative">
-                        @if ($data->label == 22)
-                            <span class="etiqueta-vip">
-                                <i class="bi bi-award" style="font-size: 1.5rem; color:white;"></i></span>
-                        @endif
-                        <img src="{{ images($data->image) }}" class="card-img-estatica">
-                    </div>
-                    {{-- @foreach ($gallery['gallery-' . $data->ID] as $img)
-                        <div class="row">
-                            <div class="col">
-                                <img src="{{ images($img) }}" class="card-img-slider">
-                            </div>
-                        </div>
-                    @endforeach --}}
+        <div class="col-md-4 d-flex justify-content-center position-relative">
+            <div class="owl-carousel owl-theme directory-carousel dc" id="dc-{!! $data->ID !!}">
+                <div class="position-relative">
+                    @if ($data->label == 22)
+                        <span class="etiqueta-vip">
+                            <i class="bi bi-award" style="font-size: 1.5rem; color:white;"></i></span>
+                    @endif
+                    <img src="{{ images($data->image) }}" class="card-img-estatica">
                 </div>
+                @foreach ($gallery['gallery-' . $data->ID] as $img)
+                    <div class="row">
+                        <div class="col">
+                            <img src="{{ images($img) }}" class="card-img-slider">
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        @endif
+        </div>
         <div class="col">
             <div class="row p-4 h-100 g-2">
-                <div class="col d-flex flex-column">
+                <div class="col-md-6 d-flex flex-column">
                     <h3 class="card-title mb-2">{!! $data->post_title !!}</h3>
                     <span><i class="bi bi-info-square"></i> {!! $data->post_content !!}</span>
                     <span><i class="bi bi-geo-alt"></i> {!! $data->address !!}</span>
                     @if ($vip)
-                        <div id="cont-info-{!! $data->ID !!}"
-                            class="cont-info collapse multi-collapse cont-info-{!! $data->ID !!}">
+                        <div id="cont-infom-{!! $data->ID !!}"
+                            class="cont-info collapse multi-collapse cont-infom-{!! $data->ID !!}">
                             @if ($data->latitude != '' && $data->longitude != '')
                                 <span><i class="bi bi-map"></i> <a
                                         href="https://maps.google.com/?q={!! $data->latitude !!},{!! $data->longitude !!}"
@@ -45,8 +43,8 @@
                             <span><i class="bi bi-telephone"></i><a href="tel:{!! $data->phone !!}">
                                     {!! $data->phone !!}</a></span>
                             @if ($data->email)
-                                <span><i class="bi bi-envelope"></i><a href="mailto:{!! $data->email !!}">
-                                        {!! $data->email !!}</a></span>
+                                <span><i class="bi bi-envelope"></i><a href="mailto:{!! $data->email !!}"  style="word-wrap: break-word;">
+                                        {{ $data->email }}</a></span>
                             @endif
                             <div class="d-flex justify-content-around">
                                 @if ($data->facebook != '')
@@ -74,8 +72,8 @@
                     @endif
                 </div>
                 @if ($vip)
-                    <div id="cont-info-2-{!! $data->ID !!}"
-                        class="col-md-6 cont-info collapse multi-collapse cont-info-{!! $data->ID !!}">
+                    <div id="cont-infom-2-{!! $data->ID !!}"
+                        class="col-md-6 cont-info collapse multi-collapse cont-infom-{!! $data->ID !!}">
                         <span><i class="bi bi-clock"></i> Work Hours</span>
                         @php
                             $horario = unserialize($data->avaliable);
@@ -102,8 +100,8 @@
                     </div>
                     <div class="col-12 d-flex justify-content-end align-items-center">
                         <button type="button" class="btn btn-info-dir text-white" data-bs-toggle="collapse"
-                            data-bs-target=".cont-info-{!! $data->ID !!}" aria-expanded="false"
-                            aria-controls="cont-info-{!! $data->ID !!} cont-info-2-{!! $data->ID !!}"
+                            data-bs-target=".cont-infom-{!! $data->ID !!}" aria-expanded="false"
+                            aria-controls="cont-infom-{!! $data->ID !!} cont-infom-2-{!! $data->ID !!}"
                             data-id="{!! $data->ID !!}" data-status="0">
                             <i class="bi bi-plus-lg"></i> Show More
                         </button>
@@ -113,3 +111,13 @@
         </div>
     </div>
 </div>
+<script>
+    $(".directory-carousel").owlCarousel({
+            loop: !0,
+            margin: 25,
+            center: !1,
+            nav: !0,
+            dots: !1,
+            items: 1,
+        });
+</script>
