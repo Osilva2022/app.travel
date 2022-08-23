@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4 menu-active" id="menu-secundario">
     <div class="container-fluid px-4">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('img/svg/tribune-travel-white.svg') }}" width="125" class="d-inline-block align-top"
+            <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125" class="d-inline-block align-top"
                 alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
