@@ -55,7 +55,7 @@
             <div class="row row-cols-1 row-cols-md-5 justify-content-center g-4 align-items-center">
                 <div class="col text-center">
                     <a class="text-muted" href="#">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125" alt="Tribune Travel">
+                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125" height="100" alt="Tribune Travel">
                     </a>
                 </div>
                 <div class="col text-white text-center" style="font-weight:300;">
