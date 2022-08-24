@@ -13,7 +13,7 @@
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">  
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">   --}}
     <!-- Styles -->   
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">

@@ -26,7 +26,7 @@ Reviews |
                                                 class="text-decoration-none text-muted">
                                                 {{-- @if ($firstpostcategory->id_post == $data->id_post) --}}
                                                     <span class="badge etiqueta-destacado">
-                                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada"
+                                                        <img src="{{ asset('img/estrella.webp') }}" alt="destacada"
                                                             width="25" height="25">
                                                     </span>
                                                 {{-- @endif --}}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a54f28920c5dbfbff67ecf5b97a00f1",
+    "content-hash": "593e8b71f4d1375c4a1e3bf70d4bdcf4",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -304,6 +304,52 @@
                 "source": "https://github.com/Chill-Pills/laravel-instagram-basic-feed/tree/0.3.0"
             },
             "time": "2022-04-24T09:48:13+00:00"
+        },
+        {
+            "name": "corcel/acf",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/corcel/acf.git",
+                "reference": "ef3d7479060c6f123eee5d24facf00dfe6e1eff7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/corcel/acf/zipball/ef3d7479060c6f123eee5d24facf00dfe6e1eff7",
+                "reference": "ef3d7479060c6f123eee5d24facf00dfe6e1eff7",
+                "shasum": ""
+            },
+            "require": {
+                "jgrossi/corcel": "^4.0|^5.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.4|^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Corcel\\Acf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Junior Grossi",
+                    "email": "juniorgro@gmail.com",
+                    "homepage": "http://jgrossi.com"
+                }
+            ],
+            "description": "Advanced Custom Field (ACF) plugin for Corcel",
+            "homepage": "http://github.com/corcel/acf",
+            "support": {
+                "issues": "https://github.com/corcel/acf/issues",
+                "source": "https://github.com/corcel/acf/tree/4.0.0"
+            },
+            "time": "2020-10-31T21:06:58+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -8902,5 +8948,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

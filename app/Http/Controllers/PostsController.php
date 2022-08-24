@@ -79,11 +79,13 @@ class PostsController extends Controller
         //     $pagination = 12;
         // }
         $pagination = 8;
-        $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
         if ($destination == '') {
             //$data = Post::taxonomy('category', $category)->status('publish')->latest();
             $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
-        }
+        }else{
+            $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
+        }       
+        
         $data = $this->paginate($post, $pagination)->onEachSide(0);
         //dd($data); 
         return $data;
@@ -256,17 +258,25 @@ class PostsController extends Controller
 
     public function categories(Request $request, $category)
     {
+        //Se obtiene todo los destinos
+        $cat = Taxonomy::where('taxonomy', 'category_things')->with('posts')->get();        
+        $post = Post::taxonomy('category','reviews')->first();
+        // dd($post);
+        
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
-        $destinations_data = $this->returndata('destinations');
-        $categories_data = $this->returndata('categories');
+        $destinations_data = Taxonomy::where('taxonomy', 'post_destinos')->with('posts')->get();
+        $categories_data = Taxonomy::where('taxonomy', 'category')->with('posts')->get();
+        // $destinations_data = $this->returndata('destinations');
+        // $categories_data = $this->returndata('categories');
+        $firstpostcategory = Post::taxonomy('category',$category)->first();
+        $postscategory = Post::taxonomy('category',$category)->taxonomy('post_destinos',$destination)->paginate(8);
+        // $firstpostcategory = $this->category($category, $destination)->first();
+        // $postscategory = $this->category($category, $destination);
 
-        $firstpostcategory = $this->category($category, $destination)->first();
-        $postscategory = $this->category($category, $destination);
-
-        // dd($firstpostcategory); 
+        dd($firstpostcategory); 
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
     }
 
