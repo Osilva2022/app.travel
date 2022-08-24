@@ -7,6 +7,9 @@ function images($image) //Regresa la url del repositorio de imagenes + el nombre
 
 function img_meta($data)
 {
+    if (!isset($data)) {
+        return false;
+    }
     $metadatos = unserialize($data);
     /* $ejemplo = '
         width="1280" 
@@ -41,7 +44,7 @@ function img_meta($data)
         'loading="lazy"',
         'decoding="async"',
         'sizes="(max-width: 180) 150px, (max-width: 320px) 300px, (max-width: 480px) 440px, (max-width: 800px) 768px, 1024px"',
-        'srcset="' . images($metadatos['s3']['formats']['webp']) . ' ' . $metadatos['width'] . 'w, ' . imgMetaSizes($metadatos['sizes']) . '"'
+        'srcset="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . ' ' . $metadatos['width'] . 'w, ' . imgMetaSizes($metadatos['sizes']) . '"'
     ];
     return implode(" ", $img_meta);
 }

@@ -386,13 +386,52 @@ class PostsController extends Controller
                                             ) t
                                             WHERE t.orden = 1
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
-        $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' Order by post_title asc;");
-        $things = $this->paginate($posts, 5)->onEachSide(0);
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
+        $selectedtletter = 'A';
+        if (isset($request->letter)) {
+            $selectedtletter = $request->letter;
+        }
+        //dd($request);
+        $array_abc = array_merge(range('A', 'Z'));
+        if (!in_array($selectedtletter, $array_abc)) { //No es abc...
+            $selectedtletter = '*';
+        }
+        foreach ($array_abc as $key => $val) {
+            $newval = "'$val'";
+            $array_abc[$key] = $newval;
+        }
+        $abc = implode(",", $array_abc);
+        $alphachar = DB::select("SELECT
+                                    CASE
+                                        WHEN SUBSTRING(post_title, 1, 1) not in($abc) THEN '*'
+                                        ELSE SUBSTRING(post_title, 1, 1)
+                                    END as letter
+                                FROM
+                                    travel_directory
+                                WHERE
+                                    location = '$id_location' AND category_id = '$id_category'
+                                GROUP BY letter
+                                ORDER BY letter ASC;");
+        $things = DB::select("SELECT 
+                                    *
+                                FROM
+                                    (SELECT 
+                                        *, 
+                                        CASE
+                                            WHEN SUBSTRING(post_title, 1, 1) not in($abc) THEN '*'
+                                            ELSE SUBSTRING(post_title, 1, 1)
+                                        END as letter
+                                    FROM
+                                        travel_directory
+                                    WHERE
+                                        location = '$id_location' AND category_id = '$id_category') as q1
+                                WHERE
+                                    letter = '$selectedtletter'
+                                ORDER BY post_title ASC;");
+        //dd($things);
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        //dd($things->links());
-        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
+        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter'));
     }
 
     public function get_img_gallery($destination, $category)
@@ -444,6 +483,35 @@ class PostsController extends Controller
             }
             $gallery["gallery-" . $data->ID] = $imgs;
             return view('guide.directory_item', compact('data', 'gallery'));
+        }
+        /* return $request->id; */
+    }
+
+    public function ShowDirectoryLetter(Request $request)
+    {
+        if (isset($request->letter)) {
+            $letter = $request->letter;
+
+            $selectedtletter = 'A';
+            $things = DB::select("SELECT 
+                                    *
+                                FROM
+                                    (SELECT 
+                                        *, SUBSTRING(post_title, 1, 1) AS letter
+                                    FROM
+                                        travel_directory
+                                    WHERE
+                                        location = '$id_location' AND category_id = '$id_category') as q1
+                                WHERE
+                                    letter = '$selectedtletter'
+                                ORDER BY post_title ASC;");
+            $gallery = $this->get_img_gallery($id_location, $id_category);
+
+            if (is_null($things)) {
+                // return abort(404);
+                return redirect()->route('home');
+            }
+            return view('guide.gallery', compact('data', 'gallery'));
         }
         /* return $request->id; */
     }
