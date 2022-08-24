@@ -17,7 +17,7 @@
                 </p>
             </div>
         </div>
-        <div class="container" style="max-width: 1024px;">
+        <div class="container g-4" style="max-width: 1024px;">
             @include('menus.submenu_things')
             <div class="row mb-4">
                 <div class="col">
@@ -48,25 +48,16 @@
                     </div>
                 </div>
             </div>
+            @include('menus.menu_directory')
             <div class="row g-4 mb-4">
                 <?php $letra = ''; ?>
                 @foreach ($things as $data)
-                    <?php $newletra = substr($data->post_title, 0, 1); ?>
-                    @if ($newletra != $letra)
-                        <?php $letra = $newletra; ?>
-                        <div class="col-12">
-                            <h2 class="ms-4">{!! $letra !!}</h2>
-                            <hr>
-                        </div>
-                    @endif
                     <div class="col-lg-12">
                         @include('guide.gallery')
                     </div>
                 @endforeach
             </div>
-            <div class="d-flex justify-content-center justify-content-lg-start mb-4">
-                {{ $things->links('pagination::bootstrap-4') }}
-            </div>
+            @include('menus.menu_directory')
             <!-- Modal -->
             <div class="modal fade" id="directory-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -136,6 +127,7 @@
                     var id = $(this).data('id');
                     CargarDatosModal(id);
                 });
+
             });
         </script>
     </main>

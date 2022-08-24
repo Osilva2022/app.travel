@@ -376,13 +376,39 @@ class PostsController extends Controller
                                             ) t
                                             WHERE t.orden = 1
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
-        $posts = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' Order by post_title asc;");
-        $things = $this->paginate($posts, 5)->onEachSide(0);
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
-
+        $alphachar = DB::select("SELECT 
+                                    SUBSTRING(post_title, 1, 1) AS letter
+                                FROM
+                                    travel_directory
+                                WHERE
+                                    location = '$id_location' AND category_id = '$id_category'
+                                GROUP BY letter
+                                ORDER BY letter ASC;");
+        $selectedtletter = 'A';
+        $abc = array_merge(range('A', 'Z'));
+        //dd($abc);
+        if (isset($request->letter)) {
+            $selectedtletter = $request->letter;
+            if (in_array($selectedtletter, $abc)) {
+                # code...
+            }
+        }
+        $subquery = " = '$selectedtletter'";
+        $things = DB::select("SELECT 
+                                    *
+                                FROM
+                                    (SELECT 
+                                        *, SUBSTRING(post_title, 1, 1) AS letter
+                                    FROM
+                                        travel_directory
+                                    WHERE
+                                        location = '$id_location' AND category_id = '$id_category') as q1
+                                WHERE
+                                    letter $subquery
+                                ORDER BY post_title ASC;");
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        //dd($things->links());
-        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories'));
+        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter'));
     }
 
     public function get_img_gallery($destination, $category)
@@ -434,6 +460,35 @@ class PostsController extends Controller
             }
             $gallery["gallery-" . $data->ID] = $imgs;
             return view('guide.directory_item', compact('data', 'gallery'));
+        }
+        /* return $request->id; */
+    }
+
+    public function ShowDirectoryLetter(Request $request)
+    {
+        if (isset($request->letter)) {
+            $letter = $request->letter;
+
+            $selectedtletter = 'A';
+            $things = DB::select("SELECT 
+                                    *
+                                FROM
+                                    (SELECT 
+                                        *, SUBSTRING(post_title, 1, 1) AS letter
+                                    FROM
+                                        travel_directory
+                                    WHERE
+                                        location = '$id_location' AND category_id = '$id_category') as q1
+                                WHERE
+                                    letter = '$selectedtletter'
+                                ORDER BY post_title ASC;");
+            $gallery = $this->get_img_gallery($id_location, $id_category);
+
+            if (is_null($things)) {
+                // return abort(404);
+                return redirect()->route('home');
+            }
+            return view('guide.gallery', compact('data', 'gallery'));
         }
         /* return $request->id; */
     }

@@ -692,6 +692,10 @@ footer .nav-link:hover {
     margin: 0 !important;
 }
 
+.nav-letter{
+    font-size: 10px !important;
+}
+
 @media (min-width: 900px) {
     #t1 {
         font-size: 54px;
