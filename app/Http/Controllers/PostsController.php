@@ -377,36 +377,49 @@ class PostsController extends Controller
                                             WHERE t.orden = 1
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
-        $alphachar = DB::select("SELECT 
-                                    SUBSTRING(post_title, 1, 1) AS letter
+
+        $selectedtletter = 'A';
+        if (isset($request->letter)) {
+            $selectedtletter = $request->letter;
+        }
+        //dd($request);
+        $array_abc = array_merge(range('A', 'Z'));
+        if (!in_array($selectedtletter, $array_abc)) { //No es abc...
+            $selectedtletter = '*';
+        }
+        foreach ($array_abc as $key => $val) {
+            $newval = "'$val'";
+            $array_abc[$key] = $newval;
+        }
+        $abc = implode(",", $array_abc);
+        $alphachar = DB::select("SELECT
+                                    CASE
+                                        WHEN SUBSTRING(post_title, 1, 1) not in($abc) THEN '*'
+                                        ELSE SUBSTRING(post_title, 1, 1)
+                                    END as letter
                                 FROM
                                     travel_directory
                                 WHERE
                                     location = '$id_location' AND category_id = '$id_category'
                                 GROUP BY letter
                                 ORDER BY letter ASC;");
-        $selectedtletter = 'A';
-        $abc = array_merge(range('A', 'Z'));
-        //dd($abc);
-        if (isset($request->letter)) {
-            $selectedtletter = $request->letter;
-            if (in_array($selectedtletter, $abc)) {
-                # code...
-            }
-        }
-        $subquery = " = '$selectedtletter'";
         $things = DB::select("SELECT 
                                     *
                                 FROM
                                     (SELECT 
-                                        *, SUBSTRING(post_title, 1, 1) AS letter
+                                        *, 
+                                        CASE
+                                            WHEN SUBSTRING(post_title, 1, 1) not in($abc) THEN '*'
+                                            ELSE SUBSTRING(post_title, 1, 1)
+                                        END as letter
                                     FROM
                                         travel_directory
                                     WHERE
                                         location = '$id_location' AND category_id = '$id_category') as q1
                                 WHERE
-                                    letter $subquery
+                                    letter = '$selectedtletter'
                                 ORDER BY post_title ASC;");
+        //dd($things);
         $gallery = $this->get_img_gallery($id_location, $id_category);
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter'));
     }

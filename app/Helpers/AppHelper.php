@@ -7,6 +7,9 @@ function images($image) //Regresa la url del repositorio de imagenes + el nombre
 
 function img_meta($data)
 {
+    if (!isset($data)) {
+        return false;
+    }
     $metadatos = unserialize($data);
     /* $ejemplo = '
         width="1280" 
