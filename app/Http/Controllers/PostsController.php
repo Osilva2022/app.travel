@@ -91,6 +91,10 @@ class PostsController extends Controller
         return $data;
     }
 
+    /**
+    * Obtener las imagenes de una cuenta de instagram a travez de un api 
+    * Se genera un token cada 30 días y se guarda en la tabla travel_instagram_tokens con un cronjob
+    */
     function instagram()
     {
         $instagramtoken = InstagramTokens::find(1);
@@ -105,6 +109,10 @@ class PostsController extends Controller
         return $media;
     }
 
+    /**
+    * Funcion para generar los metadatos en las paginas con SEO::generate()
+    * 
+    */
     function metadatos($data, $type)
     {
         if ($type == 'home') {
@@ -116,6 +124,7 @@ class PostsController extends Controller
             SEOTools::jsonLd()->addImage(URL::to('/public/img/tribune-travel.png'));
             OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
+
         } elseif ($type == 'post') {
 
             SEOTools::setTitle($data->title);
@@ -128,6 +137,10 @@ class PostsController extends Controller
         }
     }
 
+    /**
+    * Funcion para mostrar un previews de un post desde Woordpress
+    * 
+    */
     function preview($id)
     {
         $posts = DB::select("SELECT 
@@ -220,6 +233,10 @@ class PostsController extends Controller
         return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery'));
     }
 
+    /**
+    * Funcion para mostrar el post final
+    * 
+    */
     public function post($destino, $category, $slug): View
     {
         $posts = DB::select("SELECT 
@@ -257,42 +274,20 @@ class PostsController extends Controller
     }
 
     public function categories(Request $request, $category)
-    {
-        //Se obtiene todo los destinos
-        $cat = Taxonomy::where('taxonomy', 'category_things')->with('posts')->get();        
-        $post = Post::taxonomy('category','reviews')->first();
-        // dd($post);
-        
+    {       
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
-        $destinations_data = Taxonomy::where('taxonomy', 'post_destinos')->with('posts')->get();
-        $categories_data = Taxonomy::where('taxonomy', 'category')->with('posts')->get();
-        // $destinations_data = $this->returndata('destinations');
-        // $categories_data = $this->returndata('categories');
-        $firstpostcategory = Post::taxonomy('category',$category)->first();
-        $postscategory = Post::taxonomy('category',$category)->taxonomy('post_destinos',$destination)->paginate(8);
-        // $firstpostcategory = $this->category($category, $destination)->first();
-        // $postscategory = $this->category($category, $destination);
-
-        dd($firstpostcategory); 
-        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
-    }
-
-    public function news(Request $request)
-    {
-        $category = 'news';
-        $destination = '';
-        if (isset($request->destination)) {
-            $destination = $request->destination;
-        }
+       
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+      
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
-        return view('categories.news', compact('destinations_data', 'firstpostcategory', 'postscategory', 'category', 'categories_data'));
-    }
+         
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
+    }   
 
     public function destinations($destination)
     {
@@ -309,7 +304,10 @@ class PostsController extends Controller
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
     }
 
-
+    /**
+    * Funcion para mostrar los eventos proximos
+    * 
+    */
     public function events(Request $request)
     {
         $query = '';
@@ -325,9 +323,12 @@ class PostsController extends Controller
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
     }
 
+    /**
+    * Funcion para mostrar los post por author
+    * 
+    */
     public function author($author_id)
     {
-
         $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
         //dd($posts_info);
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");

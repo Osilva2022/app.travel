@@ -53,7 +53,7 @@ function imgMetaSizes($metasizes)
 {
     $allsizes = [];
     foreach ($metasizes as $size) {
-        $ruta = images($size['s3']['formats']['webp']) . ' ' . $size['width'] . 'w';
+        $ruta = images((isset($size['s3']['formats']['webp'])) ? $size['s3']['formats']['webp'] : $size['file']) . ' ' . $size['width'] . 'w';
         array_push($allsizes, $ruta);
     }
     return implode(',', $allsizes);
