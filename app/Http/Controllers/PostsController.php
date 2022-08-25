@@ -87,9 +87,9 @@ class PostsController extends Controller
         $pagination = 8;
         if ($destination == '') {
             //$data = Post::taxonomy('category', $category)->status('publish')->latest();
-            $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
+            $post = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = '$category' ORDER BY post_date DESC");
         }else{
-            $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
+            $post = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
         }       
         
         $data = $this->paginate($post, $pagination)->onEachSide(0);
