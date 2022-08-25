@@ -26,7 +26,7 @@ Reviews |
                                                 class="text-decoration-none text-muted">
                                                 {{-- @if ($firstpostcategory->id_post == $data->id_post) --}}
                                                     <span class="badge etiqueta-destacado">
-                                                        <img src="{{ asset('img/estrella.png') }}" alt="destacada"
+                                                        <img src="{{ asset('img/estrella.webp') }}" alt="destacada"
                                                             width="25" height="25">
                                                     </span>
                                                 {{-- @endif --}}
@@ -47,7 +47,7 @@ Reviews |
                                                     {!! Str::limit(strip_tags($firstpostcategory->post_excerpt), 225, ' ...') !!}
                                                 </p>
                                                 <small class="text-muted text-end">
-                                                    {{ date('M/d/y', strtotime($firstpostcategory->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($firstpostcategory->post_date)) }}
                                                 </small>
                                             </div>
                                         </a>
@@ -83,7 +83,7 @@ Reviews |
                                                         </h3>
                                                     </a>
                                                     <small class="text-muted">
-                                                        {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                        {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                     </small>
                                                 </div>
                                             </div>
@@ -120,7 +120,7 @@ Reviews |
                                             </a>
                                             <p class="card-text">
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </p>
                                         </div>
