@@ -297,10 +297,8 @@ class PostsController extends Controller
     public function destinations($destination)
     {
 
-        $destinationposts = ModelPost::taxonomy('post_destinos', $destination)
-            ->status('publish')->latest()
-            ->where('post_type', 'post')->paginate(9)->onEachSide(0);;
-        $x = ModelTaxonomy::where('taxonomy', 'category')->with('posts')->get();
+        $posts = DB::select("SELECT * FROM travel_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
+        $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
