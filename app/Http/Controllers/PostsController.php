@@ -29,6 +29,9 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Storage;
 use App\Models\InstagramTokens;
 use App\Helper\Helper;
+use Corcel\Model\Post as ModelPost;
+use Corcel\Model\Taxonomy as ModelTaxonomy;
+use Corcel\Model\Term as ModelTerm;
 
 class PostsController extends Controller
 {
@@ -69,6 +72,9 @@ class PostsController extends Controller
 
     function category($category, $destination)
     {
+        $x = ModelTaxonomy::find(4);
+        $y = ModelPost::find(145);
+        //dd($y->terms);
         // $pagination = 0;
         // if ($category == "reviews" || $category == "Reviews") {
         //     $ruta = 'reviews';
@@ -85,7 +91,6 @@ class PostsController extends Controller
             $post = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = '$category' ORDER BY post_date DESC");
         }
         $data = $this->paginate($post, $pagination)->onEachSide(0);
-        //dd($data); 
         return $data;
     }
 
@@ -287,14 +292,15 @@ class PostsController extends Controller
     public function destinations($destination)
     {
 
-        //$destinationposts = Post::taxonomy('post_destinos', $destination)->status('publish')->latest()->where('post_type', 'post')->paginate(3);
-        $posts = DB::select("SELECT * FROM travel_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
-        $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
+        $destinationposts = ModelPost::taxonomy('post_destinos', $destination)
+            ->status('publish')->latest()
+            ->where('post_type', 'post')->paginate(9)->onEachSide(0);;
+        $x = ModelTaxonomy::where('taxonomy', 'category')->with('posts')->get();
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
-        //dd($destination_data);
+        //dd($destinationposts[2]->terms);
 
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
     }

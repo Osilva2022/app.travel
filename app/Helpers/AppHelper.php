@@ -11,31 +11,6 @@ function img_meta($data)
         return false;
     }
     $metadatos = unserialize($data);
-    /* $ejemplo = '
-        width="1280" 
-        height="853" 
-        src="https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1.jpeg.webp" 
-        class="attachment-twentyseventeen-featured-image size-twentyseventeen-featured-image wp-post-image lazyautosizes lazyloaded" 
-        alt="" 
-        loading="lazy" 
-        data-src="https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1.jpeg.webp" 
-        decoding="async" 
-        data-srcset="https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1.jpeg.webp 1280w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-300x200.jpeg.webp 300w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-1024x682.jpeg.webp 1024w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-768x512.jpeg.webp 768w" 
-        data-sizes="auto" 
-        data-src-webp="https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1.jpeg.webp" 
-        data-srcset-webp="https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1.jpeg.webp 1280w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-300x200.jpeg.webp 300w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-1024x682.jpeg.webp 1024w,
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-768x512.jpeg.webp 768w" 
-        sizes="524px" 
-        srcset="https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1.jpeg.webp 1280w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-300x200.jpeg.webp 300w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-1024x682.jpeg.webp 1024w, 
-        https://test.tribune.travel/wp-content/uploads/2022/08/golf-in-puerto-vallarta-cover-1-768x512.jpeg.webp 768w"
-    '; */
     $img_meta = [
         'width="' . $metadatos['width'] . '"',
         'height="' . $metadatos['height'] . '"',
@@ -53,7 +28,7 @@ function imgMetaSizes($metasizes)
 {
     $allsizes = [];
     foreach ($metasizes as $size) {
-        $ruta = images($size['s3']['formats']['webp']) . ' ' . $size['width'] . 'w';
+        $ruta = images((isset($size['s3']['formats']['webp'])) ? $size['s3']['formats']['webp'] : $size['file']) . ' ' . $size['width'] . 'w';
         array_push($allsizes, $ruta);
     }
     return implode(',', $allsizes);
