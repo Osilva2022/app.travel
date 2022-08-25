@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-{!! $destination_data[0]->name !!} |
+    {!! $destination_data[0]->name !!} |
 @endsection
 @section('content')
     <header>
@@ -23,13 +23,21 @@
                     @foreach ($destinationposts as $data)
                         <div class="col">
                             <div class="card card-especial zoom">
-                                <a href="{{ route("$data->category_slug") }}">
-                                    <span class="badge etiqueta-img"
-                                        style="background:{{ $data->category_color }};">{!! $data->category !!}</span>
-                                </a>
-                                <a href="{{ url("$data->url") }}" class="text-decoration-none text-muted">
-                                    <img src="{{ images($data->image) }}" class="bd-placeholder-img card-img-top" width="100%"
-                                        height="225">
+                                @foreach ($data->terms['category'] as $key => $val)
+                                    <a href="{{ route('category', "$key") }}">
+                                        @foreach ($categories_data as $cat)
+                                            @if ($cat->slug == $key)
+                                                <span class="badge etiqueta-img"
+                                                    style="background:{!! $cat->color !!};">{!! $val !!}</span>
+                                            @endif
+                                        @endforeach
+                                    </a>
+                                @endforeach
+                                <a href="{{ url("$data->slug") }}" class="text-decoration-none text-muted">
+                                    @php
+                                        // var_dump($data->thumbnail->size());
+                                    @endphp
+                                    <img src="{!! img_meta($data->thumbnail) !!}" class="card-img-estatica">
                                     <div class="card-body">
                                         <h3 class="card-title">{!! $data->title !!}</h3>
                                         <p class="card-text">{!! $data->post_excerpt !!}</p>

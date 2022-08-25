@@ -98,7 +98,7 @@ return [
             'password' => env('WP_PASSWORD'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix' => 'test_',
+            'prefix' => 'travel_',
             'strict' => false,
             'engine' => null,
          ],

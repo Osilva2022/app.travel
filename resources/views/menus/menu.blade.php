@@ -3,7 +3,7 @@
     <div class="container-fluid px-4">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125" height="35" class="d-inline-block align-top"
-                alt="">
+                alt="Tribune Travel">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
