@@ -135,9 +135,9 @@ class PostsController extends Controller
             SEOTools::setDescription($data->post_excerpt);
             SEOTools::opengraph()->setUrl(URL::to($data->url));
             SEOTools::setCanonical(URL::to($data->url));
-            SEOTools::jsonLd()->addImage($data->image);
-            OpenGraph::addImage($data->image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage($data->image);
+            SEOTools::jsonLd()->addImage(imgURL($data->image_data));
+            OpenGraph::addImage(imgURL($data->image_data), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage(imgURL($data->image_data));
         }
     }
 
@@ -148,27 +148,27 @@ class PostsController extends Controller
     function preview($id)
     {
         $posts = DB::select("SELECT 
-            *
-        FROM
-            travel_all_posts
-                LEFT JOIN
-            (SELECT 
-                u.user_id,
-                    p.meta_value AS avatar
-            FROM
-                travel_usermeta AS u, travel_postmeta AS p
-            WHERE
-                u.meta_key = 'travel_user_avatar'
-                    AND u.meta_value = p.post_id
-                    AND p.meta_key = '_wp_attached_file') AS q ON travel_all_posts.author_id = q.user_id
-        WHERE
-            id_post = $id
-        ORDER BY post_date DESC;");
+                                    *
+                                FROM
+                                    travel_posts_all
+                                        LEFT JOIN
+                                    (SELECT 
+                                        u.user_id,
+                                            p.meta_value AS avatar
+                                    FROM
+                                        travel_usermeta AS u, travel_postmeta AS p
+                                    WHERE
+                                        u.meta_key = 'travel_user_avatar'
+                                            AND u.meta_value = p.post_id
+                                            AND p.meta_key = '_wp_attached_file') AS q ON travel_posts_all.author_id = q.user_id
+                                WHERE
+                                    id_post = $id
+                                ORDER BY post_date DESC;");
 
         $post = $posts[0];
         $category = $post->category_slug;
         $destino = $post->destination_slug;
-        $more_posts = DB::select("SELECT * FROM travel_all_posts 
+        $more_posts = DB::select("SELECT * FROM travel_posts_category
             WHERE category_slug = '$post->category_slug'
             AND id_post != $post->id_post
                 ORDER BY post_date DESC
@@ -201,8 +201,8 @@ class PostsController extends Controller
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
         $categories_data = $this->returndata('categories');
 
-        $review = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
-        $reviews = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
+        $review = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
+        $reviews = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
         $things = DB::select("SELECT
                                     td.ID,
                                     td.category,
@@ -217,8 +217,10 @@ class PostsController extends Controller
                                     WHERE td.label = 22
                                 ORDER BY td.destination_slug , td.category_slug;"); //Label '22' = VIP+
         //dd($things);
-        $new = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
-        $news = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
+        $new = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
+        $news = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
+        $blog = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 1");
+        $blogs = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
 
         $gallery = $this->instagram();
@@ -226,13 +228,12 @@ class PostsController extends Controller
             $gallery = $gallery->data;
         } else {
             $gallery = false;
-        }
-    
+        }    
 
         $this->metadatos('home', 'home');
 
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery','blog','blogs'));
     }
 
     /**
@@ -244,7 +245,7 @@ class PostsController extends Controller
         $posts = DB::select("SELECT 
                                     *
                                 FROM
-                                    travel_all_posts
+                                    travel_posts_all
                                         LEFT JOIN
                                     (SELECT 
                                         u.user_id, p.meta_value AS avatar, us.user_nicename
@@ -256,13 +257,13 @@ class PostsController extends Controller
                                         u.meta_key = 'travel_user_avatar'
                                             AND u.meta_value = p.post_id
                                             AND us.ID = u.user_id
-                                            AND p.meta_key = '_wp_attached_file') AS q ON travel_all_posts.author_id = q.user_id
+                                            AND p.meta_key = '_wp_attached_file') AS q ON travel_posts_all.author_id = q.user_id
                                 WHERE
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
         $post = $posts[0];
 
-        $more_posts = DB::select("SELECT * FROM travel_all_posts 
+        $more_posts = DB::select("SELECT * FROM travel_posts_category
                                     WHERE category_slug = '$post->category_slug'
                                     AND id_post != $post->id_post
                                         ORDER BY post_date DESC
@@ -330,9 +331,9 @@ class PostsController extends Controller
      */
     public function author($author_id)
     {
-        $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
-        //dd($posts_info);
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");
+        $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
+        //dd($posts_info);
         $author = $author_info[0];
         $no_posts = count($posts_info);
         $posts = $this->paginate($posts_info, 6)->onEachSide(0);

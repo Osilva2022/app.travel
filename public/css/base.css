@@ -306,6 +306,13 @@ small {
     box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
 }
 
+.card-img-final {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
+
 .card-img-slider {
     width: 100%;
     height: auto;
@@ -674,6 +681,12 @@ footer .nav-link:hover {
     flex-direction: column;
     /* justify-content: space-evenly; */
     margin-bottom: 6px;
+}
+
+.cont-add-banner{
+    max-width: 100%;
+    overflow: auto;
+    text-align: center;
 }
 
 .menu-active .nav-link:hover,

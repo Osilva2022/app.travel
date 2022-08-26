@@ -293,7 +293,7 @@
                                     <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon"
                                         width="24" height="24">
                                 </a>
-                                <a class="text-muted" href="{{ config('constants.PINTERES_URL') }}" target="_blank">
+                                <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}">
                                     <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon"
                                         width="24" height="24">
                                 </a>
@@ -405,9 +405,14 @@
                         </script>
                     </div>
                 </div> --}}
-            <!-- End Things to do -->
+            <!-- Things to do -->
 
             <!-- EVENTS -->
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
             <div class="row py-4">
                 <h2 class="text-center mb-4">Featured Events</h2>
                 <div class="owl-carousel owl-theme" id="events-carousel">
@@ -519,6 +524,93 @@
                 <div class="col my-4 d-flex justify-content-center">
                     <a href="{{ route('category', ['news']) }}" class="btn-view-more" type="button">More
                         News</a>
+                </div>
+            </div>
+            <!-- NEWS -->
+            <!--ads /21855382314/tt-home-lb-footer -->
+            <div class="row">
+                <div id='div-gpt-ad-1620253311869-0' class="col text-center">
+                    {{-- <script async>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1620253311869-0');
+                        });
+                    </script> --}}
+                </div>
+            </div>
+            <!-- News -->
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
+            <!-- Blogs -->
+            <h2 class="my-4">Blogs</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    @foreach ($blog as $data)
+                        <div class="card card-principal-post">
+                            <div class="card border-0">
+                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                        {!! $data->destination !!}</span>
+                                </a>
+                                <a href="{{ url("$data->url") }}">
+                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
+                                    <img {!! img_meta($data->image_data) !!} class="card-img">
+                                    <h3 class="card-title-overlay">
+                                        {!! $data->title !!}
+                                    </h3>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ url("$data->url") }}" title="{!! $data->title !!}" class="">
+                                    <p class="card-text">
+                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                    </p>
+                                </a>
+                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-lg-8">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
+                        @foreach ($blogs as $data)
+                            @if ($blog[0]->id_post != $data->id_post)
+                                <div class="col">
+                                    <div class="card card-secundario h-100">
+                                        <div class="row h-100">
+                                            <div class="col card-head-secundario">
+                                                <a href="{{ url("$data->url") }}">
+                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
+                                                </a>
+                                            </div>
+                                            <div class="col-6 card-body-secundario">
+                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="etiqueta-post mb-2"
+                                                        style="background:{{ $data->destination_color }};">
+                                                        {!! $data->destination !!}
+                                                    </span>
+                                                </a>
+                                                <a href="{{ url("$data->url") }}">
+                                                    <h3 class="card-title-secundario">{!! $data->title !!}</h3>
+                                                </a>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col my-4 d-flex justify-content-center">
+                    <a href="{{ route('category', ['blogs']) }}" class="btn-view-more" type="button">More
+                        Blogs</a>
                 </div>
             </div>
             <!-- NEWS -->
