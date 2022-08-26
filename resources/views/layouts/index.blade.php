@@ -609,7 +609,7 @@
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('category', ['blog']) }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category', ['blogs']) }}" class="btn-view-more" type="button">More
                         Blogs</a>
                 </div>
             </div>
