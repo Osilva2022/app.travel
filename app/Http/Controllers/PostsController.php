@@ -226,13 +226,12 @@ class PostsController extends Controller
             $gallery = $gallery->data;
         } else {
             $gallery = false;
-        }
-
+        }    
 
         $this->metadatos('home', 'home');
 
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery','blog','blogs'));
     }
 
     /**
