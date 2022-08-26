@@ -47,7 +47,7 @@
     </script>
 @endpush
 @section('page-title')
-Author |
+    Author |
 @endsection
 <!-- content -->
 @section('content')
@@ -62,8 +62,7 @@ Author |
                     <div class="card-estatica p-4">
                         <div class="row g-3">
                             <div class="col-lg-auto d-flex justify-content-center align-items-center">
-                                <img src="{{ images($author->image) }}" class="img-fluid rounded-circle" alt="img_author"
-                                width="150" height="150">
+                                <img {!! img_meta($author->image_data) !!} class="img-fluid rounded-circle">
                             </div>
                             <div class="col d-flex flex-column justify-content-center text-center text-lg-start">
                                 <h1 class="">Author</h1>
@@ -81,18 +80,16 @@ Author |
                                 @foreach ($posts as $data)
                                     <div class="col">
                                         <div class="card card-especial zoom">
-                                            <a href="{{ route("$data->category_slug") }}">
+                                            <a href="{{ route('category', "$data->category_slug") }}">
                                                 <span class="badge etiqueta-img"
                                                     style="background:{!! $data->category_color !!};">{!! $data->category !!}</span>
                                             </a>
                                             <a href="{{ url("$data->url") }}" class="text-decoration-none text-muted">
-                                                <img src="{{ images($data->image) }}"
-                                                    class="bd-placeholder-img card-img-top" width="100%" height="225">
+                                                <img {!! img_meta($data->image_data) !!} class="card-img-especial">
                                                 <div class="card-body">
                                                     <h3 class="card-title">{!! $data->title !!}</h3>
                                                     <p class="card-text">{!! $data->post_excerpt !!}</p>
-                                                    <small
-                                                        class="text-muted">{!! date('M/d/y', strtotime($data->post_date)) !!}</small>
+                                                    <small class="text-muted">{!! date('M/d/y', strtotime($data->post_date)) !!}</small>
                                                 </div>
                                             </a>
                                         </div>

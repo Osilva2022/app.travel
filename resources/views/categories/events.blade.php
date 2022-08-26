@@ -6,13 +6,13 @@
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 7rem;">
+    <main style="margin-top: 5.8rem;">
         <div class="container" style="max-width: 1024px">
             @include('menus.sub_menu_events')
             <div class="row mb-4">
                 <div class="col-12">
                     <h2>Calendar</h2>
-                    <p>Looking for what to do in Mexico’s top beach destinations? <br> 
+                    <p>Looking for what to do in Mexico’s top beach destinations? <br>
                         We got you covered with the best events. Find out what to do and where to go here.</p>
                 </div>
             </div>
@@ -23,8 +23,7 @@
                         <div class="card-event">
                             <div class="row g-4">
                                 <div class="col-md-5 d-flex align-items-center">
-                                    <img src="{{ images($event->image) }}" class="card-img-estatica"
-                                        style="object-fit: contain;">
+                                    <img {!! img_meta($event->image_data) !!} class="card-img-estatica" style="object-fit: contain;">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row g-4">

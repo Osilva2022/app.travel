@@ -246,6 +246,15 @@ small {
     /* box-shadow: 1px 1px 6px rgba(0, 0, 0, .15)!important; */
 }
 
+.card-img-especial {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;    
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+}
+
 .card-secundario {
     border: solid #fff;
     border-radius: 1rem;
@@ -693,7 +702,7 @@ footer .nav-link:hover {
 }
 
 .nav-letter{
-    font-size: 10px !important;
+    font-size: 0.83rem !important;
 }
 
 @media (min-width: 900px) {

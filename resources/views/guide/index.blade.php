@@ -43,17 +43,17 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
                 @foreach ($things_categories as $tc)
                     <div class="col">
-                        <a href="{{ route('guide_category', ["$destination", "$tc->category_slug"]) }}"
+                        <a href="{{ route('guide_category', ["$destination", "$tc->slug"]) }}"
                             class="text-decoration-none">
                             <div class="card border-0">
                                 <div class="position-relative zoom">
                                     <div class="opacity-effect"
                                         style="border-radius: 1rem; background:{!! $tc->category_color !!};"></div>
-                                    <img src="{!! images($tc->image) !!}" class="card-img-secundario">
+                                    <img {!! img_meta($tc->image_data) !!} class="card-img-secundario">
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-title" style="color:{!! $tc->category_color !!};">
-                                        {!! $tc->category !!}
+                                        {!! $tc->name !!}
                                     </h3>
                                     <p class="card-text" style="color: #7B7F84;">
                                         {!! $tc->description !!}
