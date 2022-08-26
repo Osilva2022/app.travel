@@ -1,14 +1,14 @@
             <!-- BOTONES CATEGORIAS -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">  
             <div class="row row-cols-3 g-4 p-4 justify-content-center">
-                <div class="col-md-3 col-lg-2 text-center">
+                {{-- <div class="col-md-3 col-lg-2 text-center">
                     <a href="{{ route('home') }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-house-door" style="font-size: 2.5rem;"></i>
                             <h5>Home</h5>
                         </button>
                     </a>
-                </div>
+                </div> --}}
                 <div class="col-md-3 col-lg-2 text-center">
                     <a href="{{ route('guide') }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
@@ -46,6 +46,14 @@
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-calendar-event" style="font-size: 2.5rem;"></i>
                             <h5>Events</h5>
+                        </button>
+                    </a>
+                </div>
+                <div class="col-md-3 col-lg-2 text-center">
+                    <a href="{{ route('category', ['blogs']) }}">
+                        <button class="text-center rounded-4 shadow btn-square btn" type="button">
+                            <i class="bi bi-book" style="font-size: 2.5rem;"></i>
+                            <h5>Blogs</h5>
                         </button>
                     </a>
                 </div>

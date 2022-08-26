@@ -57,7 +57,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <!--ads /21855382314/tt-interior-lb-1 -->
-                    <div id="div-gpt-ad-1620253079354-0" class="text-center">
+                    <div id="div-gpt-ad-1620253079354-0" class="cont-add-banner">
                         <script>
                             googletag.cmd.push(function() {
                                 googletag.display('div-gpt-ad-1620253079354-0');
@@ -69,7 +69,9 @@
             <div class="row mb-3">
                 <div class="col col-md-4 col-lg-6">
                     <span class="badge etiqueta-categoria"
-                        style="background-color: {{ $post->category_color }}">{{ $post->category }}</span>
+                        style="background-color: {{ $post->destination_color }}">{{ $post->destination }}</span>
+                    {{-- <span class="badge etiqueta-categoria"
+                        style="background-color: {{ $post->category_color }}">{{ $post->category }}</span> --}}
                 </div>
                 <div class="col-auto col-md-3 col-lg-2">
                     Share:
@@ -109,25 +111,24 @@
                 <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
-                            <img src="{{ images($post->image) }}" alt="" width="100%" height="auto"
-                                style="aspect-ratio:16/9; object-fit: contain;">
+                            <img {!! img_meta($post->image_data) !!}" class="card-img-final">
                         </div>
                         <div class="col-12 mt-2">
                             {{-- <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p> --}}
                         </div>
                         <div class="col-12">
-                            <h1>{{ $post->title }}</h1>
+                            <h1>{!! $post->title !!}</h1>
                         </div>
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
-                                    <img src="{{ images($post->avatar) }}" class="img-fluid rounded-circle" alt="..."
-                                        width="56" height="56">
+                                    <img src="{!! images($post->avatar) !!}" class="img-fluid rounded-circle" width="56"
+                                        height="56">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
                                         <a href="{{ route('author', $post->user_nicename) }}">
-                                            <b>{{ $post->author_name }}</b>
+                                            <b>{!! $post->author_name !!}</b>
                                         </a>
                                     </p>
                                     <p class="card-text"><small
@@ -145,7 +146,7 @@
                             ) !!}
                         </div>
                         <!-- POST / NOTA -->
-                        <div class="col-12">
+                        <div class="col-12 cont-add-banner">
                             <!--ads /21855382314/tt-interior-lb-2 -->
                             <div id="div-gpt-ad-1636587242560-0" class="add-banner text-center">
                                 <script>
@@ -169,8 +170,7 @@
                                                 <div class="row">
                                                     <div class="col card-head-secundario">
                                                         <a href="{{ url("$data->url") }}">
-                                                            <img src="{{ images($data->image) }}"
-                                                                class="card-img-secundario">
+                                                            <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
                                                         </a>
                                                     </div>
                                                     <div class="col-6 card-body-secundario">

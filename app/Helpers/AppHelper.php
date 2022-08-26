@@ -5,6 +5,15 @@ function images($image) //Regresa la url del repositorio de imagenes + el nombre
     return config('constants.IMAGES_REPOSITORY') . $image;
 }
 
+function imgURL($data)
+{
+    if (!isset($data)) {
+        return false;
+    }
+    $metadatos = unserialize($data);
+    return images($metadatos['file']);
+}
+
 function img_meta($data)
 {
     if (!isset($data)) {
