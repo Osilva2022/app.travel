@@ -220,19 +220,20 @@ class PostsController extends Controller
         $new = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
+        $blog = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'blog' ORDER BY post_date DESC LIMIT 1");
+        $blogs = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'blog' ORDER BY post_date DESC LIMIT 5");
 
         $gallery = $this->instagram();
         if (isset($gallery)) {
             $gallery = $gallery->data;
         } else {
             $gallery = false;
-        }
-    
+        }    
 
         $this->metadatos('home', 'home');
 
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery','blog','blogs'));
     }
 
     /**
