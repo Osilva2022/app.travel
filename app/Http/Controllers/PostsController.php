@@ -88,18 +88,18 @@ class PostsController extends Controller
         if ($destination == '') {
             //$data = Post::taxonomy('category', $category)->status('publish')->latest();
             $post = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = '$category' ORDER BY post_date DESC");
-        }else{
+        } else {
             $post = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = '$category' AND destination_slug = '$destination' ORDER BY post_date DESC");
-        }       
-        
+        }
+
         $data = $this->paginate($post, $pagination)->onEachSide(0);
         return $data;
     }
 
     /**
-    * Obtener las imagenes de una cuenta de instagram a travez de un api 
-    * Se genera un token cada 30 días y se guarda en la tabla travel_instagram_tokens con un cronjob
-    */
+     * Obtener las imagenes de una cuenta de instagram a travez de un api 
+     * Se genera un token cada 30 días y se guarda en la tabla travel_instagram_tokens con un cronjob
+     */
     function instagram()
     {
         $instagramtoken = InstagramTokens::find(1);
@@ -115,9 +115,9 @@ class PostsController extends Controller
     }
 
     /**
-    * Funcion para generar los metadatos en las paginas con SEO::generate()
-    * 
-    */
+     * Funcion para generar los metadatos en las paginas con SEO::generate()
+     * 
+     */
     function metadatos($data, $type)
     {
         if ($type == 'home') {
@@ -129,7 +129,6 @@ class PostsController extends Controller
             SEOTools::jsonLd()->addImage(URL::to('/public/img/tribune-travel.png'));
             OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
-
         } elseif ($type == 'post') {
 
             SEOTools::setTitle($data->title);
@@ -143,9 +142,9 @@ class PostsController extends Controller
     }
 
     /**
-    * Funcion para mostrar un previews de un post desde Woordpress
-    * 
-    */
+     * Funcion para mostrar un previews de un post desde Woordpress
+     * 
+     */
     function preview($id)
     {
         $posts = DB::select("SELECT 
@@ -206,19 +205,17 @@ class PostsController extends Controller
         $reviews = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
         $things = DB::select("SELECT
                                     td.ID,
-                                    td.category_id,
                                     td.category,
                                     td.category_slug,
                                     td.destination,
                                     td.destination_slug,
                                     td.post_title,
                                     td.label,
-                                    td.image,
                                     td.image_data
                                 FROM
-                                    travel_directory as td 
+                                    travel_guide td 
                                     WHERE td.label = 22
-                                ORDER BY td.destination_slug , td.category_id;"); //Label '22' = VIP+
+                                ORDER BY td.destination_slug , td.category_slug;"); //Label '22' = VIP+
         //dd($things);
         $new = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 1");
         $news = DB::select("SELECT * FROM travel_all_posts WHERE category_slug = 'news' ORDER BY post_date DESC LIMIT 5");
@@ -239,9 +236,9 @@ class PostsController extends Controller
     }
 
     /**
-    * Funcion para mostrar el post final
-    * 
-    */
+     * Funcion para mostrar el post final
+     * 
+     */
     public function post($destino, $category, $slug): View
     {
         $posts = DB::select("SELECT 
@@ -279,25 +276,25 @@ class PostsController extends Controller
     }
 
     public function categories(Request $request, $category)
-    {       
+    {
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
         }
-       
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-      
+
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
-         
+
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
-    }   
+    }
 
     public function destinations($destination)
     {
 
-        $posts = DB::select("SELECT * FROM travel_all_posts WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
+        $posts = DB::select("SELECT * FROM travel_posts_destination WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
         $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination';");
         $categories_data = $this->returndata('categories');
@@ -309,9 +306,9 @@ class PostsController extends Controller
     }
 
     /**
-    * Funcion para mostrar los eventos proximos
-    * 
-    */
+     * Funcion para mostrar los eventos proximos
+     * 
+     */
     public function events(Request $request)
     {
         $query = '';
@@ -328,9 +325,9 @@ class PostsController extends Controller
     }
 
     /**
-    * Funcion para mostrar los post por author
-    * 
-    */
+     * Funcion para mostrar los post por author
+     * 
+     */
     public function author($author_id)
     {
         $posts_info = DB::select("SELECT * FROM travel_all_posts WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
@@ -356,17 +353,18 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
+        $id_location = $destination_data[0]->term_id;
 
         $things_categories = DB::select("SELECT * FROM (
-                                            SELECT td.category_id, td.category,td.category_slug, 
-                                            dc.name, dc.slug, dc.color as category_color, td.destination_slug, td.post_title, td.label, dc.image, dc.description
+                                            SELECT td.category_id,
+                                            dc.name, dc.slug, dc.color as category_color, td.location, dc.image_data, dc.description
                                             ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
                                             FROM travel_directory as td
                                             inner join travel_directory_category as dc on td.category_id = dc.term_id
                                             ) t
                                             WHERE t.orden = 1
-                                            AND destination_slug = '$destination'
-                                            ORDER BY destination_slug, category_id;");
+                                            AND location = '$id_location'
+                                            ORDER BY location, category_id;");
 
         return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
     }
@@ -385,8 +383,8 @@ class PostsController extends Controller
                                             FROM
                                                 travel_directory_category as dc,
                                             (SELECT * FROM (
-                                            SELECT location, category, category_id
-                                            ,ROW_NUMBER() over(partition by category, location ORDER BY location DESC) as orden
+                                            SELECT location, category_id
+                                            ,ROW_NUMBER() over(partition by category_id, location ORDER BY location DESC) as orden
                                             FROM travel_directory
                                             ) t
                                             WHERE t.orden = 1
@@ -409,8 +407,8 @@ class PostsController extends Controller
         $abc = implode(",", $array_abc);
         $alphachar = DB::select("SELECT
                                     CASE
-                                        WHEN SUBSTRING(post_title, 1, 1) not in($abc) THEN '*'
-                                        ELSE SUBSTRING(post_title, 1, 1)
+                                        WHEN letter not in($abc) THEN '*'
+                                        ELSE letter
                                     END as letter
                                 FROM
                                     travel_directory
@@ -424,15 +422,15 @@ class PostsController extends Controller
                                     (SELECT 
                                         *, 
                                         CASE
-                                            WHEN SUBSTRING(post_title, 1, 1) not in($abc) THEN '*'
-                                            ELSE SUBSTRING(post_title, 1, 1)
-                                        END as letter
+                                            WHEN letter not in($abc) THEN '*'
+                                            ELSE letter
+                                        END as letters
                                     FROM
                                         travel_directory
                                     WHERE
                                         location = '$id_location' AND category_id = '$id_category') as q1
                                 WHERE
-                                    letter = '$selectedtletter'
+                                    letters = '$selectedtletter'
                                 ORDER BY post_title ASC;");
         //dd($things);
         $gallery = $this->get_img_gallery($id_location, $id_category);

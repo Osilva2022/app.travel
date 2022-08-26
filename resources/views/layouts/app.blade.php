@@ -17,7 +17,8 @@
     <!-- Styles -->   
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">    
+    {{-- <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">     --}}
+    <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet">    
     <link href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
     <!-- Scripts -->

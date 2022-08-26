@@ -6,7 +6,7 @@ Reviews |
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 7rem;">
+    <main style="margin-top: 5.8rem;">
         <div class="container" style="max-width: 1024px;">
             @include('menus.sub_menu_destinations')
             <div class="row g-4">
