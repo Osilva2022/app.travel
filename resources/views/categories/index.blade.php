@@ -31,7 +31,7 @@ Reviews |
                                                     </span>
                                                 {{-- @endif --}}
                                                 <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                                <img src="{!! img_meta($firstpostcategory->image_data) !!}" alt="{{ $firstpostcategory->title }}"
+                                                <img {!! img_meta($firstpostcategory->image_data) !!}"
                                                     class="img-category-principal">
                                             </a>
                                         </div>
@@ -72,7 +72,7 @@ Reviews |
                                                         style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                                 </a>
                                                 <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                    <img src="{!! img_meta($data->image_data) !!}" class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-12">
@@ -109,7 +109,7 @@ Reviews |
                                         </a>
                                         <div class="card m-0 p-0 border-0">
                                             <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                <img src="{!! img_meta($data->image_data) !!}" class="img-category-principal">
+                                                <img {!! img_meta($data->image_data) !!} class="img-category-principal">
                                             </a>
                                         </div>
                                         <div class="card-body">
