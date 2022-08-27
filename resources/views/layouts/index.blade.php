@@ -27,10 +27,13 @@
 @endpush
 
 <!-- ads -->
+@php
+    $slot=1;
+@endphp
 @push('ads')
     <!-- Tribune Top Leaderboard Home-->
-    {{-- <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script>
+    <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script class="slot">
         window.googletag = window.googletag || {
             cmd: []
         };
@@ -62,7 +65,7 @@
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
         });
-    </script> --}}
+    </script>
 @endpush
 
 <!-- content -->
@@ -627,14 +630,16 @@
 
             <script async>
                 $(document).ready(function() {
-                    // alert("Hola");
+                    alert("Hola");                    
+                    
                     $(function() {
+                        if ({{$slot}} = 1) {
+                            $('.slot')..css("display", "none"); 
+                        }
                         $('.lazy').Lazy();
                         $('iframe').Lazy();
                     });
                 });
             </script>
-
-
     </main>
 @endsection
