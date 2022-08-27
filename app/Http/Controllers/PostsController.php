@@ -228,8 +228,8 @@ class PostsController extends Controller
             $gallery = $gallery->data;
         } else {
             $gallery = false;
-        }    
-
+        }
+         
         $this->metadatos('home', 'home');
 
 
