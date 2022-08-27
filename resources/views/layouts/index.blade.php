@@ -27,6 +27,11 @@
 @endpush
 
 <!-- ads -->
+@php
+    $mostrar=false;   
+@endphp
+
+@if ($mostrar)
 @push('ads')
     <!-- Tribune Top Leaderboard Home-->
     <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
@@ -64,7 +69,7 @@
         });
     </script>
 @endpush
-
+@endif
 <!-- content -->
 @section('content')
     <header>
@@ -127,6 +132,7 @@
             </div>
             <!-- TTD -->
             <!-- ads /21855382314/tt-home-lb-2 -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620235535381-0' class="col text-center " style="margin-top: 10px"
                     style='width: 300px; height: 250px;'>
@@ -137,6 +143,7 @@
                     </script>
                 </div>
             </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <hr>
@@ -221,6 +228,7 @@
             </div>
             <!-- REVIEWS -->
             <!-- ads /21855382314/tt-home-lb-3 -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620236451767-0' class="col text-center">
                     <script  defer>
@@ -230,6 +238,7 @@
                     </script>
                 </div>
             </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <hr>
@@ -309,6 +318,7 @@
             </div>
             <?php endif; ?>
             <!-- ads /21855382314/tt-home-lb-5 -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
                     <script  defer>
@@ -318,6 +328,7 @@
                     </script>
                 </div>
             </div>
+            @endif
             <!-- Gallery -->
             <div class="row">
                 <div class="col-12">
@@ -397,6 +408,7 @@
             </div>
 
             <!--ads /21855382314/tt-home-lb-footer -->
+            @if ($mostrar)
             <div class="row slot">
                     <div id='div-gpt-ad-1620253311869-0' class="col text-center">
                         <script  defer >
@@ -406,6 +418,7 @@
                         </script>
                     </div>
                 </div>
+            @endif
             <!-- Things to do -->
 
             <!-- EVENTS -->
@@ -442,6 +455,7 @@
                 </div>
             </div>
             <!-- ads /21855382314/tt-home-lb-4 -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620236955324-0' class="col text-center">
                     <script  defer>
@@ -451,6 +465,7 @@
                     </script>
                 </div>
             </div>
+            @endif
             <!-- EVENTS -->
             <div class="row">
                 <div class="col-12">
@@ -529,6 +544,7 @@
             </div>
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620253311869-0' class="col text-center">
                     <script  defer>
@@ -538,6 +554,7 @@
                     </script>
                 </div>
             </div>
+            @endif
             <!-- News -->
             <div class="row">
                 <div class="col-12">
@@ -616,6 +633,7 @@
             </div>
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620253311869-0' class="col text-center ">
                     <script  defer>
@@ -625,7 +643,7 @@
                     </script>
                 </div>
             </div>
-
+            @endif
         
     </main>
 @endsection
