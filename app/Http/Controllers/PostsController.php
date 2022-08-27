@@ -361,7 +361,7 @@ class PostsController extends Controller
                                             dc.name, dc.slug, dc.color as category_color, td.location, dc.image_data, dc.description
                                             ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
                                             FROM travel_directory as td
-                                            inner join travel_directory_category as dc on td.category_id = dc.term_id
+                                            inner join travel_directory_category2 as dc on td.category_id = dc.term_id
                                             ) t
                                             WHERE t.orden = 1
                                             AND location = '$id_location'
@@ -373,16 +373,16 @@ class PostsController extends Controller
     public function guide_category($destination, $category, Request $request)
     {
         $categories_data = $this->returndata('categories');
-        $things_category = DB::select("SELECT * FROM travel_directory_category WHERE slug = '$category';");
+        $things_category = DB::select("SELECT * FROM travel_directory_category2 WHERE slug = '$category';");
         $destinations_data = $this->returndata('destinations');
-        $directory_category_data = DB::select("SELECT * FROM travel_directory_category WHERE slug= '$category';");
+        $directory_category_data = DB::select("SELECT * FROM travel_directory_category2 WHERE slug= '$category';");
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
         $id_location = $destination_data[0]->term_id;
         $id_category = $directory_category_data[0]->term_id;
         $things_categories = DB::select("SELECT 
                                                 dc.term_id, dc.name as category, dc.slug as category_slug
                                             FROM
-                                                travel_directory_category as dc,
+                                                travel_directory_category2 as dc,
                                             (SELECT * FROM (
                                             SELECT location, category_id
                                             ,ROW_NUMBER() over(partition by category_id, location ORDER BY location DESC) as orden
