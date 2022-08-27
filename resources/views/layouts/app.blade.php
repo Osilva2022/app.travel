@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html ⚡lang="en">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
-    <title>@yield('page-title') Tribune Travel</title>
-    <link rel="canonical" href="https://app.tribune.travel/">
+    <title>@yield('page-title') Tribune Travel</title>   
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
@@ -20,16 +17,14 @@
     <!-- Styles -->   
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">     --}}
-    <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet">    
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
+    
     <link href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jQuery.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
-    </script>
+  
     <script async>
         $(function() {
             $(window).on("scroll", function() {
