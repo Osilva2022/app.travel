@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ⚡lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
     <title>@yield('page-title') Tribune Travel</title>
+    <link rel="canonical" href="https://app.tribune.travel/">
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
