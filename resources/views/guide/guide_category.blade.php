@@ -32,8 +32,7 @@
                                         <a class="item-directory" data-id="{!! $data->ID !!}">
                                             <div class="ttd-slider-item">
                                                 <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                                <img {!! img_meta($data->image_data) !!}
-                                                    class="carousel-img">
+                                                <img {!! img_meta($data->image_data) !!} class="carousel-img">
                                                 <div class="container">
                                                     <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                         <h4>{{ $data->post_title }}</h4>
@@ -58,6 +57,9 @@
                 @endforeach
             </div>
             @include('menus.menu_directory')
+            <!-- BOTONES CATEGORIAS -->
+            @include('menus.menu_footer_categories')
+            <!-- BOTONES CATEGORIAS -->
             <!-- Modal -->
             <div class="modal fade" id="directory-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -77,6 +79,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal -->
         </div>
         <script src="{{ asset('js/submenu_things.js') }}" version="1"></script>
         <script src="{{ asset('js/things-directory.js') }}" version="1"></script>

@@ -34,7 +34,7 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('guide') }}">
+                    <a href="{{ route('category', ['things-to-do']) }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-bag-check" style="font-size: 2.5rem;"></i>
                             <h5>Things to Do</h5>
