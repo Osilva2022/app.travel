@@ -80,6 +80,7 @@
         <div class="container" style="max-width: 1024px;">
 
             <!--ads /21855382314/tt-home-lb-1 -->
+            @if ($mostrar)
             <div class="row slot">
                 <div id='div-gpt-ad-1620235812535-0' class="col text-center" style="margin-top: 10px">
                     <script  defer>
@@ -89,6 +90,7 @@
                     </script>
                 </div>
             </div>
+            @endif
             <!-- TTD -->
             <div class="row py-4">
                 <div class="col-12">
