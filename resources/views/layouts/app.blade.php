@@ -14,7 +14,7 @@
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">  
     <!-- Styles -->   
-    <link href="{{ asset('css/typekit.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">    
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
