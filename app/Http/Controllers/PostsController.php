@@ -229,7 +229,7 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
-        $gallery = false;
+        // dd($gallery);
          
         $this->metadatos('home', 'home');
 
