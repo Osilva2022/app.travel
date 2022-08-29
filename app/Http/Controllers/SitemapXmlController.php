@@ -12,13 +12,14 @@ class SitemapXmlController extends Controller
 {
     public function index() {
       
-        // $posts = PostAll::all();
-        // return response()->view('sitemap.index', [
-        //     'posts' => $posts
-        // ])->header('Content-Type', 'text/xml');
+        $posts = PostAll::all();
+        dd($posts);
+        return response()->view('sitemap.index', [
+            'posts' => $posts
+        ])->header('Content-Type', 'text/xml');
         
-        // SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
-        SitemapGenerator::create(config('app.url'))->getSitemap()->writeToDisk('public', 'sitemap.xml');
+        SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap2.xml'));
+        SitemapGenerator::create(config('app.url'))->getSitemap()->writeToDisk('public', 'sitemap2.xml');
 
 
         
