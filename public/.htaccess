@@ -21,10 +21,6 @@
     
 </IfModule>
 
-<filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|svg|js|css|swf)$">
-    Header set Cache-Control "max-age=84600, public"
-</filesMatch>
-
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>
     ExpiresActive On
