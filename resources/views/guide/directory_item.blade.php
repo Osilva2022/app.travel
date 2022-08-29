@@ -95,7 +95,7 @@
                             @endif
                         @endfor
                     </div>
-                    <div class="col-12 cont-info collapse multi-collapse cont-info-{!! $data->ID !!}">
+                    <div class="col-12 cont-info collapse multi-collapse cont-infom-{!! $data->ID !!}">
                         {!! $data->remark !!}
                     </div>
                     <div class="col-12 d-flex justify-content-end align-items-center">
