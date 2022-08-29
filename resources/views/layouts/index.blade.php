@@ -1,7 +1,8 @@
 @extends('layouts.app')
 <!-- Metadatos -->
 @push('metatags')
-    <meta name="description" content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
+    <meta name="description"
+        content="Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. Hotels, resturants and more">
     <link rel="canonical" href="https://app.tribune.travel/">
     <meta property="og:title" content="App Tribune Travel | Your gateway to México">
     <meta property="og:description"
@@ -28,47 +29,47 @@
 
 <!-- ads -->
 @php
-    $mostrar=false;   
+$mostrar = false;
 @endphp
 
 @if ($mostrar)
-@push('ads')
-    <!-- Tribune Top Leaderboard Home-->
-    <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script class="slot" defer>
-        window.googletag = window.googletag || {
-            cmd: []
-        };
-        googletag.cmd.push(function() {
-            googletag.defineSlot('/21855382314/tt-home-lb-1', [
-                [728, 90],
-                [320, 50]
-            ], 'div-gpt-ad-1620235812535-0').addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-home-lb-2', [
-                [728, 90],
-                [320, 50]
-            ], 'div-gpt-ad-1620235535381-0').addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-home-lb-3', [
-                [728, 90],
-                [320, 50]
-            ], 'div-gpt-ad-1620236451767-0').addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-home-lb-4', [
-                [320, 50],
-                [728, 90]
-            ], 'div-gpt-ad-1620236955324-0').addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-home-lb-5', [
-                [320, 50],
-                [728, 90]
-            ], 'div-gpt-ad-1620239881317-0').addService(googletag.pubads());
-            googletag.defineSlot('/21855382314/tt-home-lb-footer', [
-                [728, 90],
-                [320, 50]
-            ], 'div-gpt-ad-1620253311869-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-        });
-    </script>
-@endpush
+    @push('ads')
+        <!-- Tribune Top Leaderboard Home-->
+        <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script class="slot" defer>
+            window.googletag = window.googletag || {
+                cmd: []
+            };
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/21855382314/tt-home-lb-1', [
+                    [728, 90],
+                    [320, 50]
+                ], 'div-gpt-ad-1620235812535-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-home-lb-2', [
+                    [728, 90],
+                    [320, 50]
+                ], 'div-gpt-ad-1620235535381-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-home-lb-3', [
+                    [728, 90],
+                    [320, 50]
+                ], 'div-gpt-ad-1620236451767-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-home-lb-4', [
+                    [320, 50],
+                    [728, 90]
+                ], 'div-gpt-ad-1620236955324-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-home-lb-5', [
+                    [320, 50],
+                    [728, 90]
+                ], 'div-gpt-ad-1620239881317-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-home-lb-footer', [
+                    [728, 90],
+                    [320, 50]
+                ], 'div-gpt-ad-1620253311869-0').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        </script>
+    @endpush
 @endif
 <!-- content -->
 @section('content')
@@ -81,15 +82,15 @@
 
             <!--ads /21855382314/tt-home-lb-1 -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620235812535-0' class="col text-center" style="margin-top: 10px">
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620235812535-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620235812535-0' class="col text-center" style="margin-top: 10px">
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620235812535-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
             <!-- TTD -->
             <div class="row py-4">
@@ -135,16 +136,16 @@
             <!-- TTD -->
             <!-- ads /21855382314/tt-home-lb-2 -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620235535381-0' class="col text-center " style="margin-top: 10px"
-                    style='width: 300px; height: 250px;'>
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620235535381-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620235535381-0' class="col text-center " style="margin-top: 10px"
+                        style='width: 300px; height: 250px;'>
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620235535381-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
             <div class="row">
                 <div class="col-12">
@@ -231,15 +232,15 @@
             <!-- REVIEWS -->
             <!-- ads /21855382314/tt-home-lb-3 -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620236451767-0' class="col text-center">
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620236451767-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620236451767-0' class="col text-center">
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620236451767-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
             <div class="row">
                 <div class="col-12">
@@ -253,45 +254,41 @@
                     <h2 class="text-center mb-4">Visit Mexico!</h2>
                     <div class="row g-1">
                         <div class="col-7 col-md-3 position-relative zoom">
-                            <a href="{{ $gallery[0]->permalink }}" target="_blank">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                {{-- <a href="{{ $gallery[0]->permalink }}" target="_blank"> --}}
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[0]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery-2" alt="" loading="lazy" >
+                                {{-- <img src="{{ $gallery[0]->media_url }}" width="100" height="100" --}}
+                                <img {!! img_meta($gallery[0]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
-                            <a href="{{ $gallery[1]->permalink }}" target="_blank">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[1]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery" loading="lazy" >
+                                <img {!! img_meta($gallery[1]->metadata) !!} class="lazy img-gallery" loading="lazy">
                             </a>
                         </div>
                         <div class="col-5 col-md-3 position-relative zoom">
-                            <a href="{{ $gallery[2]->permalink }}" target="_blank">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[2]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery" loading="lazy" >
+                                <img {!! img_meta($gallery[2]->metadata) !!} class="lazy img-gallery" loading="lazy">
                             </a>
                         </div>
                         <div class="col-7 col-md-3 position-relative zoom">
-                            <a href="{{ $gallery[3]->permalink }}" target="_blank">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[3]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery-2" loading="lazy" >
+                                <img {!! img_meta($gallery[3]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
                             </a>
                         </div>
                         <div class="col-7 col-md-3 position-relative zoom">
-                            <a href="{{ $gallery[4]->permalink }}" target="_blank">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[4]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery" loading="lazy" >
+                                <img {!! img_meta($gallery[4]->metadata) !!} class="lazy img-gallery" loading="lazy">
                             </a>
                         </div>
                         <div class="col-5 col-md-6 position-relative zoom">
-                            <a href="{{ $gallery[5]->permalink }}" target="_blank">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
                                 <i class="bi bi-instagram icon-gallery"></i>
-                                <img src="{{ $gallery[5]->media_url }}" width="100" height="100"
-                                    class="lazy img-gallery-2" loading="lazy" >
+                                <img {!! img_meta($gallery[5]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
                             </a>
                         </div>
                     </div>
@@ -315,21 +312,21 @@
                             </div>
                         </div>
                     </div>
-                  
+
                 </div>
             </div>
             <?php endif; ?>
             <!-- ads /21855382314/tt-home-lb-5 -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620239881317-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620239881317-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
             <!-- Gallery -->
             <div class="row">
@@ -411,9 +408,9 @@
 
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-            <div class="row slot">
+                <div class="row slot">
                     <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                        <script  defer >
+                        <script defer>
                             googletag.cmd.push(function() {
                                 googletag.display('div-gpt-ad-1620253311869-0');
                             });
@@ -458,15 +455,15 @@
             </div>
             <!-- ads /21855382314/tt-home-lb-4 -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620236955324-0' class="col text-center">
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620236955324-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620236955324-0' class="col text-center">
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620236955324-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
             <!-- EVENTS -->
             <div class="row">
@@ -547,15 +544,15 @@
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620253311869-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620253311869-0' class="col text-center">
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620253311869-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
             <!-- News -->
             <div class="row">
@@ -636,16 +633,16 @@
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-            <div class="row slot">
-                <div id='div-gpt-ad-1620253311869-0' class="col text-center ">
-                    <script  defer>
-                        googletag.cmd.push(function() {
-                            googletag.display('div-gpt-ad-1620253311869-0');
-                        });
-                    </script>
+                <div class="row slot">
+                    <div id='div-gpt-ad-1620253311869-0' class="col text-center ">
+                        <script defer>
+                            googletag.cmd.push(function() {
+                                googletag.display('div-gpt-ad-1620253311869-0');
+                            });
+                        </script>
+                    </div>
                 </div>
-            </div>
             @endif
-        
+
     </main>
 @endsection

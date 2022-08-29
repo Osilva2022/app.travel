@@ -64,6 +64,20 @@ class PostsController extends Controller
                                 INNER JOIN travel_term_taxonomy ttt ON t.term_id=ttt.term_id
                                 WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_tag'");
                 break;
+            case 'gallery':
+                $data = DB::select("SELECT 
+                                        pm1.post_id,
+                                        pm1.meta_value AS metadata,
+                                        pm2.meta_value AS img_alt
+                                    FROM
+                                        tribunetravel_wp.travel_postmeta AS pm1
+                                            LEFT JOIN
+                                        tribunetravel_wp.travel_postmeta AS pm2 ON pm1.post_id = pm2.post_id
+                                            AND pm2.meta_key = '_wp_attachment_image_alt'
+                                    WHERE
+                                        pm1.meta_key = '_wp_attachment_metadata'
+                                            AND pm1.post_id IN (23917 , 23916, 23915, 23914, 23913, 23912);");
+                break;
             default:
                 break;
         }
@@ -229,12 +243,13 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
-        // dd($gallery);
-         
+        $static_gallery = $this->returndata('gallery');
+        $gallery = $static_gallery;
+
         $this->metadatos('home', 'home');
 
 
-        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery','blog','blogs'));
+        return view('layouts.index', compact('reviews', 'review', 'things', 'news', 'new', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs'));
     }
 
     /**
@@ -362,7 +377,7 @@ class PostsController extends Controller
                                             dc.name, dc.slug, dc.color as category_color, td.location, dc.image_data, dc.description
                                             ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
                                             FROM travel_directory as td
-                                            inner join travel_directory_category2 as dc on td.category_id = dc.term_id
+                                            inner join travel_directory_category as dc on td.category_id = dc.term_id
                                             ) t
                                             WHERE t.orden = 1
                                             AND location = '$id_location'
@@ -374,16 +389,16 @@ class PostsController extends Controller
     public function guide_category($destination, $category, Request $request)
     {
         $categories_data = $this->returndata('categories');
-        $things_category = DB::select("SELECT * FROM travel_directory_category2 WHERE slug = '$category';");
+        $things_category = DB::select("SELECT * FROM travel_directory_category WHERE slug = '$category';");
         $destinations_data = $this->returndata('destinations');
-        $directory_category_data = DB::select("SELECT * FROM travel_directory_category2 WHERE slug= '$category';");
+        $directory_category_data = DB::select("SELECT * FROM travel_directory_category WHERE slug= '$category';");
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
         $id_location = $destination_data[0]->term_id;
         $id_category = $directory_category_data[0]->term_id;
         $things_categories = DB::select("SELECT 
                                                 dc.term_id, dc.name as category, dc.slug as category_slug
                                             FROM
-                                                travel_directory_category2 as dc,
+                                                travel_directory_category as dc,
                                             (SELECT * FROM (
                                             SELECT location, category_id
                                             ,ROW_NUMBER() over(partition by category_id, location ORDER BY location DESC) as orden

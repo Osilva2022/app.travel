@@ -15,7 +15,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">  
     <!-- Styles -->   
-    <link href="{{ asset('css/typekit.min.css') }}" rel="preload">
+    <link href="{{ asset('css/typekit.css') }}" rel="stylesheet">    
     <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
     
