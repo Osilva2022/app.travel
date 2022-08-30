@@ -14,18 +14,21 @@ function imgURL($data)
     return images($metadatos['file']);
 }
 
-function img_meta($data, $alt = null, $lazy = true)
+function img_meta($data, $alt = false, $lazy = true)
 {
     if (!isset($data)) {
         return false;
     }
+
     $metadatos = unserialize($data);
     $img_meta = [
-        'title="' . $metadatos['image_meta']['title'] . '"',
-        'width="' . $metadatos['width'] . '"',
-        'height="' . $metadatos['height'] . '"',
+        ($metadatos['image_meta']['title']) ? 'alt="' . $metadatos['image_meta']['title'] . '"' : 'title="Img Title"',
+        'width="500"',
+        'height="300"',
+        // 'width="' . $metadatos['width'] . '"',
+        // 'height="' . $metadatos['height'] . '"',
         'src="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . '"',
-        'alt="' . $alt . '"',
+        ($alt) ? 'alt="' . $alt . '"' : 'alt="Alt Text"',
         ($lazy) ? 'loading="lazy"' : '',
         ($lazy) ? 'decoding="defer"' : '',
         'sizes="(max-width: 320px) 300px, (max-width: 480px) 440px, (max-width: 800px) 768px, (max-width: 1024px) 900px, 1024px"',
