@@ -1,21 +1,6 @@
 <!-- SLIDER -->
 <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-interval="false">
-    <div class="carousel-indicators">
-        <?php $i = 0; ?>
-        @foreach ($destinations as $dd)
-            <?php
-            $active = '';
-            $true = '';
-            if ($dd->slug == 'puerto-vallarta') {
-                $active = 'active';
-                $true = 'true';
-            }
-            ?>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $i }}"
-                class="{{ $active }}" aria-current="{{ $true }}"></button>
-            <?php $i++; ?>
-        @endforeach
-    </div>
+    
     <div class="carousel-inner">
         @foreach ($destinations as $dd)
             @php
