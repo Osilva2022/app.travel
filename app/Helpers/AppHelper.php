@@ -31,7 +31,7 @@ function img_meta($data, $alt = false, $lazy = true)
         ($alt) ? 'alt="' . $alt . '"' : 'alt="Alt Text"',
         ($lazy) ? 'loading="lazy"' : '',
         ($lazy) ? 'decoding="defer"' : '',
-        'sizes="(max-width: 320px) 300px, (max-width: 480px) 440px, (max-width: 800px) 768px, (max-width: 1024px) 900px, 1024px"',
+        'sizes="(max-width: 200px) 180px,(max-width: 320px) 300px, (max-width: 480px) 440px, (max-width: 800px) 768px, (max-width: 1024px) 900px, 500px"',
         'srcset="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . ' ' . $metadatos['width'] . 'w, ' . imgMetaSrcSet($metadatos['sizes']) . '"'
     ];
     return implode(" ", $img_meta);
