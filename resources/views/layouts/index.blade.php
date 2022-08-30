@@ -196,7 +196,7 @@ $mostrar = false;
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario lazy">
+                                                    <img data-alex="aqui" {!! img_meta($data->image_data) !!} class="card-img-secundario lazy">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
