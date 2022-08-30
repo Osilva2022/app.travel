@@ -130,7 +130,7 @@
                     </div>
                 </div> --}}
                 <div class="col text-center text-white">
-                    <h5 class="text-white text-center" style="padding: 2px;">Social Media</h5>
+                    <h3 class="text-white text-center" style="padding: 2px;">Social Media</h3>
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
                             <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}" target="_blank">
@@ -162,25 +162,25 @@
                 <div class="col-12 col-footer text-center">
                     <a href="https://cps.media/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/cps-media-white.svg"
-                            class="img-footer" loading="lazy" decoding="defer" style="width: 25%;">
+                            class="img-footer" alt="CPS Logo" loading="lazy" decoding="defer" style="width: 25%;">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tribunadelabahia.com.mx/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribuna-white.svg"
-                            class="img-footer" loading="lazy" decoding="defer">
+                            class="img-footer" alt="Tribuna Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://radiante.fm/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/radiante-white-horizontal.svg"
-                            class="img-footer" loading="lazy" decoding="defer">
+                            class="img-footer" alt="Radiante Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tvmar.tv/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tv-mar-white.svg"
-                            class="img-footer" loading="lazy" decoding="defer">
+                            class="img-footer" alt="TVMar Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
             </div>
