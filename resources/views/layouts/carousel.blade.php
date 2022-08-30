@@ -27,8 +27,8 @@
 
             <div class="carousel-item {{ $active }}">
                 <div class="opacity-effect"></div>
-                <img {!! img_meta($dd->image_data) !!} class="img-slider-home" width="100%" height="100%"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img {!! img_meta($dd->image_data, $dd->image_alt, false) !!} class="img-slider-home" width="100%" height="100%" aria-hidden="true"
+                    preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1 id="t1" class="text-white">{!! $dd->name !!}</h1>

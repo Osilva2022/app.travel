@@ -296,15 +296,15 @@ $mostrar = false;
                             <div class="">
 
                                 <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
-                                    <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon"
+                                    <img src="{{ asset('img/svg/face-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel facebook-icon"
                                         width="24" height="24">
                                 </a>
                                 <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}">
-                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon"
+                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel pint-icon"
                                         width="24" height="24">
                                 </a>
                                 <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}">
-                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="Tribune Travel insta-icon"
+                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel insta-icon"
                                         width="24" height="24">
                                 </a>
                             </div>
