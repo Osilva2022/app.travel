@@ -143,25 +143,25 @@
                 <div class="col-12 col-footer text-center">
                     <a href="https://cps.media/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/cps-media-white.svg"
-                            class="img-footer" style="width: 25%;">
+                            class="img-footer" loading="lazy" decoding="defer" style="width: 25%;">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tribunadelabahia.com.mx/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribuna-white.svg"
-                            class="img-footer">
+                            class="img-footer" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://radiante.fm/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/radiante-white-horizontal.svg"
-                            class="img-footer">
+                            class="img-footer" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tvmar.tv/" target="_blank">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tv-mar-white.svg"
-                            class="img-footer">
+                            class="img-footer" loading="lazy" decoding="defer">
                     </a>
                 </div>
             </div>
