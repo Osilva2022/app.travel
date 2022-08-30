@@ -23,10 +23,10 @@ function img_meta($data, $alt = false, $lazy = true)
     $metadatos = unserialize($data);
     $img_meta = [
         ($metadatos['image_meta']['title']) ? 'alt="' . $metadatos['image_meta']['title'] . '"' : 'title="Img Title"',
-        'width="500"',
-        'height="300"',
-        // 'width="' . $metadatos['width'] . '"',
-        // 'height="' . $metadatos['height'] . '"',
+        // 'width="500"',
+        // 'height="300"',
+        'width="' . $metadatos['width'] . '"',
+        'height="' . $metadatos['height'] . '"',
         'src="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . '"',
         ($alt) ? 'alt="' . $alt . '"' : 'alt="Alt Text"',
         ($lazy) ? 'loading="lazy"' : '',

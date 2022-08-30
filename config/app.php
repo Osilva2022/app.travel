@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+         /* RSS feeds */
+        Spatie\Feed\FeedServiceProvider::class,
         
 
     ],

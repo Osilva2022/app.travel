@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Corcel\Model\Post as Corcel;
-
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
 class Post extends Corcel 
 {
@@ -119,6 +120,25 @@ class Post extends Corcel
         }
 
         return $mainCategory;
+    }
+    
+    public function toFeedItem()
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($this->body)
+            ->updated($this->updated_at)
+            ->link($this->url)
+            ->author($this->author->display_name);
+    }
+
+    public static function getFeedItems()
+    {
+        $feeds = Post::published()->where('post_type','post')->get();
+        // dd($feeds);
+        return $feeds;
+
     }
     
    

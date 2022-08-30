@@ -113,7 +113,7 @@ $mostrar = false;
                                             <img {!! img_meta($ttd->image_data) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
-                                                    <h4>{!! $ttd->post_title !!}</h4>
+                                                    <h3>{!! $ttd->post_title !!}</h3>
                                                     <p style="bottom:4px; color: white;">
                                                         {!! $ttd->category !!} - {!! $ttd->destination !!}</p>
                                                 </div>
@@ -401,7 +401,7 @@ $mostrar = false;
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('category', ['news']) }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category', ['things-to-do']) }}" class="btn-view-more" type="button">More
                         Things to do</a>
                 </div>
             </div>
