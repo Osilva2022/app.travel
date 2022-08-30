@@ -14,14 +14,14 @@
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">  
     <!-- Styles -->   
-    <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">    
-    <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet" {{-- media="print" onload="this.media='all'" --}}>    
+    <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet" {{-- media="print" onload="this.media='all'" --}}>
     {{-- <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet"> --}}
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'">
-    <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" {{-- media="print" onload="this.media='all'" --}}>
+    <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet" {{-- media="print" onload="this.media='all'" --}}>
     
     <link href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet"{{--  media="print" onload="this.media='all'" --}}>
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jQuery.min.js') }}"></script>
