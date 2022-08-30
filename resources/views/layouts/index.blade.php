@@ -100,7 +100,7 @@ $mostrar = false;
                         <div class="col-sm-12 mb-2">
                             <div class="owl-carousel owl-theme ttd-carousel" id="">
                                 <?php $i = 1; ?>
-                                @foreach ($things as $ttd)
+                                @foreach ($guide as $ttd)
                                     {{-- @if ($data->slug == $ttd->destination_slug) --}}
                                     <?php $active = ''; ?>
                                     @if ($i == 1)
@@ -166,10 +166,8 @@ $mostrar = false;
                                     <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
                                         {!! $data->destination !!}</span>
                                 </a>
-                                <span class="badge etiqueta-destacado">
-                                    <img src="{{ asset('img/estrella.webp') }}" alt="{!! $data->title !!}" width="30"
-                                        height="30">
-                                </span>
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
                                     <img {!! img_meta($data->image_data) !!} class="card-img">
@@ -298,15 +296,15 @@ $mostrar = false;
                             <div class="">
 
                                 <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
-                                    <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon"
+                                    <img src="{{ asset('img/svg/face-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel facebook-icon"
                                         width="24" height="24">
                                 </a>
                                 <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}">
-                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" alt="Tribune Travel pint-icon"
+                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel pint-icon"
                                         width="24" height="24">
                                 </a>
                                 <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}">
-                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" alt="Tribune Travel insta-icon"
+                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel insta-icon"
                                         width="24" height="24">
                                 </a>
                             </div>
@@ -339,13 +337,15 @@ $mostrar = false;
             <h2 class="my-4">Things To Do</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
-                    @foreach ($new as $data)
+                    @foreach ($thing as $data)
                         <div class="card card-principal-post">
                             <div class="card border-0">
                                 <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                     <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
                                         {!! $data->destination !!}</span>
                                 </a>
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
                                     <img {!! img_meta($data->image_data) !!} class="card-img">
@@ -367,8 +367,8 @@ $mostrar = false;
                 </div>
                 <div class="col-lg-8">
                     <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
-                        @foreach ($news as $data)
-                            @if ($new[0]->id_post != $data->id_post)
+                        @foreach ($things as $data)
+                            @if ($thing[0]->id_post != $data->id_post)
                                 <div class="col">
                                     <div class="card card-secundario h-100">
                                         <div class="row h-100">
@@ -482,6 +482,8 @@ $mostrar = false;
                                     <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
                                         {!! $data->destination !!}</span>
                                 </a>
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
                                     <img {!! img_meta($data->image_data) !!} class="card-img">
@@ -571,6 +573,8 @@ $mostrar = false;
                                     <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
                                         {!! $data->destination !!}</span>
                                 </a>
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
                                     <img {!! img_meta($data->image_data) !!} class="card-img">

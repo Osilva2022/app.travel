@@ -2,31 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
-    
-    <title>@yield('page-title') Tribune Travel</title>    
+    <title>@yield('page-title') Tribune Travel</title>   
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">  
-    <!-- Styles -->   
-    <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">    
-    <link href="{{ asset('css/carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
-    
-    <link href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <!-- Styles -->
+    <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print"
+        onload="this.media='all'">
+    <link href="{{ asset('css/carousel.min.css') }}" rel="preload" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    {{-- <link href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"> --}}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Scripts -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/jQuery.min.js') }}"></script>
-  
-    <script async>
+    {{-- <script src="{{ asset('js/jQuery.min.js') }}"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    {{-- <script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="" crossorigin="anonymous" defer></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity=""
+        crossorigin="anonymous" defer></script>
+
+    <script defer>
         $(function() {
             $(window).on("scroll", function() {
                 if ($(window).scrollTop() > 200) {
@@ -55,7 +73,8 @@
             <div class="row row-cols-1 row-cols-md-5 justify-content-center g-4 align-items-center">
                 <div class="col text-center">
                     <a class="text-muted" href="#">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125" height="100" alt="Tribune Travel">
+                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
+                            width="125" height="100" alt="Tribune Travel">
                     </a>
                 </div>
                 <div class="col text-white text-center" style="font-weight:300;">
@@ -111,24 +130,24 @@
                     </div>
                 </div> --}}
                 <div class="col text-center text-white">
-                    <h5 class="text-white text-center" style="padding: 2px;">Social Media</h5>
+                    <h3 class="text-white text-center" style="padding: 2px;">Social Media</h3>
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
                             <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}" target="_blank">
-                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/face-white-ico.svg" alt="Tribune Travel facebook-icon"
-                                    width="24" height="24">
+                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/face-white-ico.svg"
+                                    alt="Tribune Travel facebook-icon" width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
-                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/pint-white-ico.svg" alt="Tribune Travel pint-icon"
-                                    width="24" height="24">
+                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/pint-white-ico.svg"
+                                    alt="Tribune Travel pint-icon" width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/inst-white-ico.svg" alt="Tribune Travel insta-icon"
-                                    width="24" height="24">
+                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/inst-white-ico.svg"
+                                    alt="Tribune Travel insta-icon" width="24" height="24">
                             </a>
                         </li>
                     </ul>
@@ -142,22 +161,26 @@
             <div class="row row-cols-4 g-2 g-lg-3 justify-content-center mb-4">
                 <div class="col-12 col-footer text-center">
                     <a href="https://cps.media/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/cps-media-white.svg" class="img-footer" style="width: 25%;">
+                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/cps-media-white.svg"
+                            class="img-footer" alt="CPS Logo" loading="lazy" decoding="defer" style="width: 25%;">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tribunadelabahia.com.mx/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribuna-white.svg" class="img-footer">
+                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribuna-white.svg"
+                            class="img-footer" alt="Tribuna Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://radiante.fm/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/radiante-white-horizontal.svg" class="img-footer">
+                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/radiante-white-horizontal.svg"
+                            class="img-footer" alt="Radiante Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tvmar.tv/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tv-mar-white.svg" class="img-footer">
+                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tv-mar-white.svg"
+                            class="img-footer" alt="TVMar Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
             </div>
@@ -183,29 +206,19 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-center text-white" style="font-size: 11px;">&copy; {{date('Y')}} CPS Media. All rights reserved
+                <p class="text-center text-white" style="font-size: 11px;">&copy; {{ date('Y') }} CPS Media. All
+                    rights reserved
                 </p>
             </div>
         </div>
     </footer>
     @yield('jquery')
-    <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1"></script>
-    <script src="{{ asset('js/base.min.js') }}" version="1"></script>
-    <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-    <script defer>
-        $(document).ready(function() {  
-            $(function() {
-                const slot = 1;
-                if (slot === 1) {
-                    $('.slot').css("display", "none"); 
-                }
-                $('img').Lazy();
-                $('iframe').Lazy();
-                
-            });
-        });
-    </script>
+    {{-- <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1" defer></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('js/carousels.min.js') }}" version="1" defer></script>
+    <script src="{{ asset('js/base.min.js') }}" version="1" defer></script>
 </body>
 
 </html>

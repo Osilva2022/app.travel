@@ -653,6 +653,20 @@ footer .nav-link:hover {
     background: rgb(212, 175, 55);
     /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(233, 213, 151, 1) 25%, rgba(212, 175, 55, 1) 87%); */
 }
+.etiqueta-last-post {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    background: rgb(212, 175, 55);
+    z-index: 5;
+    border-radius: 100%;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .card-directory {
     border: solid #fff;
