@@ -29,13 +29,13 @@
 
 <!-- ads -->
 @php
-$mostrar = true;
+$mostrar = false;
 @endphp
 
 @if ($mostrar)
     @push('ads')
         <!-- Tribune Top Leaderboard Home-->
-        <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script class="slot" defer src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
         <script class="slot" defer>
             window.googletag = window.googletag || {
                 cmd: []
