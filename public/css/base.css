@@ -227,6 +227,7 @@ small {
     line-height: 0.995rem;
     color: #fff;
     display: inline-block;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, .15)!important;
 }
 
 .card-principal-post {

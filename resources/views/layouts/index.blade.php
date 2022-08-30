@@ -113,7 +113,7 @@ $mostrar = false;
                                             <img {!! img_meta($ttd->image_data) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
-                                                    <h3>{!! $ttd->post_title !!}</h3>
+                                                    <h3 class="text-white">{!! $ttd->post_title !!}</h3>
                                                     <p style="bottom:4px; color: white;">
                                                         {!! $ttd->category !!} - {!! $ttd->destination !!}</p>
                                                 </div>
