@@ -401,7 +401,7 @@ $mostrar = false;
             </div>
             <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('category', ['news']) }}" class="btn-view-more" type="button">More
+                    <a href="{{ route('category', ['things-to-do']) }}" class="btn-view-more" type="button">More
                         Things to do</a>
                 </div>
             </div>
