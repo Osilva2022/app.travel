@@ -27,7 +27,7 @@ function img_meta($data, $alt = null, $lazy = true)
         'src="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . '"',
         'alt="' . $alt . '"',
         ($lazy) ? 'loading="lazy"' : '',
-        ($lazy) ? 'decoding="async"' : '',
+        ($lazy) ? 'decoding="defer"' : '',
         'sizes="(max-width: 320px) 300px, (max-width: 480px) 440px, (max-width: 800px) 768px, (max-width: 1024px) 900px, 1024px"',
         'srcset="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . ' ' . $metadatos['width'] . 'w, ' . imgMetaSrcSet($metadatos['sizes']) . '"'
     ];
