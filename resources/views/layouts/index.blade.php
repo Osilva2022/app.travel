@@ -29,7 +29,7 @@
 
 <!-- ads -->
 @php
-$mostrar = false;
+$mostrar = true;
 @endphp
 
 @if ($mostrar)
