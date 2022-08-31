@@ -212,7 +212,7 @@
     {{-- <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1" defer></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
     <script src="{{ asset('js/carousels.min.js') }}" version="1" defer></script>
     <script src="{{ asset('js/base.min.js') }}" version="1" defer></script>
 </body>
