@@ -211,7 +211,33 @@
                 </p>
             </div>
         </div>
+        <style>
+            #cajacookies {
+  display: none;
+  box-shadow: 0px 0px 5px 5px #808080;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin:auto;
+  margin-top: 0px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+#cajacookies button {
+  color: black;
+}
+        </style>
+       
     </footer>
+    <div id="cajacookies">
+            
+        Este sitio utiliza cookies para ofrecer mejor experiencia de usuario. Si continúa navegando está dando su consentimiento para la aceptación de la política de cookies.
+        <a href="politica.html">política de privacidad</a>.
+        <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar</button>
+        </p>
+    </div>
     @yield('jquery')
     {{-- <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1" defer></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
@@ -219,6 +245,27 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('js/carousels.min.js') }}" version="1" defer></script>
     <script src="{{ asset('js/base.min.js') }}" version="1" defer></script>
+    <script>
+        /* ésto comprueba la localStorage si ya tiene la variable guardada */
+        function compruebaAceptaCookies() {
+          if(localStorage.aceptaCookies != 'true'){
+            cajacookies.style.display = 'block';
+          }
+        }
+        
+        /* aquí guardamos la variable de que se ha
+        aceptado el uso de cookies así no mostraremos
+        el mensaje de nuevo */
+        function aceptarCookies() {
+          localStorage.aceptaCookies = 'true';
+          cajacookies.style.display = 'none';
+        }
+        
+        /* ésto se ejecuta cuando la web está cargada */
+        $(document).ready(function () {
+          compruebaAceptaCookies();
+        });
+        </script>
 </body>
 
 </html>
