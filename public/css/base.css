@@ -706,6 +706,24 @@ footer .nav-link:hover {
     text-align: center;
 }
 
+#cajacookies {
+    display: none;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, .15);
+    background-color: white;
+    color: black;
+    padding: 10px;
+    margin:auto;
+    margin-top: 0px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
+/* #cajacookies button {
+    color: black;
+} */
+
 .menu-active .nav-link:hover,
 .menu-active .nav-link:focus,
 .menu-active .dropdown-item:focus,

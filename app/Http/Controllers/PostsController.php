@@ -289,9 +289,26 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $this->metadatos($post, 'post');
-        //dd($post->content);
+        $post_tags = DB::select("SELECT 
+                                    tags.name, tags.slug, tags.description, tags.color
+                                FROM
+                                    travel_tags AS tags,
+                                    (SELECT 
+                                        `t`.`slug` AS `tag_slug`, `tr`.`object_id` AS `id_post`
+                                    FROM
+                                        `travel_terms` `t`
+                                    JOIN `travel_term_taxonomy` `tt`
+                                    JOIN `travel_term_relationships` `tr`
+                                    WHERE
+                                        `t`.`term_id` = `tt`.`term_id`
+                                            AND `tt`.`taxonomy` = 'post_tag'
+                                            AND `tr`.`term_taxonomy_id` = `tt`.`term_taxonomy_id`) AS posts_tags
+                                WHERE
+                                    tags.slug = posts_tags.tag_slug
+                                        AND id_post = $post->id_post;");
+        // dd($post_tag);
 
-        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
     }
 
     public function categories(Request $request, $category)
@@ -536,5 +553,33 @@ class PostsController extends Controller
             return view('guide.gallery', compact('data', 'gallery'));
         }
         /* return $request->id; */
+    }
+
+    public function cookies()
+    {
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        return view('policies.cookies', compact('destinations_data', 'categories_data'));
+    }
+
+    public function privacy()
+    {
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        return view('policies.privacy', compact('destinations_data', 'categories_data'));
+    }
+
+    public function tags($tag)
+    {
+
+        $posts = DB::select("SELECT * FROM travel_posts_tag WHERE tag_slug = '$tag' ORDER BY post_date DESC;");
+        $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
+        $tag_data = DB::select("SELECT * FROM travel_tags WHERE slug = '$tag';");
+        $tags_data = DB::select("SELECT * FROM travel_tags;");
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        // dd("SELECT * FROM travel_tags WHERE slug = '$tag'");
+
+        return view('tags.index', compact('destinationposts', 'tag_data', 'tags_data', 'destinations_data', 'categories_data'));
     }
 }

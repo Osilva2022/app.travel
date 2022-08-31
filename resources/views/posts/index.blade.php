@@ -146,6 +146,14 @@
                             ) !!}
                         </div>
                         <!-- POST / NOTA -->
+                        <div class="col-12">
+                            @foreach ($post_tags as $data)
+                                <a href="{{ route('tags', $data->slug) }}">
+                                    <span class="badge etiqueta-categoria"
+                                        style="background-color: {{ $data->color }}">{!! $data->name !!}</span>
+                                </a>
+                            @endforeach
+                        </div>
                         <div class="col-12 cont-add-banner">
                             <!--ads /21855382314/tt-interior-lb-2 -->
                             <div id="div-gpt-ad-1636587242560-0" class="add-banner text-center">
