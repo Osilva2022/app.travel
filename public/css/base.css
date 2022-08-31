@@ -494,10 +494,14 @@ a:hover {
 
 .post-cont {
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     color: #101820;
     letter-spacing: 3 !important;
     word-wrap: break-word;
+}
+
+.post-cont >h3 {
+    padding-top: 2rem;
 }
 
 .post-cont img {
