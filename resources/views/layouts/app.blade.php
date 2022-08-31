@@ -37,9 +37,9 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity=""
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" defer></script>
     @stack('ads')
 </head>
 
@@ -209,8 +209,8 @@
     </div>
 
     @yield('jquery')
-    <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
-    <script src="{{ asset('js/base.min.js') }}" version="1"></script>
+    <script src="{{ asset('js/carousels.min.js') }}" version="1.1" defer></script>
+    <script src="{{ asset('js/base.min.js') }}" version="1.1" defer></script>
 </body>
 
 </html>
