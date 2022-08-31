@@ -2,8 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4 menu-active" id="menu-secundario">
     <div class="container-fluid px-4">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125" class="d-inline-block align-top"
-                alt="">
+            <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125"
+                height="35" class="d-inline-block align-top" alt="Tribune Travel">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,8 @@
             <ul class="navbar-nav mb-2 mb-md-0">
                 @foreach ($categories_data as $cd)
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('category',["$cd->slug"]) }}">{{ $cd->name }}</a>
+                        <a class="nav-link text-white"
+                            href="{{ route('category', ["$cd->slug"]) }}">{{ $cd->name }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item">

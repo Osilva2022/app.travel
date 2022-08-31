@@ -11,7 +11,8 @@ function imgURL($data)
         return false;
     }
     $metadatos = unserialize($data);
-    return images($metadatos['file']);
+    // return images($metadatos['file']);
+    return images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']);
 }
 
 function img_meta($data, $alt = false, $lazy = true)
@@ -22,16 +23,17 @@ function img_meta($data, $alt = false, $lazy = true)
 
     $metadatos = unserialize($data);
     $img_meta = [
-        ($metadatos['image_meta']['title']) ? 'alt="' . $metadatos['image_meta']['title'] . '"' : 'title="Img Title"',
-        // 'width="500"',
-        // 'height="300"',
+        ($metadatos['image_meta']['title']) ? 'alt="' . $metadatos['image_meta']['title'] . '"' : 'title=""',
+        // 'width="425"',
+        // 'height="250"',
         'width="' . $metadatos['width'] . '"',
         'height="' . $metadatos['height'] . '"',
         'src="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . '"',
         ($alt) ? 'alt="' . $alt . '"' : 'alt="Alt Text"',
         ($lazy) ? 'loading="lazy"' : '',
         ($lazy) ? 'decoding="defer"' : '',
-        'sizes="(max-width: 320px) 300px, (max-width: 480px) 440px, (max-width: 800px) 768px, (max-width: 1024px) 900px, 1024px"',
+        // 'sizes="(max-width: 400px) 100vw, (max-width: 700px) 50vw, (max-width: 900px) 33vw, 1024px"',
+        'sizes="(max-width: 200px) 200px,(max-width: 425px) 425px, (max-width: 550px) 525px, (max-width: 800px) 800px, (max-width: 1024px) 1024px, 1024px"',
         'srcset="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . ' ' . $metadatos['width'] . 'w, ' . imgMetaSrcSet($metadatos['sizes']) . '"'
     ];
     return implode(" ", $img_meta);

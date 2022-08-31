@@ -58,7 +58,10 @@ $(document).ready(function() {
         margin: 25,
         center: false,
         nav: false,
-        dots: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
         responsiveClass: true,
         responsive: {
             0: {

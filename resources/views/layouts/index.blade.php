@@ -35,7 +35,7 @@ $mostrar = false;
 @if ($mostrar)
     @push('ads')
         <!-- Tribune Top Leaderboard Home-->
-        <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script class="slot" defer src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
         <script class="slot" defer>
             window.googletag = window.googletag || {
                 cmd: []
@@ -196,7 +196,7 @@ $mostrar = false;
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img data-alex="aqui" {!! img_meta($data->image_data) !!} class="card-img-secundario lazy">
+                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario lazy">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
