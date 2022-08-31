@@ -21,6 +21,9 @@ $(document).ready(function() {
             0: {
                 items: 1
             },
+            300: {
+                items: 1
+            },
             500: {
                 items: 3
             }
