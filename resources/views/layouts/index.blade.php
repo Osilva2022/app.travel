@@ -110,7 +110,7 @@ $mostrar = false;
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}?p={!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($ttd->image_data) !!} class="carousel-img lazy">
+                                            <img {!! img_meta($ttd->image_data, null , false) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h3 class="text-white">{!! $ttd->post_title !!}</h3>
@@ -182,7 +182,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -210,7 +210,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small>
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
@@ -296,16 +296,16 @@ $mostrar = false;
                             <div class="">
 
                                 <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
-                                    <img src="{{ asset('img/svg/face-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel facebook-icon"
-                                        width="24" height="24">
+                                    <img src="{{ asset('img/svg/face-ico.svg') }}" loading="lazy" decoding="defer"
+                                        alt="Tribune Travel facebook-icon" width="24" height="24">
                                 </a>
                                 <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}">
-                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel pint-icon"
-                                        width="24" height="24">
+                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" loading="lazy" decoding="defer"
+                                        alt="Tribune Travel pint-icon" width="24" height="24">
                                 </a>
                                 <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}">
-                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" loading="lazy" decoding="defer" alt="Tribune Travel insta-icon"
-                                        width="24" height="24">
+                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" loading="lazy" decoding="defer"
+                                        alt="Tribune Travel insta-icon" width="24" height="24">
                                 </a>
                             </div>
                         </div>
@@ -360,7 +360,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -388,7 +388,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
@@ -432,7 +432,7 @@ $mostrar = false;
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img {!! img_meta($data->image_data) !!} class="img-event">
+                                <img {!! img_meta($data->image_data, null , false) !!} class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
@@ -498,7 +498,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -526,7 +526,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
@@ -589,7 +589,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -617,7 +617,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>

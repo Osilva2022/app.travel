@@ -47,7 +47,7 @@
                                     <div class="card-body">
                                         <h3 class="card-title">{!! $data->title !!}</h3>
                                         <p class="card-text">{!! $data->post_excerpt !!}</p>
-                                        <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                        <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                                     </div>
                                 </a>
                             </div>
