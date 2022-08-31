@@ -33,7 +33,7 @@
                     <span><i class="bi bi-geo-alt"></i> {!! $data->address !!}</span>
                     @if ($vip)
                         <div id="cont-infom-{!! $data->ID !!}"
-                            class="cont-info collapse multi-collapse cont-infom-{!! $data->ID !!}">
+                            class="cont-info collapse multi-collapse cont-infom-{!! $data->ID !!}" style="">
                             @if ($data->latitude != '' && $data->longitude != '')
                                 <span><i class="bi bi-map"></i> <a
                                         href="https://maps.google.com/?q={!! $data->latitude !!},{!! $data->longitude !!}"
@@ -43,7 +43,7 @@
                             <span><i class="bi bi-telephone"></i><a href="tel:{!! $data->phone !!}">
                                     {!! $data->phone !!}</a></span>
                             @if ($data->email)
-                                <span><i class="bi bi-envelope"></i><a href="mailto:{!! $data->email !!}"  style="word-wrap: break-word;">
+                                <span><i class="bi bi-envelope"></i><a href="mailto:{!! $data->email !!}">
                                         {{ $data->email }}</a></span>
                             @endif
                             <div class="d-flex justify-content-around">

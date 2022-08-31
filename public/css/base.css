@@ -494,9 +494,14 @@ a:hover {
 
 .post-cont {
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     color: #101820;
     letter-spacing: 3 !important;
+    word-wrap: break-word;
+}
+
+.post-cont >h3 {
+    padding-top: 2rem;
 }
 
 .post-cont img {
@@ -696,6 +701,7 @@ footer .nav-link:hover {
     flex-direction: column;
     /* justify-content: space-evenly; */
     margin-bottom: 6px;
+    word-wrap: break-word;
 }
 
 .cont-add-banner{
@@ -703,6 +709,24 @@ footer .nav-link:hover {
     overflow: auto;
     text-align: center;
 }
+
+#cajacookies {
+    display: none;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, .15);
+    background-color: white;
+    color: black;
+    padding: 10px;
+    margin:auto;
+    margin-top: 0px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
+/* #cajacookies button {
+    color: black;
+} */
 
 .menu-active .nav-link:hover,
 .menu-active .nav-link:focus,

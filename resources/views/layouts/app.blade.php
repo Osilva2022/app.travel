@@ -8,24 +8,17 @@
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
-    <title>@yield('page-title') Tribune Travel</title>   
+    <title>@yield('page-title') Tribune Travel</title>
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
-    {{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print"
-        onload="this.media='all'">
-    <link href="{{ asset('css/carousel.min.css') }}" rel="preload" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
         integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
         integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -33,17 +26,27 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="preload"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="{{ asset('css/carousel.min.css') }}" rel="preload" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity=""
-        crossorigin="anonymous" defer></script>
+        crossorigin="anonymous"></script>
 
     <script defer>
         $(function() {
             $(window).on("scroll", function() {
                 if ($(window).scrollTop() > 200) {
                     $("#menu-header").addClass("menu-active");
-
+                    compruebaAceptaCookies();
                 } else {
                     $("#menu-header").removeClass("menu-active");
                 }
@@ -205,14 +208,47 @@
                 </p>
             </div>
         </div>
+
     </footer>
+    <div id="cajacookies">
+        <div class="row">
+            <div class="col d-flex flex-column flex-md-row justify-content-around align-items-center">
+                <p class="text-center" style="font-size: 12px; margin: 0;">
+                    This site uses cookies.
+                    If you continue browsing you are giving your consent
+                    to accept the <a href="{{ route('cookies') }}">Cookies policy</a> & <a
+                        href="{{ route('privacy') }}">Privacy policy</a>.
+                </p>
+                <a onclick="aceptarCookies()" class="btn-view-more" style="font-size: 10px; width: 100px;">
+                    Aceptar</a>
+            </div>
+        </div>
+    </div>
+
     @yield('jquery')
-    {{-- <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" version="1" defer></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-    <script src="{{ asset('js/carousels.min.js') }}" version="1" defer></script>
-    <script src="{{ asset('js/base.min.js') }}" version="1" defer></script>
+    <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
+    <script src="{{ asset('js/base.min.js') }}" version="1"></script>
+    <script>
+        /* ésto comprueba la localStorage si ya tiene la variable guardada */
+        function compruebaAceptaCookies() {
+            if (localStorage.aceptaCookies != 'true') {
+                cajacookies.style.display = 'block';
+            }
+        }
+
+        /* aquí guardamos la variable de que se ha
+        aceptado el uso de cookies así no mostraremos
+        el mensaje de nuevo */
+        function aceptarCookies() {
+            localStorage.aceptaCookies = 'true';
+            cajacookies.style.display = 'none';
+        }
+
+        /* ésto se ejecuta cuando la web está cargada */
+        $(document).ready(function() {
+            // compruebaAceptaCookies();
+        });
+    </script>
 </body>
 
 </html>
