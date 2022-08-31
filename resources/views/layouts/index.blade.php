@@ -110,7 +110,7 @@ $mostrar = false;
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}?p={!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($ttd->image_data, null , false) !!} class="carousel-img lazy">
+                                            <img {!! img_meta($ttd->image_data, null , true) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h3 class="text-white">{!! $ttd->post_title !!}</h3>
@@ -432,7 +432,7 @@ $mostrar = false;
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img {!! img_meta($data->image_data, null , false) !!} class="img-event">
+                                <img {!! img_meta($data->image_data, null , true) !!} class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
