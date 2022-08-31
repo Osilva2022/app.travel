@@ -7,7 +7,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.2rem;">
-        <div class="bg-light hero-image" style="background-image: url({{ images($things_category[0]->image) }})">
+        <div class="bg-light hero-image" style="background-image: url({{ imgURL($things_category[0]->image_data) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
                 <h1 id="t1" class="text-white">{!! $things_category[0]->name !!}</h1>

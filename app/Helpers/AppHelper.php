@@ -11,7 +11,8 @@ function imgURL($data)
         return false;
     }
     $metadatos = unserialize($data);
-    return images($metadatos['file']);
+    // return images($metadatos['file']);
+    return images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']);
 }
 
 function img_meta($data, $alt = false, $lazy = true)
