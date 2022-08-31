@@ -1,7 +1,7 @@
 <div class="row mb-4">
     <div class="col">
-        <div class="cont-menu-destination" style="overflow-x: auto; height: 60px;">
-            <ul class="nav nav-tabs justify-content-start" id="myTab" role="tablist" style="min-width: 660px;">
+        <div class="cont-menu-destination" style="overflow: auto; height: 60px; max-width: 100%;">
+            <ul class="nav nav-tabs justify-content-start" id="myTab" role="tablist" style="min-width: 980px;">
                 <li class="nav-item nav-test mx-1" role="presentation">
                     <a class="nav-link" id="1-tab" href="{{ url('guide') }}?destination={!! $destination !!}"
                         type="button">
@@ -17,7 +17,7 @@
                     }
                     ?>
                     <li class="nav-item nav-test mx-1" role="presentation">
-                        <a class="nav-link {{ $active }} tc-{{$active}}" id="{!! $data->category_slug !!}-tab"
+                        <a class="nav-link {{ $active }} tc-{{ $active }}" id="{!! $data->category_slug !!}-tab"
                             href="{{ route('guide_category', ["$destination", "$data->category_slug"]) }}"
                             type="button">
                             <small>{!! $data->category !!}</small></a>
