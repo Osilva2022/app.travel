@@ -262,6 +262,24 @@
                     </div>
                 </div>
             </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <span class="text-muted">
+                        <i class="bi bi-arrow-left-circle"></i> Prev Post
+                    </span>
+                    <a href="{{ url($more_posts[0]->url) }}">
+                        <h3 class="card-title-secundario">{!! $more_posts[0]->title !!}</h3>
+                    </a>
+                </div>
+                <div class="col text-end">
+                    <span class="text-muted">
+                        Next Post <i class="bi bi-arrow-right-circle"></i>
+                    </span>
+                    <a href="{{ url($more_posts[1]->url) }}">
+                        <h3 class="card-title-secundario">{!! $more_posts[1]->title !!}</h3>
+                    </a>
+                </div>
+            </div>
             <!-- BOTONES CATEGORIAS -->
             @include('menus.menu_footer_categories')
             <!-- BOTONES CATEGORIAS -->

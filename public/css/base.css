@@ -497,6 +497,7 @@ a:hover {
     line-height: 1.5rem;
     color: #101820;
     letter-spacing: 3 !important;
+    word-wrap: break-word;
 }
 
 .post-cont img {
@@ -696,6 +697,7 @@ footer .nav-link:hover {
     flex-direction: column;
     /* justify-content: space-evenly; */
     margin-bottom: 6px;
+    word-wrap: break-word;
 }
 
 .cont-add-banner{
