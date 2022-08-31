@@ -40,23 +40,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity=""
         crossorigin="anonymous"></script>
-
-    <script defer>
-        $(function() {
-            $(window).on("scroll", function() {
-                if ($(window).scrollTop() > 200) {
-                    $("#menu-header").addClass("menu-active");
-                    compruebaAceptaCookies();
-                } else {
-                    $("#menu-header").removeClass("menu-active");
-                }
-            });
-
-            $("#navbar-toggler").click(function(e) {
-                $("#menu-header").addClass('menu-active');
-            });
-        });
-    </script>
     @stack('ads')
 </head>
 
@@ -219,8 +202,8 @@
                     to accept the <a href="{{ route('cookies') }}">Cookies policy</a> & <a
                         href="{{ route('privacy') }}">Privacy policy</a>.
                 </p>
-                <a onclick="aceptarCookies()" class="btn-view-more" style="font-size: 10px; width: 100px;">
-                    Aceptar</a>
+                <button onclick="aceptarCookies()" class="btn-view-more" style="font-size: 1rem; width: 100px;">
+                    Aceptar</button>
             </div>
         </div>
     </div>
@@ -228,27 +211,6 @@
     @yield('jquery')
     <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
     <script src="{{ asset('js/base.min.js') }}" version="1"></script>
-    <script>
-        /* ésto comprueba la localStorage si ya tiene la variable guardada */
-        function compruebaAceptaCookies() {
-            if (localStorage.aceptaCookies != 'true') {
-                cajacookies.style.display = 'block';
-            }
-        }
-
-        /* aquí guardamos la variable de que se ha
-        aceptado el uso de cookies así no mostraremos
-        el mensaje de nuevo */
-        function aceptarCookies() {
-            localStorage.aceptaCookies = 'true';
-            cajacookies.style.display = 'none';
-        }
-
-        /* ésto se ejecuta cuando la web está cargada */
-        $(document).ready(function() {
-            // compruebaAceptaCookies();
-        });
-    </script>
 </body>
 
 </html>
