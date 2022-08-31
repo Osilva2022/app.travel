@@ -226,8 +226,8 @@
     </div>
 
     @yield('jquery')
-    <script src="{{ asset('js/carousels.min.js') }}" version="1" defer></script>
-    <script src="{{ asset('js/base.min.js') }}" version="1" defer></script>
+    <script src="{{ asset('js/carousels.min.js') }}" version="1"></script>
+    <script src="{{ asset('js/base.min.js') }}" version="1"></script>
     <script>
         /* ésto comprueba la localStorage si ya tiene la variable guardada */
         function compruebaAceptaCookies() {
