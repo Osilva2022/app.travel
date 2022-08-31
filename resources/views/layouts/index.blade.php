@@ -182,7 +182,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -210,7 +210,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small>
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
@@ -360,7 +360,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -388,7 +388,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
@@ -498,7 +498,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -526,7 +526,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
@@ -589,7 +589,7 @@ $mostrar = false;
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
                                 </a>
-                                <small class="text-muted">{{ date('M/d/y', strtotime($data->post_date)) }}</small>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
                     @endforeach
@@ -617,7 +617,7 @@ $mostrar = false;
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
                                                 <small class="text-muted">
-                                                    {{ date('M/d/y', strtotime($data->post_date)) }}
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
                                         </div>
