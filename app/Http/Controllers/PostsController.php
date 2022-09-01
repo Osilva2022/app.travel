@@ -321,8 +321,11 @@ class PostsController extends Controller
 
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
+        $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
 
-        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
+        // dd($firstpostcategory);
+
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data'));
     }
 
     public function destinations($destination)
