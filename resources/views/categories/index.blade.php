@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-title')
-Reviews |
+    {!! $category_data[0]->name !!} |
 @endsection
 @section('content')
     <header>
@@ -10,53 +10,49 @@ Reviews |
         <div class="container" style="max-width: 1024px;">
             @include('menus.sub_menu_destinations')
             <div class="row g-4">
-                @isset($firstpostcategory)           
-              
-                <h2>Tribune {{$firstpostcategory->category_slug}}</h2>              
-                        <div class="col-12">
-                            <div class="card card-principal-post">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="card border-0">
-                                            <a href="{{ route('destinations', ["$firstpostcategory->destination_slug"]) }}">
-                                                <span class="badge etiqueta-img"
-                                                    style="background:{{ $firstpostcategory->destination_color }};">{{ $firstpostcategory->destination }}</span>
-                                            </a>
-                                            <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
-                                                class="text-decoration-none text-muted">
-                                                {{-- @if ($firstpostcategory->id_post == $data->id_post) --}}
-                                                    <span class="badge etiqueta-destacado">
-                                                        <img src="{{ asset('img/estrella.webp') }}" alt="destacada"
-                                                            width="25" height="25">
-                                                    </span>
-                                                {{-- @endif --}}
-                                                <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                                <img {!! img_meta($firstpostcategory->image_data) !!}"
-                                                    class="img-category-principal">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 d-flex align-items-center">
+                <h2>Tribune {{ $category_data[0]->name }}</h2>
+                @isset($firstpostcategory)
+                    <div class="col-12">
+                        <div class="card card-principal-post">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card border-0">
+                                        <a href="{{ route('destinations', ["$firstpostcategory->destination_slug"]) }}">
+                                            <span class="badge etiqueta-img"
+                                                style="background:{{ $firstpostcategory->destination_color }};">{{ $firstpostcategory->destination }}</span>
+                                        </a>
                                         <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
-                                            class="text-decoration-none">
-                                            <div class="card-body">
-                                                <h3 class="">
-                                                    {{ $firstpostcategory->title }}
-                                                </h3>
-                                                <p class="card-text">
-                                                    {!! Str::limit(strip_tags($firstpostcategory->post_excerpt), 225, ' ...') !!}
-                                                </p>
-                                                <small class="text-muted text-end">
-                                                    {{ date('M/d/Y', strtotime($firstpostcategory->post_date)) }}
-                                                </small>
-                                            </div>
+                                            class="text-decoration-none text-muted">
+                                            {{-- @if ($firstpostcategory->id_post == $data->id_post) --}}
+                                            <span class="badge etiqueta-destacado">
+                                                <img src="{{ asset('img/estrella.webp') }}" alt="destacada" width="25"
+                                                    height="25">
+                                            </span>
+                                            {{-- @endif --}}
+                                            <div class="opacity-effect" style="border-radius: 1rem"></div>
+                                            <img {!! img_meta($firstpostcategory->image_data) !!}" class="img-category-principal">
                                         </a>
                                     </div>
                                 </div>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
+                                        class="text-decoration-none">
+                                        <div class="card-body">
+                                            <h3 class="">
+                                                {{ $firstpostcategory->title }}
+                                            </h3>
+                                            <p class="card-text">
+                                                {!! Str::limit(strip_tags($firstpostcategory->post_excerpt), 225, ' ...') !!}
+                                            </p>
+                                            <small class="text-muted text-end">
+                                                {{ date('M/d/Y', strtotime($firstpostcategory->post_date)) }}
+                                            </small>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                   
-                   
+                    </div>
                 @endisset
                 <div class="col-12">
                     <div class="row row-cols-2 row-cols-lg-4 g-3">
