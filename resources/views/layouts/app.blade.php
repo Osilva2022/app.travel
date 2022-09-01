@@ -65,8 +65,6 @@
                         <ul class="nav justify-content-center flex-column">
                             <li class="nav-item">322 226 3870</li>
                             <li class="nav-item">digital@cps.media</li>
-                            <li class="nav-item">Proa 111, Marina Vallarta, CP. 48335 </li>
-                            <li class="nav-item">Puerto Vallarta, Jalisco, México. </li>
                         </ul>
                     </address>
                 </div>

@@ -153,7 +153,7 @@ $mostrar = false;
                 </div>
             </div>
             <!-- REVIEWS -->
-            <h2 class="my-4">Tribune Reviews</h2>
+            <h2 class="text-center my-4">Tribune Reviews</h2>
             <?php
             //echo img_meta($reviews[0]->image_data);
             ?>
@@ -334,7 +334,7 @@ $mostrar = false;
             </div>
 
             <!-- Things  -->
-            <h2 class="my-4">Things To Do</h2>
+            <h2 class="text-center my-4">Things To Do</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($thing as $data)
@@ -472,7 +472,7 @@ $mostrar = false;
                 </div>
             </div>
             <!-- NEWS -->
-            <h2 class="my-4">News</h2>
+            <h2 class="text-center my-4">News</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($new as $data)
@@ -563,7 +563,7 @@ $mostrar = false;
                 </div>
             </div>
             <!-- Blogs -->
-            <h2 class="my-4">Blogs</h2>
+            <h2 class="text-center my-4">Blogs</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($blog as $data)
