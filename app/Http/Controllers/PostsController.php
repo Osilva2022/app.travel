@@ -266,16 +266,14 @@ class PostsController extends Controller
                                     travel_posts_all
                                         LEFT JOIN
                                     (SELECT 
-                                        u.user_id, p.meta_value AS avatar, us.user_nicename
-                                    FROM
-                                        travel_usermeta AS u,
-                                        travel_users AS us,
-                                        travel_postmeta AS p
-                                    WHERE
-                                        u.meta_key = 'travel_user_avatar'
-                                            AND u.meta_value = p.post_id
-                                            AND us.ID = u.user_id
-                                            AND p.meta_key = '_wp_attached_file') AS q ON travel_posts_all.author_id = q.user_id
+                                            u.user_id, p.meta_value AS avatar, us.user_nicename
+                                        FROM
+                                            travel_users AS us
+                                            left join 
+                                            travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
+                                            left join
+                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q 
+                                    ON travel_posts_all.author_id = q.user_id
                                 WHERE
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
@@ -323,8 +321,11 @@ class PostsController extends Controller
 
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
+        $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
 
-        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data'));
+        // dd($firstpostcategory);
+
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data'));
     }
 
     public function destinations($destination)
