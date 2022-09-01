@@ -204,7 +204,7 @@
                     to accept the <a href="{{ route('cookies') }}">Cookies policy</a> & <a
                         href="{{ route('privacy') }}">Privacy policy</a>.
                 </p>
-                <button onclick="aceptarCookies()" class="btn-view-more" style="font-size: 1rem; width: 100px;">
+                <button id="btn-cookies" class="btn-view-more" style="font-size: 1rem; width: 100px;">
                     Aceptar</button>
             </div>
         </div>

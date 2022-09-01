@@ -45,4 +45,9 @@ $(document).ready(function () {
                 .fadeIn();
         }
     });
+
+    $("#btn-cookies").click(function (e) {
+        e.preventDefault();
+        aceptarCookies();
+    });
 });
