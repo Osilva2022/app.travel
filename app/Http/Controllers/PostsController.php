@@ -32,6 +32,7 @@ use App\Helper\Helper;
 use Corcel\Model\Post as ModelPost;
 use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
+use App\Models\Divisa;
 
 class PostsController extends Controller
 {
@@ -124,7 +125,6 @@ class PostsController extends Controller
         // $t = $instagram->getAccessToken();
         // $tt = $instagram->refreshToken($token,true);        
         $media = $instagram->getUserMedia('me', 6);
-        // dd($media);
         return $media;
     }
 
@@ -193,7 +193,7 @@ class PostsController extends Controller
         //dd($more_posts);
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
-    }
+    }    
 
     public function index(Request $request)
     {
@@ -209,6 +209,10 @@ class PostsController extends Controller
             }
             return $this->preview($id);
         }
+
+        $d = $divisa = $this->divisa();
+        
+        
 
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
@@ -245,6 +249,7 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
+        
         $static_gallery = $this->returndata('gallery');
         $gallery = $static_gallery;
 
