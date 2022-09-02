@@ -575,9 +575,16 @@ class PostsController extends Controller
         return view('policies.privacy', compact('destinations_data', 'categories_data'));
     }
 
+    public function sitemap()
+    {
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $tags_data = $this->returndata('tags');
+        return view('sitemap.index', compact('destinations_data', 'categories_data', 'tags_data'));
+    }
+
     public function tags($tag)
     {
-
         $posts = DB::select("SELECT * FROM travel_posts_tag WHERE tag_slug = '$tag' ORDER BY post_date DESC;");
         $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
         $tag_data = DB::select("SELECT * FROM travel_tags WHERE slug = '$tag';");
