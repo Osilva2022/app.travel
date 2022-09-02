@@ -569,12 +569,13 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         return view('policies.privacy', compact('destinations_data', 'categories_data'));
     }
-    
+
     public function sitemap()
     {
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        return view('policies.privacy', compact('destinations_data', 'categories_data'));
+        $tags_data = $this->returndata('tags');
+        return view('sitemap.index', compact('destinations_data', 'categories_data', 'tags_data'));
     }
 
     public function tags($tag)

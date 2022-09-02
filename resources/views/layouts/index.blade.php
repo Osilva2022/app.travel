@@ -78,6 +78,47 @@ $mostrar = false;
         @include('layouts.carousel')
     </header>
     <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col submenu-home py-2">
+                    <div class="container" style="max-width: 1024px;">
+                        <div class="row g-2">
+                            <div class="col-md-4 text-white text-center">
+                                {{ date('F j, Y') }}
+                            </div>
+                            <div class="col-auto text-white text-center d-none d-md-block">
+                                {{-- @foreach ($divisas_data as $divisa) --}}
+                                <span class="mx-2">
+                                    MXN : $20.19
+                                </span>
+                                {{-- @endforeach --}}
+                                <span class="mx-2">
+                                    EUR : $1.01
+                                </span>
+                                <span class="mx-2">
+                                    CAD : $1.32
+                                </span>
+                            </div>
+                            <div class="btn-group col col-md-auto text-white text-center d-md-none d-block">
+                                <a class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="background-color: #243A85;">
+                                    MXN : $20.19 <i class="bi bi-caret-down-fill"></i>
+                                </a>
+                                <ul class="dropdown-menu" style="background-color: #243A85;">
+                                    <li><a class="dropdown-item" href="#">EUR : $1.01</a></li>
+                                    <li><a class="dropdown-item" href="#">CAD : $1.32</a></li>
+                                </ul>
+                            </div>
+                            <div class="col text-white text-center">
+                                <i class="bi bi-sun-fill"></i>
+                                <i class="bi bi-thermometer-half"></i>
+                                32°
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container" style="max-width: 1024px;">
 
             <!--ads /21855382314/tt-home-lb-1 -->
@@ -110,7 +151,7 @@ $mostrar = false;
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}?p={!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($ttd->image_data, null , true) !!} class="carousel-img lazy">
+                                            <img {!! img_meta($ttd->image_data, null, true) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h3 class="text-white">{!! $ttd->post_title !!}</h3>
@@ -432,7 +473,7 @@ $mostrar = false;
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img {!! img_meta($data->image_data, null , true) !!} class="img-event">
+                                <img {!! img_meta($data->image_data, null, true) !!} class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);

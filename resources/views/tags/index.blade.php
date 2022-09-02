@@ -11,17 +11,21 @@
             <div class="container" style="max-width: 1024px;">
                 <div class="row mb-4">
                     <div class="col">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="min-width: 678px;">
-                            @foreach ($tags_data as $data)
-                                <li class="nav-item nav-test mx-1" role="presentation">
-                                    <a class="nav-link {{ $data->slug == $tag_data[0]->slug ? 'active' : '' }}"
-                                        href="{{ route('tags', $data->slug) }}" type="button">
-                                        <small>{!! $data->name !!}</small></a>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <div class="" style="overflow-x: auto; height: 60px;">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist"
+                                style="min-width: 1000px;">
+                                @foreach ($tags_data as $data)
+                                    <li class="nav-item nav-test mx-1" role="presentation">
+                                        <a class="nav-link {{ $data->slug == $tag_data[0]->slug ? 'active' : '' }}"
+                                            href="{{ route('tags', $data->slug) }}" type="button">
+                                            <small>{!! $data->name !!}</small></a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <h2 class="my-4">Tags</h2>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                     @foreach ($destinationposts as $data)
                         <div class="col">

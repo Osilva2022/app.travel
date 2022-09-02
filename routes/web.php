@@ -35,6 +35,6 @@ Route::get('gallery', function () {
 });
 Route::get('police-cookies', [PostsController::class, 'cookies'])->name('cookies');
 Route::get('police-privacy', [PostsController::class, 'privacy'])->name('privacy');
-// Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
+Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);

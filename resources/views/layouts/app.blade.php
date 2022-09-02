@@ -68,38 +68,6 @@
                         </ul>
                     </address>
                 </div>
-                <div class="col text-md-start text-white text-center">
-                    <ul class="nav justify-content-center flex-column ">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;"
-                                href="{{ route('category', ['reviews']) }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Reviews</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;"
-                                href="{{ route('category', ['news']) }}">
-                                <h3 class="text-white text-center fs-6 mb-2">News</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;"
-                                href="{{ route('category', ['things-to-do']) }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Things to do</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('guide') }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Guide</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('events') }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Events</h3>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 {{-- <div class="col text-center text-white">
                     <label class="text-white">Subscribe</label>
                     <div class="input-group mb-3 justify-content-center">
@@ -131,6 +99,45 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+                <div class="col text-md-start text-white text-center">
+                    <a class="nav-link text-white" style="padding: 2px;" href="{{ route('sitemap') }}">
+                        <h3 class="text-white text-center mb-2">Sitemap <br>
+                            <i class="bi bi-diagram-3" style="font-size: 24px;"></i>
+                        </h3>
+                    </a>
+                    {{-- <ul class="nav justify-content-center flex-column ">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;"
+                                href="{{ route('category', ['news']) }}">
+                                <h3 class="text-white text-center fs-6 mb-2">News</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;"
+                                href="{{ route('category', ['things-to-do']) }}">
+                                <h3 class="text-white text-center fs-6 mb-2">Things to do</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;"
+                                href="{{ route('category', ['blogs']) }}">
+                                <h3 class="text-white text-center fs-6 mb-2">Blogs</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('guide') }}">
+                                <h3 class="text-white text-center fs-6 mb-2">Guide</h3>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('events') }}">
+                                <h3 class="text-white text-center fs-6 mb-2">Events</h3>
+                            </a>
+                        </li>
+                    </ul> --}}
                 </div>
             </div>
             <div class="row justify-content-center">
