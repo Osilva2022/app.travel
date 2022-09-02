@@ -78,8 +78,50 @@ $mostrar = false;
         @include('layouts.carousel')
     </header>
     <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col submenu-home py-2">
+                    <div class="container" style="max-width: 1024px;">
+                        <div class="row g-2">
+                            <div class="col-12 col-sm-4 text-white text-center">
+                                {{ date('F j, Y') }}
+                            </div>
+                            <div class="col-auto text-white text-center d-none d-lg-block">
+                                <span class="mx-2">
+                                    {!! $mxn->country !!} : ${!! $mxn->end_rate !!}
+                                </span>
+                                @foreach ($divisas_data as $divisa)
+                                    <span class="mx-2">
+                                        {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
+                                    </span>
+                                @endforeach
+                            </div>
+                            <div class="btn-group col text-white text-center d-lg-none d-block">
+                                <a class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="background-color: #243A85;">
+                                    {!! $mxn->country !!} : ${!! $mxn->end_rate !!} <i class="bi bi-caret-down-fill"></i>
+                                </a>
+                                <ul class="dropdown-menu" style="background-color: #243A85;">
+                                    @foreach ($divisas_data as $divisa)
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col text-white d-flex justify-content-center">
+                                {{-- <i class="bi bi-sun-fill"></i>
+                                <i class="bi bi-thermometer-half"></i>
+                                32° --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container" style="max-width: 1024px;">
-
             <!--ads /21855382314/tt-home-lb-1 -->
             @if ($mostrar)
                 <div class="row slot">
@@ -110,7 +152,7 @@ $mostrar = false;
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}?p={!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($ttd->image_data, null , true) !!} class="carousel-img lazy">
+                                            <img {!! img_meta($ttd->image_data, null, true) !!} class="carousel-img lazy">
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h3 class="text-white">{!! $ttd->post_title !!}</h3>
@@ -153,7 +195,7 @@ $mostrar = false;
                 </div>
             </div>
             <!-- REVIEWS -->
-            <h2 class="my-4">Tribune Reviews</h2>
+            <h2 class="text-center my-4">Tribune Reviews</h2>
             <?php
             //echo img_meta($reviews[0]->image_data);
             ?>
@@ -334,7 +376,7 @@ $mostrar = false;
             </div>
 
             <!-- Things  -->
-            <h2 class="my-4">Things To Do</h2>
+            <h2 class="text-center my-4">Things To Do</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($thing as $data)
@@ -432,7 +474,7 @@ $mostrar = false;
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img {!! img_meta($data->image_data, null , true) !!} class="img-event">
+                                <img {!! img_meta($data->image_data, null, true) !!} class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
@@ -472,7 +514,7 @@ $mostrar = false;
                 </div>
             </div>
             <!-- NEWS -->
-            <h2 class="my-4">News</h2>
+            <h2 class="text-center my-4">News</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($new as $data)
@@ -563,7 +605,7 @@ $mostrar = false;
                 </div>
             </div>
             <!-- Blogs -->
-            <h2 class="my-4">Blogs</h2>
+            <h2 class="text-center my-4">Blogs</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($blog as $data)

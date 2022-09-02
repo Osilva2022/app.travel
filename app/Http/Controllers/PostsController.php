@@ -32,6 +32,7 @@ use App\Helper\Helper;
 use Corcel\Model\Post as ModelPost;
 use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
+use App\Models\Divisa;
 
 class PostsController extends Controller
 {
@@ -124,7 +125,6 @@ class PostsController extends Controller
         // $t = $instagram->getAccessToken();
         // $tt = $instagram->refreshToken($token,true);        
         $media = $instagram->getUserMedia('me', 6);
-        // dd($media);
         return $media;
     }
 
@@ -193,7 +193,7 @@ class PostsController extends Controller
         //dd($more_posts);
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
-    }
+    }    
 
     public function index(Request $request)
     {
@@ -208,7 +208,7 @@ class PostsController extends Controller
                 return redirect()->route('home');
             }
             return $this->preview($id);
-        }
+        }       
 
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
@@ -238,20 +238,24 @@ class PostsController extends Controller
         $blog = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 1");
         $blogs = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
-
+        $divisas_data = DB::select("SELECT * FROM travel_divisa WHERE country != 'MXN'");
+        $mxn_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'MXN'");
+        $mxn = $mxn_data[0];
+        // dd($divisas_data);
         $gallery = $this->instagram();
         if (isset($gallery)) {
             $gallery = $gallery->data;
         } else {
             $gallery = false;
         }
+        
         $static_gallery = $this->returndata('gallery');
         $gallery = $static_gallery;
 
         $this->metadatos('home', 'home');
 
 
-        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs'));
+        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'mxn'));
     }
 
     /**
@@ -570,9 +574,16 @@ class PostsController extends Controller
         return view('policies.privacy', compact('destinations_data', 'categories_data'));
     }
 
+    public function sitemap()
+    {
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $tags_data = $this->returndata('tags');
+        return view('sitemap.index', compact('destinations_data', 'categories_data', 'tags_data'));
+    }
+
     public function tags($tag)
     {
-
         $posts = DB::select("SELECT * FROM travel_posts_tag WHERE tag_slug = '$tag' ORDER BY post_date DESC;");
         $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
         $tag_data = DB::select("SELECT * FROM travel_tags WHERE slug = '$tag';");
