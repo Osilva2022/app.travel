@@ -83,36 +83,38 @@ $mostrar = false;
                 <div class="col submenu-home py-2">
                     <div class="container" style="max-width: 1024px;">
                         <div class="row g-2">
-                            <div class="col-md-4 text-white text-center">
+                            <div class="col-12 col-sm-4 text-white text-center">
                                 {{ date('F j, Y') }}
                             </div>
-                            <div class="col-auto text-white text-center d-none d-md-block">
-                                {{-- @foreach ($divisas_data as $divisa) --}}
+                            <div class="col-auto text-white text-center d-none d-lg-block">
                                 <span class="mx-2">
-                                    MXN : $20.19
+                                    {!! $mxn->country !!} : ${!! $mxn->end_rate !!}
                                 </span>
-                                {{-- @endforeach --}}
-                                <span class="mx-2">
-                                    EUR : $1.01
-                                </span>
-                                <span class="mx-2">
-                                    CAD : $1.32
-                                </span>
+                                @foreach ($divisas_data as $divisa)
+                                    <span class="mx-2">
+                                        {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
+                                    </span>
+                                @endforeach
                             </div>
-                            <div class="btn-group col col-md-auto text-white text-center d-md-none d-block">
+                            <div class="btn-group col text-white text-center d-lg-none d-block">
                                 <a class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
                                     style="background-color: #243A85;">
-                                    MXN : $20.19 <i class="bi bi-caret-down-fill"></i>
+                                    {!! $mxn->country !!} : ${!! $mxn->end_rate !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
-                                    <li><a class="dropdown-item" href="#">EUR : $1.01</a></li>
-                                    <li><a class="dropdown-item" href="#">CAD : $1.32</a></li>
+                                    @foreach ($divisas_data as $divisa)
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
-                            <div class="col text-white text-center">
-                                <i class="bi bi-sun-fill"></i>
+                            <div class="col text-white d-flex justify-content-center">
+                                {{-- <i class="bi bi-sun-fill"></i>
                                 <i class="bi bi-thermometer-half"></i>
-                                32°
+                                32° --}}
                             </div>
                         </div>
                     </div>
@@ -120,7 +122,6 @@ $mostrar = false;
             </div>
         </div>
         <div class="container" style="max-width: 1024px;">
-
             <!--ads /21855382314/tt-home-lb-1 -->
             @if ($mostrar)
                 <div class="row slot">
