@@ -208,7 +208,13 @@ class PostsController extends Controller
                 return redirect()->route('home');
             }
             return $this->preview($id);
-        }       
+        }
+        
+        $end_date=date('Y-m-d');
+        $star_date=date('Y-m-d',strtotime("-1 days"));
+        $url = "https://api.apilayer.com/exchangerates_data/fluctuation?base=USD&start_date=$star_date&end_date=$end_date&symbols=CAD,MXN,EUR";
+
+        dd($url);
 
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
