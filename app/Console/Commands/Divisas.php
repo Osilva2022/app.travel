@@ -68,10 +68,10 @@ class Divisas extends Command
 
             Divisa::where('country',$key)
                 ->update(['end_date'=>$changes["end_date"],
-                    'start_date'=>$changes["start_date"],              
-                    'start_rate'=>$value["start_rate"],
-                    'end_rate'=>$value["end_rate"],
-                    'change'=>$value["change"]
+                    'start_date'=>round($changes["start_date"],2),              
+                    'start_rate'=>round($value["start_rate"],2),
+                    'end_rate'=>round($value["end_rate"],2),
+                    'change'=>round($value["change"],2)
                 ]);
         }
         return 0;
