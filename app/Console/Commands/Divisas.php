@@ -71,7 +71,7 @@ class Divisas extends Command
                     'start_date'=>round($changes["start_date"],2),              
                     'start_rate'=>round($value["start_rate"],2),
                     'end_rate'=>round($value["end_rate"],2),
-                    'change'=>round($value["change"],2)
+                    'change'=>$value["change"]
                 ]);
         }
         return 0;
