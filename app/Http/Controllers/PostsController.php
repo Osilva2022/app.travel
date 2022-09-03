@@ -209,7 +209,6 @@ class PostsController extends Controller
             }
             return $this->preview($id);
         }      
-       
 
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
