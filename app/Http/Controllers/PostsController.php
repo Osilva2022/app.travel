@@ -254,7 +254,7 @@ class PostsController extends Controller
         $gallery = $static_gallery;
 
         $this->metadatos('home', 'home');
-        $this->ApiWeather();
+        // $this->ApiWeather();
         $weather = $this->GetWeather();
 
         return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'mxn', 'weather'));
