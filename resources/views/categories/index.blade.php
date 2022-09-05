@@ -207,7 +207,7 @@ $mostrar = true;
                 </div>
             </div>
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row my-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-categories-lb-4 -->
                         <div id='div-gpt-ad-1661983352750-0' style='min-width: 320px; min-height: 50px;'>
@@ -229,7 +229,7 @@ $mostrar = true;
             @include('menus.menu_footer_categories')
             <!-- BOTONES CATEGORIAS -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row my-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-categories-lb-5 -->
                         <div id='div-gpt-ad-1661983499701-0' style='min-width: 320px; min-height: 50px;'>
