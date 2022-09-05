@@ -147,7 +147,7 @@ $mostrar = true;
             <!-- BOTONES CATEGORIAS -->
             @if ($mostrar)
                 <div class="row mb-4">
-                    <div class="col-12" style="max-width: 100%; overflow: auto;">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-lb-4 -->
                         <div id='div-gpt-ad-1661986455608-0' style='min-width: 320px; min-height: 50px;'>
                             <script>
