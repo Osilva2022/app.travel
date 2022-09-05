@@ -97,8 +97,8 @@ $mostrar = false;
                                 @endforeach
                             </div>
                             <div class="btn-group col text-white text-center d-lg-none d-block">
-                                <a class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
-                                    style="background-color: #243A85;">
+                                <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
+                                    href="#">
                                     {!! $mxn->country !!} : ${!! $mxn->end_rate !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
@@ -116,7 +116,7 @@ $mostrar = false;
                             </div>
                             <div class="btn-group col text-white d-flex justify-content-center">
                                 <a title="{!! $weather['Vallarta']['text'] !!}" class="text-white" data-bs-toggle="dropdown"
-                                    aria-expanded="false" style="background-color: #243A85;">
+                                    style="background-color: #243A85;" href="#">
                                     Vallarta <i class=" {!! $weather['Vallarta']['icon'] !!}"></i>
                                     {!! $weather['Vallarta']['temperature'] !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
@@ -124,8 +124,7 @@ $mostrar = false;
                                     @foreach ($weather as $key => $w)
                                         @if ($key != 'Vallarta')
                                             <li title="{!! $w['text'] !!}">
-                                                <a class="dropdown-item disabled text-white"
-                                                    href="#">
+                                                <a class="dropdown-item disabled text-white" href="#">
                                                     {!! $key !!} <i class="{!! $w['icon'] !!}"></i>
                                                     {!! $w['temperature'] !!}
                                                 </a>
