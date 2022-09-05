@@ -194,6 +194,7 @@ class PostsController extends Controller
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }    
+   
 
     public function index(Request $request)
     {

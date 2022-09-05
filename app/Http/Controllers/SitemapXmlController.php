@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\Post;
 use App\Models\PostAll;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\SitemapGenerator;
@@ -21,7 +22,14 @@ class SitemapXmlController extends Controller
         SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap2.xml'));
         SitemapGenerator::create(config('app.url'))->getSitemap()->writeToDisk('public', 'sitemap2.xml');
 
+    }
 
-        
+    public function feed()
+    {
+        $posts = PostAll::all();             
+  
+        return response()->view('sitemap.feed', [
+            'posts' => $posts
+        ])->header('Content-Type', 'text/xml');
     }
 }
