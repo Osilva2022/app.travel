@@ -59,7 +59,8 @@ $mostrar = true;
                         <ul class="nav nav-tabs" id="myTab" role="tablist" style="min-width: 678px;">
                             @foreach ($destinations_data as $data)
                                 <li class="nav-item nav-test mx-1" role="presentation">
-                                    <a class="nav-link" id="{!! $data->slug !!}-tab"
+                                    <a class="nav-link {{ $data->slug == $destination_data[0]->slug ? 'active' : '' }}"
+                                        id="{!! $data->slug !!}-tab"
                                         href="{{ url('guide') }}?destination={!! $data->slug !!}" type="button">
                                         <small>{!! $data->name !!}</small></a>
                                 </li>
@@ -69,8 +70,8 @@ $mostrar = true;
                 </div>
             </div>
             @if ($mostrar)
-                <div class="row">
-                    <div class="col-12">
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-lb-1 -->
                         <div id='div-gpt-ad-1661985509466-0' style='min-width: 300px; min-height: 50px;'>
                             <script>
@@ -91,8 +92,8 @@ $mostrar = true;
                 </div>
             </div>
             @if ($mostrar)
-                <div class="row">
-                    <div class="col-12">
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-lb-2 -->
                         <div id='div-gpt-ad-1661985704739-0' style='min-width: 320px; min-height: 50px;'>
                             <script>
@@ -128,8 +129,8 @@ $mostrar = true;
                 @endforeach
             </div>
             @if ($mostrar)
-                <div class="row">
-                    <div class="col-12">
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-lb-3 -->
                         <div id='div-gpt-ad-1661986333879-0' style='min-width: 320px; min-height: 50px;'>
                             <script>
@@ -145,8 +146,8 @@ $mostrar = true;
             @include('menus.menu_footer_categories')
             <!-- BOTONES CATEGORIAS -->
             @if ($mostrar)
-                <div class="row">
-                    <div class="col-12">
+                <div class="row mb-4">
+                    <div class="col-12" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-lb-4 -->
                         <div id='div-gpt-ad-1661986455608-0' style='min-width: 320px; min-height: 50px;'>
                             <script>
@@ -160,5 +161,5 @@ $mostrar = true;
             @endif
         </div>
     </main>
-    <script src="{{ asset('js/submenu.js') }}" version="1"></script>
+    {{-- <script src="{{ asset('js/submenu.js') }}" version="1"></script> --}}
 @endsection
