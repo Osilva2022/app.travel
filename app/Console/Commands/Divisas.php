@@ -40,9 +40,11 @@ class Divisas extends Command
     public function handle()
     {
         $curl = curl_init();
+        $end_date=date('Y-m-d');
+        $start_date=date('Y-m-d',strtotime("-1 days"));        
 
         curl_setopt_array($curl, array(
-           CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/fluctuation?base=USD&start_date=2020-09-01&end_date=2020-09-02&symbols=CAD,MXN,EUR",
+           CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/fluctuation?base=USD&start_date=$start_date&end_date=$end_date&symbols=CAD,MXN,EUR",
            CURLOPT_HTTPHEADER => array(
              "Content-Type: text/plain",
              "apikey: V0UApTVlnDOMo62k80m0YvA0ddjpdS8j"
@@ -67,8 +69,8 @@ class Divisas extends Command
             Divisa::where('country',$key)
                 ->update(['end_date'=>$changes["end_date"],
                     'start_date'=>$changes["start_date"],              
-                    'start_rate'=>$value["start_rate"],
-                    'end_rate'=>$value["end_rate"],
+                    'start_rate'=>round($value["start_rate"],2),
+                    'end_rate'=>round($value["end_rate"],2),
                     'change'=>$value["change"]
                 ]);
         }
