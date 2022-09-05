@@ -145,7 +145,7 @@ $mostrar = true;
             <!--ads /21855382314/tt-home-lb-1 -->
             @if ($mostrar)
                 <div class="row mt-4">
-                    <div class="col-12  d-flex justify-content-center" style="margin-top: 10px">
+                    <div class="col-12 d-flex justify-content-center"  style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620235812535-0'>
                             <script defer>
                                 googletag.cmd.push(function() {
