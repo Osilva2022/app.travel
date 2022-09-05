@@ -50,6 +50,7 @@ class PostsController extends Controller
             ['path' => Paginator::resolveCurrentPath()]
         );
     }
+    
 
     function returndata($typedata)
     {
@@ -658,7 +659,7 @@ class PostsController extends Controller
             "9n" => "bi bi-cloudy-fill",
             "nd" => "bi bi-umbrella-fill"
         ];
-        return $icons[$id];
+        return $icons[$id]; 
     }
 
     /* Funcion para obtener y guardar el clima */
