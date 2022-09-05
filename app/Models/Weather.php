@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PostAll extends Model
+class Weather extends Model
 {
     use HasFactory;
-    protected $table = 'travel_posts_all';
-    public $timestamps = false;
+    protected $table = 'travel_weather';
+
+    public $timestamps = true;
+    protected $primaryKey = 'idtravel_weather';
 }
