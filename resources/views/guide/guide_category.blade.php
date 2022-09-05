@@ -2,6 +2,38 @@
 @section('page-title')
     Things to Do |
 @endsection
+@php
+$mostrar = true;
+@endphp
+@if ($mostrar)
+    @push('ads')
+        <!-- Tribune Top Leaderboard Guide Categories -->
+        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script defer>
+            window.googletag = window.googletag || {
+                cmd: []
+            };
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/21855382314/tt-guide-categories-lb-1', [
+                    [320, 50],
+                    [728, 90],
+                    [970, 90],
+                    [300, 100]
+                ], 'div-gpt-ad-1661986700096-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-guide-categories-lb-2', [
+                    [728, 90],
+                    [320, 50]
+                ], 'div-gpt-ad-1661986843638-0').addService(googletag.pubads());
+                googletag.defineSlot('/21855382314/tt-guide-categories-lb-3', [
+                    [728, 90],
+                    [320, 50]
+                ], 'div-gpt-ad-1661987195459-0').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        </script>
+    @endpush
+@endif
 @section('content')
     <header>
         @include('menus.menu_secundario')
@@ -19,6 +51,20 @@
         </div>
         <div class="container g-4" style="max-width: 1024px;">
             @include('menus.submenu_things')
+            @if ($mostrar)
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <!-- /21855382314/tt-guide-categories-lb-1 -->
+                        <div id='div-gpt-ad-1661986700096-0' style='min-width: 300px; min-height: 50px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1661986700096-0');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="row mb-4">
                 <div class="col">
                     <div class="card-directory p-4">
@@ -47,6 +93,20 @@
                     </div>
                 </div>
             </div>
+            @if ($mostrar)
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <!-- /21855382314/tt-guide-categories-lb-2 -->
+                        <div id='div-gpt-ad-1661986843638-0' style='min-width: 320px; min-height: 50px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1661986843638-0');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @include('menus.menu_directory')
             <div class="row g-4 mb-4">
                 <?php $letra = ''; ?>
@@ -57,6 +117,20 @@
                 @endforeach
             </div>
             @include('menus.menu_directory')
+            @if ($mostrar)
+                <div class="row">
+                    <div class="col-12">
+                        <!-- /21855382314/tt-guide-categories-lb-3 -->
+                        <div id='div-gpt-ad-1661987195459-0' style='min-width: 320px; min-height: 50px;'>
+                            <script>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1661987195459-0');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <!-- BOTONES CATEGORIAS -->
             @include('menus.menu_footer_categories')
             <!-- BOTONES CATEGORIAS -->

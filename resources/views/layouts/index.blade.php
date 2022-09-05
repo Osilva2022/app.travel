@@ -29,13 +29,13 @@
 
 <!-- ads -->
 @php
-$mostrar = false;
+$mostrar = true;
 @endphp
 
 @if ($mostrar)
     @push('ads')
         <!-- Tribune Top Leaderboard Home-->
-        <script class="slot" defer src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script class="slot" async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
         <script class="slot" defer>
             window.googletag = window.googletag || {
                 cmd: []
@@ -97,37 +97,43 @@ $mostrar = false;
                                 @endforeach
                             </div>
                             <div class="btn-group col text-white text-center d-lg-none d-block">
-                                <a class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
-                                    style="background-color: #243A85;">
+                                <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
+                                    href="#">
                                     {!! $mxn->country !!} : ${!! $mxn->end_rate !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
                                     @foreach ($divisas_data as $divisa)
                                         <li>
-                                            <a class="dropdown-item text-white" href="#">
+                                            <a class="dropdown-item disabled text-white" href="#">
                                                 {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
                                             </a>
                                         </li>
                                     @endforeach
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item disabled text-white" href="#" style="font-size: 8px;">By
+                                        exchangeratesapi.io</a>
                                 </ul>
                             </div>
                             <div class="btn-group col text-white d-flex justify-content-center">
-                                <a title="{!! $weather['Vallarta']['text'] !!}" class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
-                                    style="background-color: #243A85;">
+                                <a title="{!! $weather['Vallarta']['text'] !!}" class="text-white" data-bs-toggle="dropdown"
+                                    style="background-color: #243A85;" href="#">
                                     Vallarta <i class=" {!! $weather['Vallarta']['icon'] !!}"></i>
                                     {!! $weather['Vallarta']['temperature'] !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
                                     @foreach ($weather as $key => $w)
-                                    @if ($key != "Vallarta")
-                                    <li>
-                                        <a title="{!! $w['text'] !!}" class="dropdown-item text-white" href="#">
-                                            {!! $key !!} <i class="{!! $w['icon'] !!}"></i>
-                                            {!! $w['temperature'] !!}
-                                        </a>
-                                    </li>
-                                    @endif
+                                        @if ($key != 'Vallarta')
+                                            <li title="{!! $w['text'] !!}">
+                                                <a class="dropdown-item disabled text-white" href="#">
+                                                    {!! $key !!} <i class="{!! $w['icon'] !!}"></i>
+                                                    {!! $w['temperature'] !!}
+                                                </a>
+                                            </li>
+                                        @endif
                                     @endforeach
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item disabled text-white" href="#" style="font-size: 8px;">By
+                                        tutiempo.net</a>
                                 </ul>
                             </div>
                         </div>

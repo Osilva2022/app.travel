@@ -604,17 +604,20 @@ class PostsController extends Controller
         $locations_weather = DB::select("SELECT * FROM travel_weather;");
         foreach ($locations_weather as $weather) {
             $info = json_decode($weather->info);
+            // date_default_timezone_set('Europe/Madrid');//Se pone esta zona horario, porque en esta nos la arroja la API
             foreach ($info->hour_hour as $w) {
                 date_default_timezone_set($weather->timezone);
-                $location_hour = date("G:00");
-                // dd($location_hour);
-                if ($w->hour_data == $location_hour) { //Obtener el clima de la hora actual
+                $location_hour = date("Y-n-j G:00");
+                $api_hour = $w->date . ' ' . $w->hour_data;
+                //  dd($weather->timezone);
+                if ($api_hour == $location_hour) { //Obtener el clima de la hora actual
                     $n = $weather->slug;
                     $icon = $this->GetIconWeather($w->icon);
                     $i = [
-                        "text" => $w->date.' '.$w->hour_data.' '.$w->text,
-                        "temperature" => $w->temperature . '°',
+                        "text" => $w->text . ' (' . $w->date . ' ' . $w->hour_data . ')',
+                        "temperature" => $w->temperature . ' ' . $info->information->temperature,
                         "icon" => $icon,
+                        "tz" => $weather->timezone
                     ];
                     $data[$n] = $i;
                 }
@@ -630,7 +633,7 @@ class PostsController extends Controller
             "1" => "bi bi-sun-fill",
             "11" => "bi bi-wind",
             "18" => "bi bi-cloud-drizzle-fill",
-            "19" => "bi bi-cloud-drizzle-filll",
+            "19" => "bi bi-cloud-drizzle-fill",
             "1n" => "bi bi-moon-fill",
             "2" => "bi bi-sun-fill",
             "21" => "bi bi-cloud-lightning-rain-fill",
