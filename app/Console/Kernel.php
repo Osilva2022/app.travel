@@ -9,8 +9,8 @@ class Kernel extends ConsoleKernel
 {
 
     protected $commands = [
-        Commands\Instagram::class,
-        Commands\Divisas::class,
+        // Commands\Instagram::class,
+        // Commands\Divisas::class,
         Commands\Weathers::class
     ];
 

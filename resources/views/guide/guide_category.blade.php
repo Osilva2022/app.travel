@@ -53,7 +53,7 @@ $mostrar = true;
             @include('menus.submenu_things')
             @if ($mostrar)
                 <div class="row mb-4">
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-categories-lb-1 -->
                         <div id='div-gpt-ad-1661986700096-0' style='min-width: 300px; min-height: 50px;'>
                             <script>
@@ -95,7 +95,7 @@ $mostrar = true;
             </div>
             @if ($mostrar)
                 <div class="row mb-4">
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-categories-lb-2 -->
                         <div id='div-gpt-ad-1661986843638-0' style='min-width: 320px; min-height: 50px;'>
                             <script>
@@ -119,7 +119,7 @@ $mostrar = true;
             @include('menus.menu_directory')
             @if ($mostrar)
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-categories-lb-3 -->
                         <div id='div-gpt-ad-1661987195459-0' style='min-width: 320px; min-height: 50px;'>
                             <script>

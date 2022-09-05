@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Weather;
 use Illuminate\Console\Command;
+use DB;
 
 class Weathers extends Command
 {
