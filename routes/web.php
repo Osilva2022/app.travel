@@ -39,4 +39,8 @@ Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
+Route::get('/rss', function () {
+    return redirect('/feed');
+});
+
 

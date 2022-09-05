@@ -15,7 +15,7 @@ class SitemapXmlController extends Controller
       
         $posts = PostAll::all();
         dd($posts);
-        return response()->view('sitemap.index', [
+        return response()->view('sitemap.map', [
             'posts' => $posts
         ])->header('Content-Type', 'text/xml');
         
