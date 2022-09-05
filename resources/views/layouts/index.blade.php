@@ -104,17 +104,31 @@ $mostrar = false;
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
                                     @foreach ($divisas_data as $divisa)
                                         <li>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item text-white" href="#">
                                                 {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
-                            <div class="col text-white d-flex justify-content-center">
-                                {{-- <i class="bi bi-sun-fill"></i>
-                                <i class="bi bi-thermometer-half"></i>
-                                32° --}}
+                            <div class="btn-group col text-white d-flex justify-content-center">
+                                <a title="{!! $weather['Vallarta']['text'] !!}" class="text-white" data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="background-color: #243A85;">
+                                    Vallarta <i class=" {!! $weather['Vallarta']['icon'] !!}"></i>
+                                    {!! $weather['Vallarta']['temperature'] !!} <i class="bi bi-caret-down-fill"></i>
+                                </a>
+                                <ul class="dropdown-menu" style="background-color: #243A85;">
+                                    @foreach ($weather as $key => $w)
+                                    @if ($key != "Vallarta")
+                                    <li>
+                                        <a title="{!! $w['text'] !!}" class="dropdown-item text-white" href="#">
+                                            {!! $key !!} <i class="{!! $w['icon'] !!}"></i>
+                                            {!! $w['temperature'] !!}
+                                        </a>
+                                    </li>
+                                    @endif
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>

@@ -33,6 +33,7 @@ use Corcel\Model\Post as ModelPost;
 use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
 use App\Models\Divisa;
+use App\Models\Weather;
 
 class PostsController extends Controller
 {
@@ -49,6 +50,7 @@ class PostsController extends Controller
             ['path' => Paginator::resolveCurrentPath()]
         );
     }
+    
 
     function returndata($typedata)
     {
@@ -193,8 +195,7 @@ class PostsController extends Controller
         //dd($more_posts);
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
-    }    
-   
+    }
 
     public function index(Request $request)
     {
@@ -209,7 +210,7 @@ class PostsController extends Controller
                 return redirect()->route('home');
             }
             return $this->preview($id);
-        }      
+        }
 
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
@@ -249,14 +250,15 @@ class PostsController extends Controller
         } else {
             $gallery = false;
         }
-        
+
         $static_gallery = $this->returndata('gallery');
         $gallery = $static_gallery;
 
         $this->metadatos('home', 'home');
+        // $this->ApiWeather();
+        $weather = $this->GetWeather();
 
-
-        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'mxn'));
+        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'mxn', 'weather'));
     }
 
     /**
@@ -594,5 +596,83 @@ class PostsController extends Controller
         // dd("SELECT * FROM travel_tags WHERE slug = '$tag'");
 
         return view('tags.index', compact('destinationposts', 'tag_data', 'tags_data', 'destinations_data', 'categories_data'));
+    }
+
+    public function GetWeather()
+    {
+        $data = [];
+        $locations_weather = DB::select("SELECT * FROM travel_weather;");
+        foreach ($locations_weather as $weather) {
+            $info = json_decode($weather->info);
+            foreach ($info->hour_hour as $w) {
+                date_default_timezone_set($weather->timezone);
+                $location_hour = date("G:00");
+                // dd($location_hour);
+                if ($w->hour_data == $location_hour) { //Obtener el clima de la hora actual
+                    $n = $weather->slug;
+                    $icon = $this->GetIconWeather($w->icon);
+                    $i = [
+                        "text" => $w->date.' '.$w->hour_data.' '.$w->text,
+                        "temperature" => $w->temperature . '°',
+                        "icon" => $icon,
+                    ];
+                    $data[$n] = $i;
+                }
+            }
+        }
+        // dd($data);
+        return $data;
+    }
+
+    public function GetIconWeather($id)
+    {
+        $icons = [
+            "1" => "bi bi-sun-fill",
+            "11" => "bi bi-wind",
+            "18" => "bi bi-cloud-drizzle-fill",
+            "19" => "bi bi-cloud-drizzle-filll",
+            "1n" => "bi bi-moon-fill",
+            "2" => "bi bi-sun-fill",
+            "21" => "bi bi-cloud-lightning-rain-fill",
+            "21n" => "bi bi-cloud-lightning-rain-fill",
+            "22" => "bi bi-cloud-lightning-rain-fill",
+            "24" => "bi bi-cloud-hail-fill",
+            "25" => "bi bi-hurricane",
+            "28" => "bi bi-cloud-snow-fill",
+            "29" => "bi bi-cloud-sleet-fill",
+            "2n" => "bi bi-moon-fill",
+            "30" => "bi bi-cloud-snow-fill",
+            "33" => "bi bi-cloud-rain-heavy-fill",
+            "33n" => "bi bi-cloud-rain-heavy-fill",
+            "4" => "bi bi-cloud-sun-fill",
+            "4n" => "bi bi-cloud-moon-fill",
+            "51" => "bi bi-cloud-snow-fill",
+            "51n" => "bi bi-cloud-snow-fill",
+            "54" => "bi bi-cloudy-fill",
+            "6" => "bi bi-clouds-fill",
+            "6n" => "bi bi-clouds-fill",
+            "7" => "bi bi-clouds-fill",
+            "9" => "bi bi-cloudy-fill",
+            "9n" => "bi bi-cloudy-fill",
+            "nd" => "bi bi-umbrella-fill"
+        ];
+        return $icons[$id]; 
+    }
+
+    /* Funcion para obtener y guardar el clima */
+    public function ApiWeather()
+    {
+        $clave = "axDaaqqzqaq72lm";
+        $location_id = "54801"; //Vallarta
+        $locations_weather = DB::select("SELECT * FROM travel_weather;");
+        foreach ($locations_weather as $weather) {
+            $location_id = $weather->idtravel_weather; //Vallarta
+            $ContextOptionsWeather = array("ssl" => array("verify_peer" => false, "verify_peer_name" => false));
+            $WeatherJson = file_get_contents('https://api.tutiempo.net/json/?lan=en&apid=' . $clave . '&lid=' . $location_id . '', false, stream_context_create($ContextOptionsWeather));
+            $WeatherArray = json_decode($WeatherJson, true);
+            Weather::where('idtravel_weather', $location_id)
+                ->update(['info' => $WeatherJson]);
+        }
+        // dd($WeatherJson);
     }
 }
