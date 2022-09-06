@@ -109,7 +109,7 @@ $mostrar = true;
                     </div>
                 @endisset
                 @if ($mostrar)
-                    <div class="col-12" style="max-width: 100%; overflow: auto;">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-categories-lb-2 -->
                         <div id='div-gpt-ad-1661982257390-0' style='min-width: 320px; min-height: 50px;'>
                             <script defer>
