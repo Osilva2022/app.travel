@@ -57,7 +57,7 @@ class PostsController extends Controller
             ['path' => Paginator::resolveCurrentPath()]
         );
     }
-    
+
 
     function returndata($typedata)
     {
@@ -331,9 +331,9 @@ class PostsController extends Controller
         $blog = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 1");
         $blogs = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
-        $divisas_data = DB::select("SELECT * FROM travel_divisa WHERE country != 'MXN'");
-        $mxn_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'MXN'");
-        $mxn = $mxn_data[0];
+        $divisas_data = DB::select("SELECT * FROM travel_divisa WHERE country != 'USD'");
+        $usd_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'USD'");
+        $usd = $usd_data[0];
         // dd($divisas_data);
         $gallery = $this->instagram();
         if (isset($gallery)) {
@@ -349,7 +349,7 @@ class PostsController extends Controller
         // $this->ApiWeather();
         $weather = $this->GetWeather();
 
-        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'mxn', 'weather'));
+        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'usd', 'weather'));
     }
 
     /**
@@ -750,7 +750,7 @@ class PostsController extends Controller
             "9n" => "bi bi-cloudy-fill",
             "nd" => "bi bi-umbrella-fill"
         ];
-        return $icons[$id]; 
+        return $icons[$id];
     }
 
     /* Funcion para obtener y guardar el clima */

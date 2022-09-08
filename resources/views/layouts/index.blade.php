@@ -88,7 +88,7 @@ $mostrar = true;
                             </div>
                             <div class="col-auto text-white text-center d-none d-lg-block">
                                 <span class="mx-2">
-                                    {!! $mxn->country !!} : ${!! $mxn->end_rate !!}
+                                    {!! $usd->country !!} : ${!! $usd->end_rate !!}
                                 </span>
                                 @foreach ($divisas_data as $divisa)
                                     <span class="mx-2">
@@ -99,7 +99,7 @@ $mostrar = true;
                             <div class="btn-group col text-white text-center d-lg-none d-block">
                                 <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
                                     href="#">
-                                    {!! $mxn->country !!} : ${!! $mxn->end_rate !!} <i class="bi bi-caret-down-fill"></i>
+                                    {!! $usd->country !!} : ${!! $usd->end_rate !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
                                     @foreach ($divisas_data as $divisa)
