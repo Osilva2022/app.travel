@@ -87,23 +87,23 @@ $mostrar = true;
                                 {{ date('F j, Y') }}
                             </div>
                             <div class="col-auto text-white text-center d-none d-lg-block">
-                                <span class="mx-2">
+                                <span class="mx-2" title="Base: MXN">
                                     {!! $usd->country !!} : ${!! $usd->end_rate !!}
                                 </span>
                                 @foreach ($divisas_data as $divisa)
-                                    <span class="mx-2">
+                                    <span class="mx-2" title="Base: MXN">
                                         {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
                                     </span>
                                 @endforeach
                             </div>
                             <div class="btn-group col text-white text-center d-lg-none d-block">
                                 <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
-                                    href="#">
+                                    href="#" title="Base: MXN">
                                     {!! $usd->country !!} : ${!! $usd->end_rate !!} <i class="bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
                                     @foreach ($divisas_data as $divisa)
-                                        <li>
+                                        <li title="Base: MXN">
                                             <a class="dropdown-item disabled text-white" href="#">
                                                 {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
                                             </a>
