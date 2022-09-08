@@ -44,7 +44,7 @@ class Divisas extends Command
         $start_date=date('Y-m-d',strtotime("-1 days"));        
 
         curl_setopt_array($curl, array(
-           CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/fluctuation?base=USD&start_date=$start_date&end_date=$end_date&symbols=CAD,MXN,EUR",
+           CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/fluctuation?base=MXN&start_date=$start_date&end_date=$end_date&symbols=USD,CAD,EUR",
            CURLOPT_HTTPHEADER => array(
              "Content-Type: text/plain",
              "apikey: V0UApTVlnDOMo62k80m0YvA0ddjpdS8j"
@@ -73,7 +73,6 @@ class Divisas extends Command
                     'end_rate'=>round($value["end_rate"],2),
                     'change'=>$value["change"]
                 ]);
-        }
-        
+            }        
     }
 }

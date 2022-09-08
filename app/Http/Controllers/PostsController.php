@@ -57,7 +57,7 @@ class PostsController extends Controller
             ['path' => Paginator::resolveCurrentPath()]
         );
     }
-    
+
 
     function returndata($typedata)
     {
@@ -149,20 +149,21 @@ class PostsController extends Controller
             SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
             SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
             SEOTools::setCanonical('https://app.tribune.travel/');
-            SEOTools::jsonLd()->addImage(URLS::to('storage/app/public/tribune-travel.png'));
-            OpenGraph::addImage(URLS::to('storage/app/public/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage(URLS::to('storage/app/public/tribune-travel.png'));
+            SEOTools::jsonLd()->addImage(URLS::to('/public/img/tribune-travel.png'));
+            OpenGraph::addImage(URLS::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage(URLS::to('/public/img/tribune-travel.png'));
         } elseif ($type == 'post') {
 
             SEOTools::setTitle($data->title);
             SEOTools::setDescription($data->post_excerpt);
             SEOTools::opengraph()->setUrl(URLS::to($data->url));
             SEOTools::setCanonical(URLS::to($data->url));
-            SEOTools::jsonLd()->addImage(imgURL($data->imatrge_data));
+            SEOTools::jsonLd()->addImage(imgURL($data->image_data));
             OpenGraph::addImage(imgURL($data->image_data), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(imgURL($data->image_data));
         }
-    }    
+    }
+    
 
     /**
      * Funcion para mostrar un previews de un post desde Woordpress
@@ -330,9 +331,9 @@ class PostsController extends Controller
         $blog = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 1");
         $blogs = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'blogs' ORDER BY post_date DESC LIMIT 5");
         $event = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() ORDER BY start_date ASC LIMIT 4");
-        $divisas_data = DB::select("SELECT * FROM travel_divisa WHERE country != 'MXN'");
-        $mxn_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'MXN'");
-        $mxn = $mxn_data[0];
+        $divisas_data = DB::select("SELECT * FROM travel_divisa WHERE country != 'USD'");
+        $usd_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'USD'");
+        $usd = $usd_data[0];
         // dd($divisas_data);
         $gallery = $this->instagram();
         if (isset($gallery)) {
@@ -348,7 +349,7 @@ class PostsController extends Controller
         // $this->ApiWeather();
         $weather = $this->GetWeather();
 
-        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'mxn', 'weather'));
+        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'usd', 'weather'));
     }
 
     /**
@@ -749,7 +750,7 @@ class PostsController extends Controller
             "9n" => "bi bi-cloudy-fill",
             "nd" => "bi bi-umbrella-fill"
         ];
-        return $icons[$id]; 
+        return $icons[$id];
     }
 
     /* Funcion para obtener y guardar el clima */
