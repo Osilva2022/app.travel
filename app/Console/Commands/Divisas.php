@@ -74,6 +74,6 @@ class Divisas extends Command
                     'change'=>$value["change"]
                 ]);
         }
-        return 0;
+        
     }
 }

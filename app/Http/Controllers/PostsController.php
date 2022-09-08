@@ -19,7 +19,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use EspressoDev\InstagramBasicDisplay\InstagramBasicDisplay;
-use URL;
+use URL as URLS;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
@@ -34,6 +34,13 @@ use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
 use App\Models\Divisa;
 use App\Models\Weather;
+use Carbon\Carbon;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\SitemapIndex;
+use Spatie\Sitemap\Tags\Url;
+use DateTime;
+
 
 class PostsController extends Controller
 {
@@ -142,20 +149,20 @@ class PostsController extends Controller
             SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
             SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
             SEOTools::setCanonical('https://app.tribune.travel/');
-            SEOTools::jsonLd()->addImage(URL::to('/public/img/tribune-travel.png'));
-            OpenGraph::addImage(URL::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage(URL::to('/public/img/tribune-travel.png'));
+            SEOTools::jsonLd()->addImage(URLS::to('storage/app/public/tribune-travel.png'));
+            OpenGraph::addImage(URLS::to('storage/app/public/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage(URLS::to('storage/app/public/tribune-travel.png'));
         } elseif ($type == 'post') {
 
             SEOTools::setTitle($data->title);
             SEOTools::setDescription($data->post_excerpt);
-            SEOTools::opengraph()->setUrl(URL::to($data->url));
-            SEOTools::setCanonical(URL::to($data->url));
-            SEOTools::jsonLd()->addImage(imgURL($data->image_data));
+            SEOTools::opengraph()->setUrl(URLS::to($data->url));
+            SEOTools::setCanonical(URLS::to($data->url));
+            SEOTools::jsonLd()->addImage(imgURL($data->imatrge_data));
             OpenGraph::addImage(imgURL($data->image_data), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(imgURL($data->image_data));
         }
-    }
+    }    
 
     /**
      * Funcion para mostrar un previews de un post desde Woordpress
@@ -197,6 +204,86 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
+    function mapxml(){
+
+        $sitemapIndexes = [];
+
+        $now = Carbon::now()->setTimezone(config('region.timezone'));
+        // Create the general pages sitemap.
+        $generalPagesSitemap = Sitemap::create();        
+        // Add homepage.
+        $generalPagesSitemap->add(
+            Url::create(config('app.url'))
+                ->setLastModificationDate($now)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(1.0)
+        );      
+
+        $generalPagesSitemap->add(
+            Url::create(config('app.url').'/')
+                ->setLastModificationDate($now)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(1.0)
+        );        
+
+         // Add all categories pages.
+        $categories = DB::select("SELECT CONCAT(d.slug,'/guide/',C.slug) as slug FROM travel_destinations d JOIN travel_directory_category C;");        
+ 
+        foreach ($categories as $category) {
+             $url = config('app.url').$category->slug;
+ 
+             $generalPagesSitemap->add(
+                 Url::create($url)
+                     ->setLastModificationDate($now)
+                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                     ->setPriority(0.8)
+             );           
+        }
+        
+        // Add the sitemap to the indexes variable.
+        $sitemapsIndex[] = '/sitemaps/pages_sitemap.xml';
+        
+        $postsSitemapCount = 1;        
+        // Create the posts sitemaps.
+        $postsSite = PostALL::all()->chunk(100);        
+
+        foreach ($postsSite as $posts) {
+            
+            $postsSitemap = Sitemap::create();
+
+            foreach ($posts as $post) {
+          
+                $lastMod = new DateTime($post->post_date); 
+             
+                $postsSitemap->add(
+                    Url::create($post->url)
+                        ->setLastModificationDate($lastMod)
+                        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                        ->setPriority(0.4)
+                );              
+              
+            }
+            // Add the sitemap to the indexes variable.
+            // $postsSitemap->writeToFile(public_path('sitemap/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            // $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));          
+            $sitemapsIndex[] = '/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml';   
+            $postsSitemapCount++;
+            
+        }           
+       
+         // Create the indexes sitemap.
+         $indexesSitemap = SitemapIndex::create();      
+         // Add the indexes to the sitemap.
+         foreach ($sitemapsIndex as $index) {
+                $indexesSitemap->add($index);
+         } 
+         // Create the sitemap to a file.
+        $generalPagesSitemap->writeToFile(storage_path('app/sitemaps/pages_sitemap.xml'));
+        $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
+        // dd($postsSitemap); 
+    }
+
     public function index(Request $request)
     {
         //Previews post
@@ -212,6 +299,9 @@ class PostsController extends Controller
             return $this->preview($id);
         }
 
+        // $this->mapxml();
+
+        
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");

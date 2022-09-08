@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mexico_City',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
          /* RSS feeds */
         Spatie\Feed\FeedServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
         
 
     ],

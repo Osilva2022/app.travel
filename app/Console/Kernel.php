@@ -9,9 +9,10 @@ class Kernel extends ConsoleKernel
 {
 
     protected $commands = [
-        // Commands\Instagram::class,
-        // Commands\Divisas::class,
-        Commands\Weathers::class
+        Commands\Instagram::class,
+        Commands\Divisas::class,
+        Commands\Weathers::class,
+        Commands\GenerateSitemap::class,
     ];
 
     protected function scheduleTimezone()
@@ -21,9 +22,11 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('instagram:task')->everyMinute();   
-        // $schedule->command('divisa:task')->everyMinute(); 
-        $schedule->command('weathers:task')->everyMinute(); 
+        $schedule->command('instagram:task')->monthly();        
+        $schedule->command('weathers:task')->daily(); 
+        $schedule->command('divisa:task')->daily(); 
+        $schedule->command('sitemap:generate')->everyFiveMinutes();
+        
           
     }
       
