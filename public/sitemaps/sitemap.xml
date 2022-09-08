@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>http://localhost/app.travel/sitemaps/pages_sitemap.xml</loc>
+    
+        <lastmod>2022-09-08T14:06:04-05:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://localhost/app.travel/sitemaps/posts_sitemap_1.xml</loc>
+    
+        <lastmod>2022-09-08T14:06:04-05:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://localhost/app.travel/sitemaps/posts_sitemap_2.xml</loc>
+    
+        <lastmod>2022-09-08T14:06:04-05:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://localhost/app.travel/sitemaps/posts_sitemap_3.xml</loc>
+    
+        <lastmod>2022-09-08T14:06:04-05:00</lastmod>
+    </sitemap>
+</sitemapindex>
