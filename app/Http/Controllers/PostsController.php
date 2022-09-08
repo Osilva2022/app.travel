@@ -149,20 +149,20 @@ class PostsController extends Controller
             SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
             SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
             SEOTools::setCanonical('https://app.tribune.travel/');
-            SEOTools::jsonLd()->addImage(storage_path('app/public/logos/tribune-travel.png'));
-            OpenGraph::addImage(storage_path('app/public/logos/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage(storage_path('app/public/logos/tribune-travel.png'));
+            SEOTools::jsonLd()->addImage(URLS::to('storage/app/public/logos/tribune-travel.png'));
+            OpenGraph::addImage(URLS::to('storage/app/public/logos/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage(URLS::to('storage/app/public/logos/tribune-travel.png'));
         } elseif ($type == 'post') {
 
             SEOTools::setTitle($data->title);
             SEOTools::setDescription($data->post_excerpt);
             SEOTools::opengraph()->setUrl(URLS::to($data->url));
             SEOTools::setCanonical(URLS::to($data->url));
-            SEOTools::jsonLd()->addImage(imgURL($data->image_data));
+            SEOTools::jsonLd()->addImage(imgURL($data->imatrge_data));
             OpenGraph::addImage(imgURL($data->image_data), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(imgURL($data->image_data));
         }
-    }
+    }    
 
     /**
      * Funcion para mostrar un previews de un post desde Woordpress
