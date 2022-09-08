@@ -21,8 +21,6 @@ Route::get('destination/{destination}', [PostsController::class, 'destinations']
 Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
 
 Route::get('category/{category}', [PostsController::class, 'categories'])->name('category');
-// Route::get('reviews', [PostsController::class, 'reviews'])->name('reviews');
-// Route::get('news', [PostsController::class, 'reviews'])->name('news');
 
 Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
@@ -37,10 +35,12 @@ Route::get('police-cookies', [PostsController::class, 'cookies'])->name('cookies
 Route::get('police-privacy', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
+Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return redirect('/feed');
 });
+
 
 

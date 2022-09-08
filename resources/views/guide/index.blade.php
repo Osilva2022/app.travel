@@ -91,7 +91,7 @@ $mostrar = true;
                     </p>
                 </div>
             </div>
-            @if ($mostrar)
+            {{-- @if ($mostrar)
                 <div class="row mb-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <!-- /21855382314/tt-guide-lb-2 -->
@@ -104,7 +104,7 @@ $mostrar = true;
                         </div>
                     </div>
                 </div>
-            @endif
+            @endif --}}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
                 @foreach ($things_categories as $tc)
                     <div class="col">
