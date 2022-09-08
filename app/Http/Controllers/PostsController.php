@@ -149,9 +149,9 @@ class PostsController extends Controller
             SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
             SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
             SEOTools::setCanonical('https://app.tribune.travel/');
-            SEOTools::jsonLd()->addImage(URLS::to('storage/app/public/logos/tribune-travel.png'));
-            OpenGraph::addImage(URLS::to('storage/app/public/logos/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage(URLS::to('storage/app/public/logos/tribune-travel.png'));
+            SEOTools::jsonLd()->addImage(URLS::to('storage/app/public/tribune-travel.png'));
+            OpenGraph::addImage(URLS::to('storage/app/public/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+            TwitterCard::setImage(URLS::to('storage/app/public/tribune-travel.png'));
         } elseif ($type == 'post') {
 
             SEOTools::setTitle($data->title);
