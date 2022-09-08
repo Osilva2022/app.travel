@@ -144,13 +144,15 @@ $mostrar = true;
         <div class="container" style="max-width: 1024px;">
             <!--ads /21855382314/tt-home-lb-1 -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620235812535-0' class="col text-center" style="margin-top: 10px">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620235812535-0');
-                            });
-                        </script>
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-center"  style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620235812535-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620235812535-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -198,14 +200,15 @@ $mostrar = true;
             <!-- TTD -->
             <!-- ads /21855382314/tt-home-lb-2 -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620235535381-0' class="col text-center " style="margin-top: 10px"
-                        style='width: 300px; height: 250px;'>
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620235535381-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620235535381-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620235535381-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -292,13 +295,15 @@ $mostrar = true;
             <!-- REVIEWS -->
             <!-- ads /21855382314/tt-home-lb-3 -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620236451767-0' class="col text-center">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620236451767-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620236451767-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620236451767-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -378,13 +383,15 @@ $mostrar = true;
             <?php endif; ?>
             <!-- ads /21855382314/tt-home-lb-5 -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620239881317-0' class="col my-4 d-flex justify-content-center">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620239881317-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620239881317-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620239881317-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -470,13 +477,15 @@ $mostrar = true;
 
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620253311869-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620253311869-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620253311869-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -517,13 +526,15 @@ $mostrar = true;
             </div>
             <!-- ads /21855382314/tt-home-lb-4 -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620236955324-0' class="col text-center">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620236955324-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620236955324-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620236955324-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -608,13 +619,15 @@ $mostrar = true;
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620253311869-0' class="col text-center">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620253311869-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620253311869-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620253311869-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -699,13 +712,15 @@ $mostrar = true;
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-                <div class="row slot">
-                    <div id='div-gpt-ad-1620253311869-0' class="col text-center ">
-                        <script defer>
-                            googletag.cmd.push(function() {
-                                googletag.display('div-gpt-ad-1620253311869-0');
-                            });
-                        </script>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620253311869-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620253311869-0');
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             @endif
