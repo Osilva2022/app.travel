@@ -26,7 +26,7 @@ Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
 Route::get('guide', [PostsController::class, 'guide'])->name('guide');
 Route::get('directory-item', [PostsController::class, 'ShowGuideItem'])->name('directory-item');
-Route::get('/{destination}/{category}/post/{slug}', [PostsController::class, 'post'])->name('post');
+Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');
 Route::get('{destination}/guide/{tag}', [PostsController::class, 'guide_category'])->name('guide_category');
 Route::get('gallery', function () {
     return view('things_to_do.gallery', ['gallery' => '{gallery}']);
