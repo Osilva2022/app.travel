@@ -1,7 +1,6 @@
 <?php
 
-namespace Corcel\Model\Meta;
-
+namespace App\Models;
 use Corcel\Model\Term;
 use Corcel\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -204,7 +204,86 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
-    
+    function mapxml(){
+
+        $sitemapIndexes = [];
+
+        $now = Carbon::now()->setTimezone(config('region.timezone'));
+        // Create the general pages sitemap.
+        $generalPagesSitemap = Sitemap::create();        
+        // Add homepage.
+        $generalPagesSitemap->add(
+            Url::create(config('app.url'))
+                ->setLastModificationDate($now)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(1.0)
+        );      
+
+        $generalPagesSitemap->add(
+            Url::create(config('app.url').'/')
+                ->setLastModificationDate($now)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(1.0)
+        );        
+
+         // Add all categories pages.
+        $categories = DB::select("SELECT CONCAT(d.slug,'/guide/',C.slug) as slug FROM travel_destinations d JOIN travel_directory_category C;");        
+ 
+        foreach ($categories as $category) {
+             $url = config('app.url').$category->slug;
+ 
+             $generalPagesSitemap->add(
+                 Url::create($url)
+                     ->setLastModificationDate($now)
+                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                     ->setPriority(0.8)
+             );           
+        }
+        
+        // Add the sitemap to the indexes variable.
+        $sitemapsIndex[] = '/sitemaps/pages_sitemap.xml';
+        
+        $postsSitemapCount = 1;        
+        // Create the posts sitemaps.
+        $postsSite = PostALL::all()->chunk(100);        
+
+        foreach ($postsSite as $posts) {
+            
+            $postsSitemap = Sitemap::create();
+
+            foreach ($posts as $post) {
+          
+                $lastMod = new DateTime($post->post_date); 
+             
+                $postsSitemap->add(
+                    Url::create($post->url)
+                        ->setLastModificationDate($lastMod)
+                        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                        ->setPriority(0.4)
+                );              
+              
+            }
+            // Add the sitemap to the indexes variable.
+            // $postsSitemap->writeToFile(public_path('sitemap/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            // $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));          
+            $sitemapsIndex[] = '/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml';   
+            $postsSitemapCount++;
+            
+        }           
+       
+         // Create the indexes sitemap.
+         $indexesSitemap = SitemapIndex::create();      
+         // Add the indexes to the sitemap.
+         foreach ($sitemapsIndex as $index) {
+                $indexesSitemap->add($index);
+         } 
+         // Create the sitemap to a file.
+        $generalPagesSitemap->writeToFile(storage_path('app/sitemaps/pages_sitemap.xml'));
+        $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
+        // dd($postsSitemap); 
+    }
+
     public function index(Request $request)
     {
         //Previews post

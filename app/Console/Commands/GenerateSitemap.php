@@ -102,7 +102,7 @@ class GenerateSitemap extends Command
               
             }
             // Add the sitemap to the indexes variable.
-            $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            $postsSitemap->writeToFile(public_path('sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));  
             $sitemapsIndex[] = '/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml';   
             $postsSitemapCount++;
             
@@ -115,7 +115,7 @@ class GenerateSitemap extends Command
                 $indexesSitemap->add($index);
          } 
          // Create the sitemap to a file.
-        $generalPagesSitemap->writeToFile(storage_path('app/sitemaps/pages_sitemap.xml'));
-        $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
+        $generalPagesSitemap->writeToFile(public_path('sitemaps/pages_sitemap.xml'));
+        $indexesSitemap->writeToFile(public_path('sitemaps/sitemap.xml'));
     }
 }

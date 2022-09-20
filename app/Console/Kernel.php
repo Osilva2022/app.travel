@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('instagram:task')->monthly();        
         $schedule->command('weathers:task')->daily(); 
         $schedule->command('divisa:task')->daily(); 
-        $schedule->command('sitemap:generate')->everyFiveMinutes();
+        $schedule->command('sitemap:generate')->everyFourHours();
         
           
     }
