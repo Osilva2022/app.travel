@@ -65,7 +65,7 @@ class GenerateSitemap extends Command
         );        
 
          // Add all categories pages.
-        $categories = DB::select("SELECT CONCAT(d.slug,'/guide/',C.slug) as slug FROM travel_destinations d JOIN travel_directory_category C;");        
+        $categories = DB::select("SELECT CONCAT(d.slug,'/',C.slug) as slug FROM travel_destinations d JOIN travel_directory_category C;");        
  
         foreach ($categories as $category) {
              $url = config('app.url').$category->slug;
