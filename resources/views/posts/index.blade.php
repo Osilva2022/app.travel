@@ -52,8 +52,8 @@
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 7rem;">
-        <div class="container" style="max-width: 1024px;">
+    <main style="margin-top: 90px;">
+        <div class="container">
             <div class="row mb-3">
                 <div class="col">
                     <!--ads /21855382314/tt-interior-lb-1 -->

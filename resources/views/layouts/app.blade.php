@@ -28,10 +28,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="preload"
         as="style" onload="this.onload=null;this.rel='stylesheet'">
     {{-- <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'"> --}}
-    <link href="{{ asset('css/base.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'">
     {{-- <link href="{{ asset('css/carousel.css') }}" rel="preload" as="style"
         onload="this.onload=null;this.rel='stylesheet'"> --}}
-    <link href="{{ asset('css/carousel.min.css') }}" rel="preload" as="style"
+    <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="preload" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Scripts -->
@@ -229,7 +229,7 @@
     </div>
 
     @yield('jquery')
-    <script src="{{ asset('js/base.min.js') }}" version="1.1" defer></script>
+    <script src="{{ asset('js/base.min.js?v=' . mt_rand()) }}" version="1.1" defer></script>
 </body>
 
 </html>

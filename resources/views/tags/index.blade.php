@@ -6,9 +6,9 @@
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 5.8rem;">
-        <div class="album pb-5 bg-light">
-            <div class="container" style="max-width: 1024px;">
+    <main style="margin-top: 60px;">
+        <div class="album pb-5">
+            <div class="container">
                 <div class="row mb-4">
                     <div class="col">
                         <div class="" style="overflow-x: auto; height: 60px;">

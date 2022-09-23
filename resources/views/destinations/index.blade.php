@@ -6,7 +6,7 @@
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 5.2rem;">
+    <main style="margin-top: 60px;">
         <div class="bg-light hero-image" style="background-image: url({{ imgURL($destination_data[0]->image_data) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="album pb-5 bg-light">
-            <div class="container" style="max-width: 1024px;">
+            <div class="container">
                 <div class="row mb-4">
                     <div class="col">
                         <div class="" style="overflow-x: auto; height: 60px;">

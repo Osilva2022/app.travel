@@ -38,7 +38,7 @@ $mostrar = true;
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 5.2rem;">
+    <main style="margin-top: 60px;">
         <div class="bg-light hero-image" style="background-image: url({{ imgURL($things_category[0]->image_data) }})">
             <div class="opacity-effect"></div>
             <div class="info-over text-white">
