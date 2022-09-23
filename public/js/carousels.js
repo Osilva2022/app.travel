@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('.ttd-carousel').owlCarousel({
         loop: true,
         margin: 25,
-        center: true,
+        center: false,
         nav: false,
         dots: false,
         autoplay: true,
@@ -36,7 +36,7 @@ $(document).ready(function() {
     $('.things-vip-carousel').owlCarousel({
         loop: true,
         margin: 15,
-        center: true,
+        center: false,
         nav: false,
         dots: false,
         autoplay: true,
@@ -53,6 +53,9 @@ $(document).ready(function() {
             },
             700: {
                 items: 3
+            },
+            1100: {
+                items: 4
             }
         }
     });
