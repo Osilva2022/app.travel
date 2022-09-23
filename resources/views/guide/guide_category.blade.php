@@ -49,7 +49,7 @@ $mostrar = true;
                 </p>
             </div>
         </div>
-        <div class="container-xxl g-4" style="max-width: 1100px;">
+        <div class="container g-4">
             @include('menus.submenu_things')
             @if ($mostrar)
                 <div class="row mb-4">
@@ -112,7 +112,7 @@ $mostrar = true;
                 <div class="col col-md-3">
                     <div class="row" style="top: 7.5rem;">
                         <h3>Tags</h3>
-                        <div class="col">
+                        {{-- <div class="col">
                             @foreach ($guide_tags as $tag)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value=""
@@ -123,7 +123,7 @@ $mostrar = true;
                                 </div>
                                 <div class="row"></div>
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col col-md-9">
