@@ -244,7 +244,7 @@ $mostrar = true;
             @endif
         </div>
     </main>
-    <script src="{{ asset('js/submenu.js') }}" version="1"></script>
+    <script defer src="{{ asset('js/submenu.js') }}" version="1"></script>
     <script>       
         const destino ='{{$destination}}';
         if (destino != '') {
