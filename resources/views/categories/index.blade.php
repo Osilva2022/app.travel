@@ -46,7 +46,7 @@ $mostrar = true;
     <header>
         @include('menus.menu_secundario')
     </header>
-    <main style="margin-top: 5.8rem;">
+    <main style="margin-top: 60px;">
         <div class="container">
             @include('menus.sub_menu_destinations')
             @if ($mostrar)
@@ -244,7 +244,7 @@ $mostrar = true;
             @endif
         </div>
     </main>
-    <script src="{{ asset('js/submenu.js') }}" version="1"></script>
+    <script defer src="{{ asset('js/submenu.js') }}" version="1"></script>
     <script>       
         const destino ='{{$destination}}';
         if (destino != '') {
