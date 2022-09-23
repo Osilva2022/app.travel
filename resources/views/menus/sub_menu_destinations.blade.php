@@ -8,7 +8,7 @@
                 </li>
                 @foreach ($destinations_data as $data)
                     <li class="nav-item nav-test mx-1" role="presentation">
-                        <a class="nav-link" id="{{ $data->slug }}-tab"
+                        <a class="nav-link {{ $data->slug === $destination ? 'active' : '' }}" id="{{ $data->slug }}-tab"
                             href="{{ url("category/$category") }}?destination={!! $data->slug !!}" type="button">
                             <small>{!! $data->name !!}</small></a>
                     </li>
