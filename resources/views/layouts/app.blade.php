@@ -29,6 +29,8 @@
         as="style" onload="this.onload=null;this.rel='stylesheet'">
     {{-- <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'"> --}}
     <link href="{{ asset('css/base.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
+    {{-- <link href="{{ asset('css/carousel.css') }}" rel="preload" as="style"
+        onload="this.onload=null;this.rel='stylesheet'"> --}}
     <link href="{{ asset('css/carousel.min.css') }}" rel="preload" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
 
@@ -220,8 +222,8 @@
                     to accept the <a href="{{ route('cookies') }}">Cookies policy</a> & <a
                         href="{{ route('privacy') }}">Privacy policy</a>.
                 </p>
-                <button id="btn-cookies" class="btn-view-more" style="font-size: 1rem; width: 100px;">
-                    Aceptar</button>
+                <a id="btn-cookies" href="javaScript:void(0)" class="btn-view-more" style="font-size: 1rem; width: 100px;">
+                    Aceptar</a>
             </div>
         </div>
     </div>

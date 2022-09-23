@@ -81,7 +81,7 @@ $mostrar = true;
         <div class="container-fluid">
             <div class="row">
                 <div class="col submenu-home py-2">
-                    <div class="container" style="max-width: 1024px;">
+                    <div class="container">
                         <div class="row g-2">
                             <div class="col-12 col-sm-4 text-white text-center">
                                 {{ date('F j, Y') }}
@@ -141,11 +141,11 @@ $mostrar = true;
                 </div>
             </div>
         </div>
-        <div class="container" style="max-width: 1024px;">
+        <div class="container">
             <!--ads /21855382314/tt-home-lb-1 -->
             @if ($mostrar)
-                <div class="row mt-4">
-                    <div class="col-12 d-flex justify-content-center"  style="max-width: 100%; overflow: auto;">
+                <div class="row py-4 mt-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620235812535-0'>
                             <script defer>
                                 googletag.cmd.push(function() {
@@ -190,7 +190,7 @@ $mostrar = true;
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 my-4 d-flex justify-content-center">
+                        <div class="col-12 mt-4 d-flex justify-content-center">
                             <a href="{{ url('guide') }}?destination=puerto-vallarta" class="btn-view-more"
                                 type="button">Show More</a>
                         </div>
@@ -198,9 +198,9 @@ $mostrar = true;
                 </div>
             </div>
             <!-- TTD -->
-            <!-- ads /21855382314/tt-home-lb-2 -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <!-- ads /21855382314/tt-home-lb-2 -->
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620235535381-0'>
                             <script defer>
@@ -212,16 +212,13 @@ $mostrar = true;
                     </div>
                 </div>
             @endif
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-12">
                     <hr>
                 </div>
             </div>
             <!-- REVIEWS -->
             <h2 class="text-center my-4">Tribune Reviews</h2>
-            <?php
-            //echo img_meta($reviews[0]->image_data);
-            ?>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($review as $data)
@@ -293,9 +290,9 @@ $mostrar = true;
                 </div>
             </div>
             <!-- REVIEWS -->
-            <!-- ads /21855382314/tt-home-lb-3 -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <!-- ads /21855382314/tt-home-lb-3 -->
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620236451767-0'>
                             <script defer>
@@ -314,8 +311,8 @@ $mostrar = true;
             </div>
             <!-- Gallery -->
             <?php if ($gallery): ?>
-            <div class="row py-4">
-                <div class="col">
+            <div class="row py-4 d-flex justify-content-center">
+                <div class="col" style="max-width: 1024px;">
                     <h2 class="text-center mb-4">Visit Mexico!</h2>
                     <div class="row g-1">
                         <div class="col-7 col-md-3 position-relative zoom">
@@ -383,7 +380,7 @@ $mostrar = true;
             <?php endif; ?>
             <!-- ads /21855382314/tt-home-lb-5 -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620239881317-0'>
                             <script defer>
@@ -477,7 +474,7 @@ $mostrar = true;
 
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620253311869-0'>
                             <script defer>
@@ -526,7 +523,7 @@ $mostrar = true;
             </div>
             <!-- ads /21855382314/tt-home-lb-4 -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620236955324-0'>
                             <script defer>
@@ -619,7 +616,7 @@ $mostrar = true;
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620253311869-0'>
                             <script defer>
@@ -712,7 +709,7 @@ $mostrar = true;
             <!-- NEWS -->
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
-                <div class="row mb-4">
+                <div class="row py-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
                         <div id='div-gpt-ad-1620253311869-0'>
                             <script defer>
