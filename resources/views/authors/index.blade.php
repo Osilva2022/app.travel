@@ -55,7 +55,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.2rem;">
-        <div class="container" style="max-width: 1024px;">
+        <div class="container">
             <br>
             <div class="row g-4">
                 <div class="col-12">

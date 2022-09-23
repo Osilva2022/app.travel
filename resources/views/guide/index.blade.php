@@ -52,7 +52,7 @@ $mostrar = true;
                 </p>
             </div>
         </div>
-        <div class="container" style="max-width: 1024px;">
+        <div class="container">
             <div class="row mb-4">
                 <div class="col">
                     <div class="cont-menu-destination" style="overflow-x: auto; height: 60px;">

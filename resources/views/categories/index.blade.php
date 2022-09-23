@@ -47,7 +47,7 @@ $mostrar = true;
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.8rem;">
-        <div class="container" style="max-width: 1024px;">
+        <div class="container">
             @include('menus.sub_menu_destinations')
             @if ($mostrar)
                 <div class="row mb-4">
@@ -127,7 +127,7 @@ $mostrar = true;
                             @if ($i >= 2 && $i <= 5)
                                 <div class="col">
                                     <div class="card card-secundario h-100">
-                                        <div class="row g-0">
+                                        <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-12">
                                                 <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
                                                     <span class="badge etiqueta-img"
@@ -170,7 +170,7 @@ $mostrar = true;
                     </div>
                 @endif
                 <div class="col-lg-12">
-                    <div class="row row-cols-xs-1 row-cols-md-3 g-3">
+                    <div class="row row-cols-1 row-cols-md-3 g-3">
                         <?php $i = 1; ?>
                         <?php /* var_dump($postscategory[0]["title"]); */ ?>
                         @foreach ($postscategory as $data)
