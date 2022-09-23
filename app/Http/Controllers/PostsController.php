@@ -162,7 +162,7 @@ class PostsController extends Controller
             OpenGraph::addImage(imgURL($data->image_data), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
             TwitterCard::setImage(imgURL($data->image_data));
         }
-    }    
+    }
 
     /**
      * Funcion para mostrar un previews de un post desde Woordpress
@@ -204,81 +204,80 @@ class PostsController extends Controller
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
     }
 
-    function mapxml(){
+    function mapxml()
+    {
 
         $sitemapIndexes = [];
 
         $now = Carbon::now()->setTimezone(config('region.timezone'));
         // Create the general pages sitemap.
-        $generalPagesSitemap = Sitemap::create();        
+        $generalPagesSitemap = Sitemap::create();
         // Add homepage.
         $generalPagesSitemap->add(
             Url::create(config('app.url'))
                 ->setLastModificationDate($now)
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                 ->setPriority(1.0)
-        );      
+        );
 
         $generalPagesSitemap->add(
-            Url::create(config('app.url').'/')
+            Url::create(config('app.url') . '/')
                 ->setLastModificationDate($now)
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                 ->setPriority(1.0)
-        );        
+        );
 
-         // Add all categories pages.
-        $categories = DB::select("SELECT CONCAT(d.slug,'/guide/',C.slug) as slug FROM travel_destinations d JOIN travel_directory_category C;");        
- 
+        // Add all categories pages.
+        $categories = DB::select("SELECT CONCAT(d.slug,'/guide/',C.slug) as slug FROM travel_destinations d JOIN travel_directory_category C;");
+
         foreach ($categories as $category) {
-             $url = config('app.url').$category->slug;
- 
-             $generalPagesSitemap->add(
-                 Url::create($url)
-                     ->setLastModificationDate($now)
-                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                     ->setPriority(0.8)
-             );           
+            $url = config('app.url') . $category->slug;
+
+            $generalPagesSitemap->add(
+                Url::create($url)
+                    ->setLastModificationDate($now)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                    ->setPriority(0.8)
+            );
         }
-        
+
         // Add the sitemap to the indexes variable.
         $sitemapsIndex[] = '/sitemaps/pages_sitemap.xml';
-        
-        $postsSitemapCount = 1;        
+
+        $postsSitemapCount = 1;
         // Create the posts sitemaps.
-        $postsSite = PostALL::all()->chunk(100);        
+        $postsSite = PostALL::all()->chunk(100);
 
         foreach ($postsSite as $posts) {
-            
+
             $postsSitemap = Sitemap::create();
 
             foreach ($posts as $post) {
-          
-                $lastMod = new DateTime($post->post_date); 
-             
+
+                $lastMod = new DateTime($post->post_date);
+
                 $postsSitemap->add(
                     Url::create($post->url)
                         ->setLastModificationDate($lastMod)
                         ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                         ->setPriority(0.4)
-                );              
-              
+                );
             }
             // Add the sitemap to the indexes variable.
             // $postsSitemap->writeToFile(public_path('sitemap/posts_sitemap_'.$postsSitemapCount.'.xml'));  
-            $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_' . $postsSitemapCount . '.xml'));
             // $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));          
-            $sitemapsIndex[] = '/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml';   
+            $sitemapsIndex[] = '/sitemaps/posts_sitemap_' . $postsSitemapCount . '.xml';
             $postsSitemapCount++;
-            
-        }           
-       
-         // Create the indexes sitemap.
-         $indexesSitemap = SitemapIndex::create();      
-         // Add the indexes to the sitemap.
-         foreach ($sitemapsIndex as $index) {
-                $indexesSitemap->add($index);
-         } 
-         // Create the sitemap to a file.
+        }
+
+        // Create the indexes sitemap.
+        $indexesSitemap = SitemapIndex::create();
+        // Add the indexes to the sitemap.
+        foreach ($sitemapsIndex as $index) {
+            $indexesSitemap->add($index);
+        }
+        // Create the sitemap to a file.
         $generalPagesSitemap->writeToFile(storage_path('app/sitemaps/pages_sitemap.xml'));
         $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
         // dd($postsSitemap); 
@@ -298,7 +297,7 @@ class PostsController extends Controller
             }
             return $this->preview($id);
         }
-        
+
         $destinations = DB::select("SELECT * FROM travel_destinations");
         $tags_data = DB::select("SELECT t.term_id,t.name FROM travel_terms t , travel_term_taxonomy ttt
                                 WHERE t.term_id=ttt.term_id AND ttt.taxonomy = 'post_tag'");
@@ -422,7 +421,7 @@ class PostsController extends Controller
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data'));
     }
 
-    public function destinations($destination)
+    public function destinations($destination, Request $request)
     {
 
         $posts = DB::select("SELECT * FROM travel_posts_destination WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
@@ -432,8 +431,11 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
         //dd($destinationposts[2]->terms);
-
-        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data'));
+        $review = true;
+        if ($request->page && $request->page > 1) {
+            $review = false;
+        }
+        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review'));
     }
 
     /**
@@ -522,13 +524,13 @@ class PostsController extends Controller
                                             AND location = $id_location) as q1 WHERE  dc.term_id = q1.category_id");
         $things_vip = DB::select("SELECT * FROM travel_directory WHERE location = '$id_location' AND category_id = '$id_category' AND label = 22;");
 
-        $selectedtletter = 'A';
+        $selectedtletter = '';
         if (isset($request->letter)) {
             $selectedtletter = $request->letter;
         }
         //dd($request);
         $array_abc = array_merge(range('A', 'Z'));
-        if (!in_array($selectedtletter, $array_abc)) { //No es abc...
+        if (!in_array($selectedtletter, $array_abc) && isset($request->letter)) { //No es abc...
             $selectedtletter = '*';
         }
         foreach ($array_abc as $key => $val) {
@@ -540,14 +542,15 @@ class PostsController extends Controller
                                     CASE
                                         WHEN letter not in($abc) THEN '*'
                                         ELSE letter
-                                    END as letter
+                                    END as letter_n
                                 FROM
                                     travel_directory
                                 WHERE
                                     location = '$id_location' AND category_id = '$id_category'
-                                GROUP BY letter
-                                ORDER BY letter ASC;");
-        $things = DB::select("SELECT 
+                                GROUP BY letter_n
+                                ORDER BY letter_n ASC;");
+        if (isset($request->letter)) {
+            $things = DB::select("SELECT 
                                     *
                                 FROM
                                     (SELECT 
@@ -563,9 +566,19 @@ class PostsController extends Controller
                                 WHERE
                                     letters = '$selectedtletter'
                                 ORDER BY post_title ASC;");
+        } else {
+            $things = DB::select("SELECT 
+                                    *                                    
+                                    FROM
+                                        travel_directory
+                                    WHERE
+                                        location = '$id_location' AND category_id = '$id_category'
+                                ORDER BY post_title ASC;");
+        }
         //dd($things);
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter'));
+        $guide_tags = DB::select("SELECT * FROM travel_guide_tags;");
+        return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter', 'guide_tags'));
     }
 
     public function get_img_gallery($destination, $category)

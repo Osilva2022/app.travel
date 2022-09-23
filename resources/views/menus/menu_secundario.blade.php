@@ -1,6 +1,6 @@
 <!-- MENU -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top header py-4 menu-active" id="menu-secundario">
-    <div class="container-fluid px-4">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top header menu-active" id="menu-secundario">
+    <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125"
                 height="35" class="d-inline-block align-top" alt="Tribune Travel">

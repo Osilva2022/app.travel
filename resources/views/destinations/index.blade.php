@@ -34,6 +34,38 @@
                         </div>
                     </div>
                 </div>
+                @if ($review)
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h2>Reseña</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, amet? Temporibus, ratione
+                                cum
+                                nihil reprehenderit repudiandae est, quidem hic alias voluptatibus quae dolorum ab iste
+                                error!
+                                Officia ipsam quam temporibus!Saepe similique eligendi suscipit iure deleniti, earum beatae,
+                                non
+                                consequuntur reprehenderit, quibusdam molestiae veniam quis at voluptas quas harum
+                                accusamus!
+                                Molestias perferendis modi repellendus! Nam laborum dicta adipisci. Aliquid, soluta!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo architecto nisi animi odit
+                                aut, commodi eligendi minima magnam? Eveniet quo illum quos? Adipisci recusandae officia at
+                                non
+                                quisquam modi eum?</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit officiis corporis
+                                reprehenderit aspernatur sapiente, voluptatem velit neque nesciunt voluptatum quod esse
+                                quidem
+                                recusandae eaque fugit provident perspiciatis molestias, non ipsum.
+                                Quo repudiandae id facilis quia, nobis illo. Odio obcaecati molestiae ipsam deleniti
+                                adipisci ea
+                                natus asperiores, labore corporis, mollitia veritatis, aut nihil enim nobis iure laudantium
+                                dolore voluptate ullam assumenda.
+                                Ipsa alias aliquam sit perspiciatis consectetur assumenda et inventore repellat maiores
+                                expedita
+                                tempore praesentium qui, facere, cupiditate dolor, quae ut? At enim accusamus obcaecati,
+                                repudiandae officiis voluptatem laboriosam amet quo!</p>
+                        </div>
+                    </div>
+                @endif
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
                     @foreach ($destinationposts as $data)
                         <div class="col">

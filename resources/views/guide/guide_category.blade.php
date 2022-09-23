@@ -49,7 +49,7 @@ $mostrar = true;
                 </p>
             </div>
         </div>
-        <div class="container g-4" style="max-width: 1024px;">
+        <div class="container-xxl g-4" style="max-width: 1100px;">
             @include('menus.submenu_things')
             @if ($mostrar)
                 <div class="row mb-4">
@@ -108,13 +108,34 @@ $mostrar = true;
                 </div>
             @endif
             @include('menus.menu_directory')
-            <div class="row g-4 mb-4">
-                <?php $letra = ''; ?>
-                @foreach ($things as $data)
-                    <div class="col-lg-12">
-                        @include('guide.gallery')
+            <div class="row">
+                <div class="col col-md-3">
+                    <div class="row" style="top: 7.5rem;">
+                        <h3>Tags</h3>
+                        <div class="col">
+                            @foreach ($guide_tags as $tag)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="tag-{!! $tag->term_id !!}">
+                                    <label class="form-check-label" for="tag-{!! $tag->term_id !!}">
+                                        {!! $tag->name !!}
+                                    </label>
+                                </div>
+                                <div class="row"></div>
+                            @endforeach
+                        </div>
                     </div>
-                @endforeach
+                </div>
+                <div class="col col-md-9">
+                    <div class="row g-4 mb-4">
+                        <?php $letra = ''; ?>
+                        @foreach ($things as $data)
+                            <div class="col-lg-12">
+                                @include('guide.gallery')
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
             @include('menus.menu_directory')
             @if ($mostrar)

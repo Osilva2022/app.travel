@@ -7,7 +7,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.8rem;">
-        <div class="container" style="max-width: 1024px">
+        <div class="container">
             @include('menus.sub_menu_events')
             <div class="row mb-4">
                 <div class="col-12">
