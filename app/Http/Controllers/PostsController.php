@@ -408,8 +408,27 @@ class PostsController extends Controller
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        }
 
+        }else{
+            
+            $url = url()->previous();                   
+            $url = basename($url);
+            $components = parse_url($url);
+
+            if (isset($components['query'])) {
+                parse_str($components['query'], $results);
+                $destino =  $results['destination'];
+            }else{
+                parse_str($components['path'], $results);
+                $destino =  $url;
+            }        
+            
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {            
+                $destination= $destino;        
+            }
+        }     
+         
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
 
@@ -417,9 +436,9 @@ class PostsController extends Controller
         $postscategory = $this->category($category, $destination);
         $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
 
-        // dd($firstpostcategory);
+        // dd($destinations_data);
 
-        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data'));
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data','destination'));
     }
 
     public function destinations($destination)
@@ -476,11 +495,31 @@ class PostsController extends Controller
 
     public function guide(Request $request)
     {
+        // dd($request->all());
         $category = 'things-to-do';
         $destination = 'puerto-vallarta';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        }
+        }else{
+            
+            $url = url()->previous();                   
+            $url = basename($url);
+            $components = parse_url($url);
+
+            if (isset($components['query'])) {
+                parse_str($components['query'], $results);
+                $destino =  $results['destination'];
+            }else{
+                parse_str($components['path'], $results);
+                $destino =  $url;
+            }        
+            
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {            
+                $destination= $destino;        
+            }
+        }       
+       
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
@@ -497,7 +536,7 @@ class PostsController extends Controller
                                             AND location = '$id_location'
                                             ORDER BY location, category_id;");
 
-        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories'));
+        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories','destination'));
     }
 
     public function guide_category($destination, $category, Request $request)
