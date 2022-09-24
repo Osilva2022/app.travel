@@ -1,7 +1,7 @@
 <div class="row mb-4">
     <div class="col">
-        <div class="cont-menu-destination">
-            <ul class="nav nav-tabs justify-content-start" id="myTab" role="tablist">
+        <div class="cont-menu-destination" style="overflow: auto">
+            <ul class="nav nav-tabs justify-content-start" id="myTab" role="tablist" style="min-width: 1100px;">
                 <li class="nav-item nav-test mx-1" role="presentation">
                     <a class="nav-link" id="1-tab" href="{{ url('guide') }}?destination={!! $destination !!}"
                         type="button">

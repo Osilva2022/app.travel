@@ -55,6 +55,13 @@ body {
     background-color: #eaf2fd;
 }
 
+.btn-menu-border-0,
+.btn-menu-border-0:hover,
+.btn-menu-border-0:focus {
+    border: none !important;
+    --bs-navbar-toggler-focus-width: none;
+}
+
 .btn-square {
     width: 100% !important;
     height: 100% !important;
