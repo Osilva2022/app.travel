@@ -69,13 +69,13 @@ class PostsController extends Controller
                 $data = DB::select("SELECT * FROM travel_destinations;");
                 break;
             case 'tags':
-                $data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM travel_terms t 
+                $data = DB::select("SELECT t.term_id,t.name,t.slug, tm.meta_value FROM travel_terms t
                                 INNER JOIN travel_termmeta tm ON t.term_id=tm.term_id
                                 INNER JOIN travel_term_taxonomy ttt ON t.term_id=ttt.term_id
                                 WHERE tm.meta_key = 'cc_color' AND ttt.taxonomy = 'post_tag'");
                 break;
             case 'gallery':
-                $data = DB::select("SELECT 
+                $data = DB::select("SELECT
                                         pm1.post_id,
                                         pm1.meta_value AS metadata,
                                         pm2.meta_value AS img_alt
@@ -121,7 +121,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Obtener las imagenes de una cuenta de instagram a travez de un api 
+     * Obtener las imagenes de una cuenta de instagram a travez de un api
      * Se genera un token cada 30 días y se guarda en la tabla travel_instagram_tokens con un cronjob
      */
     function instagram()
@@ -132,14 +132,14 @@ class PostsController extends Controller
         $instagram = new InstagramBasicDisplay($token);
         $instagram->setAccessToken($token);
         // $t = $instagram->getAccessToken();
-        // $tt = $instagram->refreshToken($token,true);        
+        // $tt = $instagram->refreshToken($token,true);
         $media = $instagram->getUserMedia('me', 6);
         return $media;
     }
 
     /**
      * Funcion para generar los metadatos en las paginas con SEO::generate()
-     * 
+     *
      */
     function metadatos($data, $type)
     {
@@ -166,16 +166,16 @@ class PostsController extends Controller
 
     /**
      * Funcion para mostrar un previews de un post desde Woordpress
-     * 
+     *
      */
     function preview($id)
     {
-        $posts = DB::select("SELECT 
+        $posts = DB::select("SELECT
                                     *
                                 FROM
                                     travel_posts_all
                                         LEFT JOIN
-                                    (SELECT 
+                                    (SELECT
                                         u.user_id,
                                             p.meta_value AS avatar
                                     FROM
@@ -264,9 +264,9 @@ class PostsController extends Controller
                 );
             }
             // Add the sitemap to the indexes variable.
-            // $postsSitemap->writeToFile(public_path('sitemap/posts_sitemap_'.$postsSitemapCount.'.xml'));  
+            // $postsSitemap->writeToFile(public_path('sitemap/posts_sitemap_'.$postsSitemapCount.'.xml'));
             $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_' . $postsSitemapCount . '.xml'));
-            // $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));          
+            // $postsSitemap->writeToFile(storage_path('app/sitemaps/posts_sitemap_'.$postsSitemapCount.'.xml'));
             $sitemapsIndex[] = '/sitemaps/posts_sitemap_' . $postsSitemapCount . '.xml';
             $postsSitemapCount++;
         }
@@ -280,7 +280,7 @@ class PostsController extends Controller
         // Create the sitemap to a file.
         $generalPagesSitemap->writeToFile(storage_path('app/sitemaps/pages_sitemap.xml'));
         $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
-        // dd($postsSitemap); 
+        // dd($postsSitemap);
     }
 
     public function index(Request $request)
@@ -315,7 +315,7 @@ class PostsController extends Controller
                                     td.label,
                                     td.image_data
                                 FROM
-                                    travel_guide td 
+                                    travel_guide td
                                     WHERE td.label = 22
                                 ORDER BY td.destination_slug , td.category_slug;"); //Label '22' = VIP+
         //dd($things);
@@ -349,23 +349,23 @@ class PostsController extends Controller
 
     /**
      * Funcion para mostrar el post final
-     * 
+     *
      */
     public function post($destino, $category, $slug): View
     {
-        $posts = DB::select("SELECT 
+        $posts = DB::select("SELECT
                                     *
                                 FROM
                                     travel_posts_all
                                         LEFT JOIN
-                                    (SELECT 
+                                    (SELECT
                                             u.user_id, p.meta_value AS avatar, us.user_nicename
                                         FROM
                                             travel_users AS us
-                                            left join 
+                                            left join
                                             travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
                                             left join
-                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q 
+                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
                                     ON travel_posts_all.author_id = q.user_id
                                 WHERE
                                     slug = '$slug'
@@ -380,11 +380,11 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $this->metadatos($post, 'post');
-        $post_tags = DB::select("SELECT 
+        $post_tags = DB::select("SELECT
                                     tags.name, tags.slug, tags.description, tags.color
                                 FROM
                                     travel_tags AS tags,
-                                    (SELECT 
+                                    (SELECT
                                         `t`.`slug` AS `tag_slug`, `tr`.`object_id` AS `id_post`
                                     FROM
                                         `travel_terms` `t`
@@ -407,27 +407,26 @@ class PostsController extends Controller
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
+        } else {
 
-        }else{
-            
-            $url = url()->previous();                   
+            $url = url()->previous();
             $url = basename($url);
             $components = parse_url($url);
 
             if (isset($components['query'])) {
                 parse_str($components['query'], $results);
                 $destino =  $results['destination'];
-            }else{
+            } else {
                 parse_str($components['path'], $results);
                 $destino =  $url;
-            }        
-            
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {            
-                $destination= $destino;        
             }
-        }     
-         
+
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {
+                $destination = $destino;
+            }
+        }
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
 
@@ -437,7 +436,7 @@ class PostsController extends Controller
 
         // dd($destinations_data);
 
-        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data','destination'));
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data', 'destination'));
     }
 
     public function destinations($destination, Request $request)
@@ -459,13 +458,32 @@ class PostsController extends Controller
 
     /**
      * Funcion para mostrar los eventos proximos
-     * 
+     *
      */
     public function events(Request $request)
     {
         $query = '';
+        $destination='';
         if (isset($request->destination)) {
             $query = "AND destination_slug = '$request->destination'";
+        }else {
+
+            $url = url()->previous();
+            $url = basename($url);
+            $components = parse_url($url);
+
+            if (isset($components['query'])) {
+                parse_str($components['query'], $results);
+                $destino =  $results['destination'];
+            } else {
+                parse_str($components['path'], $results);
+                $destino =  $url;
+            }
+
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {
+                $destination = $destino;
+            }
         }
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
@@ -473,12 +491,12 @@ class PostsController extends Controller
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
 
-        return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category'));
+        return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category','destination'));
     }
 
     /**
      * Funcion para mostrar los post por author
-     * 
+     *
      */
     public function author($author_id)
     {
@@ -502,26 +520,26 @@ class PostsController extends Controller
         $destination = 'puerto-vallarta';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        }else{
-            
-            $url = url()->previous();                   
+        } else {
+
+            $url = url()->previous();
             $url = basename($url);
             $components = parse_url($url);
 
             if (isset($components['query'])) {
                 parse_str($components['query'], $results);
                 $destino =  $results['destination'];
-            }else{
+            } else {
                 parse_str($components['path'], $results);
                 $destino =  $url;
-            }        
-            
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {            
-                $destination= $destino;        
             }
-        }       
-       
+
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {
+                $destination = $destino;
+            }
+        }
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
@@ -538,7 +556,7 @@ class PostsController extends Controller
                                             AND location = '$id_location'
                                             ORDER BY location, category_id;");
 
-        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories','destination'));
+        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories', 'destination'));
     }
 
     public function guide_category($destination, $category, Request $request)
@@ -550,7 +568,7 @@ class PostsController extends Controller
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
         $id_location = $destination_data[0]->term_id;
         $id_category = $directory_category_data[0]->term_id;
-        $things_categories = DB::select("SELECT 
+        $things_categories = DB::select("SELECT
                                                 dc.term_id, dc.name as category, dc.slug as category_slug
                                             FROM
                                                 travel_directory_category as dc,
@@ -589,11 +607,11 @@ class PostsController extends Controller
                                 GROUP BY letter_n
                                 ORDER BY letter_n ASC;");
         if (isset($request->letter)) {
-            $things = DB::select("SELECT 
+            $things = DB::select("SELECT
                                     *
                                 FROM
-                                    (SELECT 
-                                        *, 
+                                    (SELECT
+                                        *,
                                         CASE
                                             WHEN letter not in($abc) THEN '*'
                                             ELSE letter
@@ -606,8 +624,8 @@ class PostsController extends Controller
                                     letters = '$selectedtletter'
                                 ORDER BY post_title ASC;");
         } else {
-            $things = DB::select("SELECT 
-                                    *                                    
+            $things = DB::select("SELECT
+                                    *
                                     FROM
                                         travel_directory
                                     WHERE
@@ -616,8 +634,57 @@ class PostsController extends Controller
         }
         //dd($things);
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        $guide_tags = DB::select("SELECT * FROM travel_guide_tags;");
+        $guide_tags = $this->GetTagsPosts($things);
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter', 'guide_tags'));
+    }
+
+    public function GetTagsPosts($posts_list)
+    {
+        $array = [];
+        foreach ($posts_list as $key) {
+            array_push($array, $key->ID);
+        }
+        $list = implode(",", $array);
+        $guide_tags = DB::select("SELECT
+                                        t.term_id, t.name
+                                    FROM
+                                        travel_term_relationships AS tr,
+                                        travel_term_taxonomy AS tt,
+                                        travel_terms as t
+                                    WHERE
+                                        tr.term_taxonomy_id = tt.term_taxonomy_id
+                                            AND tt.taxonomy = 'listdom-tag'
+                                            AND tt.term_id = t.term_id
+                                            AND tr.object_id IN ($list)
+                                            GROUP BY t.term_id
+                                            ORDER BY t.name;");
+        return $guide_tags;
+    }
+
+    public function PostsTags(Request $request)
+    {
+        if (isset($request->tags) && $request->tags != "") {
+            $tag_ids = $request->tags;
+            $posts = DB::select("SELECT tr.object_id
+                        FROM
+                            travel_term_relationships AS tr,
+                            travel_term_taxonomy AS tt
+                        WHERE
+                            tr.term_taxonomy_id = tt.term_taxonomy_id
+                                AND taxonomy = 'listdom-tag'
+                                AND term_id IN ($tag_ids)");
+            if (is_null($posts)) {
+                return "xox"; //No hay posts
+            }
+            $array = [];
+            foreach ($posts as $key) {
+                array_push($array, $key->object_id);
+            }
+            // dd($array);
+            return implode(',', $array);
+        } else {
+            return "xox";
+        }
     }
 
     public function get_img_gallery($destination, $category)
@@ -628,7 +695,7 @@ class PostsController extends Controller
             $imgs = [];
             $post_gallery = unserialize($post->gallery);
             foreach ($post_gallery as $key) {
-                $data = DB::select("SELECT 
+                $data = DB::select("SELECT
                                         meta_value AS img
                                     FROM
                                         tribunetravel_wp.travel_postmeta
@@ -658,7 +725,7 @@ class PostsController extends Controller
             $imgs = [];
             $post_gallery = unserialize($data->gallery);
             foreach ($post_gallery as $key) {
-                $info = DB::select("SELECT 
+                $info = DB::select("SELECT
                                         meta_value AS img
                                     FROM
                                         tribunetravel_wp.travel_postmeta
@@ -679,10 +746,10 @@ class PostsController extends Controller
             $letter = $request->letter;
 
             $selectedtletter = 'A';
-            $things = DB::select("SELECT 
+            $things = DB::select("SELECT
                                     *
                                 FROM
-                                    (SELECT 
+                                    (SELECT
                                         *, SUBSTRING(post_title, 1, 1) AS letter
                                     FROM
                                         travel_directory
