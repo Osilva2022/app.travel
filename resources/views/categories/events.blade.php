@@ -54,12 +54,12 @@
                                             $endDate = date('Ymd', strtotime($event->end_date));
                                             $endTime = date('His', strtotime($event->end_date));
                                             $allday = $event->all_day;
-                                            
+
                                             $dates = urldecode($startDate) . 'T' . urldecode($startTime) . '/' . urldecode($endDate) . 'T' . urldecode($endTime);
                                             if ($allday != null) {
                                                 $dates = urldecode($startDate) . '/' . urldecode($endDate);
                                             }
-                                            
+
                                         @endphp
                                         <div class="col-12 text-end">
                                             <a target="_blank" class="btn btn-outline-primary"
@@ -84,4 +84,13 @@
         </div>
     </main>
     <script src="{{ asset('js/submenu.js') }}" version="1"></script>
+    <script>
+        const destino ='{{$destination}}';
+        if (destino != '') {
+            const name ='?destination={{$destination}}';
+            $( document ).ready(function() {
+                window.history.pushState("", "", name);
+            });
+        }
+    </script>
 @endsection
