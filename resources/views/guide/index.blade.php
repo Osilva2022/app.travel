@@ -162,4 +162,13 @@ $mostrar = true;
         </div>
     </main>
     {{-- <script src="{{ asset('js/submenu.js') }}" version="1"></script> --}}
+    <script>       
+        const destino ='{{$destination}}';
+        if (destino != '') {
+            const name ='?destination={{$destination}}';
+            $( document ).ready(function() {        
+                window.history.pushState("", "", name);
+            });            
+        }       
+    </script>
 @endsection
