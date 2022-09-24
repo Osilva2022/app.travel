@@ -464,7 +464,7 @@ class PostsController extends Controller
     public function events(Request $request)
     {
         $query = '';
-
+        $destination='';
         if (isset($request->destination)) {
             $query = "AND destination_slug = '$request->destination'";
         }else{
