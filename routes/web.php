@@ -31,6 +31,7 @@ Route::get('{destination}/{tag}', [PostsController::class, 'guide_category'])->n
 Route::get('gallery', function () {
     return view('things_to_do.gallery', ['gallery' => '{gallery}']);
 });
+Route::get('get-posts-tags', [PostsController::class, 'PostsTags'])->name('get-posts-tags');
 Route::get('police-cookies', [PostsController::class, 'cookies'])->name('cookies');
 Route::get('police-privacy', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');

@@ -105,7 +105,7 @@ $mostrar = true;
                     </div>
                 </div>
             @endif --}}
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 my-4">
                 @foreach ($things_categories as $tc)
                     <div class="col">
                         <a href="{{ route('guide_category', ["$destination", "$tc->slug"]) }}" class="text-decoration-none">

@@ -407,27 +407,26 @@ class PostsController extends Controller
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
+        } else {
 
-        }else{
-            
-            $url = url()->previous();                   
+            $url = url()->previous();
             $url = basename($url);
             $components = parse_url($url);
 
             if (isset($components['query'])) {
                 parse_str($components['query'], $results);
                 $destino =  $results['destination'];
-            }else{
+            } else {
                 parse_str($components['path'], $results);
                 $destino =  $url;
-            }        
-            
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {            
-                $destination= $destino;        
             }
-        }     
-         
+
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {
+                $destination = $destino;
+            }
+        }
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
 
@@ -437,7 +436,7 @@ class PostsController extends Controller
 
         // dd($destinations_data);
 
-        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data','destination'));
+        return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data', 'destination'));
     }
 
     public function destinations($destination, Request $request)
@@ -502,26 +501,26 @@ class PostsController extends Controller
         $destination = 'puerto-vallarta';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        }else{
-            
-            $url = url()->previous();                   
+        } else {
+
+            $url = url()->previous();
             $url = basename($url);
             $components = parse_url($url);
 
             if (isset($components['query'])) {
                 parse_str($components['query'], $results);
                 $destino =  $results['destination'];
-            }else{
+            } else {
                 parse_str($components['path'], $results);
                 $destino =  $url;
-            }        
-            
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {            
-                $destination= $destino;        
             }
-        }       
-       
+
+            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
+            if (isset($cats[0])) {
+                $destination = $destino;
+            }
+        }
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
@@ -538,7 +537,7 @@ class PostsController extends Controller
                                             AND location = '$id_location'
                                             ORDER BY location, category_id;");
 
-        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories','destination'));
+        return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories', 'destination'));
     }
 
     public function guide_category($destination, $category, Request $request)
@@ -616,8 +615,57 @@ class PostsController extends Controller
         }
         //dd($things);
         $gallery = $this->get_img_gallery($id_location, $id_category);
-        $guide_tags = DB::select("SELECT * FROM travel_guide_tags;");
+        $guide_tags = $this->GetTagsPosts($things);
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter', 'guide_tags'));
+    }
+
+    public function GetTagsPosts($posts_list)
+    {
+        $array = [];
+        foreach ($posts_list as $key) {
+            array_push($array, $key->ID);
+        }
+        $list = implode(",", $array);
+        $guide_tags = DB::select("SELECT 
+                                        t.term_id, t.name
+                                    FROM
+                                        travel_term_relationships AS tr,
+                                        travel_term_taxonomy AS tt,
+                                        travel_terms as t
+                                    WHERE
+                                        tr.term_taxonomy_id = tt.term_taxonomy_id
+                                            AND tt.taxonomy = 'listdom-tag'
+                                            AND tt.term_id = t.term_id
+                                            AND tr.object_id IN ($list)
+                                            GROUP BY t.term_id
+                                            ORDER BY t.name;");
+        return $guide_tags;
+    }
+
+    public function PostsTags(Request $request)
+    {
+        if (isset($request->tags) && $request->tags != "") {
+            $tag_ids = $request->tags;
+            $posts = DB::select("SELECT tr.object_id
+                        FROM
+                            travel_term_relationships AS tr,
+                            travel_term_taxonomy AS tt
+                        WHERE
+                            tr.term_taxonomy_id = tt.term_taxonomy_id
+                                AND taxonomy = 'listdom-tag'
+                                AND term_id IN ($tag_ids)");
+            if (is_null($posts)) {
+                return "xox"; //No hay posts
+            }
+            $array = [];
+            foreach ($posts as $key) {
+                array_push($array, $key->object_id);
+            }
+            // dd($array);
+            return implode(',', $array);
+        } else {
+            return "xox";
+        }
     }
 
     public function get_img_gallery($destination, $category)
