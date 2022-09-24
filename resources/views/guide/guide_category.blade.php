@@ -108,15 +108,42 @@ $mostrar = true;
                 </div>
             @endif
             @include('menus.menu_directory')
-            <div class="row">
-                <div class="col col-md-3">
+            <div class="row g-4">
+                <div class="col-12 col-md-3">
                     <div class="row" style="top: 7.5rem;">
-                        <h3>Tags</h3>
-                        {{-- <div class="col">
+                        <div class="col">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Tags Filter
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            @foreach ($guide_tags as $tag)
+                                                <div class="form-check" style="font-size: 14px; font-weight: 300;">
+                                                    <input class="form-check-input tag-check" type="checkbox" name="tag[]"
+                                                        value="{!! $tag->term_id !!}" id="tag-{!! $tag->term_id !!}">
+                                                    <label class="form-check-label" for="tag-{!! $tag->term_id !!}">
+                                                        {!! $tag->name !!}
+                                                    </label>
+                                                </div>
+                                                <div class="row"></div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <h3>Tags</h3>
+                        <div class="col">
                             @foreach ($guide_tags as $tag)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="tag-{!! $tag->term_id !!}">
+                                    <input class="form-check-input tag-check" type="checkbox" name="tag[]"
+                                        value="{!! $tag->term_id !!}" id="tag-{!! $tag->term_id !!}">
                                     <label class="form-check-label" for="tag-{!! $tag->term_id !!}">
                                         {!! $tag->name !!}
                                     </label>
@@ -126,13 +153,14 @@ $mostrar = true;
                         </div> --}}
                     </div>
                 </div>
-                <div class="col col-md-9">
-                    <div class="row g-4 mb-4">
+                <div class="col-12 col-md-9">
+                    <div class="row g-4 mb-4" id="guide-container">
+                        <div class="col-12" id="msg-container" style="display: none;">
+                            <h1 class="text-center mt-4">No Results...</h1>
+                        </div>
                         <?php $letra = ''; ?>
                         @foreach ($things as $data)
-                            <div class="col-lg-12">
-                                @include('guide.gallery')
-                            </div>
+                            @include('guide.gallery')
                         @endforeach
                     </div>
                 </div>
@@ -224,6 +252,42 @@ $mostrar = true;
                     e.preventDefault();
                     var id = $(this).data('id');
                     CargarDatosModal(id);
+                });
+
+                $(".tag-check").change(function(e) {
+                    e.preventDefault();
+                    $("#msg-container").hide();
+                    let array_tags = $(".tag-check:checked")
+                        .map(function() {
+                            return this.value;
+                        })
+                        .get()
+                        .join();
+
+                    if (array_tags.trim() == "") {
+                        $(".containers-guide").show();
+                        return false
+                    }
+                    $.ajax({
+                        type: "get",
+                        url: "{{ route('get-posts-tags') }}",
+                        data: {
+                            tags: array_tags
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            $(".containers-guide").hide();
+                            if (data != 'xox' && data != "") {
+                                let ids = data.split(',');
+                                $.each(ids, function(index, value) {
+                                    // console.log(value);
+                                    $("#container-guide-" + value).show();
+                                });
+                            } else {
+                                $("#msg-container").show();
+                            }
+                        }
+                    });
                 });
 
             });
