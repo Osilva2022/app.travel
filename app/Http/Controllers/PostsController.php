@@ -407,26 +407,7 @@ class PostsController extends Controller
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        } else {
-
-            $url = url()->previous();
-            $url = basename($url);
-            $components = parse_url($url);
-
-            if (isset($components['query'])) {
-                parse_str($components['query'], $results);
-                $destino =  $results['destination'];
-            } else {
-                parse_str($components['path'], $results);
-                $destino =  $url;
-            }
-
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {
-                $destination = $destino;
-            }
         }
-
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
 
@@ -453,7 +434,7 @@ class PostsController extends Controller
         if ($request->page && $request->page > 1) {
             $review = false;
         }
-        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review'));
+        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review', 'destination'));
     }
 
     /**
@@ -463,35 +444,18 @@ class PostsController extends Controller
     public function events(Request $request)
     {
         $query = '';
-        $destination='';
+        $destination = '';
         if (isset($request->destination)) {
             $query = "AND destination_slug = '$request->destination'";
-        }else {
-
-            $url = url()->previous();
-            $url = basename($url);
-            $components = parse_url($url);
-
-            if (isset($components['query'])) {
-                parse_str($components['query'], $results);
-                $destino =  $results['destination'];
-            } else {
-                parse_str($components['path'], $results);
-                $destino =  $url;
-            }
-
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {
-                $destination = $destino;
-            }
         }
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $category = "events";
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
 
-        return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category','destination'));
+        return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category', 'destination'));
     }
 
     /**
@@ -520,24 +484,6 @@ class PostsController extends Controller
         $destination = 'puerto-vallarta';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        } else {
-
-            $url = url()->previous();
-            $url = basename($url);
-            $components = parse_url($url);
-
-            if (isset($components['query'])) {
-                parse_str($components['query'], $results);
-                $destino =  $results['destination'];
-            } else {
-                parse_str($components['path'], $results);
-                $destino =  $url;
-            }
-
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {
-                $destination = $destino;
-            }
         }
 
         $destinations_data = $this->returndata('destinations');
