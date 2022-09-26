@@ -47,7 +47,7 @@
     <script src="{{ asset('js/carousels.min.js') }}"></script>
     @stack('ads')
     <!-- Google Tag Manager -->
-    {{-- <script>
+    <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -62,13 +62,13 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-N3TCH2W');
-    </script> --}}
+    </script>
     <!-- End Google Tag Manager -->
 </head>
 
 <body class="p-0">
     <!-- Google Tag Manager (noscript) -->
-    {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3TCH2W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3TCH2W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     {{-- HEADER & MAIN --}}
