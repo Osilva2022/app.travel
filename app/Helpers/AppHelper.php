@@ -58,3 +58,15 @@ function imgMetaSizes($metasizes)
     }
     return implode(',', $allsizes);
 }
+
+function ValidateAvaliable($array)
+{
+    $horario = unserialize($array);
+    $bandera = false;
+    for ($i = 1; $i <= 7; $i++) {
+        if ($horario[$i]['off'] != 1 && $horario[$i]['hours'] != '') {
+            $bandera = true;
+        }
+    }
+    return $bandera;
+}

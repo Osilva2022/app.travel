@@ -32,8 +32,12 @@
                 <div class="row p-4 h-100 g-2">
                     <div class="col d-flex flex-column">
                         <h3 class="card-title mb-2">{!! $data->post_title !!}</h3>
-                        <span><i class="bi bi-info-square"></i> {!! $data->post_content !!}</span>
-                        <span><i class="bi bi-geo-alt"></i> {!! $data->address !!}</span>
+                        @if ($data->post_content != '')
+                            <span><i class="bi bi-info-square"></i> {!! $data->post_content !!}</span>
+                        @endif
+                        @if ($data->address != '')
+                            <span><i class="bi bi-geo-alt"></i> {!! $data->address !!}</span>
+                        @endif
                         @if ($vip)
                             <div id="cont-info-{!! $data->ID !!}"
                                 class="cont-info collapse multi-collapse cont-info-{!! $data->ID !!}">
@@ -43,8 +47,10 @@
                                             target="_blank">
                                             Map View</a></span>
                                 @endif
-                                <span><i class="bi bi-telephone"></i><a href="tel:{!! $data->phone !!}">
-                                        {!! $data->phone !!}</a></span>
+                                @if ($data->phone != '')
+                                    <span><i class="bi bi-telephone"></i><a href="tel:{!! $data->phone !!}">
+                                            {!! $data->phone !!}</a></span>
+                                @endif
                                 @if ($data->email)
                                     <span><i class="bi bi-envelope"></i><a href="mailto:{!! $data->email !!}">
                                             {!! $data->email !!}</a></span>
@@ -77,8 +83,11 @@
                     @if ($vip)
                         <div id="cont-info-2-{!! $data->ID !!}"
                             class="col-md-6 cont-info collapse multi-collapse cont-info-{!! $data->ID !!}">
-                            <span><i class="bi bi-clock"></i> Work Hours</span>
+                            @if (ValidateAvaliable($data->avaliable))
+                                <span><i class="bi bi-clock"></i> Work Hours</span>
+                            @endif
                             @php
+                                // var_dump($data->avaliable);
                                 $horario = unserialize($data->avaliable);
                                 $semana = [
                                     '1' => 'Monday',
