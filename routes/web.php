@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
-Route::get('/public', function () {
+Route::get('public/', function () {
     return redirect('/');
 });
 
