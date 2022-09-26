@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
+Route::get('https://tribune.travel/public/vallarta-nayarit/5-towns-to-visit-beach-edition', function () {
+    return Redirect::to('https://tribune.travel/puerto-vallarta/things-to-do/5-towns-to-visit-beach-edition');
+});
 
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
 Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
