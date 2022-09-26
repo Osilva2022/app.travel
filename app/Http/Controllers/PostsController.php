@@ -407,26 +407,7 @@ class PostsController extends Controller
         $destination = '';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        } else {
-
-            $url = url()->previous();
-            $url = basename($url);
-            $components = parse_url($url);
-
-            if (isset($components['query'])) {
-                parse_str($components['query'], $results);
-                $destino =  $results['destination'];
-            } else {
-                parse_str($components['path'], $results);
-                $destino =  $url;
-            }
-
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {
-                $destination = $destino;
-            }
         }
-
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
 
@@ -466,25 +447,8 @@ class PostsController extends Controller
         $destination='';
         if (isset($request->destination)) {
             $query = "AND destination_slug = '$request->destination'";
-        }else {
-
-            $url = url()->previous();
-            $url = basename($url);
-            $components = parse_url($url);
-
-            if (isset($components['query'])) {
-                parse_str($components['query'], $results);
-                $destino =  $results['destination'];
-            } else {
-                parse_str($components['path'], $results);
-                $destino =  $url;
-            }
-
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {
-                $destination = $destino;
-            }
         }
+
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $category = "events";
@@ -520,24 +484,6 @@ class PostsController extends Controller
         $destination = 'puerto-vallarta';
         if (isset($request->destination)) {
             $destination = $request->destination;
-        } else {
-
-            $url = url()->previous();
-            $url = basename($url);
-            $components = parse_url($url);
-
-            if (isset($components['query'])) {
-                parse_str($components['query'], $results);
-                $destino =  $results['destination'];
-            } else {
-                parse_str($components['path'], $results);
-                $destino =  $url;
-            }
-
-            $cats = DB::select("SELECT slug FROM travel_destinations WHERE slug = '$destino';");
-            if (isset($cats[0])) {
-                $destination = $destino;
-            }
         }
 
         $destinations_data = $this->returndata('destinations');

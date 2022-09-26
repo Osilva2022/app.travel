@@ -1,5 +1,5 @@
             <!-- BOTONES CATEGORIAS -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">  
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">
             <div class="row row-cols-3 g-4 p-4 justify-content-center">
                 {{-- <div class="col-md-3 col-lg-2 text-center">
                     <a href="{{ route('home') }}">
