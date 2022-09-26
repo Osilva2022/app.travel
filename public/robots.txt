@@ -5,6 +5,5 @@ Sitemap: https://tribune.travel/sitemaps/sitemap.xml
 Sitemap: https://tribune.travel/sitemaps/pages_sitemap.xml
 Sitemap: https://tribune.travel/sitemaps/rss
 
-Sitemap: https://tribune.travel/news-sitemap.xml
 Sitemap: https://tribune.travel/sitemap.xml
 Sitemap: https://tribune.travel/sitemap.rss
