@@ -120,8 +120,8 @@ $mostrar = true;
                                             Tags Filter
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                        data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             @foreach ($guide_tags as $tag)
                                                 <div class="form-check" style="font-size: 14px; font-weight: 300;">
