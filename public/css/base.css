@@ -72,6 +72,16 @@ body {
     font-size: 12px;
 }
 
+.destination-review {
+    white-space: pre-wrap;
+    font-family: objektiv-mk2;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: var(--tt-regular);
+    color: #101820;
+    line-height: 1.5rem;
+}
+
 div.post-cont img {
     max-width: 100% !important;
     height: auto !important;
