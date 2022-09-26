@@ -734,6 +734,12 @@ footer .nav-link:hover {
     word-wrap: break-word;
 }
 
+.cont-info span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .cont-add-banner {
     max-width: 100%;
     overflow: auto;
