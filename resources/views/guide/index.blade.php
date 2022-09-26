@@ -55,11 +55,11 @@ $mostrar = true;
         <div class="container">
             <div class="row mb-4">
                 <div class="col">
-                    <div class="cont-menu-destination" style="overflow-x: auto; height: 60px;">
+                    <div class="cont-menu-destination" style="overflow-x: auto; padding-bottom: 8px;">
                         <ul class="nav nav-tabs" id="myTab" role="tablist" style="min-width: 678px;">
                             @foreach ($destinations_data as $data)
                                 <li class="nav-item nav-test mx-1" role="presentation">
-                                    <a class="nav-link {{ $data->slug == $destination? 'active' : '' }}"
+                                    <a class="nav-link {{ $data->slug == $destination ? 'active' : '' }}"
                                         id="{!! $data->slug !!}-tab"
                                         href="{{ url('guide') }}?destination={!! $data->slug !!}" type="button">
                                         <small>{!! $data->name !!}</small></a>
@@ -162,13 +162,13 @@ $mostrar = true;
         </div>
     </main>
     {{-- <script src="{{ asset('js/submenu.js') }}" version="1"></script> --}}
-    <script>       
-        const destino ='{{$destination}}';
+    <script>
+        const destino = '{{ $destination }}';
         if (destino != '') {
-            const name ='?destination={{$destination}}';
-            $( document ).ready(function() {        
+            const name = '?destination={{ $destination }}';
+            $(document).ready(function() {
                 window.history.pushState("", "", name);
-            });            
-        }       
+            });
+        }
     </script>
 @endsection
