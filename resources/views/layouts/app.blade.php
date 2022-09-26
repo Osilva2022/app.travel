@@ -28,7 +28,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="preload"
         as="style" onload="this.onload=null;this.rel='stylesheet'">
     {{-- <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'"> --}}
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print"
+        onload="this.media='all'">
     {{-- <link href="{{ asset('css/carousel.css') }}" rel="preload" as="style"
         onload="this.onload=null;this.rel='stylesheet'"> --}}
     <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="preload" as="style"
@@ -45,9 +46,31 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset('js/carousels.min.js') }}"></script>
     @stack('ads')
+    <!-- Google Tag Manager -->
+    {{-- <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N3TCH2W');
+    </script> --}}
+    <!-- End Google Tag Manager -->
 </head>
 
 <body class="p-0">
+    <!-- Google Tag Manager (noscript) -->
+    {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3TCH2W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
+    <!-- End Google Tag Manager (noscript) -->
+
     {{-- HEADER & MAIN --}}
     @yield('content')
     {{-- HEADER & MAIN --}}
@@ -102,8 +125,8 @@
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ url('rss') }}" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="#fff" class="bi bi-rss" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff"
+                                    class="bi bi-rss" viewBox="0 0 16 16">
                                     <path
                                         d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                                     <path
@@ -222,7 +245,8 @@
                     to accept the <a href="{{ route('cookies') }}">Cookies policy</a> & <a
                         href="{{ route('privacy') }}">Privacy policy</a>.
                 </p>
-                <a id="btn-cookies" href="javaScript:void(0)" class="btn-view-more" style="font-size: 1rem; width: 100px;">
+                <a id="btn-cookies" href="javaScript:void(0)" class="btn-view-more"
+                    style="font-size: 1rem; width: 100px;">
                     Aceptar</a>
             </div>
         </div>
