@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
+Route::get('/public', function () {
+    return redirect('/');
+});
 
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
 Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
