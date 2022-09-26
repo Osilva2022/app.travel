@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://app.tribune.travel/'),
+    'url' => env('APP_URL', 'https://tribune.travel/'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -178,7 +178,7 @@ return [
          /* RSS feeds */
         Spatie\Feed\FeedServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
-        
+
 
     ],
 
