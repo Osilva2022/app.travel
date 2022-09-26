@@ -277,6 +277,10 @@ $mostrar = true;
                         success: function(data) {
                             console.log(data);
                             $(".containers-guide").hide();
+                            if ($(window).width() < 768) {
+                                $('.accordion-button').addClass('collapsed');
+                                $('#collapseOne').removeClass('show');
+                            }
                             if (data != 'xox' && data != "") {
                                 let ids = data.split(',');
                                 $.each(ids, function(index, value) {
