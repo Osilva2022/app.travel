@@ -45,7 +45,7 @@ Route::get('/rss', function () {
 });
 
 //Redirecct index
-Route::get('public/vallarta-nayarit/5-towns-to-visit-beach-edition', function () {
+Route::get('/public/vallarta-nayarit/5-towns-to-visit-beach-edition', function () {
     return redirect('https://tribune.travel/puerto-vallarta/things-to-do/5-towns-to-visit-beach-edition');
 });
 
