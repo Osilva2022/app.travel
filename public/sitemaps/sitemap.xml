@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>https://app.tribune.travel/sitemaps/pages_sitemap.xml</loc>
+        <loc>https://tribune.travel/sitemaps/pages_sitemap.xml</loc>
     
-        <lastmod>2022-09-20T08:00:02-05:00</lastmod>
+        <lastmod>2022-09-26T16:27:10-05:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>https://app.tribune.travel/sitemaps/posts_sitemap_1.xml</loc>
+        <loc>https://tribune.travel/sitemaps/posts_sitemap_1.xml</loc>
     
-        <lastmod>2022-09-20T08:00:02-05:00</lastmod>
-    </sitemap>
-    <sitemap>
-        <loc>https://app.tribune.travel/sitemaps/posts_sitemap_2.xml</loc>
-    
-        <lastmod>2022-09-20T08:00:02-05:00</lastmod>
-    </sitemap>
-    <sitemap>
-        <loc>https://app.tribune.travel/sitemaps/posts_sitemap_3.xml</loc>
-    
-        <lastmod>2022-09-20T08:00:02-05:00</lastmod>
+        <lastmod>2022-09-26T16:27:10-05:00</lastmod>
     </sitemap>
 </sitemapindex>
