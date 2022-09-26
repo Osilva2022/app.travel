@@ -434,7 +434,7 @@ class PostsController extends Controller
         if ($request->page && $request->page > 1) {
             $review = false;
         }
-        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review'));
+        return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review', 'destination'));
     }
 
     /**
@@ -444,7 +444,7 @@ class PostsController extends Controller
     public function events(Request $request)
     {
         $query = '';
-        $destination='';
+        $destination = '';
         if (isset($request->destination)) {
             $query = "AND destination_slug = '$request->destination'";
         }
@@ -455,7 +455,7 @@ class PostsController extends Controller
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
 
-        return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category','destination'));
+        return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category', 'destination'));
     }
 
     /**

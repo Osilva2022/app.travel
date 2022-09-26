@@ -10,7 +10,8 @@
                     </a>
                 </div> --}}
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('guide') }}{{ isset($destination) ? '?destination=' . $destination : '' }}">
+                    <a
+                        href="{{ route('guide') }}{{ isset($destination) && $destination != '' ? '?destination=' . $destination : '' }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-geo-alt" style="font-size: 2.5rem;"></i>
                             <h5>Guide</h5>
@@ -18,7 +19,8 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('category', ['reviews']) }}{{ isset($destination) ? '?destination=' . $destination : '' }}">
+                    <a
+                        href="{{ route('category', ['reviews']) }}{{ isset($destination) && $destination != '' ? '?destination=' . $destination : '' }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-clipboard-check" style="font-size: 2.5rem;"></i>
                             <h5>Reviews</h5>
@@ -26,7 +28,8 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('category', ['news']) }}{{ isset($destination) ? '?destination=' . $destination : '' }}">
+                    <a
+                        href="{{ route('category', ['news']) }}{{ isset($destination) && $destination != '' ? '?destination=' . $destination : '' }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-newspaper" style="font-size: 2.5rem;"></i>
                             <h5>News</h5>
@@ -34,7 +37,8 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('category', ['things-to-do']) }}{{ isset($destination) ? '?destination=' . $destination : '' }}">
+                    <a
+                        href="{{ route('category', ['things-to-do']) }}{{ isset($destination) && $destination != '' ? '?destination=' . $destination : '' }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-bag-check" style="font-size: 2.5rem;"></i>
                             <h5>Things to Do</h5>
@@ -42,7 +46,8 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('events') }}{{ isset($destination) ? '?destination=' . $destination : '' }}">
+                    <a
+                        href="{{ route('events') }}{{ isset($destination) && $destination != '' ? '?destination=' . $destination : '' }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-calendar-event" style="font-size: 2.5rem;"></i>
                             <h5>Events</h5>
@@ -50,7 +55,8 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-lg-2 text-center">
-                    <a href="{{ route('category', ['blogs']) }}{{ isset($destination) ? '?destination=' . $destination : '' }}">
+                    <a
+                        href="{{ route('category', ['blogs']) }}{{ isset($destination) && $destination != '' ? '?destination=' . $destination : '' }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-book" style="font-size: 2.5rem;"></i>
                             <h5>Blogs</h5>
