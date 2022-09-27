@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Redirect To Post
-Route::get('/vallarta-nayarit/{slug}', [PostsController::class, 'postRedirect'])->name('postRedirect');
-Route::get('/los-cabos/{slug}', [PostsController::class, 'postRedirect'])->name('postRedirect2');
+Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
+Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect2');
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
