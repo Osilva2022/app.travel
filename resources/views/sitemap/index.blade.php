@@ -15,11 +15,11 @@
             </div>
             <div class="row my-2 g-4">
                 <h2 class="text-center">Destinations</h2>
-                @foreach ($destinations_data as $destination)
+                @foreach ($destinations_data as $d)
                     <div class="col text-center">
                         <h3>
-                            <a class="" href="{!! route('destinations', ["$destination->slug"]) !!}">
-                                {!! $destination->name !!}
+                            <a class="" href="{!! route('destinations', ["$d->slug"]) !!}">
+                                {!! $d->name !!}
                             </a>
                         </h3>
                     </div>
