@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Redirect To Post
+Route::get('/vallarta-nayarit/{slug}', [PostsController::class, 'postRedirect'])->name('postRedirect');
+Route::get('/los-cabos/{slug}', [PostsController::class, 'postRedirect'])->name('postRedirect2');
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
@@ -25,9 +28,9 @@ Route::get('category/{category}', [PostsController::class, 'categories'])->name(
 
 Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
-Route::get('guide', [PostsController::class, 'guide'])->name('guide');
 Route::get('directory-item', [PostsController::class, 'ShowGuideItem'])->name('directory-item');
 Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');
+Route::get('guide', [PostsController::class, 'guide'])->name('guide');
 Route::get('{destination}/{tag}', [PostsController::class, 'guide_category'])->name('guide_category');
 Route::get('gallery', function () {
     return view('things_to_do.gallery', ['gallery' => '{gallery}']);
@@ -43,11 +46,4 @@ Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return redirect('/feed');
 });
-
-//Redirecct index
-Route::get('/public/vallarta-nayarit/5-towns-to-visit-beach-edition', function () {
-    return redirect('https://tribune.travel/puerto-vallarta/things-to-do/5-towns-to-visit-beach-edition');
-});
-
-
 

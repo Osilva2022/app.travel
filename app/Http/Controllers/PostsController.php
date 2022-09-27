@@ -830,4 +830,61 @@ class PostsController extends Controller
         }
         // dd($WeatherJson);
     }
+
+    public function postRedirect($slug)
+    {
+        $posts = DB::select("SELECT
+                                    *
+                                FROM
+                                    travel_posts_all
+                                        LEFT JOIN
+                                    (SELECT
+                                            u.user_id, p.meta_value AS avatar, us.user_nicename
+                                        FROM
+                                            travel_users AS us
+                                            left join
+                                            travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
+                                            left join
+                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
+                                    ON travel_posts_all.author_id = q.user_id
+                                WHERE
+                                    slug = '$slug'
+                                ORDER BY post_date DESC;");
+
+        if (!isset($posts[0])) { //Fail and now send to home
+            // dd($posts);
+            dd('No');
+        }
+        $post = $posts[0];
+
+        $more_posts = DB::select("SELECT * FROM travel_posts_category
+                                    WHERE category_slug = '$post->category_slug'
+                                    AND id_post != $post->id_post
+                                        ORDER BY post_date DESC
+                                        LIMIT 3;");
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $this->metadatos($post, 'post');
+        $post_tags = DB::select("SELECT
+                                    tags.name, tags.slug, tags.description, tags.color
+                                FROM
+                                    travel_tags AS tags,
+                                    (SELECT
+                                        `t`.`slug` AS `tag_slug`, `tr`.`object_id` AS `id_post`
+                                    FROM
+                                        `travel_terms` `t`
+                                    JOIN `travel_term_taxonomy` `tt`
+                                    JOIN `travel_term_relationships` `tr`
+                                    WHERE
+                                        `t`.`term_id` = `tt`.`term_id`
+                                            AND `tt`.`taxonomy` = 'post_tag'
+                                            AND `tr`.`term_taxonomy_id` = `tt`.`term_taxonomy_id`) AS posts_tags
+                                WHERE
+                                    tags.slug = posts_tags.tag_slug
+                                        AND id_post = $post->id_post;");
+        $category = $post->category_slug;
+        $destino = $post->destination_slug;
+
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
+    }
 }
