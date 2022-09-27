@@ -8,9 +8,9 @@
     <title>@yield('title')</title>
     <?php
     /* This will give an error. Note the output
-         * above, which is before the header() call */
-    // header('Location: ' . route('home'));
-    // exit();
+     * above, which is before the header() call */
+    header('Location: https://tribune.travel/');
+    exit();
     ?>
 
     <!-- Fonts -->
@@ -478,7 +478,7 @@
                     @yield('message')
                 </p>
 
-                <a href="{{ route('home') }}">
+                <a href="https://tribune.travel/">
                     <button
                         class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
                         {{ __('Go Home') }}
