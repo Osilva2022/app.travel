@@ -40,8 +40,8 @@ Route::get('police-cookies', [PostsController::class, 'cookies'])->name('cookies
 Route::get('police-privacy', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
-// Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
-// Route::post('/save-contact', [PostsController::class, 'storeContact'])->name('save-contact');
+Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
+Route::post('/save-contact', [PostsController::class, 'storeContact'])->name('save-contact');
 
 Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);

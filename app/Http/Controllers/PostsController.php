@@ -41,6 +41,9 @@ use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
 use DateTime;
 
+use App\Models\Contact;
+use Illuminate\Support\Facades\Mail;
+
 
 class PostsController extends Controller
 {
@@ -851,10 +854,10 @@ class PostsController extends Controller
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
 
-        if (!isset($posts[0])) { //Fail and now send to home
-            // dd($posts);
-            dd('No');
-        }
+        // if (!isset($posts[0])) { //Fail and now send to home
+        //     // dd($posts);
+        //     dd('No');
+        // }
         $post = $posts[0];
 
         $more_posts = DB::select("SELECT * FROM travel_posts_category
@@ -886,5 +889,25 @@ class PostsController extends Controller
         $destino = $post->destination_slug;
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
+    }
+
+    public function contact()
+    {
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $subjects = DB::select('SELECT * FROM travel_contact_subject;');
+        // dd($subjects);
+        return view('contact.index', compact('destinations_data', 'categories_data', 'subjects'));
+    }
+
+    public function storeContact(Request $request)
+    {
+        // dd($request->all());
+        request()->validate(Contact::$rules);
+
+        $contact = Contact::create($request->all());
+
+        return redirect()->route('contact-us')
+            ->with('success', 'successfully.');
     }
 }
