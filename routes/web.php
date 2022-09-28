@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Redirect To Post
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
-Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect2');
+// Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect2');
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
@@ -40,10 +40,12 @@ Route::get('police-cookies', [PostsController::class, 'cookies'])->name('cookies
 Route::get('police-privacy', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
+// Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
+// Route::post('/save-contact', [PostsController::class, 'storeContact'])->name('save-contact');
+
 Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return redirect('/feed');
 });
-
