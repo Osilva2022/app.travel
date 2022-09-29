@@ -921,10 +921,11 @@ class PostsController extends Controller
                         AND c.id_contact = $contact";
         $new_contact = DB::select($query);
 
-        // Mail::to("alextyyps@gmail.com")->cc('love_music_kof@live.com')
+        // ->cc("axel.sanchez@cps.media")
+        // ->cc("miriam.miramontes@cps.media")
         Mail::to("editor.tribune@cps.media")
-            ->cc("axel.sanchez@cps.media")
-            ->cc("miriam.miramontes@cps.media")
+            ->cc("alextyyps@gmail.com")
+            ->bcc("manuel.morales@cps.media")
             ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([
