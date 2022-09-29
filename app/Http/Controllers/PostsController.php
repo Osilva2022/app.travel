@@ -923,9 +923,7 @@ class PostsController extends Controller
 
         // ->cc("axel.sanchez@cps.media")
         // ->cc("miriam.miramontes@cps.media")
-        Mail::to("editor.tribune@cps.media")
-            ->cc("alextyyps@gmail.com")
-            ->bcc("manuel.morales@cps.media")
+        Mail::to("tribune@cps.media")
             ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([
