@@ -18,6 +18,12 @@
             opacity: .85;
             color: #ffffff;
         }
+
+        .alert-msg {
+            --bs-alert-color: #084298;
+            --bs-alert-bg: #fff;
+            --bs-alert-border-color: #b6d4fe;
+        }
     </style>
     <header>
         @include('menus.menu_secundario')
@@ -30,13 +36,27 @@
                 </div>
                 <div class="col-md-6">
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab adipisci magni, fugit aliquam provident
-                        incidunt eaque rerum, itaque nulla laudantium in perferendis suscipit facilis sed maiores voluptas
-                        harum laboriosam fuga?
+                        Do you have something to tell us? We would love to hear from you! If you wish to advertise on our
+                        page, give us feedback or even collaborate with us, please leave us a message.
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <div class="" id="msg" style="display: none;"></div>
+                    @if (session()->has('success'))
+                        <script>
+                            $(document).ready(function() {
+                                setTimeout(
+                                    function() {
+                                        const alert = bootstrap.Alert.getOrCreateInstance('#alert-msg')
+                                        alert.close()
+                                    }, 5000);
+                            });
+                        </script>
+                        <div class="alert alert-msg alert-dismissible fade show" role="alert" id="alert-msg">
+                            {{ session()->get('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                                style="font-size: 8px;"></button>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('save-contact') }}" autocomplete="off">
                         @csrf
                         <div class="mb-3">
@@ -75,7 +95,7 @@
                         </div>
                         <div class="mb-3">
                             <textarea class="form-control {{ $errors->has('message') ? ' is-invalid' : '' }}" name="message" id=""
-                                cols="30" rows="3">{{ old('message') }}</textarea>
+                                cols="30" rows="3" placeholder="Your message">{{ old('message') }}</textarea>
                             {!! $errors->first('message', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="mb-3">

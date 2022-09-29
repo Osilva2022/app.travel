@@ -29,6 +29,7 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Storage;
 use App\Models\InstagramTokens;
 use App\Helper\Helper;
+use App\Mail\NewContact;
 use Corcel\Model\Post as ModelPost;
 use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
@@ -902,12 +903,32 @@ class PostsController extends Controller
 
     public function storeContact(Request $request)
     {
-        // dd($request->all());
         request()->validate(Contact::$rules);
+        $contact = Contact::create($request->all())->id;
 
-        $contact = Contact::create($request->all());
+        $query = "SELECT 
+                        c.email,
+                        c.firstname,
+                        c.lastname,
+                        c.zipcode,
+                        c.message,
+                        s.description AS subject
+                    FROM
+                        travel_contact_info AS c,
+                        travel_contact_subject AS s
+                    WHERE
+                        c.id_subject = s.id_subject
+                        AND c.id_contact = $contact";
+        $new_contact = DB::select($query);
 
-        return redirect()->route('contact-us')
-            ->with('success', 'successfully.');
+        // Mail::to("alextyyps@gmail.com")->cc('love_music_kof@live.com')
+        Mail::to("editor.tribune@cps.media")
+            ->cc("axel.sanchez@cps.media")
+            ->cc("miriam.miramontes@cps.media")
+            ->send(new NewContact($new_contact[0]));
+
+        return redirect()->route('contact')->with([
+            'success' => 'Thank you for contacting us. We will get back to you soon.'
+        ]);
     }
 }
