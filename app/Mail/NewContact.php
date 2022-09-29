@@ -39,11 +39,5 @@ class NewContact extends Mailable
             ->view('contact.mail')
             ->text('contact.plain')
             ->subject('Nuevo Mensaje-Tribune Travel');
-        // ->with(
-        //   [
-        //         'testVarOne' => '1',
-        //         'testVarTwo' => '2',
-        //   ]);
-
     }
 }
