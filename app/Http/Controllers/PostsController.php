@@ -870,6 +870,7 @@ class PostsController extends Controller
         //     dd('No');
         // }
         $post = $posts[0];
+        $post = (isset($posts[0])) ? $posts[0] : abort(404);
 
         $more_posts = DB::select("SELECT * FROM travel_posts_category
                                     WHERE category_slug = '$post->category_slug'
@@ -939,14 +940,5 @@ class PostsController extends Controller
         return redirect()->route('contact')->with([
             'success' => 'Thank you for contacting us. We will get back to you soon.'
         ]);
-    }
-
-    public function ValidateNotNull($validate, $return)
-    {
-        if (isset($validate)) {
-            return $return;
-        } else {
-            abort(404);
-        }
     }
 }
