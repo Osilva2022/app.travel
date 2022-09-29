@@ -29,6 +29,7 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Storage;
 use App\Models\InstagramTokens;
 use App\Helper\Helper;
+use App\Mail\NewContact;
 use Corcel\Model\Post as ModelPost;
 use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
@@ -40,6 +41,9 @@ use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
 use DateTime;
+
+use App\Models\Contact;
+use Illuminate\Support\Facades\Mail;
 
 
 class PostsController extends Controller
@@ -851,10 +855,10 @@ class PostsController extends Controller
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
 
-        if (!isset($posts[0])) { //Fail and now send to home
-            // dd($posts);
-            dd('No');
-        }
+        // if (!isset($posts[0])) { //Fail and now send to home
+        //     // dd($posts);
+        //     dd('No');
+        // }
         $post = $posts[0];
 
         $more_posts = DB::select("SELECT * FROM travel_posts_category
@@ -886,5 +890,45 @@ class PostsController extends Controller
         $destino = $post->destination_slug;
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
+    }
+
+    public function contact()
+    {
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $subjects = DB::select('SELECT * FROM travel_contact_subject;');
+        // dd($subjects);
+        return view('contact.index', compact('destinations_data', 'categories_data', 'subjects'));
+    }
+
+    public function storeContact(Request $request)
+    {
+        request()->validate(Contact::$rules);
+        $contact = Contact::create($request->all())->id;
+
+        $query = "SELECT 
+                        c.email,
+                        c.firstname,
+                        c.lastname,
+                        c.zipcode,
+                        c.message,
+                        s.description AS subject
+                    FROM
+                        travel_contact_info AS c,
+                        travel_contact_subject AS s
+                    WHERE
+                        c.id_subject = s.id_subject
+                        AND c.id_contact = $contact";
+        $new_contact = DB::select($query);
+
+        // Mail::to("alextyyps@gmail.com")->cc('love_music_kof@live.com')
+        Mail::to("editor.tribune@cps.media")
+            ->cc("axel.sanchez@cps.media")
+            ->cc("miriam.miramontes@cps.media")
+            ->send(new NewContact($new_contact[0]));
+
+        return redirect()->route('contact')->with([
+            'success' => 'Thank you for contacting us. We will get back to you soon.'
+        ]);
     }
 }
