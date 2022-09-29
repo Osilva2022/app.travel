@@ -163,6 +163,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/blogs/wedding-planner-or-wedding-coordinator</loc>
+        <lastmod>2022-02-04T17:51:55-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/blogs/wellness-trends-for-2022</loc>
         <lastmod>2022-01-31T17:30:13-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -241,20 +247,14 @@
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://tribune.travel/cancun/sin-categoria/mayan-detox-available-for-all</loc>
-        <lastmod>2021-10-08T18:21:18-05:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
-        <loc>https://tribune.travel/cancun/sin-categoria/wedding-planner-or-wedding-coordinator</loc>
-        <lastmod>2022-02-04T17:51:55-06:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
         <loc>https://tribune.travel/cancun/things-to-do/ecotourism-ecological-reserves</loc>
         <lastmod>2021-10-12T16:05:08-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/things-to-do/mayan-detox-available-for-all</loc>
+        <lastmod>2021-10-08T18:21:18-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -961,6 +961,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/world-tourism-day-was-good-for-puerto-vallarta</loc>
+        <lastmod>2022-09-28T18:54:41-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/reviews/bobbi-goddard-queens-of-country</loc>
         <lastmod>2021-11-17T16:58:46-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1105,18 +1111,6 @@
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://tribune.travel/puerto-vallarta/sin-categoria/meet-the-cuale-river-island</loc>
-        <lastmod>2022-07-21T18:06:34-05:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
-        <loc>https://tribune.travel/puerto-vallarta/sin-categoria/puerto-vallarta-art-walk</loc>
-        <lastmod>2022-04-13T12:40:17-05:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/3-spots-off-the-beaten-path-near-vallarta</loc>
         <lastmod>2022-01-27T17:55:58-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1219,6 +1213,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/meet-the-cuale-river-island</loc>
+        <lastmod>2022-07-21T18:06:34-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/meet-the-reptile-house-in-vallarta</loc>
         <lastmod>2021-10-13T16:30:59-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1257,6 +1257,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/prepare-the-traditional-carne-en-su-jugo-at-home</loc>
         <lastmod>2022-05-26T18:27:54-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/puerto-vallarta-art-walk</loc>
+        <lastmod>2022-04-13T12:40:17-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
