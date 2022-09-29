@@ -29,7 +29,7 @@
         @include('menus.menu_secundario')
     </header>
     <main style="margin-top: 5.8rem;">
-        <div class="container py-4" style="max-width: 920px;">
+        <div class="container py-4">
             <div class="row">
                 <div class="col-12">
                     <h1>Contact Us</h1>
