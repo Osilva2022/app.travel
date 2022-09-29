@@ -869,7 +869,7 @@ class PostsController extends Controller
         //     // dd($posts);
         //     dd('No');
         // }
-        $post = $posts[0];
+        // $post = $posts[0];
         $post = (isset($posts[0])) ? $posts[0] : abort(404);
 
         $more_posts = DB::select("SELECT * FROM travel_posts_category
