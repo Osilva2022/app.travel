@@ -374,7 +374,8 @@ class PostsController extends Controller
                                 WHERE
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
-        $post = $posts[0];
+        // $post = $posts[0];        
+        $post = (isset($posts[0])) ? $posts[0] : abort(404);
 
         $more_posts = DB::select("SELECT * FROM travel_posts_category
                                     WHERE category_slug = '$post->category_slug'
@@ -418,7 +419,7 @@ class PostsController extends Controller
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
         $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
-
+        (!isset($category_data[0])) ? abort(404) : '';
         // dd($destinations_data);
 
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data', 'destination'));
@@ -430,6 +431,7 @@ class PostsController extends Controller
         $posts = DB::select("SELECT * FROM travel_posts_destination WHERE destination_slug = '$destination' ORDER BY post_date DESC;");
         $destinationposts = $this->paginate($posts, 9)->onEachSide(0);
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination';");
+        (!isset($destination_data[0])) ? abort(404) : '';
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
@@ -493,7 +495,7 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
-        $id_location = $destination_data[0]->term_id;
+        $id_location = (isset($destination_data[0])) ? $destination_data[0]->term_id : abort(404);
 
         $things_categories = DB::select("SELECT * FROM (
                                             SELECT td.category_id,
@@ -505,6 +507,10 @@ class PostsController extends Controller
                                             WHERE t.orden = 1
                                             AND location = '$id_location'
                                             ORDER BY location, category_id;");
+        if (is_null($things_categories)) {
+            // return abort(404);
+            return redirect()->route('home');
+        }
 
         return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories', 'destination'));
     }
@@ -516,8 +522,8 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $directory_category_data = DB::select("SELECT * FROM travel_directory_category WHERE slug= '$category';");
         $destination_data = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination'");
-        $id_location = $destination_data[0]->term_id;
-        $id_category = $directory_category_data[0]->term_id;
+        $id_location = (isset($destination_data[0])) ? $destination_data[0]->term_id : abort(404);
+        $id_category = (isset($directory_category_data[0])) ? $directory_category_data[0]->term_id : abort(404);
         $things_categories = DB::select("SELECT
                                                 dc.term_id, dc.name as category, dc.slug as category_slug
                                             FROM
@@ -583,6 +589,10 @@ class PostsController extends Controller
                                 ORDER BY post_title ASC;");
         }
         //dd($things);
+        if (is_null($things)) {
+            // return abort(404);
+            return redirect()->route('home');
+        }
         $gallery = $this->get_img_gallery($id_location, $id_category);
         $guide_tags = $this->GetTagsPosts($things);
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter', 'guide_tags'));
@@ -929,5 +939,14 @@ class PostsController extends Controller
         return redirect()->route('contact')->with([
             'success' => 'Thank you for contacting us. We will get back to you soon.'
         ]);
+    }
+
+    public function ValidateNotNull($validate, $return)
+    {
+        if (isset($validate)) {
+            return $return;
+        } else {
+            abort(404);
+        }
     }
 }
