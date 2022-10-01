@@ -145,31 +145,19 @@ class PostsController extends Controller
      * Funcion para generar los metadatos en las paginas con SEO::generate()
      *
      */
-    function metadatos($data, $type)
+    function metadatos($title, $description, $image, $url, $url_canonical)
     {
-        if ($type == 'home') {
-
-            SEOTools::setTitle('Home Tribune Travel');
-            SEOTools::setDescription('Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes.');
-            SEOTools::opengraph()->setUrl('https://app.tribune.travel/');
-            SEOTools::setCanonical('https://app.tribune.travel/');
-            SEOTools::jsonLd()->addImage(URLS::to('/public/img/tribune-travel.png'));
-            OpenGraph::addImage(URLS::to('/public/img/tribune-travel.png'), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage(URLS::to('/public/img/tribune-travel.png'));
-        } elseif ($type == 'post') {
-
-            SEOTools::setTitle($data->title);
-            SEOTools::setDescription($data->post_excerpt);
-            SEOTools::opengraph()->setUrl(URLS::to($data->url));
-            SEOTools::setCanonical(URLS::to($data->url));
-            SEOTools::jsonLd()->addImage(imgURL($data->image_data));
-            OpenGraph::addImage(imgURL($data->image_data), ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-            TwitterCard::setImage(imgURL($data->image_data));
-        }
+        SEOTools::setTitle($title);
+        SEOTools::setDescription($description);
+        SEOTools::opengraph()->setUrl($url);
+        SEOTools::setCanonical($url_canonical);
+        SEOTools::jsonLd()->addImage($image);
+        OpenGraph::addImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+        TwitterCard::setImage($image);
     }
 
     /**
-     * Funcion para mostrar un previews de un post desde Woordpress
+     * Funcion para mostrar un previews de un post desde Wordpress
      *
      */
     function preview($id)
@@ -202,7 +190,7 @@ class PostsController extends Controller
                 LIMIT 3;");
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        $this->metadatos($post, 'post');
+        // $this->metadatos($post, 'post');
         //dd($more_posts);
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data'));
@@ -344,7 +332,13 @@ class PostsController extends Controller
         $static_gallery = $this->returndata('gallery');
         $gallery = $static_gallery;
 
-        $this->metadatos('home', 'home');
+        $this->metadatos(
+            config('constants.META_TITLE'),
+            config('constants.META_DESCRIPTION'),
+            config('constants.DEFAULT_IMAGE'),
+            config('constants.META_URL'),
+            config('constants.META_URL')
+        );
         // $this->ApiWeather();
         $weather = $this->GetWeather();
 
@@ -384,7 +378,7 @@ class PostsController extends Controller
                                         LIMIT 3;");
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        $this->metadatos($post, 'post');
+        // $this->metadatos($post, 'post');
         $post_tags = DB::select("SELECT
                                     tags.name, tags.slug, tags.description, tags.color
                                 FROM
@@ -403,6 +397,13 @@ class PostsController extends Controller
                                     tags.slug = posts_tags.tag_slug
                                         AND id_post = $post->id_post;");
         // dd($post_tag);
+        $this->metadatos(
+            isset($post->meta_title) ? $post->meta_title : $post->title,
+            isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
+            config('constants.DEFAULT_IMAGE'),
+            route('category', $post->slug),
+            route('category', $post->slug)
+        );
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
     }
@@ -420,7 +421,13 @@ class PostsController extends Controller
         $postscategory = $this->category($category, $destination);
         $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
         (!isset($category_data[0])) ? abort(404) : '';
-        // dd($destinations_data);
+        $this->metadatos(
+            $category_data[0]->meta_title,
+            $category_data[0]->meta_description,
+            config('constants.DEFAULT_IMAGE'),
+            route('category', $category_data[0]->slug),
+            route('category', $category_data[0]->slug)
+        );
 
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data', 'destination'));
     }
@@ -440,6 +447,13 @@ class PostsController extends Controller
         if ($request->page && $request->page > 1) {
             $review = false;
         }
+        $this->metadatos(
+            $destination_data[0]->meta_title,
+            $destination_data[0]->meta_description,
+            images($destination_data[0]->image),
+            route('destinations', $destination_data[0]->slug),
+            route('destinations', $destination_data[0]->slug)
+        );
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review', 'destination'));
     }
 
@@ -461,6 +475,14 @@ class PostsController extends Controller
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
 
+        $this->metadatos(
+            'Events | Tribune Travel',
+            "Calendar. Looking for what to do in Mexico's top beach destinations? We got you covered with the best events. Find out what to do and where to go here.",
+            config('constants.DEFAULT_IMAGE'),
+            route('events'),
+            route('events')
+        );
+
         return view('categories.events', compact('events', 'categories_data', 'destinations_data', 'category', 'destination'));
     }
 
@@ -479,6 +501,13 @@ class PostsController extends Controller
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
         $tag_data = $this->returndata('tags');
+        $this->metadatos(
+            $author_info[0]->display_name . ' | Tribune Travel',
+            isset($author_info[0]->description) ? $author_info[0]->description : config('constants.META_DESCRIPTION'),
+            config('constants.DEFAULT_IMAGE'),
+            route('author', $author_info[0]->user_nicename),
+            route('author', $author_info[0]->user_nicename)
+        );
 
         return view('authors.index', compact('posts', 'tag_data', 'destinations_data', 'categories_data', 'author', 'no_posts'));
     }
@@ -511,6 +540,13 @@ class PostsController extends Controller
             // return abort(404);
             return redirect()->route('home');
         }
+        $this->metadatos(
+            'Guide | Tribune Travel',
+            "Guide. There is always something new to discover. Learn about the best spots you can visit to dine, sip, pamper yourself and have the best of times.",
+            config('constants.DEFAULT_IMAGE'),
+            route('guide'),
+            route('guide')
+        );
 
         return view('guide.index', compact('category', 'categories_data', 'destinations_data', 'destination_data', 'destination', 'things_categories', 'destination'));
     }
@@ -595,6 +631,13 @@ class PostsController extends Controller
         }
         $gallery = $this->get_img_gallery($id_location, $id_category);
         $guide_tags = $this->GetTagsPosts($things);
+        $this->metadatos(
+            isset($things_category[0]->meta_title) ? $things_category[0]->meta_title : config('constants.META_TITLE'),
+            isset($things_category[0]->meta_description) ? $things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
+            isset($things_category[0]->image) ? images($things_category[0]->image) : config('constants.DEFAULT_IMAGE'),
+            route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug]),
+            route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug])
+        );
         return view('guide.guide_category', compact('category', 'destination', 'categories_data', 'destinations_data', 'destination_data', 'things', 'gallery', 'things_vip', 'things_category', 'things_categories', 'alphachar', 'selectedtletter', 'guide_tags'));
     }
 
@@ -733,6 +776,13 @@ class PostsController extends Controller
     {
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+        $this->metadatos(
+            'Cookies Policy | Tribune Travel',
+            "Cookies Policy",
+            config('constants.DEFAULT_IMAGE'),
+            route('cookies'),
+            route('cookies')
+        );
         return view('policies.cookies', compact('destinations_data', 'categories_data'));
     }
 
@@ -740,6 +790,13 @@ class PostsController extends Controller
     {
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+        $this->metadatos(
+            'Privacy Policy | Tribune Travel',
+            "Privacy Policy",
+            config('constants.DEFAULT_IMAGE'),
+            route('privacy'),
+            route('privacy')
+        );
         return view('policies.privacy', compact('destinations_data', 'categories_data'));
     }
 
@@ -760,6 +817,13 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         // dd("SELECT * FROM travel_tags WHERE slug = '$tag'");
+        $this->metadatos(
+            isset($tag_data[0]->meta_title) ? $tag_data[0]->meta_title : config('constants.META_TITLE'),
+            isset($tag_data[0]->meta_description) ? $tag_data[0]->meta_description : config('constants.META_DESCRIPTION'),
+            config('constants.DEFAULT_IMAGE'),
+            route('tags', $tag_data[0]->slug),
+            route('tags', $tag_data[0]->slug)
+        );
 
         return view('tags.index', compact('destinationposts', 'tag_data', 'tags_data', 'destinations_data', 'categories_data'));
     }
@@ -879,7 +943,7 @@ class PostsController extends Controller
                                         LIMIT 3;");
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        $this->metadatos($post, 'post');
+        // $this->metadatos($post, 'post');
         $post_tags = DB::select("SELECT
                                     tags.name, tags.slug, tags.description, tags.color
                                 FROM
@@ -908,7 +972,13 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $subjects = DB::select('SELECT * FROM travel_contact_subject;');
-        // dd($subjects);
+        $this->metadatos(
+            'Contact Us | Tribune Travel',
+            "Do you have something to tell us? We would love to hear from you! Please leave us a message.",
+            config('constants.DEFAULT_IMAGE'),
+            route('contact'),
+            route('contact')
+        );
         return view('contact.index', compact('destinations_data', 'categories_data', 'subjects'));
     }
 
