@@ -1,7 +1,11 @@
 User-agent: *
-Disallow:
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /amp/
+
+
 
 Sitemap: https://tribune.travel/sitemaps/sitemap.xml
 Sitemap: https://tribune.travel/sitemaps/pages_sitemap.xml
-Sitemap: https://tribune.travel/sitemaps/rss
-
+Sitemap: https://tribune.travel/feed
+Sitemap: https://tribune.travel/sitemap.xml
