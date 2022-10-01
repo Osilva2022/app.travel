@@ -122,8 +122,7 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
-                                    <img src="{!! images($post->avatar) !!}" class="img-fluid rounded-circle" width="56"
-                                        height="56">
+                                    <img src="{!! images($post->avatar) !!}" class="img-fluid rounded-circle" style="width:56px; height:auto; aspect-ratio:1/1;">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
@@ -199,7 +198,7 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    <div class="col">
+                                    <div class="col text-center">
                                         <a href="{{ route('category', [$post->category_slug]) }}" class="btn-view-more"
                                             type="button">More {!! $post->category !!}</a>
                                     </div>

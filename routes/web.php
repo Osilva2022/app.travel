@@ -36,8 +36,8 @@ Route::get('gallery', function () {
     return view('things_to_do.gallery', ['gallery' => '{gallery}']);
 });
 Route::get('get-posts-tags', [PostsController::class, 'PostsTags'])->name('get-posts-tags');
-Route::get('police-cookies', [PostsController::class, 'cookies'])->name('cookies');
-Route::get('police-privacy', [PostsController::class, 'privacy'])->name('privacy');
+Route::get('policy-cookies', [PostsController::class, 'cookies'])->name('cookies');
+Route::get('policy-privacy', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
 Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
