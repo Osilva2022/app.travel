@@ -14,12 +14,12 @@ class Contact extends Model
     protected $table = 'travel_contact_info';
 
     static $rules = [
-        'email' => 'required|email',
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'zipcode' => 'required',
-        'id_subject' => 'required',
-        'message' => 'required',
+        'email'         => 'required|email',
+        'firstname'     => 'required',
+        'lastname'      => 'required',
+        'zipcode'       => 'required',
+        // 'id_subject'    => 'required',
+        // 'message'       => 'required',
     ];
 
     /**
@@ -27,5 +27,10 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'firstname', 'lastname', 'zipcode', 'id_subject', 'message'];
+    protected $fillable = ['email', 'firstname', 'lastname', 'zipcode'];
+
+    public function contactmessage()
+    {
+        return $this->hasMany('App\ContactMessage', 'id_contact', 'id_contact');
+    }
 }
