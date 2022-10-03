@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="album pb-5 bg-light">
+        <div class="album pb-5">
             <div class="container">
                 <div class="row mb-4">
                     <div class="col">

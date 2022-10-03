@@ -27,9 +27,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="preload"
         as="style" onload="this.onload=null;this.rel='stylesheet'">
-    {{-- <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'"> --}}
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print"
-        onload="this.media='all'">
+    <link href="{{ asset('css/base.css?v=' . mt_rand()) }}" rel="stylesheet" media="print" onload="this.media='all'">
+    {{-- <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" media="print"
+        onload="this.media='all'"> --}}
     {{-- <link href="{{ asset('css/carousel.css') }}" rel="preload" as="style"
         onload="this.onload=null;this.rel='stylesheet'"> --}}
     <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="preload" as="style"
@@ -239,6 +239,26 @@
         </div>
 
     </footer>
+    <div class="modal fade" id="srcModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="form-floating" method="GET" action="{{ route('search') }}">
+                        <div class="input-group">
+                            <input type="search" name="search" class="form-control"
+                                placeholder="Search this site..." aria-label="Search"
+                                aria-describedby="button-addon2" autofocus>
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                                    class="bi bi-search"></i></button>
+                        </div>
+                        {{-- <input type="search" class="form-control is-invalid" id="txt-src"
+                        placeholder="Search this site...">
+                    <label for="txt-src">Invalid input</label> --}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="cajacookies">
         <div class="row">
             <div class="col d-flex flex-column flex-md-row justify-content-around align-items-center">
@@ -256,7 +276,19 @@
     </div>
 
     @yield('jquery')
-    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"f541338dd90a14125f5c387abad25f12"})});</script>
+    <script>
+        function loadScript(a) {
+            var b = document.getElementsByTagName("head")[0],
+                c = document.createElement("script");
+            c.type = "text/javascript", c.src = "https://tracker.metricool.com/resources/be.js", c.onreadystatechange = a, c
+                .onload = a, b.appendChild(c)
+        }
+        loadScript(function() {
+            beTracker.t({
+                hash: "f541338dd90a14125f5c387abad25f12"
+            })
+        });
+    </script>
     <script src="{{ asset('js/base.min.js?v=' . mt_rand()) }}" version="1.1" defer></script>
 </body>
 

@@ -1011,4 +1011,30 @@ class PostsController extends Controller
             'success' => 'Thank you for contacting us. We will get back to you soon.'
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $bandera = true;
+        $busqueda = $request->search;
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        if (!isset($busqueda)) {
+            $bandera = false;
+        }
+        // dd($busqueda);
+        $query = DB::select("SELECT * FROM travel_posts_destination WHERE title like '%$busqueda%' OR post_excerpt like '%$busqueda%' ORDER BY post_date DESC;");
+        $posts = $this->paginate($query, 20)->onEachSide(0);
+        if (!isset($query[0])) {
+            $bandera = false;
+        }
+        // dd($bandera);
+        $this->metadatos(
+            config('constants.META_TITLE'),
+            config('constants.META_DESCRIPTION'),
+            config('constants.DEFAULT_IMAGE'),
+            config('constants.META_URL'),
+            config('constants.META_URL')
+        );
+        return view('search.index', compact('destinations_data', 'categories_data', 'busqueda', 'bandera', 'posts'));
+    }
 }
