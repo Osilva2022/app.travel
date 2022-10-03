@@ -43,6 +43,7 @@ use Spatie\Sitemap\Tags\Url;
 use DateTime;
 
 use App\Models\Contact;
+use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -368,7 +369,7 @@ class PostsController extends Controller
                                 WHERE
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
-        // $post = $posts[0];        
+        // $post = $posts[0];
         $post = (isset($posts[0])) ? $posts[0] : abort(404);
 
         $more_posts = DB::select("SELECT * FROM travel_posts_category
@@ -1003,25 +1004,49 @@ class PostsController extends Controller
     public function storeContact(Request $request)
     {
         request()->validate(Contact::$rules);
-        $contact = Contact::create($request->all())->id;
+        $email = $request->email;
 
-        $query = "SELECT 
+        $validate = DB::select("SELECT * FROM travel_contact_info WHERE email = '$email' ");
+
+        if (!$validate) {
+
+            $contact = Contact::create($request->all())->id;
+
+            $contactmsg = new ContactMessage;
+            $contactmsg ->id_contact = $contact;
+            $contactmsg ->id_subject = $request->id_subject;
+            $contactmsg ->message = $request->message;
+            $contactmsg->save();
+            $idmessage = $contactmsg->id;
+
+        }else{
+
+            $contactmsg = new ContactMessage;
+            $contactmsg ->id_contact = $validate[0]->id_contact;
+            $contactmsg ->id_subject = $request->id_subject;
+            $contactmsg ->message = $request->message;
+            $contactmsg->save();
+            $idmessage = $contactmsg->id;
+        }
+
+        $query = "SELECT
                         c.email,
                         c.firstname,
                         c.lastname,
                         c.zipcode,
-                        c.message,
+                        m.message,
                         s.description AS subject
                     FROM
                         travel_contact_info AS c,
-                        travel_contact_subject AS s
+                        travel_contact_subject AS s,
+                        travel_contact_message AS m
                     WHERE
-                        c.id_subject = s.id_subject
-                        AND c.id_contact = $contact";
+                        s.id_subject = m.id_subject
+                        AND c.id_contact = m.id_contact
+                        AND m.id_message = $idmessage";
+
         $new_contact = DB::select($query);
 
-        // ->cc("axel.sanchez@cps.media")
-        // ->cc("miriam.miramontes@cps.media")
         Mail::to("tribune@cps.media")
             ->send(new NewContact($new_contact[0]));
 
