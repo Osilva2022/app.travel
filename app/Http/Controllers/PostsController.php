@@ -397,13 +397,13 @@ class PostsController extends Controller
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
                                         AND id_post = $post->id_post;");
-        // dd($post_tag);
+        // dd(route('post', [$post->destination_slug, $post->category_slug, $post->slug]));
         $this->metadatos(
             isset($post->meta_title) ? $post->meta_title : $post->title,
             isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
             isset($post->image) ? images($post->image) : config('constants.DEFAULT_IMAGE'),
-            route('category', $post->slug),
-            route('category', $post->slug)
+            route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
+            route('post', [$post->destination_slug, $post->category_slug, $post->slug])
         );
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
@@ -1013,18 +1013,17 @@ class PostsController extends Controller
             $contact = Contact::create($request->all())->id;
 
             $contactmsg = new ContactMessage;
-            $contactmsg ->id_contact = $contact;
-            $contactmsg ->id_subject = $request->id_subject;
-            $contactmsg ->message = $request->message;
+            $contactmsg->id_contact = $contact;
+            $contactmsg->id_subject = $request->id_subject;
+            $contactmsg->message = $request->message;
             $contactmsg->save();
             $idmessage = $contactmsg->id;
-
-        }else{
+        } else {
 
             $contactmsg = new ContactMessage;
-            $contactmsg ->id_contact = $validate[0]->id_contact;
-            $contactmsg ->id_subject = $request->id_subject;
-            $contactmsg ->message = $request->message;
+            $contactmsg->id_contact = $validate[0]->id_contact;
+            $contactmsg->id_subject = $request->id_subject;
+            $contactmsg->message = $request->message;
             $contactmsg->save();
             $idmessage = $contactmsg->id;
         }
