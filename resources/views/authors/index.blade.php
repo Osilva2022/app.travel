@@ -61,10 +61,11 @@
                 <div class="col-12">
                     <div class="card-estatica p-4">
                         <div class="row g-3">
-                            <div class="col-lg-auto d-flex justify-content-center align-items-center">
-                                <img {!! img_meta($author->image_data) !!} class="img-fluid rounded-circle">
+                            <div class=" col-md-4 d-flex justify-content-center align-items-center">
+                                <img {!! img_meta($author->image_data) !!} class="img-fluid rounded-circle"
+                                    style="width:60%; height:auto; aspect-ratio:1/1;">
                             </div>
-                            <div class="col d-flex flex-column justify-content-center text-center text-lg-start">
+                            <div class="col-md-8 d-flex flex-column justify-content-center text-center text-lg-start">
                                 <h1 class="">Author</h1>
                                 <h2>{!! $author->first_name !!} {!! $author->last_name !!}</h2>
                                 <p style="margin-bottom: .5rem;">{!! $author->description !!}</p>

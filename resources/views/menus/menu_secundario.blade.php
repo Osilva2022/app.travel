@@ -36,6 +36,9 @@
                             </li>
                         @endforeach
                     </ul>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ route('contact') }}">Contact Us</a>
+                    </li>
                 </li>
             </ul>
             {{-- <form class="d-flex" role="search">

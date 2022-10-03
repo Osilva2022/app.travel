@@ -8,7 +8,7 @@
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     {!! SEO::generate() !!}
-    <title>@yield('page-title') Tribune Travel</title>
+    {{-- <title>@yield('page-title')</title> --}}
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
     <!-- Bootstrap -->
@@ -68,7 +68,8 @@
 
 <body class="p-0">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3TCH2W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3TCH2W" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     {{-- HEADER & MAIN --}}
@@ -85,11 +86,13 @@
                     </a>
                 </div>
                 <div class="col text-white text-center" style="font-weight:300;">
-                    <h3 class="text-white">Contact Us</h3>
+                    <a href="{{ route('contact') }}">
+                        <h3 class="text-white">Contact Us</h3>
+                    </a>
                     <address class="mb-0">
                         <ul class="nav justify-content-center flex-column">
-                            <li class="nav-item">322 226 3870</li>
-                            <li class="nav-item">digital@cps.media</li>
+                            <li class="nav-item"><a href="tel:" class="text-white">322 226 3870</a></li>
+                            <li class="nav-item"><a href="mailto:" class="text-white">digital@cps.media</a></li>
                         </ul>
                     </address>
                 </div>
