@@ -709,6 +709,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/my-health-hospiten</loc>
+        <lastmod>2022-09-30T18:07:28-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/nebbiolo-the-grape-from-the-fog</loc>
         <lastmod>2021-10-07T17:25:34-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -909,6 +915,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-has-6-nominations-for-the-travvy-awards-2022</loc>
         <lastmod>2022-08-08T18:49:36-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-to-host-the-al-calor-del-mariachi-festival-in-2023</loc>
+        <lastmod>2022-09-30T16:27:03-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1527,6 +1539,12 @@
     <url>
         <loc>https://tribune.travel/riviera-nayarit/news/canelo-alvarez-married-at-mita</loc>
         <lastmod>2021-05-18T10:24:17-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/riviera-nayarit/news/experts-meet-for-the-international-medical-tourism-congress-in-nuevo-vallarta</loc>
+        <lastmod>2022-09-29T18:21:06-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
