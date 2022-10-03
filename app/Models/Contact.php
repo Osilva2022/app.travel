@@ -20,6 +20,7 @@ class Contact extends Model
         'zipcode' => 'required',
         'id_subject' => 'required',
         'message' => 'required',
+        'g-recaptcha-response' => 'required|captcha',
     ];
 
     /**
