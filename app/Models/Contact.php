@@ -28,5 +28,10 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'firstname', 'lastname', 'zipcode', 'id_subject', 'message'];
+    protected $fillable = ['email', 'firstname', 'lastname', 'zipcode'];
+
+    public function contactmessage()
+    {
+        return $this->hasMany('App\ContactMessage', 'id_contact', 'id_contact');
+    }
 }
