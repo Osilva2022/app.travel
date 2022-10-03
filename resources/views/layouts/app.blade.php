@@ -247,7 +247,7 @@
                         <div class="input-group">
                             <input type="search" name="search" class="form-control"
                                 placeholder="Search this site..." aria-label="Search"
-                                aria-describedby="button-addon2" autofocus>
+                                aria-describedby="button-addon2" autofocus autocomplete="off">
                             <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
                                     class="bi bi-search"></i></button>
                         </div>
