@@ -98,6 +98,17 @@
                                 cols="30" rows="3" placeholder="Your message">{{ old('message') }}</textarea>
                             {!! $errors->first('message', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Captcha</label>
+                            <div class="col-md-6 pull-center">
+                                {!! app('captcha')->display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <button class="btn-submit-contact" type="submit">SUBMIT</button>
                         </div>

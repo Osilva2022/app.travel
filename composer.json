@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "anhskohbo/no-captcha": "^3.4",
         "artesaos/seotools": "^0.22.1",
         "chill-pills/laravel-instagram-basic-feed": "^0.3.0",
         "corcel/acf": "^4.0",
