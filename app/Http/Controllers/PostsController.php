@@ -335,7 +335,7 @@ class PostsController extends Controller
         $this->metadatos(
             config('constants.META_TITLE'),
             config('constants.META_DESCRIPTION'),
-            config('constants.DEFAULT_IMAGE'),
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/home-tt.png",
             config('constants.META_URL'),
             config('constants.META_URL')
         );
@@ -400,7 +400,7 @@ class PostsController extends Controller
         $this->metadatos(
             isset($post->meta_title) ? $post->meta_title : $post->title,
             isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
-            config('constants.DEFAULT_IMAGE'),
+            isset($post->image) ? images($post->image) : config('constants.DEFAULT_IMAGE'),
             route('category', $post->slug),
             route('category', $post->slug)
         );
@@ -421,6 +421,24 @@ class PostsController extends Controller
         $postscategory = $this->category($category, $destination);
         $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
         (!isset($category_data[0])) ? abort(404) : '';
+        switch ($category) {
+            case 'things-to-do':
+                $img = "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/things-tt.png";
+                break;
+            case 'news':
+                $img = "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/news-tt.png";
+                break;
+            case 'reviews':
+                $img = "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/reviews-tt.png";
+                break;
+            case 'blogs':
+                $img = "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/blogs-tt.png";
+                break;
+            default:
+                $img = "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/news-tt.png";
+                break;
+        }
+
         $this->metadatos(
             $category_data[0]->meta_title,
             $category_data[0]->meta_description,
@@ -478,7 +496,7 @@ class PostsController extends Controller
         $this->metadatos(
             'Events | Tribune Travel',
             "Calendar. Looking for what to do in Mexico's top beach destinations? We got you covered with the best events. Find out what to do and where to go here.",
-            config('constants.DEFAULT_IMAGE'),
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/events-tt.png",
             route('events'),
             route('events')
         );
@@ -543,7 +561,7 @@ class PostsController extends Controller
         $this->metadatos(
             'Guide | Tribune Travel',
             "Guide. There is always something new to discover. Learn about the best spots you can visit to dine, sip, pamper yourself and have the best of times.",
-            config('constants.DEFAULT_IMAGE'),
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/guide-tt.png",
             route('guide'),
             route('guide')
         );
@@ -779,7 +797,7 @@ class PostsController extends Controller
         $this->metadatos(
             'Cookies Policy | Tribune Travel',
             "Cookies Policy",
-            config('constants.DEFAULT_IMAGE'),
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/policy-tt.png",
             route('cookies'),
             route('cookies')
         );
@@ -793,7 +811,7 @@ class PostsController extends Controller
         $this->metadatos(
             'Privacy Policy | Tribune Travel',
             "Privacy Policy",
-            config('constants.DEFAULT_IMAGE'),
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/policy-tt.png",
             route('privacy'),
             route('privacy')
         );
