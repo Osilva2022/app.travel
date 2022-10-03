@@ -120,4 +120,5 @@
             <!-- BOTONES CATEGORIAS -->
         </div>
     </main>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endsection
