@@ -18,6 +18,8 @@ class Contact extends Model
         'firstname' => 'required',
         'lastname' => 'required',
         'zipcode' => 'required',
+        'id_subject' => 'required',
+        'message' => 'required',
         'g-recaptcha-response' => 'required|captcha',
     ];
 
