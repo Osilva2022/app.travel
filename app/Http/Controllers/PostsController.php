@@ -397,11 +397,11 @@ class PostsController extends Controller
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
                                         AND id_post = $post->id_post;");
-        // dd(route('post', [$post->destination_slug, $post->category_slug, $post->slug]));
+        // dd($post);
         $this->metadatos(
             isset($post->meta_title) ? $post->meta_title : $post->title,
             isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
-            isset($post->image) ? images($post->image) : config('constants.DEFAULT_IMAGE'),
+            isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
             route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
             route('post', [$post->destination_slug, $post->category_slug, $post->slug])
         );
