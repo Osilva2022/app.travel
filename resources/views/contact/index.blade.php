@@ -98,6 +98,14 @@
                                 cols="30" rows="3" placeholder="Your message">{{ old('message') }}</textarea>
                             {!! $errors->first('message', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
+                        <div class="mb-3 form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <div class="col-md-6 pull-center">
+                                {!! app('captcha')->display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <div class="invalid-feedback">{{ $errors->first('g-recaptcha-response') }}</div>
+                                @endif
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <button class="btn-submit-contact" type="submit">SUBMIT</button>
                         </div>
@@ -109,4 +117,5 @@
             <!-- BOTONES CATEGORIAS -->
         </div>
     </main>
+    <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
 @endsection

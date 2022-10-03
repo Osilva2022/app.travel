@@ -42,6 +42,7 @@ Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
 Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
 Route::post('/save-contact', [PostsController::class, 'storeContact'])->name('save-contact');
+Route::get('search', [PostsController::class, 'search'])->name('search');
 
 Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);

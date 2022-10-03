@@ -14,12 +14,11 @@ class Contact extends Model
     protected $table = 'travel_contact_info';
 
     static $rules = [
-        'email'         => 'required|email',
-        'firstname'     => 'required',
-        'lastname'      => 'required',
-        'zipcode'       => 'required',
-        // 'id_subject'    => 'required',
-        // 'message'       => 'required',
+        'email' => 'required|email',
+        'firstname' => 'required',
+        'lastname' => 'required',
+        'zipcode' => 'required',
+        'g-recaptcha-response' => 'required|captcha',
     ];
 
     /**

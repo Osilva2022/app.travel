@@ -175,9 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-         /* RSS feeds */
+        /* RSS feeds */
         Spatie\Feed\FeedServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
 
     ],
