@@ -80,7 +80,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-5 justify-content-center g-4 align-items-center">
                 <div class="col text-center">
-                    <a class="text-muted" href="#">
+                    <a class="text-muted" href="{{ route('home') }}">
                         <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
                             width="125" height="100" alt="Tribune Travel">
                     </a>
@@ -96,15 +96,6 @@
                         </ul>
                     </address>
                 </div>
-                {{-- <div class="col text-center text-white">
-                    <label class="text-white">Subscribe</label>
-                    <div class="input-group mb-3 justify-content-center">
-                        <input type="text" class="form-control" placeholder="example@example.com"
-                            aria-label="Recipient's username" aria-describedby="button-addon2" style="max-width: 200px">
-                        <button class="btn btn-light" style="color: #243A85" type="button" id="button-addon2"><i
-                                class="bi bi-send"></i></button>
-                    </div>
-                </div> --}}
                 <div class="col text-center text-white">
                     <h3 class="text-white text-center" style="padding: 2px;">Social Media</h3>
                     <ul class="nav pb-2 mb-2 justify-content-center">
@@ -145,38 +136,6 @@
                             <i class="bi bi-diagram-3" style="font-size: 24px;"></i>
                         </h3>
                     </a>
-                    {{-- <ul class="nav justify-content-center flex-column ">
-                        <li class="nav-item">
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;"
-                                href="{{ route('category', ['news']) }}">
-                                <h3 class="text-white text-center fs-6 mb-2">News</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;"
-                                href="{{ route('category', ['things-to-do']) }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Things to do</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;"
-                                href="{{ route('category', ['blogs']) }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Blogs</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('guide') }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Guide</h3>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" style="padding: 2px;" href="{{ route('events') }}">
-                                <h3 class="text-white text-center fs-6 mb-2">Events</h3>
-                            </a>
-                        </li>
-                    </ul> --}}
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -214,15 +173,14 @@
                 <div class="col-12 mb-4">
                     <div class="row  g-1 justify-content-center text-center">
                         <div class="col-md-3 px-4">
-                            <a class="text-white" href="https://cps.media/aviso-de-privacidad"
-                                style="text-decoration: none;" target="_blank">
-                                Notice of Privacy
+                            <a class="text-white" href="{{ route('privacy') }}" style="text-decoration: none;">
+                                Privacy Notice
                             </a>
                         </div>
                         <div class="col-md-3 px-4">
                             <a class="text-white" href="https://cps.media/declaracion-de-accesibilidad"
                                 style="text-decoration: none;" target="_blank">
-                                Accessibility Policies
+                                Accessibility Notice
                             </a>
                         </div>
                         <div class="col-md-3 px-4">
