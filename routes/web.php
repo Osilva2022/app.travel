@@ -15,8 +15,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Redirect To Post
-Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
-// Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect2');
+Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
+Route::get('/los-cabos/justin-bieber-vacations-at-los-cabos/', function () {
+    return redirect()->route('postRedirect', 'justin-bieber-vacations-at-los-cabos');
+});
+Route::get('/los-cabos/los-cabos-hurricane-season/', function () {
+    return redirect()->route('postRedirect', 'los-cabos-hurricane-season');
+});
+Route::get('/los-cabos/turtle-nesting-season-starts-at-la-paz/', function () {
+    return redirect()->route('postRedirect', 'turtle-nesting-season-starts-at-la-paz');
+});
+Route::get('/los-cabos/los-cabos-useful-information/', function () {
+    return redirect()->route('postRedirect', 'los-cabos-useful-information');
+});
+Route::get('/los-cabos/balandra-beach-a-gem-in-the-baja/', function () {
+    return redirect()->route('postRedirect', 'balandra-beach-a-gem-in-the-baja');
+});
+Route::get('/sin-categoria/vallarta-tribune-to-become-tribune-travel/', function () {
+    return redirect()->route('postRedirect', 'vallarta-tribune-tribune-travel');
+});
+Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
+//Redirect To Post
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
 
@@ -36,8 +55,8 @@ Route::get('gallery', function () {
     return view('things_to_do.gallery', ['gallery' => '{gallery}']);
 });
 Route::get('get-posts-tags', [PostsController::class, 'PostsTags'])->name('get-posts-tags');
-Route::get('policy-cookies', [PostsController::class, 'cookies'])->name('cookies');
-Route::get('policy-privacy', [PostsController::class, 'privacy'])->name('privacy');
+Route::get('cookies-notice', [PostsController::class, 'cookies'])->name('cookies');
+Route::get('privacy-notice', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
 
 Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');

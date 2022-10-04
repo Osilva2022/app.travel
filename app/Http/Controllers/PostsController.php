@@ -948,8 +948,8 @@ class PostsController extends Controller
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
 
+    // dd($posts);
         // if (!isset($posts[0])) { //Fail and now send to home
-        //     // dd($posts);
         //     dd('No');
         // }
         // $post = $posts[0];
