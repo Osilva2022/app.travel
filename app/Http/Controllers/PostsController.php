@@ -948,7 +948,7 @@ class PostsController extends Controller
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
 
-    // dd($posts);
+        // dd($posts);
         // if (!isset($posts[0])) { //Fail and now send to home
         //     dd('No');
         // }
@@ -982,6 +982,13 @@ class PostsController extends Controller
                                         AND id_post = $post->id_post;");
         $category = $post->category_slug;
         $destino = $post->destination_slug;
+        $this->metadatos(
+            isset($post->meta_title) ? $post->meta_title : $post->title,
+            isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
+            isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
+            route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
+            route('post', [$post->destination_slug, $post->category_slug, $post->slug])
+        );
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
     }
