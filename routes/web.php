@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/vrpzfnjgypygxbvlh6ifjq ', function () {
+Route::get('/vrpzfnjgypygxbvlh6ifjq', function () {
     return redirect()->away('https://admin.tribune.travel/vrpzfnjgypygxbvlh6ifjq/');
 });
 //Redirect To Post
