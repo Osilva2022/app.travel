@@ -229,6 +229,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-inm-offices-now-take-card-payments</loc>
+        <lastmod>2022-10-06T15:19:52-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/tafer-hotels-resorts-keeps-betting-on-mexico</loc>
         <lastmod>2021-06-22T21:50:36-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -415,6 +421,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-hotel-occupancy-reached-46-in-september</loc>
+        <lastmod>2022-10-03T14:02:22-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/los-cabos-hurricane-season</loc>
         <lastmod>2022-05-31T17:46:38-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -459,6 +471,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/things-to-do/3-spots-to-discover-los-cabos</loc>
         <lastmod>2022-04-12T17:48:09-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/things-to-do/4-spots-to-live-cabo-san-lucas-nightlife</loc>
+        <lastmod>2022-10-06T18:02:40-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -871,6 +889,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/hurricane-orlene-passed-by-puerto-vallarta-with-no-damages</loc>
+        <lastmod>2022-10-03T16:24:10-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/letras-en-la-mar-is-back-in-town</loc>
         <lastmod>2021-11-09T17:37:56-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -913,6 +937,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pcr-testing-in-marina-vallarta-now</loc>
+        <lastmod>2021-08-25T09:58:59-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-has-6-nominations-for-the-travvy-awards-2022</loc>
         <lastmod>2022-08-08T18:49:36-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -945,6 +975,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/the-big-latch-on</loc>
         <lastmod>2021-08-04T19:54:38-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/third-edition-of-expo-proveedores-announced-in-puerto-vallarta</loc>
+        <lastmod>2022-10-06T14:53:19-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1035,6 +1071,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/reviews/lauren-jade-a-tribute-to-gladys-knight</loc>
         <lastmod>2021-12-10T17:03:10-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/reviews/live-a-true-mexican-tradition-at-tortas-y-pulques-teotihuacan</loc>
+        <lastmod>2022-10-04T17:41:08-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1203,6 +1245,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/enjoy-nature-activities</loc>
         <lastmod>2022-05-23T18:29:54-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/enjoy-street-art-in-puerto-vallarta</loc>
+        <lastmod>2022-10-03T17:15:39-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
