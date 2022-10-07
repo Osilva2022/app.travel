@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //Redirect To Post
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
 Route::get('/los-cabos/justin-bieber-vacations-at-los-cabos/', function () {
