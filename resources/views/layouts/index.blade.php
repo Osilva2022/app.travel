@@ -44,28 +44,29 @@ $mostrar = true;
                 googletag.defineSlot('/21855382314/tt-home-lb-1', [
                     [728, 90],
                     [320, 50]
-                ], 'div-gpt-ad-1620235812535-0').addService(googletag.pubads());
+                ], 'div-gpt-ad-1620235812535-0').addService(googletag.pubads()).setTargeting('Travel-Home', 'lazyload');
                 googletag.defineSlot('/21855382314/tt-home-lb-2', [
                     [728, 90],
                     [320, 50]
-                ], 'div-gpt-ad-1620235535381-0').addService(googletag.pubads());
+                ], 'div-gpt-ad-1620235535381-0').addService(googletag.pubads()).setTargeting('Travel-Home', 'lazyload');
                 googletag.defineSlot('/21855382314/tt-home-lb-3', [
                     [728, 90],
                     [320, 50]
-                ], 'div-gpt-ad-1620236451767-0').addService(googletag.pubads());
+                ], 'div-gpt-ad-1620236451767-0').addService(googletag.pubads()).setTargeting('Travel-Home', 'lazyload');
                 googletag.defineSlot('/21855382314/tt-home-lb-4', [
                     [320, 50],
                     [728, 90]
-                ], 'div-gpt-ad-1620236955324-0').addService(googletag.pubads());
+                ], 'div-gpt-ad-1620236955324-0').addService(googletag.pubads()).setTargeting('Travel-Home', 'lazyload');
                 googletag.defineSlot('/21855382314/tt-home-lb-5', [
                     [320, 50],
                     [728, 90]
-                ], 'div-gpt-ad-1620239881317-0').addService(googletag.pubads());
+                ], 'div-gpt-ad-1620239881317-0').addService(googletag.pubads()).setTargeting('Travel-Home', 'lazyload');
                 googletag.defineSlot('/21855382314/tt-home-lb-footer', [
                     [728, 90],
                     [320, 50]
-                ], 'div-gpt-ad-1620253311869-0').addService(googletag.pubads());
+                ], 'div-gpt-ad-1620253311869-0').addService(googletag.pubads()).setTargeting('Travel-Home', 'lazyload');
                 googletag.pubads().enableSingleRequest();
+                googletag.pubads().enableLazyLoad();
                 googletag.enableServices();
             });
         </script>
