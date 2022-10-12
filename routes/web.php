@@ -17,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 //Redirect To Post
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
+Route::get('/cancun-riviera-maya/enjoy-mexico-hidden-beaches/', function () {
+    return redirect()->route('postRedirect', 'enjoy-mexico-hidden-beaches');
+});
+Route::get('/columns/mexican-cuisine-changed-and-forgotten/', function () {
+    return redirect()->route('postRedirect', 'mexican-cuisine-changed-and-forgotten');
+});
+Route::get('/los-cabos/3-day-trips-from-cabo-san-lucas/', function () {
+    return redirect()->route('postRedirect', '3-day-trips-from-cabo-san-lucas');
+});
 Route::get('/los-cabos/justin-bieber-vacations-at-los-cabos/', function () {
     return redirect()->route('postRedirect', 'justin-bieber-vacations-at-los-cabos');
 });
