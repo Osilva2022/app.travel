@@ -490,6 +490,7 @@ class PostsController extends Controller
         $destination = '';
         if (isset($request->destination)) {
             $query = "AND destination_slug = '$request->destination'";
+            $destination = $request->destination;
         }
 
         $destinations_data = $this->returndata('destinations');
