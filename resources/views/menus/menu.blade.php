@@ -12,17 +12,23 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
             <ul class="navbar-nav mt-2 mt-md-0 ps-4 ps-md-0">
+                @php
+                $x = '';
+                if (isset($destination) && $destination != '') {
+                    $x = '?destination=' . $destination;
+                }
+                @endphp
                 @foreach ($categories_data as $cd)
                     <li class="nav-item">
                         <a class="nav-link text-white"
-                            href="{{ route('category', ["$cd->slug"]) }}">{{ $cd->name }}</a>
+                            href="{{ route('category', ["$cd->slug"]) }}{{ $x }}">{{ $cd->name }}</a>
                     </li>
                 @endforeach
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('guide') }}">Guide</a>
+                    <a class="nav-link text-white" href="{{ route('guide') }}{{ $x }}">Guide</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('events') }}">Events</a>
+                    <a class="nav-link text-white" href="{{ route('events') }}{{ $x }}">Events</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="destination-dropdown"
