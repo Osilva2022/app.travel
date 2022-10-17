@@ -408,8 +408,9 @@ class PostsController extends Controller
             route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
             route('post', [$post->destination_slug, $post->category_slug, $post->slug])
         );
+        $destination=$destino;
 
-        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags','destination'));
     }
 
     public function categories(Request $request, $category)

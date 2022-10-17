@@ -4,11 +4,11 @@
 <rss version="2.0">
     <channel>
         <title><![CDATA[ Tribune Travel ]]></title>
-        <link><![CDATA[ https://app.tribune.travel/feed ]]></link>
+        <link><![CDATA[ https://tribune.travel/feed ]]></link>
         <description><![CDATA[ Noticias e ideas de viaje de los principales destinos de Puerto Vallarta, Riviera Nayarit, Cancún, Riviera Maya y Los Cabos en México. Hoteles, restaurantes. ]]></description>
         <language>en</language>
         <pubDate>{{ now() }}</pubDate>
-  
+
         @foreach($posts as $post)
             <item>
                 <title><![CDATA[{{ $post->title }}]]></title>
