@@ -16,22 +16,22 @@ use Spatie\Sitemap\Tags\Url;
 class SitemapXmlController extends Controller
 {
     public function index() {
-      
+
         $posts = PostALL::all();
         // dd($posts);
         return response()->view('sitemap.map', [
             'posts' => $posts
         ])->header('Content-Type', 'text/xml');
-        
+
         SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
         SitemapGenerator::create(config('app.url'))->getSitemap()->writeToDisk('public', 'sitemap.xml');
 
-    } 
+    }
 
     public function feed()
     {
-        $posts = PostAll::all();             
-  
+        $posts = PostAll::all();
+
         return response()->view('sitemap.feed', [
             'posts' => $posts
         ])->header('Content-Type', 'text/xml');

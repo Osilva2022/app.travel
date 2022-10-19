@@ -75,9 +75,7 @@ Route::get('search', [PostsController::class, 'search'])->name('search');
 
 Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
-// Route::get('/feed', [SitemapXmlController::class, 'feed']);
-// Route::get('/rss', function () {
-//     return redirect('/feed');
-// });
-
-Route::feeds();
+Route::get('/feed', [SitemapXmlController::class, 'feed']);
+Route::get('/rss', function () {
+    return redirect('/feed');
+});
