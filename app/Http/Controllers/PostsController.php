@@ -479,7 +479,10 @@ class PostsController extends Controller
         );
         return view('destinations.index', compact('destinationposts', 'tag_data', 'destinations_data', 'categories_data', 'destination_data', 'review', 'destination'));
     }
-
+    public function destinations_feed($destination, Request $request)
+    {
+        dd("destination feed");
+    }
     /**
      * Funcion para mostrar los eventos proximos
      *
