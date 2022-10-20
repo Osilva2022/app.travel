@@ -20,6 +20,9 @@ Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect']
 Route::get('/cancun-riviera-maya/enjoy-mexico-hidden-beaches/', function () {
     return redirect()->route('postRedirect', 'enjoy-mexico-hidden-beaches');
 });
+Route::get('/cancun-riviera-maya/quintana-roo-governor-mara-lezama-introduces-her-cabinet/', function () {
+    return redirect()->route('postRedirect', 'quintana-roo-governor-mara-lezama-introduces-her-cabinet');
+});
 Route::get('/columns/mexican-cuisine-changed-and-forgotten/', function () {
     return redirect()->route('postRedirect', 'mexican-cuisine-changed-and-forgotten');
 });
@@ -79,3 +82,6 @@ Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return redirect('/feed');
 });
+
+
+Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
