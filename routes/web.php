@@ -17,8 +17,21 @@ use Illuminate\Support\Facades\Route;
 
 //Redirect To Post
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
+
+Route::get('/mexico/what-do-i-need-to-travel-to-mexico/', function () {
+    return redirect()->route('postRedirect', 'what-do-i-need-to-travel-to-mexico');
+});
 Route::get('/cancun-riviera-maya/enjoy-mexico-hidden-beaches/', function () {
     return redirect()->route('postRedirect', 'enjoy-mexico-hidden-beaches');
+});
+Route::get('/columns/mexican-street-vendors-whats-behind-your-purchase/', function () {
+    return redirect()->route('postRedirect', 'mexican-street-vendors-whats-behind-your-purchase');
+});
+Route::get('/mexico/history-of-mexican-hotel-industry/', function () {
+    return redirect()->route('postRedirect', 'history-of-mexican-hotel-industry');
+});
+Route::get('/los-cabos/experience-los-cabos-like-a-local/', function () {
+    return redirect()->route('postRedirect', 'experience-los-cabos-like-a-local');
 });
 Route::get('/cancun-riviera-maya/quintana-roo-governor-mara-lezama-introduces-her-cabinet/', function () {
     return redirect()->route('postRedirect', 'quintana-roo-governor-mara-lezama-introduces-her-cabinet');
