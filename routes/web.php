@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 //Redirect To Post
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
 
+Route::get('/cancun-riviera-maya/what-is-a-hydrotherapy-spa/', function () {
+    return redirect()->route('postRedirect', 'what-is-a-hydrotherapy-spa');
+});
 Route::get('/mexico/what-do-i-need-to-travel-to-mexico/', function () {
     return redirect()->route('postRedirect', 'what-do-i-need-to-travel-to-mexico');
 });
