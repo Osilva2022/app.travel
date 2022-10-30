@@ -343,6 +343,7 @@ class PostsController extends Controller
         );
         // $this->ApiWeather();
         $weather = $this->GetWeather();
+        // dd($weather);
 
 
 
@@ -859,6 +860,7 @@ class PostsController extends Controller
     {
         $data = [];
         $locations_weather = DB::select("SELECT * FROM travel_weather;");
+        // dd($locations_weather);
         foreach ($locations_weather as $weather) {
             $info = json_decode($weather->info);
             // date_default_timezone_set('Europe/Madrid');//Se pone esta zona horario, porque en esta nos la arroja la API
@@ -866,8 +868,8 @@ class PostsController extends Controller
                 date_default_timezone_set($weather->timezone);
                 $location_hour = date("Y-n-j G:00");
                 $api_hour = $w->date . ' ' . $w->hour_data;
-                //  dd($weather->timezone);
-                if ($api_hour == $location_hour) { //Obtener el clima de la hora actual
+                //  dd($location_hour);
+                if ($api_hour != $location_hour) { //Obtener el clima de la hora actual(Revisar este bug)
                     $n = $weather->slug;
                     $icon = $this->GetIconWeather($w->icon);
                     $i = [
