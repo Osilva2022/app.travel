@@ -14,7 +14,8 @@ use App\Models\TermRelationship;
 use App\Models\Attachment;
 use Attribute;
 use Illuminate\Contracts\View\View;
-use DB;
+// use DB;
+use \Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -413,6 +414,71 @@ class PostsController extends Controller
 
         return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags','destination'));
     }
+
+    public function postid($id)
+    {
+        // dd($id);
+        $posts = DB::select("SELECT
+                                    *
+                                FROM
+                                    travel_posts_all
+                                        LEFT JOIN
+                                    (SELECT
+                                            u.user_id, p.meta_value AS avatar, us.user_nicename
+                                        FROM
+                                            travel_users AS us
+                                            left join
+                                            travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
+                                            left join
+                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
+                                    ON travel_posts_all.author_id = q.user_id
+                                WHERE
+                                    id_post = $id
+                                ORDER BY post_date DESC;");
+        // $post = $posts[0];
+        $post = (isset($posts[0])) ? $posts[0] : abort(404);
+
+        $more_posts = DB::select("SELECT * FROM travel_posts_category
+                                    WHERE category_slug = '$post->category_slug'
+                                    AND id_post != $post->id_post
+                                        ORDER BY post_date DESC
+                                        LIMIT 3;");
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        // $this->metadatos($post, 'post');
+        $post_tags = DB::select("SELECT
+                                    tags.name, tags.slug, tags.description, tags.color
+                                FROM
+                                    travel_tags AS tags,
+                                    (SELECT
+                                        `t`.`slug` AS `tag_slug`, `tr`.`object_id` AS `id_post`
+                                    FROM
+                                        `travel_terms` `t`
+                                    JOIN `travel_term_taxonomy` `tt`
+                                    JOIN `travel_term_relationships` `tr`
+                                    WHERE
+                                        `t`.`term_id` = `tt`.`term_id`
+                                            AND `tt`.`taxonomy` = 'post_tag'
+                                            AND `tr`.`term_taxonomy_id` = `tt`.`term_taxonomy_id`) AS posts_tags
+                                WHERE
+                                    tags.slug = posts_tags.tag_slug
+                                        AND id_post = $post->id_post;");
+        // dd($post);
+        $this->metadatos(
+            isset($post->meta_title) ? $post->meta_title : $post->title,
+            isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
+            isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
+            route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
+            route('post', [$post->destination_slug, $post->category_slug, $post->slug])
+        );
+        $destination = $post->destination_slug;
+        $destino = $post->destination_slug;
+        $category = $post->category;
+        // dd($destination);
+
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags','destination'));
+    }
+
 
     public function categories(Request $request, $category)
     {

@@ -99,5 +99,6 @@ Route::get('/rss', function () {
     return redirect('/feed');
 });
 
+Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
 
 Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
