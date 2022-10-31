@@ -15,7 +15,7 @@
             <![CDATA[ Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico. ]]>
         </description>
         <language>en</language>
-        <pubDate>{{ now() }}</pubDate>
+        <pubDate>{{ date("D, d M Y H:i:s O", strtotime(now() )) }}</pubDate>
         <sy:updatePeriod>
             hourly </sy:updatePeriod>
         <sy:updateFrequency>
@@ -39,7 +39,7 @@
             <pubDate>{{ date("D, d M Y H:i:s O", strtotime($post->post_date)) }} </pubDate>
             <category><![CDATA[{{ $post->category }}]]></category>
             <author>{{$post->author_name}} </author>
-            <guid>{{ $post->post_id }}</guid>
+            <guid>{{ url('/').'/'.$post->id_post }}</guid>
             <description>
                 <![CDATA[{!! $post->content !!}]]>
             </description>
