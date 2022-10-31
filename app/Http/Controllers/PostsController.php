@@ -869,7 +869,7 @@ class PostsController extends Controller
                 $location_hour = date("Y-n-j G:00");
                 $api_hour = $w->date . ' ' . $w->hour_data;
                 //  dd($location_hour);
-                if ($api_hour != $location_hour) { //Obtener el clima de la hora actual(Revisar este bug)
+                if ($api_hour == $location_hour) { //Obtener el clima de la hora actual(Revisar este bug)
                     $n = $weather->slug;
                     $icon = $this->GetIconWeather($w->icon);
                     $i = [

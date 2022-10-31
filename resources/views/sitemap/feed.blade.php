@@ -34,7 +34,7 @@
             <title>
                 <![CDATA[{{ $post->title }}]]>
             </title>
-            <link>{{ $post->url }}</link>
+            <link>{!!url('/').'/'.$post->url !!}</link>
             <dc:creator><![CDATA[{{$post->author_name}} ]]></dc:creator>
             <pubDate>{{ $post->post_date }}</pubDate>
             <category><![CDATA[{{ $post->category }}]]></category>
