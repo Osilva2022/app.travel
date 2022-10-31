@@ -7,7 +7,7 @@
         <title>
             <![CDATA[ Tribune Travel ]]>
         </title>
-        <atom:link href="https://tribune.travel/feed/" rel="self" type="application/rss+xml" />
+        {{-- <atom:link href="https://tribune.travel/feed/" rel="self" type="application/rss+xml" /> --}}
         <link>
         <![CDATA[ https://tribune.travel ]]>
         </link>
@@ -31,15 +31,13 @@
 
         @foreach($posts as $post)
         <item>
-            <title>
-                <![CDATA[{{ $post->title }}]]>
-            </title>
+            <title>{{ $post->title }}</title>
             <link>{!!url('/').'/'.$post->url !!}</link>
             <dc:creator><![CDATA[{{$post->author_name}} ]]></dc:creator>
             <pubDate>{{ date("D, d M Y H:i:s O", strtotime($post->post_date)) }} </pubDate>
             <category><![CDATA[{{ $post->category }}]]></category>
-            <author>{{$post->author_name}} </author>
-            <guid>{{ url('/').'/'.$post->id_post }}</guid>
+            <author><![CDATA[{{$post->author_name}} ]]></author>
+            <guid isPermaLink="false">{{ url('/').'/'.$post->id_post }}</guid>
             <description>
                 <![CDATA[{!! $post->content !!}]]>
             </description>
