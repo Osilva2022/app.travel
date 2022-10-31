@@ -32,6 +32,7 @@ class SitemapXmlController extends Controller
     {
         $posts = PostAll::select('*')->orderBy('id_post','desc')->get();
         // dd($posts);
+        // dd(url('/'));
 
         return response()->view('sitemap.feed', [
             'posts' => $posts
