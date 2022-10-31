@@ -36,7 +36,7 @@
             </title>
             <link>{!!url('/').'/'.$post->url !!}</link>
             <dc:creator><![CDATA[{{$post->author_name}} ]]></dc:creator>
-            <pubDate>{{ $post->post_date }}</pubDate>
+            <pubDate>{{ date("D, d M Y H:i:s O", strtotime($post->post_date)) }} </pubDate>
             <category><![CDATA[{{ $post->category }}]]></category>
             <author>{{$post->author_name}} </author>
             <guid>{{ $post->post_id }}</guid>
