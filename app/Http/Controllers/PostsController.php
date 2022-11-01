@@ -42,10 +42,10 @@ use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
 use DateTime;
-
 use App\Models\Contact;
 use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Mail;
+use JsonLd\Context;
 
 
 
@@ -159,7 +159,7 @@ class PostsController extends Controller
         TwitterCard::setImage($image);
     }
 
-    /**
+     /**
      * Funcion para mostrar un previews de un post desde Wordpress
      *
      */
@@ -933,7 +933,13 @@ class PostsController extends Controller
             foreach ($info->hour_hour as $w) {
                 date_default_timezone_set($weather->timezone);
                 $location_hour = date("Y-n-j G:00");
+
                 $api_hour = $w->date . ' ' . $w->hour_data;
+                if ($weather->slug=='Vallarta') {
+                    $new_date = strtotime ( '-6 hour' , strtotime ( $w->hour_data ));
+                    $api_hour = date ( 'Y-n-j G:00' , $new_date );
+                    // dd($api_hour);
+                }
                 //  dd($location_hour);
                 if ($api_hour == $location_hour) { //Obtener el clima de la hora actual(Revisar este bug)
                     $n = $weather->slug;
