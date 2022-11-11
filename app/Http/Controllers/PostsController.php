@@ -159,7 +159,7 @@ class PostsController extends Controller
         TwitterCard::setImage($image);
     }
 
-     /**
+    /**
      * Funcion para mostrar un previews de un post desde Wordpress
      *
      */
@@ -338,7 +338,8 @@ class PostsController extends Controller
         $this->metadatos(
             config('constants.META_TITLE'),
             config('constants.META_DESCRIPTION'),
-            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/home-tt.png",
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
+            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/home-tt.png",
             config('constants.META_URL'),
             config('constants.META_URL')
         );
@@ -410,9 +411,9 @@ class PostsController extends Controller
             route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
             route('post', [$post->destination_slug, $post->category_slug, $post->slug])
         );
-        $destination=$destino;
+        $destination = $destino;
 
-        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags','destination'));
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination'));
     }
 
     public function postid($id)
@@ -476,7 +477,7 @@ class PostsController extends Controller
         $category = $post->category;
         // dd($destination);
 
-        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags','destination'));
+        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination'));
     }
 
 
@@ -510,6 +511,7 @@ class PostsController extends Controller
                 $img = "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/news-tt.png";
                 break;
         }
+        $img = 'https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png';
 
         $this->metadatos(
             $category_data[0]->meta_title,
@@ -572,7 +574,8 @@ class PostsController extends Controller
         $this->metadatos(
             'Events | Tribune Travel',
             "Calendar. Looking for what to do in Mexico's top beach destinations? We got you covered with the best events. Find out what to do and where to go here.",
-            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/events-tt.png",
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
+            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/events-tt.png",
             route('events'),
             route('events')
         );
@@ -637,7 +640,8 @@ class PostsController extends Controller
         $this->metadatos(
             'Guide | Tribune Travel',
             "Guide. There is always something new to discover. Learn about the best spots you can visit to dine, sip, pamper yourself and have the best of times.",
-            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/guide-tt.png",
+            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/guide-tt.png",
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
             route('guide'),
             route('guide')
         );
@@ -873,7 +877,8 @@ class PostsController extends Controller
         $this->metadatos(
             'Cookies Policy | Tribune Travel',
             "Cookies Policy",
-            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/policy-tt.png",
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
+            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/policy-tt.png",
             route('cookies'),
             route('cookies')
         );
@@ -887,7 +892,8 @@ class PostsController extends Controller
         $this->metadatos(
             'Privacy Policy | Tribune Travel',
             "Privacy Policy",
-            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/policy-tt.png",
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
+            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/policy-tt.png",
             route('privacy'),
             route('privacy')
         );
@@ -935,9 +941,9 @@ class PostsController extends Controller
                 $location_hour = date("Y-n-j G:00");
 
                 $api_hour = $w->date . ' ' . $w->hour_data;
-                if ($weather->slug=='Vallarta') {
-                    $new_date = strtotime ( '-6 hour' , strtotime ( $w->hour_data ));
-                    $api_hour = date ( 'Y-n-j G:00' , $new_date );
+                if ($weather->slug == 'Vallarta') {
+                    $new_date = strtotime('-6 hour', strtotime($w->hour_data));
+                    $api_hour = date('Y-n-j G:00', $new_date);
                     // dd($api_hour);
                 }
                 //  dd($location_hour);
