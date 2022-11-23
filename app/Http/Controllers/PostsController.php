@@ -308,7 +308,8 @@ class PostsController extends Controller
                                     td.destination_slug,
                                     td.post_title,
                                     td.label,
-                                    td.image_data
+                                    td.image_data,
+                                    td.image_alt
                                 FROM
                                     travel_guide td
                                     WHERE td.label = 22
