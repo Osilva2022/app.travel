@@ -216,7 +216,7 @@
                                     <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img {!! img_meta($data->image_data) !!} class="card-img">
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -242,7 +242,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario lazy">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario lazy">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -398,7 +398,7 @@
                                     <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img {!! img_meta($data->image_data) !!} class="card-img">
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -424,7 +424,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -484,7 +484,7 @@
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
                             <div class="row" style="max-width: 420px;">
-                                <img {!! img_meta($data->image_data, null, true) !!} class="img-event">
+                                <img {!! img_meta($data->image_data, $data->image_alt, true) !!} class="img-event">
                                 <div class="col-3 py-0 h-50">
                                     @php
                                         $date = strtotime($data->start_date);
@@ -540,7 +540,7 @@
                                     <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img {!! img_meta($data->image_data) !!} class="card-img">
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -566,7 +566,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
@@ -633,7 +633,7 @@
                                     <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
                                     <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img {!! img_meta($data->image_data) !!} class="card-img">
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
                                     <h3 class="card-title-overlay">
                                         {!! $data->title !!}
                                     </h3>
@@ -659,7 +659,7 @@
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
