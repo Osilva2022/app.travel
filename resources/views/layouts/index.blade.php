@@ -69,14 +69,16 @@
                                 {{ date('F j, Y') }}
                             </div>
                             <div class="col-auto text-white text-center d-none d-lg-block">
-                                <span class="mx-2" title="Base: MXN">
-                                    {!! $usd->country !!} : ${!! $usd->end_rate !!}
-                                </span>
-                                @foreach ($divisas_data as $divisa)
+                                <marquee behavior="" direction="right">
                                     <span class="mx-2" title="Base: MXN">
-                                        {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
+                                        {!! $usd->country !!} : ${!! $usd->end_rate !!}
                                     </span>
-                                @endforeach
+                                    @foreach ($divisas_data as $divisa)
+                                        <span class="mx-2" title="Base: MXN">
+                                            {!! $divisa->country !!} : ${!! $divisa->end_rate !!}
+                                        </span>
+                                    @endforeach
+                                </marquee>
                             </div>
                             <div class="btn-group col text-white text-center d-lg-none d-block">
                                 <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
