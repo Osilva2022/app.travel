@@ -87,6 +87,11 @@ div.post-cont img {
     height: auto !important;
     display: block;
 }
+div.post-cont iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+}
 
 .hero-image {
     background-color: #cccccc;

@@ -14,7 +14,7 @@
                         <span class="etiqueta-vip">
                             <i class="bi bi-award" style="font-size: 1.5rem; color:white;"></i></span>
                     @endif
-                    <img {!! img_meta($data->image_data) !!} class="card-img-estatica">
+                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-estatica">
                 </div>
                 @foreach ($gallery['gallery-' . $data->ID] as $img)
                     <div class="row">

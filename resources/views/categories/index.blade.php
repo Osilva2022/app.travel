@@ -3,7 +3,7 @@
     {!! $category_data[0]->name !!} |
 @endsection
 @php
-$mostrar = true;
+    $mostrar = true;
 @endphp
 @if ($mostrar)
     @push('ads')
@@ -84,7 +84,7 @@ $mostrar = true;
                                             </span>
                                             {{-- @endif --}}
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($firstpostcategory->image_data) !!}" class="img-category-principal">
+                                            <img {!! img_meta($firstpostcategory->image_data, $firstpostcategory->image_alt) !!}" class="img-category-principal">
                                         </a>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@ $mostrar = true;
                                                         style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
                                                 </a>
                                                 <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                    <img {!! img_meta($data->image_data) !!} class="card-img-secundario">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-12">
@@ -183,7 +183,7 @@ $mostrar = true;
                                         </a>
                                         <div class="card m-0 p-0 border-0">
                                             <a href="{{ url("$data->url") }}" title="Click to see more">
-                                                <img {!! img_meta($data->image_data) !!} class="img-category-principal">
+                                                <img {!! img_meta($data->image_data, $data->image_alt) !!} class="img-category-principal">
                                             </a>
                                         </div>
                                         <div class="card-body">
@@ -245,5 +245,4 @@ $mostrar = true;
         </div>
     </main>
     <script defer src="{{ asset('js/submenu.js') }}" version="1"></script>
-
 @endsection

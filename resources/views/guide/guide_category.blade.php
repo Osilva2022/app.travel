@@ -3,7 +3,7 @@
     Things to Do |
 @endsection
 @php
-$mostrar = true;
+    $mostrar = true;
 @endphp
 @if ($mostrar)
     @push('ads')
@@ -78,7 +78,7 @@ $mostrar = true;
                                         <a class="item-directory" data-id="{!! $data->ID !!}">
                                             <div class="ttd-slider-item">
                                                 <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                                <img {!! img_meta($data->image_data) !!} class="carousel-img">
+                                                <img {!! img_meta($data->image_data, $data->image_alt) !!} class="carousel-img">
                                                 <div class="container">
                                                     <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                         <h4>{{ $data->post_title }}</h4>
