@@ -45,7 +45,7 @@
                                         style="background:{{ $data->category_color }};">{!! $data->category !!}</span>
                                 </a>
                                 <a href="{{ url("$data->url") }}" class="text-decoration-none text-muted">
-                                    <img {!! img_meta($data->image_data) !!} class="card-img-especial">
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-especial">
                                     <div class="card-body">
                                         <h3 class="card-title">{!! $data->title !!}</h3>
                                         <p class="card-text">{!! $data->post_excerpt !!}</p>

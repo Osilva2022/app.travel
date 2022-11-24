@@ -3,7 +3,7 @@
     Guide |
 @endsection
 @php
-$mostrar = true;
+    $mostrar = true;
 @endphp
 @if ($mostrar)
     @push('ads')
@@ -113,7 +113,7 @@ $mostrar = true;
                                 <div class="position-relative zoom">
                                     <div class="opacity-effect"
                                         style="border-radius: 1rem; background:{!! $tc->category_color !!};"></div>
-                                    <img {!! img_meta($tc->image_data) !!} class="card-img-secundario">
+                                    <img {!! img_meta($tc->image_data, $tc->image_alt) !!} class="card-img-secundario">
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-title" style="color:{!! $tc->category_color !!};">

@@ -23,7 +23,7 @@
                         <div class="card-event">
                             <div class="row g-4">
                                 <div class="col-md-5 d-flex align-items-center">
-                                    <img {!! img_meta($event->image_data) !!} class="card-img-estatica" style="object-fit: contain;">
+                                    <img {!! img_meta($event->image_data, $event->image_alt) !!} class="card-img-estatica" style="object-fit: contain;">
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row g-4">
@@ -54,12 +54,12 @@
                                             $endDate = date('Ymd', strtotime($event->end_date));
                                             $endTime = date('His', strtotime($event->end_date));
                                             $allday = $event->all_day;
-
+                                            
                                             $dates = urldecode($startDate) . 'T' . urldecode($startTime) . '/' . urldecode($endDate) . 'T' . urldecode($endTime);
                                             if ($allday != null) {
                                                 $dates = urldecode($startDate) . '/' . urldecode($endDate);
                                             }
-
+                                            
                                         @endphp
                                         <div class="col-12 text-end">
                                             <a target="_blank" class="btn btn-outline-primary"
@@ -84,5 +84,4 @@
         </div>
     </main>
     <script src="{{ asset('js/submenu.js') }}" version="1"></script>
-
 @endsection

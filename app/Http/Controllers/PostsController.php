@@ -626,7 +626,7 @@ class PostsController extends Controller
 
         $things_categories = DB::select("SELECT * FROM (
                                             SELECT td.category_id,
-                                            dc.name, dc.slug, dc.color as category_color, td.location, dc.image_data, dc.description
+                                            dc.name, dc.slug, dc.color as category_color, td.location, dc.image_data,dc.image_alt, dc.description
                                             ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
                                             FROM travel_directory as td
                                             inner join travel_directory_category as dc on td.category_id = dc.term_id
