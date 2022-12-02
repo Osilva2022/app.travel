@@ -127,6 +127,23 @@
                         </h3>
                     </a>
                 </div>
+                <div class="col text-md-start text-white text-center">
+                    <a class="nav-link text-white" style="padding: 2px;"
+                        href="{{ asset('Media_Kit_Tribune_travel.pdf') }}" target="_blank">
+                        <span class="etiqueta-post"
+                            style="color:#fff; background: transparent; border: solid 2px #fff; font-size: 14px !important;">
+                            Read our MediaKit
+                        </span>
+                    </a>
+                </div>
+                {{-- <div class="col text-md-start text-white text-center">
+                    <a class="nav-link text-white" style="padding: 2px;" href="{{ route('sitemap') }}">
+                        <h3 class="text-white text-center mb-2">Sales <br>
+                            <img src="{{ asset('img/qrcode_localhost.png') }}" alt="Qr Code Sales" width="100px"
+                                height="100px">
+                        </h3>
+                    </a>
+                </div> --}}
             </div>
             <div class="row justify-content-center">
                 <div class="col-10  pb-2 mb-2">

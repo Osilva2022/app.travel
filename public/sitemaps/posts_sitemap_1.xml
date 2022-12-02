@@ -43,6 +43,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/blogs/hospiten-tells-us-about-memory-disorders-and-age</loc>
+        <lastmod>2022-11-24T15:53:49-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/blogs/how-to-be-a-real-hero-with-blood-donation</loc>
         <lastmod>2022-02-21T18:39:53-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -51,6 +57,12 @@
     <url>
         <loc>https://tribune.travel/cancun/blogs/how-traveling-helps-personal-development</loc>
         <lastmod>2021-12-08T17:29:27-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/blogs/important-phone-numbers-in-cancun</loc>
+        <lastmod>2022-10-21T18:17:54-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -81,12 +93,6 @@
     <url>
         <loc>https://tribune.travel/cancun/blogs/mexican-cuisine-changed-and-forgotten</loc>
         <lastmod>2022-07-19T17:59:34-05:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
-        <loc>https://tribune.travel/cancun/blogs/mexican-weddings-a-new-whole-experience</loc>
-        <lastmod>2022-04-27T18:07:59-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -193,6 +199,18 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/american-airlines-to-offer-new-nonstop-flights-to-cancun</loc>
+        <lastmod>2022-10-27T18:45:34-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/archaeological-corridor-in-quintana-roo-to-become-new-tourism-product</loc>
+        <lastmod>2022-10-21T13:34:30-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/cancun-has-its-best-month-ever</loc>
         <lastmod>2021-10-11T12:35:37-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -201,6 +219,42 @@
     <url>
         <loc>https://tribune.travel/cancun/news/cancun-music-week-to-have-first-edition-in-2022</loc>
         <lastmod>2022-03-30T18:44:57-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/cancun-receives-the-air-route-with-the-most-seats-from-the-u-s</loc>
+        <lastmod>2022-11-16T18:18:11-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/cancun-remains-the-favorite-destination-for-tourists-from-the-usa-and-canada</loc>
+        <lastmod>2022-10-28T17:21:00-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/cozumel-celebrates-first-arrival-of-carnival-celebration</loc>
+        <lastmod>2022-12-01T14:04:56-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/cozumel-recognized-as-best-cruise-destination-in-mexico</loc>
+        <lastmod>2022-11-10T12:04:18-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/cruise-passenger-who-fell-overboard-ship-heading-to-cozumel-rescued</loc>
+        <lastmod>2022-11-29T13:29:24-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/day-of-the-dead-brings-75-hotel-occupancy-to-the-mexican-caribbean</loc>
+        <lastmod>2022-11-01T18:08:24-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -241,8 +295,50 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/low-cost-airlines-willingto-operate-in-the-new-tulum-airport</loc>
+        <lastmod>2022-11-03T18:18:06-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/massive-holbox-fire-consumes-hotels-and-restaurant</loc>
+        <lastmod>2022-11-30T12:39:17-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/mexico-and-u-s-aviation-officials-will-discuss-category-1-classification</loc>
+        <lastmod>2022-10-26T22:07:02-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/more-than-two-dozen-direct-routes-scheduled-from-canada-to-cancun-this-winter</loc>
         <lastmod>2022-10-18T12:25:00-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/nearly-one-million-hatchlings-released-in-cancun-as-season-comes-to-an-end</loc>
+        <lastmod>2022-11-28T13:26:04-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/new-direct-flights-from-canada-and-us-to-cozumel-announced</loc>
+        <lastmod>2022-11-06T18:20:37-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/new-maya-buildings-discovered-in-the-yucatan-peninsula</loc>
+        <lastmod>2022-10-20T13:36:43-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/pink-flamingos-return-to-punta-sur-ecotourism-park-of-cozumel</loc>
+        <lastmod>2022-11-25T13:47:23-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -253,14 +349,56 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/ports-closed-in-south-as-entire-yucatan-peninsula-braces-for-heavy-rains</loc>
+        <lastmod>2022-11-02T18:32:33-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/possible-land-expropriation-for-the-maya-trains-southern-section</loc>
         <lastmod>2022-10-19T12:01:32-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-anticipates-over-400000-visitors-for-hanal-pixan-festival</loc>
+        <lastmod>2022-10-31T19:03:10-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-averages-53900-daily-visitors-during-november-period</loc>
+        <lastmod>2022-11-23T15:29:29-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-governor-mara-lezama-introduces-her-cabinet</loc>
+        <lastmod>2022-09-23T18:42:33-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/quintana-roo-inm-offices-now-take-card-payments</loc>
         <lastmod>2022-10-06T15:19:52-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-is-part-of-the-world-travel-market-in-london</loc>
+        <lastmod>2022-11-08T17:02:50-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-reaches-tourism-agreements-at-london-world-travel-market</loc>
+        <lastmod>2022-11-14T11:49:50-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/quintana-roo-to-receive-large-investment-for-archaeological-zones</loc>
+        <lastmod>2022-10-25T16:17:22-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -277,6 +415,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/sunwing-announces-return-of-direct-hamilton-to-cancun-flights</loc>
+        <lastmod>2022-11-22T12:09:31-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/tafer-hotels-resorts-keeps-betting-on-mexico</loc>
         <lastmod>2021-06-22T21:50:36-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -289,8 +433,32 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/turkish-airlines-increases-istanbul-flights-into-cancun-starting-november</loc>
+        <lastmod>2022-10-24T17:24:14-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/virgin-voyages-valiant-lady-comes-to-mahahual-for-first-time</loc>
+        <lastmod>2022-11-18T13:29:10-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/waldorf-astoria-cancun-hotel-opens-its-doors</loc>
+        <lastmod>2022-11-15T18:26:24-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/reviews/bir</loc>
         <lastmod>2021-04-17T23:31:48-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/things-to-do/3-land-activities-to-enjoy-in-cancun</loc>
+        <lastmod>2022-10-25T13:25:34-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -321,6 +489,18 @@
     <url>
         <loc>https://tribune.travel/cancun/things-to-do/playa-gaviota-azul-a-beauty</loc>
         <lastmod>2022-01-18T19:06:55-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/things-to-do/riviera-mayas-top-5-music-festivals-for-this-winter</loc>
+        <lastmod>2022-11-02T15:38:56-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/things-to-do/top-reasons-to-spend-winter-in-cancun</loc>
+        <lastmod>2022-11-04T18:14:21-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -367,6 +547,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/blogs/halloween-and-day-of-the-dead-two-festivities-intertwining-in-los-cabos</loc>
+        <lastmod>2022-10-28T18:46:43-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/blogs/here-are-some-cabo-san-lucas-faq</loc>
         <lastmod>2022-05-04T18:36:22-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -397,6 +583,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/blogs/important-phone-numbers-in-los-cabos</loc>
+        <lastmod>2022-10-21T15:09:30-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/blogs/inclusive-european-los-cabos-vacation</loc>
         <lastmod>2021-06-30T18:07:15-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -421,12 +613,6 @@
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://tribune.travel/los-cabos/blogs/origin-of-pan-de-muerto</loc>
-        <lastmod>2021-11-01T17:32:01-06:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
         <loc>https://tribune.travel/los-cabos/blogs/planning-your-wellness-vacations</loc>
         <lastmod>2021-12-07T17:34:03-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -435,6 +621,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/blogs/tamales-on-candlemas-day</loc>
         <lastmod>2022-02-02T17:58:59-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/blogs/taste-and-sip-the-flavors-of-mexico-in-los-cabos</loc>
+        <lastmod>2022-11-16T13:47:32-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -457,8 +649,44 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/blogs/what-is-internal-medicine-and-which-diseases-does-it-treat</loc>
+        <lastmod>2022-11-30T17:42:07-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/blogs/what-is-knee-arthroscopy-surgery</loc>
+        <lastmod>2022-11-23T17:35:22-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/blogs/where-does-pan-de-muerto-come-from</loc>
+        <lastmod>2022-11-01T13:21:01-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/139-restaurants-vie-for-the-culinary-awards-2022-in-los-cabos</loc>
         <lastmod>2022-10-07T13:49:57-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/88-cruise-ships-will-arrive-in-los-cabos-in-november-and-december</loc>
+        <lastmod>2022-11-02T18:17:52-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/baja-california-sur-has-the-highest-investment-recovery-in-mexico</loc>
+        <lastmod>2022-10-31T18:44:26-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/bisbees-increases-hotel-occupancy-in-los-cabos</loc>
+        <lastmod>2022-10-26T21:57:11-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -475,8 +703,38 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/economic-revenue-in-bcs-exceeded-24-billion-pesos-annually</loc>
+        <lastmod>2022-12-01T13:57:45-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/elite-triathletes-will-compete-in-the-ironman-70-3-in-los-cabos</loc>
+        <lastmod>2022-10-20T12:43:37-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/fiturca-using-budget-effectively</loc>
         <lastmod>2022-10-13T12:07:29-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/george-clooney-takes-a-break-in-los-cabos</loc>
+        <lastmod>2022-11-23T13:57:08-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/high-season-will-raiserestaurant-sales-by-80-in-los-cabos</loc>
+        <lastmod>2022-10-25T15:33:36-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/historic-over-2000-cruise-passengers-arrive-in-loreto</loc>
+        <lastmod>2022-11-28T13:19:39-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -487,14 +745,32 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/in-los-cabos-the-vip-summit-gathers-42-business-partners-from-15-countries</loc>
+        <lastmod>2022-11-16T17:29:15-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/indem-prepares-for-the-day-of-the-dead-sporting-and-cultural-celebration</loc>
         <lastmod>2022-10-17T12:59:03-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/ironman-generates-revenues-of-150-million-pesos-in-los-cabos</loc>
+        <lastmod>2022-11-08T16:48:53-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/justin-bieber-vacations-at-los-cabos</loc>
         <lastmod>2021-07-17T15:16:47-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-expects-to-close-2022-with-the-visit-of-3-3-million-tourists</loc>
+        <lastmod>2022-11-29T12:25:02-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -511,8 +787,50 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-promotes-itself-as-a-wellness-vacation-destination</loc>
+        <lastmod>2022-10-24T16:49:47-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-promotes-orderly-and-sustainable-tourism</loc>
+        <lastmod>2022-11-14T11:36:47-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/los-cabos-restaurant-receives-the-five-diamonds-award</loc>
         <lastmod>2022-10-14T12:34:39-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-stands-out-in-tourism-investments</loc>
+        <lastmod>2022-10-27T18:26:10-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-will-receive-1-million-domestic-visitors-in-2022</loc>
+        <lastmod>2022-10-28T16:27:56-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/meeting-tourism-returns-to-los-cabos</loc>
+        <lastmod>2022-10-21T11:42:55-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/restaurant-reservations-soar-by-80-on-thanksgiving</loc>
+        <lastmod>2022-11-25T13:37:10-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/revolutions-day-long-weekend-brings-80-occupancy-to-los-cabos</loc>
+        <lastmod>2022-11-22T12:00:50-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -523,8 +841,50 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/sport-fishing-tourists-spend-from-3000-to-7000-dollars-a-day</loc>
+        <lastmod>2022-11-03T18:07:53-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/surplus-resources-from-tourism-tax-will-go-to-social-works</loc>
+        <lastmod>2022-11-06T17:49:42-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/thanksgiving-day-in-los-cabos-will-see-an-83-occupancy-rate</loc>
+        <lastmod>2022-11-18T13:22:30-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/the-cheese-and-wine-festival-returns-to-los-cabos</loc>
         <lastmod>2022-03-07T20:54:26-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/the-eurojazz-festival-comes-to-baja-california-sur</loc>
+        <lastmod>2022-11-15T17:37:47-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/the-largest-catrina-in-baja-california-sur-is-in-los-cabos</loc>
+        <lastmod>2022-11-01T18:21:57-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/the-los-cabos-international-film-festival-begins-its-eleventh-edition</loc>
+        <lastmod>2022-11-10T11:55:50-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/tourinews-awards-2022-recognize-the-career-of-hospitens-dr-pedro-luis-cobiella</loc>
+        <lastmod>2022-11-26T12:56:50-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -583,6 +943,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/things-to-do/celebrate-halloween-and-day-of-the-dead-in-cabo-san-lucas</loc>
+        <lastmod>2022-10-31T17:43:02-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/things-to-do/cerro-del-vigia-cabo-san-lucas-as-you-have-never-seen-it</loc>
         <lastmod>2022-05-18T18:10:24-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -615,6 +981,18 @@
     <url>
         <loc>https://tribune.travel/los-cabos/things-to-do/reasons-to-travel-to-san-jose-del-cabo</loc>
         <lastmod>2022-10-12T18:42:39-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/things-to-do/rotary-club-of-los-cabos-invites-to-its-annual-toy-drive</loc>
+        <lastmod>2022-11-29T18:09:46-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/things-to-do/sailing-cabo-san-lucas-at-sunset</loc>
+        <lastmod>2022-11-11T18:16:37-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -661,6 +1039,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/things-to-do/what-to-do-in-todos-santos-mexico</loc>
+        <lastmod>2022-11-22T17:47:07-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/things-to-do/why-you-should-visit-los-cabos-in-summer</loc>
         <lastmod>2022-05-24T17:48:28-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -669,6 +1053,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/5-reasons-places-to-yoga</loc>
         <lastmod>2021-10-22T16:16:20-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/a-fake-news-network-blackmails-local-politicians-and-businesspeople</loc>
+        <lastmod>2022-11-30T14:22:36-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -691,6 +1081,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/breast-cancer-awareness-day-prevention-is-key-in-puerto-vallarta</loc>
+        <lastmod>2022-10-19T18:40:56-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/capirotada-yet-another-mexican-delicacy</loc>
         <lastmod>2022-04-14T17:58:38-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -698,7 +1094,7 @@
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/christmas-weather-in-puerto-vallarta</loc>
-        <lastmod>2021-12-13T17:15:58-06:00</lastmod>
+        <lastmod>2022-12-01T17:30:58-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -745,6 +1141,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/hospiten-helping-the-community</loc>
+        <lastmod>2022-10-27T17:38:18-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/how-i-met-wine</loc>
         <lastmod>2021-08-31T17:43:34-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -753,6 +1155,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/importance-of-massage</loc>
         <lastmod>2021-11-22T18:00:39-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/important-phone-numbers-in-puerto-vallarta-riviera-nayarit</loc>
+        <lastmod>2022-10-21T18:09:33-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -847,6 +1255,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/puerto-vallarta-is-the-ultimate-pet-friendly-destination</loc>
+        <lastmod>2022-11-17T18:17:40-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/puerto-vallarta-useful-information</loc>
         <lastmod>2022-07-11T18:00:22-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -873,6 +1287,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/tattoos-the-map-of-your-story</loc>
         <lastmod>2021-09-13T14:17:27-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/the-alebrijes-parade-returns-to-mexico-city</loc>
+        <lastmod>2022-10-20T18:47:10-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -925,6 +1345,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/25-dead-of-the-day-altars-are-set-up-at-the-city-hall</loc>
+        <lastmod>2022-10-31T18:11:45-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/26th-festival-gourmet-international-is-on</loc>
         <lastmod>2021-11-04T15:27:24-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -933,6 +1359,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/aquaadore-pv-spectacular-opening</loc>
         <lastmod>2022-04-09T13:54:05-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/art-market-bazaar-kicks-off-this-thursday-in-marina-vallarta</loc>
+        <lastmod>2022-10-26T21:41:09-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -967,6 +1399,24 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/day-of-the-dead-celebrations-kick-off-in-puerto-valllarta</loc>
+        <lastmod>2022-10-28T17:45:47-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/double-arrival-leaves-almost-19-million-pesos-in-revenue-for-vallarta</loc>
+        <lastmod>2022-11-09T17:07:40-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/eagles-wings-hands-in-4-mp-donations</loc>
+        <lastmod>2022-11-01T17:01:14-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/flyers-to-us-will-no-longer-have-to-test-for-covid-19</loc>
         <lastmod>2022-06-10T12:38:16-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -993,6 +1443,18 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/hurricane-orlene-passed-by-puerto-vallarta-with-no-damages</loc>
         <lastmod>2022-10-03T16:24:10-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/in-just-two-days-cruise-ships-bring-about-40-million-pesos-to-vallarta</loc>
+        <lastmod>2022-11-16T18:02:51-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/international-gourmet-festival-an-excellent-promotion-for-puerto-vallarta</loc>
+        <lastmod>2022-11-03T17:53:50-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1045,6 +1507,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pacific-games-increases-hotel-occupancy-in-vallarta</loc>
+        <lastmod>2022-11-22T11:42:05-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/pastries-a-vital-element-of-the-restaurant-menu</loc>
         <lastmod>2022-10-14T13:22:12-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1057,8 +1525,44 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pilgrimages-program-of-the-day</loc>
+        <lastmod>2022-12-02T11:53:52-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-airport-looking-for-category-3-in-carbon-footprint-accreditation</loc>
+        <lastmod>2022-10-21T13:19:57-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-airport-makes-progress-in-reducing-carbon-footprint</loc>
+        <lastmod>2022-11-25T13:12:27-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-airport-surpasses-4-5-million-passengers</loc>
         <lastmod>2022-10-17T12:24:16-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-and-bahia-de-banderas-brace-for-roslyn</loc>
+        <lastmod>2022-10-22T15:41:10-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-expects-80-occupancy-during-high-season</loc>
+        <lastmod>2022-11-08T16:24:51-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-expects-high-occupancy-for-long-weekend</loc>
+        <lastmod>2022-11-18T13:12:07-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1069,8 +1573,26 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-reached-95-hotel-occupancy-over-long-weekend</loc>
+        <lastmod>2022-11-23T13:48:19-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-receives-new-flight-from-edmonton-canada</loc>
+        <lastmod>2022-11-02T17:17:44-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-to-host-the-al-calor-del-mariachi-festival-in-2023</loc>
         <lastmod>2022-09-30T16:27:03-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-wins-five-travvy-awards</loc>
+        <lastmod>2022-11-06T17:19:25-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1099,6 +1621,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/the-atlantis-cruise-ship-arrives-in-vallarta-with-over-2000-lgbt-travelers</loc>
+        <lastmod>2022-10-24T14:11:19-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/the-big-latch-on</loc>
         <lastmod>2021-08-04T19:54:38-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1107,6 +1635,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/the-meetings-and-conventions-sector-is-overwhelmed-by-the-success-of-the-year</loc>
         <lastmod>2022-10-19T12:43:32-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/the-worlds-tallest-catrina-to-be-installed-on-the-puerto-vallarta-malecon</loc>
+        <lastmod>2022-10-20T13:20:50-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1135,8 +1669,38 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/tierraluna-gardens-hosted-the-festival-gourmet-international-opening-night</loc>
+        <lastmod>2022-11-12T13:47:04-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/top-lgbtq-destinations</loc>
         <lastmod>2021-09-27T17:36:58-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/triple-arrival-of-cruise-ships-brings-14-million-pesos-to-vallarta</loc>
+        <lastmod>2022-11-15T16:59:05-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/vallarta-international-convention-center-to-outfit-redi-in-november</loc>
+        <lastmod>2022-10-27T18:04:34-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/vallarta-marked-the-beginning-of-the-pilgrimages-to-the-virgin-of-guadalupe</loc>
+        <lastmod>2022-12-01T13:21:17-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/vallarta-received-cyclists-in-the-fire-rider-competition</loc>
+        <lastmod>2022-11-29T11:57:47-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1147,8 +1711,32 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/vallarta-will-cohost-the-gay-games-guadalajara-2023</loc>
+        <lastmod>2022-11-28T12:58:32-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/world-tourism-day-was-good-for-puerto-vallarta</loc>
         <lastmod>2022-09-28T18:54:41-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/reviews/a-visit-to-makal-during-the-festival-gourmet-international</loc>
+        <lastmod>2022-11-13T16:04:17-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/reviews/act-2-pv-presented-its-2022-2023-season-to-great-success</loc>
+        <lastmod>2022-11-10T16:45:02-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/reviews/ascencio-tacos-as-you-havent-seen-them-before</loc>
+        <lastmod>2022-10-26T14:29:59-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1327,6 +1915,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/a-morning-stroll-to-see-the-puerto-vallarta-catrina</loc>
+        <lastmod>2022-10-30T17:20:18-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/a-sea-giant-the-marina-whale</loc>
         <lastmod>2022-04-16T12:53:14-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1347,6 +1941,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/best-taco-spots-in-puerto-vallarta</loc>
         <lastmod>2022-04-06T17:48:55-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/celebrate-thanksgiving-in-puerto-vallarta</loc>
+        <lastmod>2022-11-07T17:23:22-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1389,6 +1989,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/enjoy-street-art-in-puerto-vallarta</loc>
         <lastmod>2022-10-03T17:15:39-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/festivities-of-virgin-of-guadalupe-in-puerto-vallarta</loc>
+        <lastmod>2022-11-25T17:30:14-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1460,7 +2066,7 @@
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/puerto-vallarta-art-walk</loc>
-        <lastmod>2022-04-13T12:40:17-05:00</lastmod>
+        <lastmod>2022-11-03T16:47:17-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1569,6 +2175,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/zapata-market-for-all</loc>
         <lastmod>2021-09-22T17:23:38-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/riviera-nayarit/blogs/5-questions-about-nuevo-vallarta</loc>
+        <lastmod>2022-11-14T18:21:07-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1741,6 +2353,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/riviera-nayarit/news/firefighters-without-borders-offers-training-in-vallarta-nayarit</loc>
+        <lastmod>2022-11-30T12:24:59-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/riviera-nayarit/news/la-chaine-des-rotisseurs-la-casona-restaurant</loc>
         <lastmod>2022-06-21T17:57:59-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1755,6 +2373,12 @@
     <url>
         <loc>https://tribune.travel/riviera-nayarit/news/nuevo-vallarta-will-become-nuevo-nayarit</loc>
         <lastmod>2022-06-22T17:01:11-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/riviera-nayarit/news/riviera-nayarit-restaurateurs-kick-off-the-high-season-on-thanksgiving-day</loc>
+        <lastmod>2022-10-25T16:02:13-05:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
