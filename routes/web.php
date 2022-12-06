@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
 Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
 Route::get('/columns/{slug}/', [PostsController::class, 'postRedirect'])->name('columnsRedirect');
-Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('loscabosRedirect');
+// Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('loscabosRedirect');
 Route::get('/mexico/{slug}/', [PostsController::class, 'postRedirect'])->name('mexicoRedirect');
-Route::get('/riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('rivieraRedirect');
+// Route::get('/riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('rivieraRedirect');
 Route::get('/world/{slug}/', [PostsController::class, 'postRedirect'])->name('worlsRedirect');
 Route::get('/puerto-vallarta-riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartarivieraRedirect');
 
