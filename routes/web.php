@@ -96,7 +96,7 @@ Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
-    return redirect('/feed');
+    return redirect('/feed',301);
 });
 
 Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
