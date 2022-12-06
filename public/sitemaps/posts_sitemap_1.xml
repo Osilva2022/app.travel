@@ -217,6 +217,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/cancun-international-airport-sets-new-single-day-operations-record</loc>
+        <lastmod>2022-12-05T13:50:28-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/cancun-music-week-to-have-first-edition-in-2022</loc>
         <lastmod>2022-03-30T18:44:57-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -699,6 +705,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/news/cuauhtemoc-school-sailboat-is-at-la-paz</loc>
         <lastmod>2021-07-26T14:02:11-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/economic-recovery-has-been-thanks-to-los-cabos-businessmen-coparmex</loc>
+        <lastmod>2022-12-05T13:35:22-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1351,6 +1363,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/26024</loc>
+        <lastmod>2022-12-05T08:16:49-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/26th-festival-gourmet-international-is-on</loc>
         <lastmod>2021-11-04T15:27:24-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1525,6 +1543,18 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pilgrimage-program-for-sunday-december-4</loc>
+        <lastmod>2022-12-04T08:14:19-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pilgrimage-program-of-saturday-december-3</loc>
+        <lastmod>2022-12-03T08:13:33-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/pilgrimages-program-of-the-day</loc>
         <lastmod>2022-12-02T11:53:52-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1551,6 +1581,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-and-bahia-de-banderas-brace-for-roslyn</loc>
         <lastmod>2022-10-22T15:41:10-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/puerto-vallarta-attracted-13-more-travelers-in-2022</loc>
+        <lastmod>2022-12-05T12:42:55-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
