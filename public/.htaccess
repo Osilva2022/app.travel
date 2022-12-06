@@ -46,13 +46,4 @@
         Header append Cache-Control "public"
     </IfModule>
 </FilesMatch>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> ff58bbdc83466132120f1fc6d041b76d4511bdb4
-=======
-
->>>>>>> d161b74d9dfc445947b8fcbe1536f6ac20352dcd
