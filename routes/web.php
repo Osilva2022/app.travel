@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SitemapXmlController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +97,8 @@ Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
-    return redirect('/feed',301);
+    return Redirect::to('/feed', 301);
+
 });
 
 Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
