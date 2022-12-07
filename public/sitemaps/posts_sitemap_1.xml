@@ -343,6 +343,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/over-16-6-million-international-air-travelers-arrive-in-mexico-in-first-10-months</loc>
+        <lastmod>2022-12-06T13:40:28-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/pink-flamingos-return-to-punta-sur-ecotourism-park-of-cozumel</loc>
         <lastmod>2022-11-25T13:47:23-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -417,6 +423,12 @@
     <url>
         <loc>https://tribune.travel/cancun/news/rock-walls-and-bicycle-routes-are-part-of-the-advancements-in-tulums-jaguar-national-park</loc>
         <lastmod>2022-10-17T13:10:14-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/royalton-to-open-a-new-hotel-in-the-riviera-maya</loc>
+        <lastmod>2022-12-07T14:40:00-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -673,6 +685,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/100k-cruise-passengers-will-bring-100-mp-in-revenue-in-december</loc>
+        <lastmod>2022-12-07T14:58:30-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/139-restaurants-vie-for-the-culinary-awards-2022-in-los-cabos</loc>
         <lastmod>2022-10-07T13:49:57-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -831,6 +849,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/news/meeting-tourism-returns-to-los-cabos</loc>
         <lastmod>2022-10-21T11:42:55-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/plaza-antonio-mijares-in-los-cabos-is-magically-lit-for-christmas</loc>
+        <lastmod>2022-12-06T13:23:35-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1549,6 +1573,18 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pilgrimage-program-for-tuesday-december-6</loc>
+        <lastmod>2022-12-06T11:17:18-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/pilgrimage-program-for-wednesday-december-7</loc>
+        <lastmod>2022-12-07T13:33:29-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/pilgrimage-program-of-saturday-december-3</loc>
         <lastmod>2022-12-03T08:13:33-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1749,6 +1785,18 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/vallarta-will-cohost-the-gay-games-guadalajara-2023</loc>
         <lastmod>2022-11-28T12:58:32-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/whale-watching-season-gets-underway-in-banderas-bay</loc>
+        <lastmod>2022-12-06T13:06:45-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/workers-from-grupo-tafer-and-villa-group-visit-the-virgin-of-guadalupe</loc>
+        <lastmod>2022-12-07T14:27:58-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1995,6 +2043,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/things-to-do/colomitos-the-enchanting-cove</loc>
         <lastmod>2022-04-15T12:48:07-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/things-to-do/do-not-miss-a-posada-navidena</loc>
+        <lastmod>2022-12-06T16:21:31-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
