@@ -730,8 +730,10 @@ class PostsController extends Controller
         }
         $gallery = $this->get_img_gallery($id_location, $id_category);
         $guide_tags = $this->GetTagsPosts($things);
+        // dd($destination_data[0]->name);
+        $metatitle=$destination_data[0]->name;
         $this->metadatos(
-            isset($things_category[0]->meta_title) ? $things_category[0]->meta_title : config('constants.META_TITLE'),
+            isset($things_category[0]->meta_title) ? $things_category[0]->name.' in '.$destination_data[0]->name : config('constants.META_TITLE'),
             isset($things_category[0]->meta_description) ? $things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
             isset($things_category[0]->image) ? images($things_category[0]->image) : config('constants.DEFAULT_IMAGE'),
             route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug]),
