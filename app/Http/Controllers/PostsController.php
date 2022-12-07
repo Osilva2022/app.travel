@@ -920,8 +920,9 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         // dd("SELECT * FROM travel_tags WHERE slug = '$tag'");
+        // dd($tag_data[0]);
         $this->metadatos(
-            isset($tag_data[0]->meta_title) ? $tag_data[0]->meta_title : config('constants.META_TITLE'),
+            isset($tag_data[0]->name) ? 'Tribune Travel | '.str_replace('&amp;', '&', $tag_data[0]->name) : config('constants.META_TITLE'),
             isset($tag_data[0]->meta_description) ? $tag_data[0]->meta_description : config('constants.META_DESCRIPTION'),
             config('constants.DEFAULT_IMAGE'),
             route('tags', $tag_data[0]->slug),
