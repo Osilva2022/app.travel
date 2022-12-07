@@ -606,10 +606,10 @@ class PostsController extends Controller
      */
     public function author($author_id)
     {
-        dd($author_id);
+        // dd($author_id);
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");
         $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
-        dd($posts_info);
+        // dd($posts_info);
         $author = $author_info[0];
         $no_posts = count($posts_info);
         $posts = $this->paginate($posts_info, 6)->onEachSide(0);
@@ -937,7 +937,7 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         // dd("SELECT * FROM travel_tags WHERE slug = '$tag'");
-        dd($tag_data[0]);
+        // dd($tag_data[0]);
         $this->metadatos(
             isset($tag_data[0]->name) ? 'Tribune Travel | '.str_replace('&amp;', '&', $tag_data[0]->name) : config('constants.META_TITLE'),
             isset($tag_data[0]->meta_description) ? $tag_data[0]->meta_description : config('constants.META_DESCRIPTION'),
