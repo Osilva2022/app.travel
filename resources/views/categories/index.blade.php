@@ -64,7 +64,7 @@
                 </div>
             @endif
             <div class="row g-4">
-                <h2>Tribune {{ $category_data[0]->name }}</h2>
+                <h1>Tribune {{ $category_data[0]->name }}</h1>
                 @isset($firstpostcategory)
                     <div class="col-12">
                         <div class="card card-principal-post">
