@@ -39,7 +39,7 @@ return [
             'title'       => false, // set false to total remove
             'description' => false, // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => 'articles',
+            'type'        => 'website',
             'site_name'   => config('app.name'),
             'images'      => [],
         ],

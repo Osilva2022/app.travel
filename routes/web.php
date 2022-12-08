@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
 Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
 Route::get('/columns/{slug}/', [PostsController::class, 'postRedirect'])->name('columnsRedirect');
-// Route::get('/los-cabos/{slug}/', [PostsController::class, 'postRedirect'])->name('loscabosRedirect');
 Route::get('/mexico/{slug}/', [PostsController::class, 'postRedirect'])->name('mexicoRedirect');
-// Route::get('/riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('rivieraRedirect');
 Route::get('/world/{slug}/', [PostsController::class, 'postRedirect'])->name('worlsRedirect');
 Route::get('/puerto-vallarta-riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartarivieraRedirect');
 
@@ -71,17 +69,16 @@ Route::get('/los-cabos/balandra-beach-a-gem-in-the-baja/', function () {
 Route::get('/sin-categoria/vallarta-tribune-to-become-tribune-travel/', function () {
     return redirect()->route('postRedirect', 'vallarta-tribune-tribune-travel');
 });
+Route::get('/los-cabos/3-spots-to-discover-los-cabos/', function () {
+    return redirect()->route('postRedirect', '3-spots-to-discover-los-cabo');
+});
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
 //Redirect To Post
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
-
-
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
 Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
-
 Route::get('category/{category}', [PostsController::class, 'categories'])->name('category');
-
 Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
 Route::get('directory-item', [PostsController::class, 'ShowGuideItem'])->name('directory-item');
@@ -95,11 +92,9 @@ Route::get('get-posts-tags', [PostsController::class, 'PostsTags'])->name('get-p
 Route::get('cookies-notice', [PostsController::class, 'cookies'])->name('cookies');
 Route::get('privacy-notice', [PostsController::class, 'privacy'])->name('privacy');
 Route::get('sitemap', [PostsController::class, 'sitemap'])->name('sitemap');
-
 Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
 Route::post('/save-contact', [PostsController::class, 'storeContact'])->name('save-contact');
 Route::get('search', [PostsController::class, 'search'])->name('search');
-
 Route::resource('files', 'FileController');
 Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
@@ -107,7 +102,5 @@ Route::get('/rss', function () {
     return Redirect::to('/feed', 301);
 
 });
-
 Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
-
 Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');

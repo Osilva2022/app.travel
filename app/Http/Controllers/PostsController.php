@@ -150,13 +150,29 @@ class PostsController extends Controller
      */
     function metadatos($title, $description, $image, $url, $url_canonical)
     {
+        // SEOTools::setTitle($title);
+        // SEOTools::setDescription($description);
+        // SEOTools::opengraph()->setUrl($url);
+        // SEOTools::setCanonical($url_canonical);
+        // SEOTools::jsonLd()->addImage($image);
+        // OpenGraph::addImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+        // TwitterCard::setImage($image);
+
         SEOTools::setTitle($title);
         SEOTools::setDescription($description);
-        SEOTools::opengraph()->setUrl($url);
         SEOTools::setCanonical($url_canonical);
-        SEOTools::jsonLd()->addImage($image);
-        OpenGraph::addImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-        TwitterCard::setImage($image);
+
+        SEOTools::opengraph()->setTitle($title);
+        SEOTools::opengraph()->setUrl($url);
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+
+        SEOTools::twitter()->setTitle($title);
+        SEOTools::twitter()->setSite('@CpsNoticias');
+        SEOTools::twitter()->setUrl($url);
+        SEOTools::twitter()->setImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+
+
     }
 
     /**
@@ -590,6 +606,7 @@ class PostsController extends Controller
      */
     public function author($author_id)
     {
+        // dd($author_id);
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");
         // dd($author_info);
         if (!isset($author_info[0])) {
@@ -745,8 +762,8 @@ class PostsController extends Controller
         // dd($destination_data[0]->name);
         $metatitle = $destination_data[0]->name;
         $this->metadatos(
-            isset($things_category[0]->meta_title) ? $things_category[0]->name . ' in ' . $destination_data[0]->name : config('constants.META_TITLE'),
-            isset($things_category[0]->meta_description) ? $things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
+            isset($things_category[0]->meta_title) ? $things_category[0]->name.' in '.$destination_data[0]->name : config('constants.META_TITLE'),
+            isset($things_category[0]->meta_description) ? $things_category[0]->name.' in '.$destination_data[0]->name.' '.$things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
             isset($things_category[0]->image) ? images($things_category[0]->image) : config('constants.DEFAULT_IMAGE'),
             route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug]),
             route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug])
