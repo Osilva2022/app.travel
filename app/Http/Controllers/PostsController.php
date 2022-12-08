@@ -613,15 +613,15 @@ class PostsController extends Controller
             // return abort(404);
             return redirect()->route('home');
         }
-        $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
-        // $posts_info = DB::select("SELECT 
-        //                                 pd.*
-        //                             FROM
-        //                                 travel_posts_destination AS pd
-        //                                     JOIN
-        //                                 travel_users_info as ui ON ui.ID = pd.author_id
-        //                                 WHERE ui.user_nicename = '$author_id'
-        //                             ORDER BY post_date DESC;");
+        // $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
+        $posts_info = DB::select("SELECT 
+                                        pd.*
+                                    FROM
+                                        travel_posts_destination AS pd
+                                            JOIN
+                                        travel_users_info as ui ON ui.ID = pd.author_id
+                                        WHERE ui.user_nicename = '$author_id'
+                                    ORDER BY post_date DESC;");
         $author = $author_info[0];
         $no_posts = count($posts_info);
         $posts = $this->paginate($posts_info, 6)->onEachSide(0);
