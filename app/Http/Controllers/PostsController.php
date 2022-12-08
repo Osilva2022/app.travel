@@ -608,8 +608,20 @@ class PostsController extends Controller
     {
         // dd($author_id);
         $author_info = DB::select("SELECT * FROM travel_users_info WHERE user_nicename = '$author_id';");
-        $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
-        // dd($posts_info);
+        // dd($author_info);
+        if (!isset($author_info[0])) {
+            // return abort(404);
+            return redirect()->route('home');
+        }
+        // $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
+        $posts_info = DB::select("SELECT 
+                                        pd.*
+                                    FROM
+                                        travel_posts_destination AS pd
+                                            JOIN
+                                        travel_users_info as ui ON ui.ID = pd.author_id
+                                        WHERE ui.user_nicename = '$author_id'
+                                    ORDER BY post_date DESC;");
         $author = $author_info[0];
         $no_posts = count($posts_info);
         $posts = $this->paginate($posts_info, 6)->onEachSide(0);
@@ -748,7 +760,7 @@ class PostsController extends Controller
         $gallery = $this->get_img_gallery($id_location, $id_category);
         $guide_tags = $this->GetTagsPosts($things);
         // dd($destination_data[0]->name);
-        $metatitle=$destination_data[0]->name;
+        $metatitle = $destination_data[0]->name;
         $this->metadatos(
             isset($things_category[0]->meta_title) ? $things_category[0]->name.' in '.$destination_data[0]->name : config('constants.META_TITLE'),
             isset($things_category[0]->meta_description) ? $things_category[0]->name.' in '.$destination_data[0]->name.' '.$things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
@@ -939,7 +951,7 @@ class PostsController extends Controller
         // dd("SELECT * FROM travel_tags WHERE slug = '$tag'");
         // dd($tag_data[0]);
         $this->metadatos(
-            isset($tag_data[0]->name) ? 'Tribune Travel | '.str_replace('&amp;', '&', $tag_data[0]->name) : config('constants.META_TITLE'),
+            isset($tag_data[0]->name) ? 'Tribune Travel | ' . str_replace('&amp;', '&', $tag_data[0]->name) : config('constants.META_TITLE'),
             isset($tag_data[0]->meta_description) ? $tag_data[0]->meta_description : config('constants.META_DESCRIPTION'),
             config('constants.DEFAULT_IMAGE'),
             route('tags', $tag_data[0]->slug),
