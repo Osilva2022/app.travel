@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 //Redirect To Post
@@ -189,7 +185,7 @@ Route::get('/cancun-riviera-maya/whats-in-a-cancun-name/', function () {
     return redirect()->route('postRedirect', 'whats-in-a-cancun-name');
 });
 Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
-    return redirect()->route('postRedirect', 'sea-turtle-seaso');
+    return redirect()->route('home');
 });
 Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
     return redirect()->route('home');
