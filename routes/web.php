@@ -22,7 +22,7 @@ Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirec
 Route::get('/columns/{slug}/', [PostsController::class, 'postRedirect'])->name('columnsRedirect');
 Route::get('/mexico/{slug}/', [PostsController::class, 'postRedirect'])->name('mexicoRedirect');
 Route::get('/world/{slug}/', [PostsController::class, 'postRedirect'])->name('worlsRedirect');
-Route::get('/puerto-vallarta-riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartarivieraRedirect');
+// Route::get('/puerto-vallarta-riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartarivieraRedirect');
 
 Route::get('/cancun-riviera-maya/what-is-a-hydrotherapy-spa/', function () {
     return redirect()->route('postRedirect', 'what-is-a-hydrotherapy-spa');
@@ -78,6 +78,12 @@ Route::get('/los-cabos/how-to-get-to-cabo-san-lucas/', function () {
 Route::get('/cancun-riviera-maya', function () {
     return redirect()->route('home', 301);
 });
+Route::get('/mexico', function () {
+    return redirect()->route('home', 301);
+});
+Route::get('/privacy-policy', function () {
+    return redirect()->route('home', 301);
+});
 Route::get('/los-cabos/3-spots-to-discover-los-cabos/', function () {
     return redirect()->route('home');
 });
@@ -131,6 +137,102 @@ Route::get('/los-cabos/what-is-the-deep-tissue-massage/', function () {
 });
 Route::get('/los-cabos/why-you-should-visit-los-cabos-in-summer/', function () {
     return redirect()->route('postRedirect', 'why-you-should-visit-los-cabos-in-summer');
+});
+
+// nuevas rutas
+Route::get('/cancun-riviera-maya/babies-and-kids-skincare/', function () {
+    return redirect()->route('postRedirect', 'babies-and-kids-skincare');
+});
+Route::get('/cancun-riviera-maya/be-hot-with-coffee-spa-treatments/', function () {
+    return redirect()->route('postRedirect', 'be-hot-with-coffee-spa-treatments');
+});
+Route::get('/cancun-riviera-maya/body-stretching-for-your-wellness/', function () {
+    return redirect()->route('postRedirect', 'body-stretching-for-your-wellness');
+});
+Route::get('/cancun-riviera-maya/body-stretching-for-your-wellness/', function () {
+    return redirect()->route('postRedirect', 'body-stretching-for-your-wellness');
+});
+Route::get('/cancun-riviera-maya/drinking-original-margarita/', function () {
+    return redirect()->route('postRedirect', 'drinking-original-margarita');
+});
+Route::get('/cancun-riviera-maya/emotional-tourism-traveling/', function () {
+    return redirect()->route('postRedirect', 'emotional-tourism-traveling');
+});
+Route::get('/cancun-riviera-maya/enjoy-the-health-benefits-of-yoga/', function () {
+    return redirect()->route('postRedirect', 'enjoy-the-health-benefits-of-yoga');
+});
+Route::get('/cancun-riviera-maya/fun-and-fit-beach-activities/', function () {
+    return redirect()->route('postRedirect', 'fun-and-fit-beach-activities');
+});
+Route::get('/cancun-riviera-maya/get-to-know-mexican-culture-on-your-vacations/', function () {
+    return redirect()->route('postRedirect', 'get-to-know-mexican-culture-on-your-vacations');
+});
+Route::get('/cancun-riviera-maya/how-to-avoid-gaining-weight-during-the-holidays/', function () {
+    return redirect()->route('postRedirect', 'how-to-avoid-gaining-weight-during-the-holidays');
+});
+Route::get('/cancun-riviera-maya/playa-gaviota-azul-a-beauty/', function () {
+    return redirect()->route('postRedirect', 'playa-gaviota-azul-a-beauty');
+});
+Route::get('/cancun-riviera-maya/the-sweet-part-of-day-of-the-dead/', function () {
+    return redirect()->route('postRedirect', 'the-sweet-part-of-day-of-the-dead');
+});
+Route::get('/cancun-riviera-maya/the-sweet-part-of-day-of-the-dead/', function () {
+    return redirect()->route('postRedirect', 'the-sweet-part-of-day-of-the-dead');
+});
+Route::get('/cancun-riviera-maya/wedding-planner-or-wedding-coordinator/', function () {
+    return redirect()->route('postRedirect', 'wedding-planner-or-wedding-coordinator');
+});
+Route::get('/cancun-riviera-maya/what-has-made-mexico-famous/', function () {
+    return redirect()->route('postRedirect', 'what-has-made-mexico-famous');
+});
+Route::get('/cancun-riviera-maya/whats-in-a-cancun-name/', function () {
+    return redirect()->route('postRedirect', 'whats-in-a-cancun-name');
+});
+
+
+
+
+Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-leads-recovery-of-beach-destinations/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-information/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-leads-recovery-of-beach-destinations/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/wine-tasting-by-marival-group-at-mozzamare/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/3-mountain-biking-routes-to-ride-in-the-bay/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/emiliano-zapata-market-a-place-for-all/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/el-salado-estuary-lung/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/emiliano-zapata-market-a-place-for-all/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/mandatory-vaccines-for-cruises/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/puerto-vallarta-museum/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/spectacular-opening-tierra-luna/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/travel-the-world-with-carry-on-only/', function () {
+    return redirect()->route('home');
 });
 
 
