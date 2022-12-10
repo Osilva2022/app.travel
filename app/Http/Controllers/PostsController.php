@@ -939,7 +939,7 @@ class PostsController extends Controller
         $tags_data = $this->returndata('tags');
 
         $this->metadatos(
-            config('constants.META_TITLE'),
+            'Tribune Travel | Sitemap',
             config('constants.META_DESCRIPTION'),
             config('constants.DEFAULT_IMAGE'),
             route('sitemap'),
