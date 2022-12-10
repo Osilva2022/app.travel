@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 //Redirect To Post
-Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
-Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
+// Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
+// Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
 Route::get('/columns/{slug}/', [PostsController::class, 'postRedirect'])->name('columnsRedirect');
 Route::get('/mexico/{slug}/', [PostsController::class, 'postRedirect'])->name('mexicoRedirect');
 Route::get('/world/{slug}/', [PostsController::class, 'postRedirect'])->name('worlsRedirect');
@@ -188,7 +188,12 @@ Route::get('/cancun-riviera-maya/what-has-made-mexico-famous/', function () {
 Route::get('/cancun-riviera-maya/whats-in-a-cancun-name/', function () {
     return redirect()->route('postRedirect', 'whats-in-a-cancun-name');
 });
-
+Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
+    return redirect()->route('postRedirect', 'sea-turtle-seaso');
+});
+Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
+    return redirect()->route('home');
+});
 
 
 
@@ -210,9 +215,7 @@ Route::get('/vallarta-nayarit', function () {
 Route::get('/vallarta-nayarit/3-mountain-biking-routes-to-ride-in-the-bay/', function () {
     return redirect()->route('home');
 });
-Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
-    return redirect()->route('home');
-});
+
 Route::get('/vallarta-nayarit/emiliano-zapata-market-a-place-for-all/', function () {
     return redirect()->route('home');
 });
