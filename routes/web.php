@@ -190,6 +190,9 @@ Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
 Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
     return redirect()->route('home');
 });
+Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
+    return redirect()->route('home');
+});
 
 
 
