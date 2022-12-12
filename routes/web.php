@@ -185,16 +185,14 @@ Route::get('/cancun-riviera-maya/whats-in-a-cancun-name/', function () {
     return redirect()->route('postRedirect', 'whats-in-a-cancun-name');
 });
 Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
-    return redirect()->route('home');
+    return redirect()->route('postRedirect', 'sea-turtle-season');
 });
 Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
     return redirect()->route('home');
 });
-Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
-    return redirect()->route('home');
+Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-seaso/', function () {
+    return redirect()->route('postRedirect', 'sea-turtle-season');
 });
-
-
 
 Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-leads-recovery-of-beach-destinations/', function () {
     return redirect()->route('home');
@@ -233,8 +231,17 @@ Route::get('/vallarta-nayarit/puerto-vallarta-museum/', function () {
 Route::get('/vallarta-nayarit/spectacular-opening-tierra-luna/', function () {
     return redirect()->route('home');
 });
-Route::get('/vallarta-nayarit/travel-the-world-with-carry-on-only/', function () {
+Route::get('/vallarta-nayarit/location-is-its-first-treasure/', function () {
     return redirect()->route('home');
+});
+
+
+//Nuevos redirect
+Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
+    return redirect()->route('postRedirect', 'cancun-useful-information');
+});
+Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
+    return redirect()->route('postRedirect', 'cancun-useful-information');
 });
 
 
