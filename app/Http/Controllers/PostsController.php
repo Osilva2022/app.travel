@@ -1182,7 +1182,7 @@ class PostsController extends Controller
 
         $new_contact = DB::select($query);
 
-        Mail::to("tribune@cps.media")
+        Mail::to("digital@cps.media")
             ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([

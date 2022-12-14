@@ -38,6 +38,6 @@ class NewContact extends Mailable
         return $this->from(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'))
             ->view('contact.mail')
             ->text('contact.plain')
-            ->subject('Nuevo Mensaje-Tribune Travel');
+            ->subject('Nuevo Mensaje - Tribune Travel');
     }
 }
