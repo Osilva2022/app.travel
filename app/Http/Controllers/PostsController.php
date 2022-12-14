@@ -940,7 +940,7 @@ class PostsController extends Controller
 
         $this->metadatos(
             'Tribune Travel | Sitemap',
-            config('constants.META_DESCRIPTION'),
+            'Sitemap '.config('constants.META_DESCRIPTION'),
             config('constants.DEFAULT_IMAGE'),
             route('sitemap'),
             route('sitemap')
