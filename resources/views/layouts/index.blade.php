@@ -293,75 +293,79 @@
                     <hr>
                 </div>
             </div>
-            <!-- Gallery -->
-            <?php if ($gallery): ?>
-            <div class="row py-4 d-flex justify-content-center">
-                <div class="col" style="max-width: 1024px;">
-                    <h2 class="text-center mb-4">Visit Mexico!</h2>
-                    <div class="row g-1">
-                        <div class="col-7 col-md-3 position-relative zoom">
-                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                {{-- <a href="{{ $gallery[0]->permalink }}" target="_blank"> --}}
-                                <i class="bi bi-instagram icon-gallery"></i>
-                                {{-- <img src="{{ $gallery[0]->media_url }}" width="100" height="100" --}}
-                                <img {!! img_meta($gallery[0]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col-5 col-md-6 position-relative zoom">
-                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <i class="bi bi-instagram icon-gallery"></i>
-                                <img {!! img_meta($gallery[1]->metadata) !!} class="lazy img-gallery" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col-5 col-md-3 position-relative zoom">
-                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <i class="bi bi-instagram icon-gallery"></i>
-                                <img {!! img_meta($gallery[2]->metadata) !!} class="lazy img-gallery" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col-7 col-md-3 position-relative zoom">
-                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <i class="bi bi-instagram icon-gallery"></i>
-                                <img {!! img_meta($gallery[3]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col-7 col-md-3 position-relative zoom">
-                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <i class="bi bi-instagram icon-gallery"></i>
-                                <img {!! img_meta($gallery[4]->metadata) !!} class="lazy img-gallery" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="col-5 col-md-6 position-relative zoom">
-                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <i class="bi bi-instagram icon-gallery"></i>
-                                <img {!! img_meta($gallery[5]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row p-4">
-                        <div class="col d-flex flex-column align-items-center">
-                            <h3>Follow Us!</h3>
-                            <div class="">
-
-                                <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
-                                    <img src="{{ asset('img/svg/face-ico.svg') }}" loading="lazy" decoding="defer"
-                                        alt="Tribune Travel facebook-icon" width="24" height="24">
+            <!-- NEWS -->
+            <h2 class="text-center my-4">News</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    @foreach ($new as $data)
+                        <div class="card card-principal-post">
+                            <div class="card border-0">
+                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                        {!! $data->destination !!}</span>
                                 </a>
-                                <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}">
-                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" loading="lazy" decoding="defer"
-                                        alt="Tribune Travel pint-icon" width="24" height="24">
-                                </a>
-                                <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}">
-                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" loading="lazy" decoding="defer"
-                                        alt="Tribune Travel insta-icon" width="24" height="24">
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
+                                <a href="{{ url("$data->url") }}">
+                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
+                                    <h3 class="card-title-overlay">
+                                        {!! $data->title !!}
+                                    </h3>
                                 </a>
                             </div>
+                            <div class="card-body">
+                                <a href="{{ url("$data->url") }}" title="{!! $data->title !!}" class="">
+                                    <p class="card-text">
+                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                    </p>
+                                </a>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
+                            </div>
                         </div>
+                    @endforeach
+                </div>
+                <div class="col-lg-8">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
+                        @foreach ($news as $data)
+                            @if ($new[0]->id_post != $data->id_post)
+                                <div class="col">
+                                    <div class="card card-secundario h-100">
+                                        <div class="row h-100">
+                                            <div class="col card-head-secundario">
+                                                <a href="{{ url("$data->url") }}">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
+                                                </a>
+                                            </div>
+                                            <div class="col-6 card-body-secundario">
+                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="etiqueta-post mb-2"
+                                                        style="background:{{ $data->destination_color }};">
+                                                        {!! $data->destination !!}
+                                                    </span>
+                                                </a>
+                                                <a href="{{ url("$data->url") }}">
+                                                    <h3 class="card-title-secundario">{!! $data->title !!}</h3>
+                                                </a>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
-
                 </div>
             </div>
-            <?php endif; ?>
+            <div class="row">
+                <div class="col my-4 d-flex justify-content-center">
+                    <a href="{{ route('category', ['news']) }}" class="btn-view-more" type="button">More
+                        News</a>
+                </div>
+            </div>
+            <!-- NEWS -->
             <!-- ads /21855382314/tt-home-lb-5 -->
             @if ($mostrar)
                 <div class="row py-4">
@@ -525,79 +529,75 @@
                     <hr>
                 </div>
             </div>
-            <!-- NEWS -->
-            <h2 class="text-center my-4">News</h2>
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    @foreach ($new as $data)
-                        <div class="card card-principal-post">
-                            <div class="card border-0">
-                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
-                                        {!! $data->destination !!}</span>
+            <!-- Gallery -->
+            <?php if ($gallery): ?>
+            <div class="row py-4 d-flex justify-content-center">
+                <div class="col" style="max-width: 1024px;">
+                    <h2 class="text-center mb-4">Visit Mexico!</h2>
+                    <div class="row g-1">
+                        <div class="col-7 col-md-3 position-relative zoom">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                {{-- <a href="{{ $gallery[0]->permalink }}" target="_blank"> --}}
+                                <i class="bi bi-instagram icon-gallery"></i>
+                                {{-- <img src="{{ $gallery[0]->media_url }}" width="100" height="100" --}}
+                                <img {!! img_meta($gallery[0]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-5 col-md-6 position-relative zoom">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                <i class="bi bi-instagram icon-gallery"></i>
+                                <img {!! img_meta($gallery[1]->metadata) !!} class="lazy img-gallery" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-5 col-md-3 position-relative zoom">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                <i class="bi bi-instagram icon-gallery"></i>
+                                <img {!! img_meta($gallery[2]->metadata) !!} class="lazy img-gallery" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-7 col-md-3 position-relative zoom">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                <i class="bi bi-instagram icon-gallery"></i>
+                                <img {!! img_meta($gallery[3]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-7 col-md-3 position-relative zoom">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                <i class="bi bi-instagram icon-gallery"></i>
+                                <img {!! img_meta($gallery[4]->metadata) !!} class="lazy img-gallery" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-5 col-md-6 position-relative zoom">
+                            <a href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
+                                <i class="bi bi-instagram icon-gallery"></i>
+                                <img {!! img_meta($gallery[5]->metadata) !!} class="lazy img-gallery-2" loading="lazy">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row p-4">
+                        <div class="col d-flex flex-column align-items-center">
+                            <h3>Follow Us!</h3>
+                            <div class="">
+
+                                <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
+                                    <img src="{{ asset('img/svg/face-ico.svg') }}" loading="lazy" decoding="defer"
+                                        alt="Tribune Travel facebook-icon" width="24" height="24">
                                 </a>
-                                <span class="etiqueta-last-post">
-                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
-                                <a href="{{ url("$data->url") }}">
-                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
-                                    <h3 class="card-title-overlay">
-                                        {!! $data->title !!}
-                                    </h3>
+                                <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}">
+                                    <img src="{{ asset('img/svg/pint-ico.svg') }}" loading="lazy" decoding="defer"
+                                        alt="Tribune Travel pint-icon" width="24" height="24">
                                 </a>
-                            </div>
-                            <div class="card-body">
-                                <a href="{{ url("$data->url") }}" title="{!! $data->title !!}" class="">
-                                    <p class="card-text">
-                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
-                                    </p>
+                                <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}">
+                                    <img src="{{ asset('img/svg/inst-ico.svg') }}" loading="lazy" decoding="defer"
+                                        alt="Tribune Travel insta-icon" width="24" height="24">
                                 </a>
-                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                <div class="col-lg-8">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
-                        @foreach ($news as $data)
-                            @if ($new[0]->id_post != $data->id_post)
-                                <div class="col">
-                                    <div class="card card-secundario h-100">
-                                        <div class="row h-100">
-                                            <div class="col card-head-secundario">
-                                                <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
-                                                </a>
-                                            </div>
-                                            <div class="col-6 card-body-secundario">
-                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="etiqueta-post mb-2"
-                                                        style="background:{{ $data->destination_color }};">
-                                                        {!! $data->destination !!}
-                                                    </span>
-                                                </a>
-                                                <a href="{{ url("$data->url") }}">
-                                                    <h3 class="card-title-secundario">{!! $data->title !!}</h3>
-                                                </a>
-                                                <small class="text-muted">
-                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
                     </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('category', ['news']) }}" class="btn-view-more" type="button">More
-                        News</a>
-                </div>
-            </div>
-            <!-- NEWS -->
+            <?php endif; ?>
             <!--ads /21855382314/tt-home-lb-footer -->
             @if ($mostrar)
                 <div class="row py-4">
@@ -617,7 +617,7 @@
                 <div class="col-12">
                     <hr>
                 </div>
-            </div>
+            </div>  
             <!-- Blogs -->
             <h2 class="text-center my-4">Blogs</h2>
             <div class="row g-4">
