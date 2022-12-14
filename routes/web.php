@@ -135,7 +135,6 @@ Route::get('/los-cabos/why-you-should-visit-los-cabos-in-summer/', function () {
     return redirect()->route('postRedirect', 'why-you-should-visit-los-cabos-in-summer');
 });
 
-// nuevas rutas
 Route::get('/cancun-riviera-maya/babies-and-kids-skincare/', function () {
     return redirect()->route('postRedirect', 'babies-and-kids-skincare');
 });
@@ -235,8 +234,6 @@ Route::get('/vallarta-nayarit/location-is-its-first-treasure/', function () {
     return redirect()->route('home');
 });
 
-
-//Nuevos redirect
 Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
     return redirect()->route('postRedirect', 'cancun-useful-information');
 });
@@ -246,12 +243,46 @@ Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
 Route::get('/vallarta-nayarit/wixarikas-wirraricas-or-huicholes/', function () {
     return redirect()->route('postRedirect', 'wixarikas-wirraricas-or-huicholes');
 });
-
+Route::get('/vallarta-nayarit/5-towns-to-visit-beach-edition/', function () {
+    return redirect()->route('postRedirect', '5-towns-to-visit-beach-edition');
+});
+Route::get('/vallarta-nayarit/more-mountain-biking-routes-in-the-bay/', function () {
+    return redirect()->route('postRedirect', 'more-mountain-biking-routes-in-the-bay');
+});
+Route::get('/destinos/blogs/hospiten-tells-us-about-memory-disorders-and-age/', function () {
+    return redirect()->route('postRedirect', 'hospiten-tells-us-about-memory-disorders-and-age');
+});
+Route::get('/vallarta-nayarit/mountain-biking-routes-in-the-bay/', function () {
+    return redirect()->route('postRedirect', 'mountain-biking-routes-in-the-bay');
+});
+Route::get('/vallarta-nayarit/mountain-biking-thrill-and-fun/', function () {
+    return redirect()->route('postRedirect', 'mountain-biking-thrill-and-fun');
+});
+Route::get('/vallarta-nayarit/puerto-vallarta-useful-information/', function () {
+    return redirect()->route('postRedirect', 'puerto-vallarta-useful-information');
+});
+Route::get('/vallarta-nayarit/riviera-farmers-market-a-place-to-be/', function () {
+    return redirect()->route('postRedirect', 'riviera-farmers-market-a-place-to-be');
+});
+Route::get('/vallarta-nayarit/the-malecon-of-puerto-vallarta/', function () {
+    return redirect()->route('postRedirect', 'the-malecon-of-puerto-vallarta');
+});
+Route::get('/vallarta-nayarit/top-lgbtq-destinations/', function () {
+    return redirect()->route('postRedirect', 'top-lgbtq-destinations');
+});
+Route::get('/vallarta-nayarit/travel-journal-to-yelapa/', function () {
+    return redirect()->route('postRedirect', 'travel-journal-to-yelapa');
+});
+Route::get('/vallarta-nayarit/travel-the-world-with-carry-on-only/', function () {
+    return redirect()->route('postRedirect', 'travel-the-world-with-carry-on-only');
+});
+Route::get('/vallarta-nayarit/tuba-tejuino-vallarta-delicacies/', function () {
+    return redirect()->route('postRedirect', 'tuba-tejuino-vallarta-delicacies');
+});
 
 
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
 //Redirect To Post
-
 Route::get('/', [PostsController::class, 'index'])->name('home');
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
 Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
