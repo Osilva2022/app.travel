@@ -243,6 +243,9 @@ Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
 Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
     return redirect()->route('postRedirect', 'cancun-useful-information');
 });
+Route::get('/vallarta-nayarit/wixarikas-wirraricas-or-huicholes/', function () {
+    return redirect()->route('postRedirect', 'wixarikas-wirraricas-or-huicholes');
+});
 
 
 
