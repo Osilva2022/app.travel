@@ -614,7 +614,7 @@ class PostsController extends Controller
             return redirect()->route('home');
         }
         // $posts_info = DB::select("SELECT * FROM travel_posts_all WHERE user_nicename = '$author_id' ORDER BY post_date DESC;");
-        $posts_info = DB::select("SELECT 
+        $posts_info = DB::select("SELECT
                                         pd.*
                                     FROM
                                         travel_posts_destination AS pd
@@ -937,6 +937,14 @@ class PostsController extends Controller
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $tags_data = $this->returndata('tags');
+
+        $this->metadatos(
+            'Tribune Travel | Sitemap',
+            config('constants.META_DESCRIPTION'),
+            config('constants.DEFAULT_IMAGE'),
+            route('sitemap'),
+            route('sitemap')
+        );
         return view('sitemap.index', compact('destinations_data', 'categories_data', 'tags_data'));
     }
 
@@ -1174,7 +1182,7 @@ class PostsController extends Controller
 
         $new_contact = DB::select($query);
 
-        Mail::to("tribune@cps.media")
+        Mail::to("digital@cps.media")
             ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([

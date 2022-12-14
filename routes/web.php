@@ -10,19 +10,15 @@ use Illuminate\Support\Facades\Redirect;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 //Redirect To Post
-Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
-Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
+// Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
+// Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
 Route::get('/columns/{slug}/', [PostsController::class, 'postRedirect'])->name('columnsRedirect');
 Route::get('/mexico/{slug}/', [PostsController::class, 'postRedirect'])->name('mexicoRedirect');
 Route::get('/world/{slug}/', [PostsController::class, 'postRedirect'])->name('worlsRedirect');
-Route::get('/puerto-vallarta-riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartarivieraRedirect');
+// Route::get('/puerto-vallarta-riviera-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartarivieraRedirect');
 
 Route::get('/cancun-riviera-maya/what-is-a-hydrotherapy-spa/', function () {
     return redirect()->route('postRedirect', 'what-is-a-hydrotherapy-spa');
@@ -72,6 +68,184 @@ Route::get('/sin-categoria/vallarta-tribune-to-become-tribune-travel/', function
 Route::get('/los-cabos/3-spots-to-discover-los-cabos/', function () {
     return redirect()->route('postRedirect', '3-spots-to-discover-los-cabo');
 });
+Route::get('/los-cabos/how-to-get-to-cabo-san-lucas/', function () {
+    return redirect()->route('postRedirect', 'how-to-get-to-cabo-san-lucas');
+});
+Route::get('/cancun-riviera-maya', function () {
+    return redirect()->route('home', 301);
+});
+Route::get('/mexico', function () {
+    return redirect()->route('home', 301);
+});
+Route::get('/privacy-policy', function () {
+    return redirect()->route('home', 301);
+});
+Route::get('/los-cabos/3-spots-to-discover-los-cabos/', function () {
+    return redirect()->route('home');
+});
+Route::get('/cancun-riviera-maya/origin-of-pan-de-muerto/', function () {
+    return redirect()->route('home');
+});
+Route::get('/los-cabos/beach-weddings-best-destination/', function () {
+    return redirect()->route('postRedirect', 'beach-weddings-best-destination');
+});
+Route::get('/los-cabos/beer-is-brewtiful-as-life/', function () {
+    return redirect()->route('postRedirect', 'beer-is-brewtiful-as-life');
+});
+Route::get('/los-cabos/cabos-longest-lazy-river-is-coming/', function () {
+    return redirect()->route('postRedirect', 'cabos-longest-lazy-river-is-coming');
+});
+Route::get('/los-cabos/cerro-del-vigia-cabo-san-lucas-as-you-have-never-seen-it/', function () {
+    return redirect()->route('postRedirect', 'cerro-del-vigia-cabo-san-lucas-as-you-have-never-seen-it');
+});
+Route::get('/los-cabos/dont-worry-beer-happy-in-oktoberfest/', function () {
+    return redirect()->route('postRedirect', 'dont-worry-beer-happy-in-oktoberfest');
+});
+Route::get('/los-cabos/how-to-get-to-cabo-san-lucas/', function () {
+    return redirect()->route('postRedirect', 'how-to-get-to-cabo-san-lucas');
+});
+Route::get('/los-cabos/how-to-relieve-stress-and-anxiety/', function () {
+    return redirect()->route('postRedirect', 'how-to-relieve-stress-and-anxiety');
+});
+Route::get('/los-cabos/la-casona-a-top-restaurant-cabo/', function () {
+    return redirect()->route('postRedirect', 'la-casona-a-top-restaurant-cabo');
+});
+Route::get('/los-cabos/planning-your-wellness-vacations/', function () {
+    return redirect()->route('postRedirect', 'planning-your-wellness-vacations');
+});
+Route::get('/los-cabos/swimming-at-palmilla-beach-cabo/', function () {
+    return redirect()->route('postRedirect', 'swimming-at-palmilla-beach-cabo');
+});
+Route::get('/los-cabos/tacos-of-many-and-any-thing/', function () {
+    return redirect()->route('postRedirect', 'tacos-of-many-and-any-thing');
+});
+Route::get('/los-cabos/the-cabo-san-lucas-arch/', function () {
+    return redirect()->route('postRedirect', 'the-cabo-san-lucas-arch');
+});
+Route::get('/los-cabos/travelers-and-tourists/', function () {
+    return redirect()->route('postRedirect', 'travelers-and-tourists');
+});
+Route::get('/los-cabos/whale-shark-season-in-cabo/', function () {
+    return redirect()->route('postRedirect', 'whale-shark-season-in-cabo');
+});
+Route::get('/los-cabos/what-is-the-deep-tissue-massage/', function () {
+    return redirect()->route('postRedirect', 'what-is-the-deep-tissue-massage');
+});
+Route::get('/los-cabos/why-you-should-visit-los-cabos-in-summer/', function () {
+    return redirect()->route('postRedirect', 'why-you-should-visit-los-cabos-in-summer');
+});
+
+// nuevas rutas
+Route::get('/cancun-riviera-maya/babies-and-kids-skincare/', function () {
+    return redirect()->route('postRedirect', 'babies-and-kids-skincare');
+});
+Route::get('/cancun-riviera-maya/be-hot-with-coffee-spa-treatments/', function () {
+    return redirect()->route('postRedirect', 'be-hot-with-coffee-spa-treatments');
+});
+Route::get('/cancun-riviera-maya/body-stretching-for-your-wellness/', function () {
+    return redirect()->route('postRedirect', 'body-stretching-for-your-wellness');
+});
+Route::get('/cancun-riviera-maya/body-stretching-for-your-wellness/', function () {
+    return redirect()->route('postRedirect', 'body-stretching-for-your-wellness');
+});
+Route::get('/cancun-riviera-maya/drinking-original-margarita/', function () {
+    return redirect()->route('postRedirect', 'drinking-original-margarita');
+});
+Route::get('/cancun-riviera-maya/emotional-tourism-traveling/', function () {
+    return redirect()->route('postRedirect', 'emotional-tourism-traveling');
+});
+Route::get('/cancun-riviera-maya/enjoy-the-health-benefits-of-yoga/', function () {
+    return redirect()->route('postRedirect', 'enjoy-the-health-benefits-of-yoga');
+});
+Route::get('/cancun-riviera-maya/fun-and-fit-beach-activities/', function () {
+    return redirect()->route('postRedirect', 'fun-and-fit-beach-activities');
+});
+Route::get('/cancun-riviera-maya/get-to-know-mexican-culture-on-your-vacations/', function () {
+    return redirect()->route('postRedirect', 'get-to-know-mexican-culture-on-your-vacations');
+});
+Route::get('/cancun-riviera-maya/how-to-avoid-gaining-weight-during-the-holidays/', function () {
+    return redirect()->route('postRedirect', 'how-to-avoid-gaining-weight-during-the-holidays');
+});
+Route::get('/cancun-riviera-maya/playa-gaviota-azul-a-beauty/', function () {
+    return redirect()->route('postRedirect', 'playa-gaviota-azul-a-beauty');
+});
+Route::get('/cancun-riviera-maya/the-sweet-part-of-day-of-the-dead/', function () {
+    return redirect()->route('postRedirect', 'the-sweet-part-of-day-of-the-dead');
+});
+Route::get('/cancun-riviera-maya/the-sweet-part-of-day-of-the-dead/', function () {
+    return redirect()->route('postRedirect', 'the-sweet-part-of-day-of-the-dead');
+});
+Route::get('/cancun-riviera-maya/wedding-planner-or-wedding-coordinator/', function () {
+    return redirect()->route('postRedirect', 'wedding-planner-or-wedding-coordinator');
+});
+Route::get('/cancun-riviera-maya/what-has-made-mexico-famous/', function () {
+    return redirect()->route('postRedirect', 'what-has-made-mexico-famous');
+});
+Route::get('/cancun-riviera-maya/whats-in-a-cancun-name/', function () {
+    return redirect()->route('postRedirect', 'whats-in-a-cancun-name');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-season/', function () {
+    return redirect()->route('postRedirect', 'sea-turtle-season');
+});
+Route::get('/vallarta-nayarit/el-salado-estuary-lung-of-vallarta/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/sea-turtle-seaso/', function () {
+    return redirect()->route('postRedirect', 'sea-turtle-season');
+});
+
+Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-leads-recovery-of-beach-destinations/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-information/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/puerto-vallarta-leads-recovery-of-beach-destinations/', function () {
+    return redirect()->route('home');
+});
+Route::get('/puerto-vallarta-riviera-nayarit/wine-tasting-by-marival-group-at-mozzamare/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/3-mountain-biking-routes-to-ride-in-the-bay/', function () {
+    return redirect()->route('home');
+});
+
+Route::get('/vallarta-nayarit/emiliano-zapata-market-a-place-for-all/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/el-salado-estuary-lung/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/emiliano-zapata-market-a-place-for-all/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/mandatory-vaccines-for-cruises/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/puerto-vallarta-museum/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/spectacular-opening-tierra-luna/', function () {
+    return redirect()->route('home');
+});
+Route::get('/vallarta-nayarit/location-is-its-first-treasure/', function () {
+    return redirect()->route('home');
+});
+
+
+//Nuevos redirect
+Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
+    return redirect()->route('postRedirect', 'cancun-useful-information');
+});
+Route::get('/cancun-riviera-maya/cancun-useful-information/', function () {
+    return redirect()->route('postRedirect', 'cancun-useful-information');
+});
+
+
+
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
 //Redirect To Post
 
