@@ -80,7 +80,7 @@
                         <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon" width="17"
                             height="17">
                     </a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                     <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
                     </a>
                     <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
