@@ -304,7 +304,7 @@ Route::get('contact-us', [PostsController::class, 'contact'])->name('contact');
 Route::post('/save-contact', [PostsController::class, 'storeContact'])->name('save-contact');
 Route::get('search', [PostsController::class, 'search'])->name('search');
 Route::resource('files', 'FileController');
-Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
+// Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return Redirect::to('/feed', 301);
