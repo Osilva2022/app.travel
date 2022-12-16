@@ -1182,7 +1182,7 @@ class PostsController extends Controller
 
         $new_contact = DB::select($query);
 
-        Mail::to("digital@cps.media")
+        Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media','francisco.moras@lifeasbrand.com')
             ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([
