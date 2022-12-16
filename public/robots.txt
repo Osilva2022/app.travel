@@ -8,4 +8,3 @@ Disallow: /amp/
 Sitemap: https://tribune.travel/sitemaps/sitemap.xml
 Sitemap: https://tribune.travel/sitemaps/pages_sitemap.xml
 Sitemap: https://tribune.travel/feed
-Sitemap: https://tribune.travel/sitemap.xml

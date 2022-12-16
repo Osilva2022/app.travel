@@ -204,8 +204,8 @@
             </div>
             <!-- Modal -->
         </div>
-        <script defer src="{{ asset('js/submenu_things.js') }}" version="1"></script>
-        <script defer src="{{ asset('js/things-directory.js') }}" version="1"></script>
+        <script defer src="{{ asset('js/submenu_things.min.js') }}" version="1"></script>
+        <script defer src="{{ asset('js/things-directory.min.js') }}" version="1"></script>
         <script defer>
             $(document).ready(function() {
                 function getUrlParameter(sParam) {

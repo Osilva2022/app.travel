@@ -11,7 +11,7 @@
             @include('menus.sub_menu_events')
             <div class="row mb-4">
                 <div class="col-12">
-                    <h2>Calendar</h2>
+                    <h1>Calendar</h1>
                     <p>Looking for what to do in Mexico’s top beach destinations? <br>
                         We got you covered with the best events. Find out what to do and where to go here.</p>
                 </div>
@@ -54,12 +54,12 @@
                                             $endDate = date('Ymd', strtotime($event->end_date));
                                             $endTime = date('His', strtotime($event->end_date));
                                             $allday = $event->all_day;
-                                            
+
                                             $dates = urldecode($startDate) . 'T' . urldecode($startTime) . '/' . urldecode($endDate) . 'T' . urldecode($endTime);
                                             if ($allday != null) {
                                                 $dates = urldecode($startDate) . '/' . urldecode($endDate);
                                             }
-                                            
+
                                         @endphp
                                         <div class="col-12 text-end">
                                             <a target="_blank" class="btn btn-outline-primary"
