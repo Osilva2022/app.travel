@@ -342,12 +342,15 @@ class PostsController extends Controller
         $usd_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'USD'");
         $usd = $usd_data[0];
         // dd($divisas_data);
-        $gallery = $this->instagram();
-        if (isset($gallery)) {
-            $gallery = $gallery->data;
-        } else {
-            $gallery = false;
-        }
+
+        //Revisar issue de instagram
+        // $gallery = $this->instagram();
+        // if (isset($gallery)) {
+        //     $gallery = $gallery->data;
+        // } else {
+        //     $gallery = false;
+        // }
+        $gallery = false;
 
         $static_gallery = $this->returndata('gallery');
         $gallery = $static_gallery;
