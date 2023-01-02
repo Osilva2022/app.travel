@@ -449,7 +449,7 @@ class PostsController extends Controller
             isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
             isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
             route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
-            isset($post->canonica) ? $post->canonica : route('post', [$post->destination_slug, $post->category_slug, $post->slug])
+            (isset($post->canonica) && $post->canonica != '') ? $post->canonica : route('post', [$post->destination_slug, $post->category_slug, $post->slug])
         );
         $destination = $destino;
 
