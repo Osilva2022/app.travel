@@ -2,10 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top header" id="menu-header">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('img/logo_tribune_travel_navidad.png') }}" width="150" height="auto"
-                class="d-inline-block align-top" alt="Tribune Travel">
-            {{-- <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125"
-                height="35" class="d-inline-block align-top" alt="Tribune Travel"> --}}
+            <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg" width="125"
+                height="35" class="d-inline-block align-top" alt="Tribune Travel">
         </a>
         <button class="navbar-toggler btn-menu-border-0" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
