@@ -378,20 +378,40 @@ class PostsController extends Controller
      */
     public function post($destino, $category, $slug): View
     {
-        $posts = DB::select("SELECT
-                                    *
+        // $posts = DB::select("SELECT
+        //                             *
+        //                         FROM
+        //                             travel_posts_all as tpa
+        //                             LEFT JOIN travel_postmeta as tp on tp.post_id = tpa.id_post AND tp.meta_key= 'url_canonica'
+        //                                 LEFT JOIN
+        //                             (SELECT
+        //                                     u.user_id, p.meta_value AS avatar, us.user_nicename
+        //                                 FROM
+        //                                     travel_users AS us
+        //                                     left join
+        //                                     travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
+        //                                     left join
+        //                                     travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
+        //                             ON travel_posts_all.author_id = q.user_id
+        //                         WHERE
+        //                             slug = '$slug'
+        //                         ORDER BY post_date DESC;");
+        $posts = DB::select("SELECT 
+                                    tpa.*, q.*, tp.meta_value as canonica 
                                 FROM
-                                    travel_posts_all
+                                    travel_posts_all AS tpa
                                         LEFT JOIN
-                                    (SELECT
-                                            u.user_id, p.meta_value AS avatar, us.user_nicename
-                                        FROM
-                                            travel_users AS us
-                                            left join
-                                            travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
-                                            left join
-                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
-                                    ON travel_posts_all.author_id = q.user_id
+                                    travel_postmeta AS tp ON tp.post_id = tpa.id_post
+                                        AND tp.meta_key = 'url_canonica'
+                                        LEFT JOIN
+                                    (SELECT 
+                                        u.user_id, p.meta_value AS avatar, us.user_nicename
+                                    FROM
+                                        travel_users AS us
+                                    LEFT JOIN travel_usermeta AS u ON us.ID = u.user_id
+                                        AND u.meta_key = 'travel_user_avatar'
+                                    LEFT JOIN travel_postmeta AS p ON u.meta_value = p.post_id
+                                        AND p.meta_key = '_wp_attached_file') AS q ON tpa.author_id = q.user_id
                                 WHERE
                                     slug = '$slug'
                                 ORDER BY post_date DESC;");
@@ -423,13 +443,13 @@ class PostsController extends Controller
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
                                         AND id_post = $post->id_post;");
-        // dd($post);
+        // dd($post->canonica);
         $this->metadatos(
             isset($post->meta_title) ? $post->meta_title : $post->title,
             isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
             isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
             route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
-            route('post', [$post->destination_slug, $post->category_slug, $post->slug])
+            isset($post->canonica) ? $post->canonica : route('post', [$post->destination_slug, $post->category_slug, $post->slug])
         );
         $destination = $destino;
 
