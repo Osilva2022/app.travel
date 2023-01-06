@@ -173,7 +173,7 @@
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tvmar.tv/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tv-mar-white.svg"
+                        <img src="{{ asset('img/svg/tv-mar-white.svg') }}"
                             class="img-footer" alt="TVMar Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
