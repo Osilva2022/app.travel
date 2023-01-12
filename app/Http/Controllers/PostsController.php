@@ -171,8 +171,6 @@ class PostsController extends Controller
         SEOTools::twitter()->setSite('@CpsNoticias');
         SEOTools::twitter()->setUrl($url);
         SEOTools::twitter()->setImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
-
-
     }
 
     /**
@@ -378,53 +376,63 @@ class PostsController extends Controller
      */
     public function post($destino, $category, $slug): View
     {
-        // $posts = DB::select("SELECT
-        //                             *
-        //                         FROM
-        //                             travel_posts_all as tpa
-        //                             LEFT JOIN travel_postmeta as tp on tp.post_id = tpa.id_post AND tp.meta_key= 'url_canonica'
-        //                                 LEFT JOIN
-        //                             (SELECT
-        //                                     u.user_id, p.meta_value AS avatar, us.user_nicename
-        //                                 FROM
-        //                                     travel_users AS us
-        //                                     left join
-        //                                     travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
-        //                                     left join
-        //                                     travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
-        //                             ON travel_posts_all.author_id = q.user_id
-        //                         WHERE
-        //                             slug = '$slug'
-        //                         ORDER BY post_date DESC;");
-        $posts = DB::select("SELECT 
-                                    tpa.*, q.*, tp.meta_value as canonica 
-                                FROM
-                                    travel_posts_all AS tpa
-                                        LEFT JOIN
-                                    travel_postmeta AS tp ON tp.post_id = tpa.id_post
-                                        AND tp.meta_key = 'url_canonica'
-                                        LEFT JOIN
-                                    (SELECT 
-                                        u.user_id, p.meta_value AS avatar, us.user_nicename
-                                    FROM
-                                        travel_users AS us
-                                    LEFT JOIN travel_usermeta AS u ON us.ID = u.user_id
-                                        AND u.meta_key = 'travel_user_avatar'
-                                    LEFT JOIN travel_postmeta AS p ON u.meta_value = p.post_id
-                                        AND p.meta_key = '_wp_attached_file') AS q ON tpa.author_id = q.user_id
-                                WHERE
-                                    slug = '$slug'
-                                ORDER BY post_date DESC;");
-        // $post = $posts[0];
-        $post = (isset($posts[0])) ? $posts[0] : abort(404);
-
-        $more_posts = DB::select("SELECT * FROM travel_posts_category
-                                    WHERE category_slug = '$post->category_slug'
-                                    AND id_post != $post->id_post
-                                        ORDER BY post_date DESC
-                                        LIMIT 3;");
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+        $apiresponse = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/posts?slug=' . $slug));
+        empty($apiresponse) || $apiresponse[0]->status != "publish" ? abort(404) : true;
+        $img_id = isset($apiresponse[0]) ? $apiresponse[0]->featured_media : '';
+        $imgdata = DB::select("SELECT * FROM tribunetravel_wp.travel_media WHERE ID = $img_id;");
+        $imgdata = empty($imgdata) ? '' : $imgdata[0];
+        $author_id = isset($apiresponse[0]) ? $apiresponse[0]->author : '';
+        $authordata = DB::select("SELECT * FROM tribunetravel_wp.travel_author WHERE user_id = $author_id;");
+        $authordata = empty($authordata) ? '' : $authordata[0];
+        // dd($apiresponse);
+        $category_name = "";
+        $category_color = "";
+        foreach ($categories_data as $c) {
+            if ($c->term_id == $apiresponse[0]->categories[0]) {
+                // dd($c);
+                $category_name = $c->name;
+                $category_color = $c->color;
+            }
+        }
+        $destination_name = "";
+        $destination_color = "";
+        foreach ($destinations_data as $c) {
+            if ($c->term_id == $apiresponse[0]->post_destinos[0]) {
+                // dd($c);
+                $destination_name = $c->name;
+                $destination_color = $c->color;
+            }
+        }
+        $post_ = [
+            "slug" => $apiresponse[0]->slug,
+            "date" => $apiresponse[0]->date,
+            "id" => $apiresponse[0]->id,
+            "category" => $category,
+            "category_name" => $category_name,
+            "category_color" => $category_color,
+            "destination" => $destino,
+            "destination_name" => $destination_name,
+            "destination_color" => $destination_color,
+            "title" => $apiresponse[0]->title->rendered,
+            "excerpt" => $apiresponse[0]->excerpt->rendered,
+            "content" => $apiresponse[0]->content->rendered,
+            "seo_title" => $apiresponse[0]->acf->titulo_seo,
+            "seo_description" => $apiresponse[0]->acf->descripcion_seo,
+            "canonical_url" => $apiresponse[0]->acf->url_canonica,
+            "img" => $imgdata,
+            "author" => $authordata
+        ];
+        // dd($post_);
+
+        $id = $post_['id'];
+        $more_posts = DB::select("SELECT * FROM travel_posts_category
+                                    WHERE category_slug = '$category'
+                                    AND id_post != $id
+                                        ORDER BY post_date DESC
+                                        LIMIT 3;");
+        // dd($categories_data);
         // $this->metadatos($post, 'post');
         $post_tags = DB::select("SELECT
                                     tags.name, tags.slug, tags.description, tags.color
@@ -442,18 +450,18 @@ class PostsController extends Controller
                                             AND `tr`.`term_taxonomy_id` = `tt`.`term_taxonomy_id`) AS posts_tags
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
-                                        AND id_post = $post->id_post;");
+                                        AND id_post = $id;");
         // dd($post->canonica);
         $this->metadatos(
-            isset($post->meta_title) ? $post->meta_title : $post->title,
-            isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
-            isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
-            route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
-            (isset($post->canonica) && $post->canonica != '') ? $post->canonica : route('post', [$post->destination_slug, $post->category_slug, $post->slug])
+            isset($post_['seo_title']) ? $post_['seo_title'] : $post_['title'],
+            isset($post_['description_title']) ? $post_['description_title'] : $post_['excerpt'],
+            isset($post_["img"]->ID) ? imgURL($post_["img"]->img_data) : config('constants.DEFAULT_IMAGE'),
+            route('post', [$destino, $category, $post_['slug']]),
+            (isset($post_['canonical_url']) && $post_['canonical_url'] != '') ? $post_['canonical_url'] : route('post', [$destino, $category, $post_['slug']])
         );
         $destination = $destino;
 
-        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination'));
+        return view('posts.index', compact('post_', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination'));
     }
 
     public function postid($id)
@@ -785,8 +793,8 @@ class PostsController extends Controller
         // dd($destination_data[0]->name);
         $metatitle = $destination_data[0]->name;
         $this->metadatos(
-            isset($things_category[0]->meta_title) ? $things_category[0]->name.' in '.$destination_data[0]->name : config('constants.META_TITLE'),
-            isset($things_category[0]->meta_description) ? $things_category[0]->name.' in '.$destination_data[0]->name.' '.$things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
+            isset($things_category[0]->meta_title) ? $things_category[0]->name . ' in ' . $destination_data[0]->name : config('constants.META_TITLE'),
+            isset($things_category[0]->meta_description) ? $things_category[0]->name . ' in ' . $destination_data[0]->name . ' ' . $things_category[0]->meta_description : config('constants.META_DESCRIPTION'),
             isset($things_category[0]->image) ? images($things_category[0]->image) : config('constants.DEFAULT_IMAGE'),
             route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug]),
             route('guide_category', [$destination_data[0]->slug, $things_category[0]->slug])
@@ -963,7 +971,7 @@ class PostsController extends Controller
 
         $this->metadatos(
             'Tribune Travel | Sitemap',
-            'Sitemap '.config('constants.META_DESCRIPTION'),
+            'Sitemap ' . config('constants.META_DESCRIPTION'),
             config('constants.DEFAULT_IMAGE'),
             route('sitemap'),
             route('sitemap')
@@ -1205,7 +1213,7 @@ class PostsController extends Controller
 
         $new_contact = DB::select($query);
 
-        Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media','francisco.moras@lifeasbrand.com')
+        Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media', 'francisco.moras@lifeasbrand.com')
             ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([

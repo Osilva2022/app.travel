@@ -32,7 +32,7 @@ function img_meta($data, $alt = false, $lazy = true)
         ($alt) ? 'alt="' . $alt . '"' : 'alt="Alt Text"',
         ($lazy) ? 'loading="lazy"' : '',
         ($lazy) ? 'decoding="defer"' : '',
-        // 'sizes="(max-width: 400px) 100vw, (max-width: 700px) 50vw, (max-width: 900px) 33vw, 1024px"',
+        // 'sizes="(max-width: 300px) 100vw, 300px"',
         'sizes="(max-width: 200px) 200px,(max-width: 425px) 425px, (max-width: 550px) 525px, (max-width: 800px) 800px, (max-width: 1024px) 1024px, 1024px"',
         'srcset="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . ' ' . $metadatos['width'] . 'w, ' . imgMetaSrcSet($metadatos['sizes']) . '"'
     ];

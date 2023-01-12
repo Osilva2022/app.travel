@@ -69,18 +69,17 @@
             <div class="row mb-3">
                 <div class="col col-md-4 col-lg-6">
                     <span class="badge etiqueta-categoria"
-                        style="background-color: {{ $post->destination_color }}">{{ $post->destination }}</span>
+                        style="background-color: {{ $post_['destination_color'] }}">{{ $post_['destination_name'] }}</span>
                     {{-- <span class="badge etiqueta-categoria"
                         style="background-color: {{ $post->category_color }}">{{ $post->category }}</span> --}}
                 </div>
                 <div class="col-auto col-md-3 col-lg-2">
                     Share:
                     <a rel="nofollow" class="fb-btn" href="javascript: void(0)"
-                        onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ url("$post->url") }}','sharer','toolbar=0,status=0,width=548,height=325');">
+                        onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ route('post', [$destination, $category, $post_['slug']]) }}','sharer','toolbar=0,status=0,width=548,height=325');">
                         <img src="{{ asset('img/svg/face-ico.svg') }}" alt="Tribune Travel facebook-icon" width="17"
                             height="17">
                     </a>
-                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                     <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}">
                     </a>
                     <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
@@ -100,8 +99,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a
-                                    href="{{ route('category', [$category]) }}">{{ $post->category }}</a></li>
-                            <li class="breadcrumb-item fw-bold" aria-current="page">{{ $post->title }}</li>
+                                    href="{{ route('category', [$category]) }}">{!! $post_['category_name'] !!}</a></li>
+                            <li class="breadcrumb-item fw-bold" aria-current="page">{!! $post_['title'] !!}</li>
                         </ol>
                     </nav>
                 </div>
@@ -111,27 +110,24 @@
                 <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
-                            <img {!! img_meta($post->image_data) !!}" class="card-img-final">
-                        </div>
-                        <div class="col-12 mt-2">
-                            {{-- <p class="text-caption">Sunset at Puerto Vallarta | Daniel López</p> --}}
+                            <img {!! img_meta($post_["img"]->img_data) !!}" class="card-img-final">
                         </div>
                         <div class="col-12">
-                            <h1>{!! $post->title !!}</h1>
+                            <h1>{!! $post_['title'] !!}</h1>
                         </div>
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
-                                    <img src="{!! images($post->avatar) !!}" class="img-fluid rounded-circle" style="width:56px; height:auto; aspect-ratio:1/1;">
+                                    <img src="{!! images($post_["author"]->avatar) !!}" class="img-fluid rounded-circle" style="width:56px; height:auto; aspect-ratio:1/1;">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <a href="{{ route('author', $post->user_nicename) }}">
-                                            <b>{!! $post->author_name !!}</b>
+                                        <a href="{{ route('author', $post_["author"]->user_nicename) }}">
+                                            <b>{!! $post_["author"]->name !!}</b>
                                         </a>
                                     </p>
                                     <p class="card-text"><small
-                                            class="text-muted">{{ date('F d, Y', strtotime($post->post_date)) }}</small>
+                                            class="text-muted">{{ date('F d, Y', strtotime($post_['date'])) }}</small>
                                     </p>
                                 </div>
                             </div>
@@ -141,7 +137,7 @@
                             {!! str_replace(
                                 'caption',
                                 'div class="sp-caption"',
-                                str_replace('[', '<', str_replace(']', '>', $post->content)),
+                                str_replace('[', '<', str_replace(']', '>', $post_['content'])),
                             ) !!}
                         </div>
                         <!-- POST / NOTA -->
@@ -170,7 +166,7 @@
                         <div class="col">
                             <div class="card-more-posts p-4">
                                 <div class="row row-cols-1 g-4 pb-4">
-                                    <h2 class="mb-0">More {!! $post->category !!}</h2>
+                                    <h2 class="mb-0">More {!! $post_['category_name'] !!}</h2>
                                     @foreach ($more_posts as $data)
                                         <div class="col">
                                             <div class="card card-secundario">
@@ -199,8 +195,8 @@
                                         </div>
                                     @endforeach
                                     <div class="col text-center">
-                                        <a href="{{ route('category', [$post->category_slug]) }}" class="btn-view-more"
-                                            type="button">More {!! $post->category !!}</a>
+                                        <a href="{{ route('category', [$category]) }}" class="btn-view-more"
+                                            type="button">More {!! $post_['category_name'] !!}</a>
                                     </div>
                                 </div>
                             </div>
