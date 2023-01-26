@@ -451,10 +451,10 @@ class PostsController extends Controller
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
                                         AND id_post = $id;");
-        // dd($post->canonica);
+        // dd($post_);
         $this->metadatos(
             isset($post_['seo_title']) ? $post_['seo_title'] : $post_['title'],
-            isset($post_['description_title']) ? $post_['description_title'] : $post_['excerpt'],
+            isset($post_['seo_description']) ? $post_['seo_description'] : strip_tags($post_['excerpt']),
             isset($post_["img"]->ID) ? imgURL($post_["img"]->img_data) : config('constants.DEFAULT_IMAGE'),
             route('post', [$destino, $category, $post_['slug']]),
             (isset($post_['canonical_url']) && $post_['canonical_url'] != '') ? $post_['canonical_url'] : route('post', [$destino, $category, $post_['slug']])
