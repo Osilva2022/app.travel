@@ -134,11 +134,12 @@
                         </div>
                         <!-- POST / NOTA -->
                         <div class="col-12 px-4 post-cont">
-                            {!! str_replace(
+                            {{-- {!! str_replace(
                                 'caption',
                                 'div class="sp-caption"',
                                 str_replace('[', '<', str_replace(']', '>', $post_['content'])),
-                            ) !!}
+                            ) !!} --}}
+                            {!! $post_['content'] !!}
                         </div>
                         <!-- POST / NOTA -->
                         <div class="col-12">
