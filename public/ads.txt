@@ -1,7 +1,12 @@
 google.com, pub-9842114446054220, DIRECT, f08c47fec0942fa0
 
-#ads.txt 
+#ads.txt
 
 #MMO
 google.com, pub-2832174768180048, RESELLER, f08c47fec0942fa0
 google.com, pub-52301817406
+
+#MMO
+google.com, pub-2832174768180048, RESELLER, f08c47fec0942fa0
+google.com, pub-5230181740659216, RESELLER, f08c47fec0942fa0
+google.com, pub-8662305583568951, RESELLER, f08c47fec0942fa0
