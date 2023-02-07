@@ -1246,4 +1246,23 @@ class PostsController extends Controller
         );
         return view('search.index', compact('destinations_data', 'categories_data', 'busqueda', 'bandera', 'posts'));
     }
+
+    public function flights($destination)
+    {
+        switch ($destination) {
+            case 'cancun':
+                $iframe = "https://www.avionio.com/widget/en/cun/arrivals";
+                break;
+            case 'los-cabos':
+                $iframe = "https://www.avionio.com/widget/en/sjd/arrivals";
+                break;
+
+            default:
+                $iframe = "https://www.avionio.com/widget/en/PVR/arrivals";
+                break;
+        }
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        return view('flights.index', compact('destinations_data', 'categories_data', 'iframe', 'destination'));
+    }
 }

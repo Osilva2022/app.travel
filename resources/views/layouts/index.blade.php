@@ -65,10 +65,10 @@
                 <div class="col submenu-home py-2">
                     <div class="container">
                         <div class="row g-2">
-                            <div class="col-12 col-sm-4 text-white text-center">
+                            <div class="col-6 col-md text-white text-center">
                                 {{ date('F j, Y') }}
                             </div>
-                            <div class="col-auto text-white text-center d-none d-lg-block">
+                            {{-- <div class="col-auto text-white text-center d-none d-lg-block">
                                 <marquee behavior="" direction="right">
                                     <span class="mx-2" title="Base: MXN">
                                         {!! $usd->country !!} : ${!! $usd->end_rate !!}
@@ -79,8 +79,8 @@
                                         </span>
                                     @endforeach
                                 </marquee>
-                            </div>
-                            <div class="btn-group col text-white text-center d-lg-none d-block">
+                            </div> --}}
+                            <div class="btn-group col-6 col-md text-white text-center d-block">
                                 <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
                                     href="#" title="Base: MXN">
                                     {!! $usd->country !!} : ${!! $usd->end_rate !!} <i class="bi bi-caret-down-fill"></i>
@@ -96,6 +96,36 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item disabled text-white" href="#" style="font-size: 8px;">By
                                         exchangeratesapi.io</a>
+                                </ul>
+                            </div>
+                            <div class="btn-group col text-white text-center d-block">
+                                <a class="text-white" data-bs-toggle="dropdown" style="background-color: #243A85;"
+                                    href="#" title="Flights">
+                                    <i class="bi bi-airplane"></i>
+                                    Flights <i class="bi bi-caret-down-fill"></i>
+                                </a>
+                                <ul class="dropdown-menu" style="background-color: #243A85;">
+                                    <li title="Cancun">
+                                        <a class="dropdown-item text-white"
+                                            href="{{ route('flights', 'cancun') }}">
+                                            Cancun
+                                        </a>
+                                    </li>
+                                    <li title="Los Cabos">
+                                        <a class="dropdown-item text-white"
+                                            href="{{ route('flights', 'los-cabos') }}">
+                                            Los Cabos
+                                        </a>
+                                    </li>
+                                    <li title="Puerto Vallarta">
+                                        <a class="dropdown-item text-white"
+                                            href="{{ route('flights', 'puerto-vallarta') }}">
+                                            Puerto Vallarta
+                                        </a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item disabled text-white" href="#" style="font-size: 8px;">By
+                                        avionio.com</a>
                                 </ul>
                             </div>
                             <div class="btn-group col text-white d-flex justify-content-center">
@@ -117,7 +147,7 @@
                                     @endforeach
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item disabled text-white" href="#" style="font-size: 8px;">By
-                                        tutiempo.net</a>
+                                        tutsiempo.net</a>
                                 </ul>
                             </div>
                         </div>
@@ -617,7 +647,7 @@
                 <div class="col-12">
                     <hr>
                 </div>
-            </div>  
+            </div>
             <!-- Blogs -->
             <h2 class="text-center my-4">Blogs</h2>
             <div class="row g-4">

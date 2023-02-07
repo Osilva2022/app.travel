@@ -281,6 +281,7 @@ Route::get('/vallarta-nayarit/tuba-tejuino-vallarta-delicacies/', function () {
 });
 
 
+Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
 //Redirect To Post
 Route::get('/', [PostsController::class, 'index'])->name('home');
