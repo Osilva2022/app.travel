@@ -1252,17 +1252,32 @@ class PostsController extends Controller
         switch ($destination) {
             case 'cancun':
                 $iframe = "https://www.avionio.com/widget/en/cun/arrivals";
+                $description ='Stay up to date with arrivals and departures of Cancun International Airport (CUN). Check the flight status, ETA and ETD of your trip to Cancun';
                 break;
             case 'los-cabos':
                 $iframe = "https://www.avionio.com/widget/en/sjd/arrivals";
+                $description ='Stay up to date with arrivals and departures of Los Cabos International Airport San Jose Cabo (SJD). Check flight status, ETA and ETD of your trip to Los Cabos.';
                 break;
 
             default:
                 $iframe = "https://www.avionio.com/widget/en/PVR/arrivals";
+                $description ='Stay up to date with arrivals and departures of Gustavo Diaz Ordaz International Airport Puerto Vallarta (PVR). Check flight status, ETA and ETD of your trip';
                 break;
         }
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+
+        $title_destination = DB::select("SELECT * FROM travel_destinations WHERE slug = '$destination';");
+
+        $title = $title_destination[0]->name;
+
+         $this->metadatos(
+            $title.' | Tribune Travel',
+            $description,
+            config('constants.DEFAULT_IMAGE'),
+            route('flights',$destination),
+            route('flights', $destination)
+        );
         return view('flights.index', compact('destinations_data', 'categories_data', 'iframe', 'destination'));
     }
 }
