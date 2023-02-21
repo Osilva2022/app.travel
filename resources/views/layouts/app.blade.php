@@ -33,7 +33,7 @@
             "url":"https://tribune.travel/",
             "logo":"https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
         }
-    </script>  
+    </script>
     <script type="application/ld+json">
         {
           "@context": "https://schema.org/",
@@ -46,14 +46,13 @@
             "query-input": "required name=search_term_string"
           }
         }
-        </script>  
+        </script>
     {!! JsonLdMulti::generate() !!}
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous"></script>
     <script src="{{ asset('js/carousels.min.js') }}"></script>
     @stack('ads')
-    @stack('script-id-json')
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
