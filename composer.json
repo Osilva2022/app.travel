@@ -17,7 +17,11 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+<<<<<<< HEAD
         "livewire/livewire": "^2.12",
+=======
+        "livewire/livewire": "^2.11",
+>>>>>>> b8484f2f3511a60e48f3c9aca7ddac57d6757044
         "spatie/laravel-feed": "^3.2",
         "spatie/laravel-sitemap": "5.8.0",
         "spatie/schema-org": "^3.9",

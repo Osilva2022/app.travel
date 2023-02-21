@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "7b958dd1dae9a06b228c262770a69c52",
+=======
+    "content-hash": "4cde137cca150c9df85ff9a561cad75c",
+>>>>>>> b8484f2f3511a60e48f3c9aca7ddac57d6757044
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -2272,6 +2276,7 @@
         },
         {
             "name": "livewire/livewire",
+<<<<<<< HEAD
             "version": "v2.12.0",
             "source": {
                 "type": "git",
@@ -2282,6 +2287,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/livewire/livewire/zipball/9da51085a7b02a8512a9d4c525d5ea96e8f52aa0",
                 "reference": "9da51085a7b02a8512a9d4c525d5ea96e8f52aa0",
+=======
+            "version": "v2.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "e92233f31dc1b88fb1ac242b32afe1ab7525ee05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/e92233f31dc1b88fb1ac242b32afe1ab7525ee05",
+                "reference": "e92233f31dc1b88fb1ac242b32afe1ab7525ee05",
+>>>>>>> b8484f2f3511a60e48f3c9aca7ddac57d6757044
                 "shasum": ""
             },
             "require": {
@@ -2333,7 +2350,11 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/livewire/livewire/tree/v2.12.0"
+=======
+                "source": "https://github.com/livewire/livewire/tree/v2.11.2"
+>>>>>>> b8484f2f3511a60e48f3c9aca7ddac57d6757044
             },
             "funding": [
                 {
@@ -2341,7 +2362,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-02-20T13:30:53+00:00"
+=======
+            "time": "2023-01-29T23:45:02+00:00"
+>>>>>>> b8484f2f3511a60e48f3c9aca7ddac57d6757044
         },
         {
             "name": "monolog/monolog",
