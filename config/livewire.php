@@ -54,11 +54,9 @@ return [
     |
     */
 
-<<<<<<< HEAD
-    'asset_url' => null,
-=======
-    'asset_url' => 'http://localhost/app.travel/public',
->>>>>>> b8484f2f3511a60e48f3c9aca7ddac57d6757044
+
+    'asset_url' => 'https://tribune.travel/',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -72,7 +70,7 @@ return [
     |
     */
 
-    'app_url' => 'http://localhost/app.travel/public',
+    'app_url' => 'https://tribune.travel/',
 
     /*
     |--------------------------------------------------------------------------
