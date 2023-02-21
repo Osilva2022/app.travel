@@ -46,8 +46,7 @@ use App\Models\Contact;
 use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Mail;
 use JsonLd\Context;
-
-
+use Psy\Util\Json;
 
 class PostsController extends Controller
 {
@@ -291,7 +290,32 @@ class PostsController extends Controller
         $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
         // dd($postsSitemap);
     }
+    public function data_json($data){
+        $array = [];
+       
+        for ($i = 0; $i < count($data); $i++) {
+            $img_metadata=unserialize($data[$i]->image_data);
+            $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
+            array_push($array, [
+                "@type" => "ListItem",
+                "position" => $i + 1,
+                "name" => $data[$i]->title,
+                "headline" => "Tribune ".$data[$i]->category_slug,
+                "datePublished"=>$data[$i]->post_date,
+                "image" => $image,
+                "url" => $data[$i]->url
+            ]);
+        }
+        JsonLdMulti::setSite('Tribune travel');
+        JsonLdMulti::setType('NewsArticle');
+        JsonLdMulti::addValue("itemListElement", $array);
+        if(! JsonLdMulti::isEmpty()) {
+            JsonLdMulti::newJsonLd();
+            JsonLdMulti::setType('NewsArticle');
+        }
+        return JsonLdMulti::generate(); 
 
+    }
     public function index(Request $request)
     {
         //Previews post
@@ -314,6 +338,8 @@ class PostsController extends Controller
 
         $review = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
+        
+
         $guide = DB::select("SELECT
                                     td.ID,
                                     td.category,
@@ -339,6 +365,7 @@ class PostsController extends Controller
         $divisas_data = DB::select("SELECT * FROM travel_divisa WHERE country != 'USD'");
         $usd_data = DB::select("SELECT * FROM travel_divisa WHERE country = 'USD'");
         $usd = $usd_data[0];
+
         // dd($divisas_data);
 
         //Revisar issue de instagram
@@ -376,6 +403,7 @@ class PostsController extends Controller
      */
     public function post($destino, $category, $slug): View
     {
+        $array = [];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
         $apiresponse = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/posts?slug=' . $slug));
@@ -424,8 +452,27 @@ class PostsController extends Controller
             "img" => $imgdata,
             "author" => $authordata
         ];
-        // dd($post_);
+        //dd($post_);
+        $img_metadata=unserialize($post_['img']->img_data);
+        $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
+        array_push($array, [
+            "@type" => "author",
+            "name" => $post_['author']->name,
+            "url" => route('author',$post_['author']->user_nicename),
+            "datePublished"=>$post_['date'],
+        ]);
+        JsonLdMulti::setTitle($post_['seo_title']);
+        JsonLdMulti::setDescription($post_['seo_description']);
+        JsonLdMulti::setType('Article');
+        JsonLdMulti::addImage($image);
+        JsonLdMulti::addValue("author", $array);
+        JsonLdMulti::addValue("headline",$post_['seo_title']);
 
+        if(! JsonLdMulti::isEmpty()) {
+            JsonLdMulti::newJsonLd();
+            JsonLdMulti::setType('WebPage');
+            JsonLdMulti::setTitle('Page Article - '.$post_['title']);
+        }
         $id = $post_['id'];
         $more_posts = DB::select("SELECT * FROM travel_posts_category
                                     WHERE category_slug = '$category'
@@ -540,6 +587,8 @@ class PostsController extends Controller
 
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
+        $post_data = $this->data_json($postscategory);
+        //dd($postscategory);
         $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
         (!isset($category_data[0])) ? abort(404) : '';
         switch ($category) {
@@ -784,6 +833,7 @@ class PostsController extends Controller
                                 ORDER BY post_title ASC;");
         }
         //dd($things);
+        
         if (is_null($things)) {
             // return abort(404);
             return redirect()->route('home');
@@ -904,7 +954,7 @@ class PostsController extends Controller
         /* return $request->id; */
     }
 
-    public function ShowDirectoryLetter(Request $request)
+   /*  public function ShowDirectoryLetter(Request $request)
     {
         if (isset($request->letter)) {
             $letter = $request->letter;
@@ -930,8 +980,8 @@ class PostsController extends Controller
             }
             return view('guide.gallery', compact('data', 'gallery'));
         }
-        /* return $request->id; */
-    }
+        
+    } */
 
     public function cookies()
     {
