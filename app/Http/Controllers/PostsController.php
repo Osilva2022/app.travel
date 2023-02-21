@@ -292,7 +292,7 @@ class PostsController extends Controller
     }
     public function data_json($data){
         $array = [];
-       
+
         for ($i = 0; $i < count($data); $i++) {
             $img_metadata=unserialize($data[$i]->image_data);
             $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
@@ -313,7 +313,7 @@ class PostsController extends Controller
             JsonLdMulti::newJsonLd();
             JsonLdMulti::setType('NewsArticle');
         }
-        return JsonLdMulti::generate(); 
+        return JsonLdMulti::generate();
 
     }
     public function index(Request $request)
@@ -338,7 +338,7 @@ class PostsController extends Controller
 
         $review = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 1");
         $reviews = DB::select("SELECT * FROM travel_posts_category WHERE category_slug = 'reviews' ORDER BY post_date DESC LIMIT 5");
-        
+
 
         $guide = DB::select("SELECT
                                     td.ID,
@@ -587,7 +587,7 @@ class PostsController extends Controller
 
         $firstpostcategory = $this->category($category, $destination)->first();
         $postscategory = $this->category($category, $destination);
-        $post_data = $this->data_json($postscategory);
+        // $post_data = $this->data_json($postscategory);
         //dd($postscategory);
         $category_data = DB::select("SELECT * FROM travel_categories WHERE slug = '$category';");
         (!isset($category_data[0])) ? abort(404) : '';
@@ -833,7 +833,7 @@ class PostsController extends Controller
                                 ORDER BY post_title ASC;");
         }
         //dd($things);
-        
+
         if (is_null($things)) {
             // return abort(404);
             return redirect()->route('home');
@@ -980,7 +980,7 @@ class PostsController extends Controller
             }
             return view('guide.gallery', compact('data', 'gallery'));
         }
-        
+
     } */
 
     public function cookies()
