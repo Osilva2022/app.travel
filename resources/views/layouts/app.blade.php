@@ -10,7 +10,7 @@
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     <meta name="facebook-domain-verification" content="fuh4fu0gnrjjsg5n8mymdif1zcknbe" />
     <meta property="og:locale" content="es_MX">
-    {!! SEO::generate() !!}
+    @livewireStyles
     {{-- <title>@yield('page-title')</title> --}}
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
@@ -28,7 +28,28 @@
     <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" {{-- media="print" onload="this.media='all'" --}}>
     <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="preload" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
-
+    <script type="application/ld+json">
+        {
+            "@context":"https://schema.org",
+            "@type":"Organization",
+            "url":"https://tribune.travel/",
+            "logo":"https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
+        }
+    </script>  
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "WebSite",
+          "name": "Tribune Travel",
+          "url": "https://tribune.travel/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://tribune.travel/search?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>  
+    {!! JsonLdMulti::generate() !!}
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -263,6 +284,7 @@
             var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
         })(window,document,'https://cdn.bitrix24.mx/b23534531/crm/tag/call.tracker.js');
     </script>
+    @livewireScripts
 </body>
 
 </html>
