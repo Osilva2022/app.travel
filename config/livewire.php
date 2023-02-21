@@ -55,7 +55,7 @@ return [
     */
 
 
-    'asset_url' => 'https://tribune.travel/',
+    'asset_url' => 'https://tribune.travel',
 
 
     /*
@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'app_url' => 'https://tribune.travel/',
+    'app_url' => 'https://tribune.travel',
 
     /*
     |--------------------------------------------------------------------------
