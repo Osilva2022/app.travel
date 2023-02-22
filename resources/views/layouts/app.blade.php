@@ -10,6 +10,7 @@
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     <meta name="facebook-domain-verification" content="fuh4fu0gnrjjsg5n8mymdif1zcknbe" />
     <meta property="og:locale" content="es_MX">
+    {!! SEO::generate() !!}
     @livewireStyles
     {{-- <title>@yield('page-title')</title> --}}
     <!-- Favicons -->
