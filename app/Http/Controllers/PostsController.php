@@ -290,32 +290,33 @@ class PostsController extends Controller
         $indexesSitemap->writeToFile(storage_path('app/sitemaps/sitemap.xml'));
         // dd($postsSitemap);
     }
-    public function data_json($data){
-        $array = [];
 
+    public function data_json_event($data){
+        $array_event = [];
+        
         for ($i = 0; $i < count($data); $i++) {
-            $img_metadata=unserialize($data[$i]->image_data);
-            $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
-            array_push($array, [
-                "@type" => "ListItem",
-                "position" => $i + 1,
-                "name" => $data[$i]->title,
-                "headline" => "Tribune ".$data[$i]->category_slug,
-                "datePublished"=>$data[$i]->post_date,
-                "image" => $image,
-                "url" => $data[$i]->url
-            ]);
+        $img_metadata=unserialize($data[$i]->image_data);
+        $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
+        $content = $data[$i]->content;
+        //$formatted_text = str_replace(['<p style="text-align: left;">', '</p>'], '', $content);
+        //dd($formatted_text);
+        array_push($array_event, [
+            "@type" => "Event",
+            "name" => $data[$i]->title,
+            "startDate" => $data[$i]->start_date,
+            "endDate" => $data[$i]->end_date,
+            "location" => $data[$i]->destination,
+            "image" => $image,
+            'description' => $data[$i]->title
+        ]);
         }
-        JsonLdMulti::setSite('Tribune travel');
-        JsonLdMulti::setType('NewsArticle');
-        JsonLdMulti::addValue("itemListElement", $array);
-        if(! JsonLdMulti::isEmpty()) {
-            JsonLdMulti::newJsonLd();
-            JsonLdMulti::setType('NewsArticle');
-        }
-        return JsonLdMulti::generate();
+        JsonLdMulti::addValue("Event",$array_event);
+        
+        
+        return JsonLdMulti::generate(); 
 
     }
+
     public function index(Request $request)
     {
         //Previews post
@@ -667,7 +668,10 @@ class PostsController extends Controller
         $category = "events";
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
-
+        //dd($e);
+        if($e){
+            $event_structured_data = $this->data_json_event($e);
+        }
         $this->metadatos(
             'Events | Tribune Travel',
             "Calendar. Looking for what to do in Mexico's top beach destinations? We got you covered with the best events. Find out what to do and where to go here.",
