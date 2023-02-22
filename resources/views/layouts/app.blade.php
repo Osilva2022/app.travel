@@ -263,7 +263,7 @@
         })(window, document, 'https://cdn.bitrix24.mx/b23534531/crm/tag/call.tracker.js');
 
     </script>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    {{-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
         window.OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
@@ -272,7 +272,7 @@
             , });
         });
 
-    </script>
+    </script> --}}
     @livewireScripts
 </body>
 
