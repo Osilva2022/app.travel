@@ -164,12 +164,14 @@ class PostsController extends Controller
         SEOTools::opengraph()->setTitle($title);
         SEOTools::opengraph()->setUrl($url);
         SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+        SEOTools::opengraph()->addImage($image, ['secure_url' => $image]);
+        // SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
 
         SEOTools::twitter()->setTitle($title);
         SEOTools::twitter()->setSite('@CpsNoticias');
         SEOTools::twitter()->setUrl($url);
-        SEOTools::twitter()->setImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+        SEOTools::twitter()->setImage($image);
+        // SEOTools::twitter()->setImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
     }
 
     /**
@@ -291,30 +293,30 @@ class PostsController extends Controller
         // dd($postsSitemap);
     }
 
-    public function data_json_event($data){
+    public function data_json_event($data)
+    {
         $array_event = [];
-        
-        for ($i = 0; $i < count($data); $i++) {
-        $img_metadata=unserialize($data[$i]->image_data);
-        $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
-        $content = $data[$i]->content;
-        //$formatted_text = str_replace(['<p style="text-align: left;">', '</p>'], '', $content);
-        //dd($formatted_text);
-        array_push($array_event, [
-            "@type" => "Event",
-            "name" => $data[$i]->title,
-            "startDate" => $data[$i]->start_date,
-            "endDate" => $data[$i]->end_date,
-            "location" => $data[$i]->destination,
-            "image" => $image,
-            'description' => $data[$i]->title
-        ]);
-        }
-        JsonLdMulti::addValue("Event",$array_event);
-        
-        
-        return JsonLdMulti::generate(); 
 
+        for ($i = 0; $i < count($data); $i++) {
+            $img_metadata = unserialize($data[$i]->image_data);
+            $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
+            $content = $data[$i]->content;
+            //$formatted_text = str_replace(['<p style="text-align: left;">', '</p>'], '', $content);
+            //dd($formatted_text);
+            array_push($array_event, [
+                "@type" => "Event",
+                "name" => $data[$i]->title,
+                "startDate" => $data[$i]->start_date,
+                "endDate" => $data[$i]->end_date,
+                "location" => $data[$i]->destination,
+                "image" => $image,
+                'description' => $data[$i]->title
+            ]);
+        }
+        JsonLdMulti::addValue("Event", $array_event);
+
+
+        return JsonLdMulti::generate();
     }
 
     public function index(Request $request)
@@ -454,25 +456,25 @@ class PostsController extends Controller
             "author" => $authordata
         ];
         //dd($post_);
-        $img_metadata=unserialize($post_['img']->img_data);
+        $img_metadata = unserialize($post_['img']->img_data);
         $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
         array_push($array, [
             "@type" => "author",
             "name" => $post_['author']->name,
-            "url" => route('author',$post_['author']->user_nicename),
-            "datePublished"=>$post_['date'],
+            "url" => route('author', $post_['author']->user_nicename),
+            "datePublished" => $post_['date'],
         ]);
         JsonLdMulti::setTitle($post_['seo_title']);
         JsonLdMulti::setDescription($post_['seo_description']);
         JsonLdMulti::setType('Article');
         JsonLdMulti::addImage($image);
         JsonLdMulti::addValue("author", $array);
-        JsonLdMulti::addValue("headline",$post_['seo_title']);
+        JsonLdMulti::addValue("headline", $post_['seo_title']);
 
-        if(! JsonLdMulti::isEmpty()) {
+        if (!JsonLdMulti::isEmpty()) {
             JsonLdMulti::newJsonLd();
             JsonLdMulti::setType('WebPage');
-            JsonLdMulti::setTitle('Page Article - '.$post_['title']);
+            JsonLdMulti::setTitle('Page Article - ' . $post_['title']);
         }
         $id = $post_['id'];
         $more_posts = DB::select("SELECT * FROM travel_posts_category
@@ -669,7 +671,7 @@ class PostsController extends Controller
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
         //dd($e);
-        if($e){
+        if ($e) {
             $event_structured_data = $this->data_json_event($e);
         }
         $this->metadatos(
@@ -958,7 +960,7 @@ class PostsController extends Controller
         /* return $request->id; */
     }
 
-   /*  public function ShowDirectoryLetter(Request $request)
+    /*  public function ShowDirectoryLetter(Request $request)
     {
         if (isset($request->letter)) {
             $letter = $request->letter;
@@ -1306,16 +1308,16 @@ class PostsController extends Controller
         switch ($destination) {
             case 'cancun':
                 $iframe = "https://www.avionio.com/widget/en/cun/arrivals";
-                $description ='Stay up to date with arrivals and departures of Cancun International Airport (CUN). Check the flight status, ETA and ETD of your trip to Cancun';
+                $description = 'Stay up to date with arrivals and departures of Cancun International Airport (CUN). Check the flight status, ETA and ETD of your trip to Cancun';
                 break;
             case 'los-cabos':
                 $iframe = "https://www.avionio.com/widget/en/sjd/arrivals";
-                $description ='Stay up to date with arrivals and departures of Los Cabos International Airport San Jose Cabo (SJD). Check flight status, ETA and ETD of your trip to Los Cabos.';
+                $description = 'Stay up to date with arrivals and departures of Los Cabos International Airport San Jose Cabo (SJD). Check flight status, ETA and ETD of your trip to Los Cabos.';
                 break;
 
             default:
                 $iframe = "https://www.avionio.com/widget/en/PVR/arrivals";
-                $description ='Stay up to date with arrivals and departures of Gustavo Diaz Ordaz International Airport Puerto Vallarta (PVR). Check flight status, ETA and ETD of your trip';
+                $description = 'Stay up to date with arrivals and departures of Gustavo Diaz Ordaz International Airport Puerto Vallarta (PVR). Check flight status, ETA and ETD of your trip';
                 break;
         }
         $destinations_data = $this->returndata('destinations');
@@ -1325,11 +1327,11 @@ class PostsController extends Controller
 
         $title = $title_destination[0]->name;
 
-         $this->metadatos(
-            $title.' | Tribune Travel',
+        $this->metadatos(
+            $title . ' | Tribune Travel',
             $description,
             config('constants.DEFAULT_IMAGE'),
-            route('flights',$destination),
+            route('flights', $destination),
             route('flights', $destination)
         );
         return view('flights.index', compact('destinations_data', 'categories_data', 'iframe', 'destination'));
