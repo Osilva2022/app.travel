@@ -31,12 +31,6 @@
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://tribune.travel/cancun/news/ado-transporting-18000-a-day-from-cancun-central-terminal</loc>
-        <lastmod>2023-01-02T12:43:44-06:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
         <loc>https://tribune.travel/cancun/news/after-the-pandemic-asian-high-end-tourism-returns-to-cancun</loc>
         <lastmod>2023-01-05T12:15:32-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -193,6 +187,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/the-daily-briefing-february-22-2023</loc>
+        <lastmod>2023-02-22T12:32:27-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/the-mexican-caribbean-allocates-26-of-its-tax-revenue-to-tourism-promotion</loc>
         <lastmod>2023-01-16T13:06:51-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -225,6 +225,12 @@
     <url>
         <loc>https://tribune.travel/cancun/things-to-do/3-more-cultural-activities-to-do-in-cancun-in-2023</loc>
         <lastmod>2023-02-16T17:44:59-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/things-to-do/5-best-souvenirs-markets-in-cancun</loc>
+        <lastmod>2023-02-23T17:06:44-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -451,6 +457,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/things-to-do/4-unmissable-experiences-in-los-cabos-in-2023</loc>
+        <lastmod>2023-02-21T17:20:22-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/things-to-do/5-reasons-to-visit-san-jose-del-cabo-2023</loc>
         <lastmod>2023-01-12T17:32:39-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -507,6 +519,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/blogs/medical-care-for-the-tourist-in-puerto-vallarta</loc>
         <lastmod>2023-01-18T17:50:38-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/blogs/protected-areas-in-mexico</loc>
+        <lastmod>2023-02-22T17:20:42-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -651,6 +669,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/the-daily-briefing-february-20-2023</loc>
         <lastmod>2023-02-20T12:13:03-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/the-daily-briefing-february-23-2023</loc>
+        <lastmod>2023-02-23T12:27:40-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>

@@ -217,6 +217,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/ado-transporting-18000-a-day-from-cancun-central-terminal</loc>
+        <lastmod>2023-01-02T12:43:44-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/american-airlines-to-offer-new-nonstop-flights-to-cancun</loc>
         <lastmod>2022-10-27T18:45:34-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -669,12 +675,6 @@
     <url>
         <loc>https://tribune.travel/los-cabos/blogs/be-hot-with-coffee-spa-treatments</loc>
         <lastmod>2022-02-28T19:07:43-06:00</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.4</priority>
-    </url>
-    <url>
-        <loc>https://tribune.travel/los-cabos/blogs/ecotourism-and-protected-areas-in-mexico</loc>
-        <lastmod>2022-02-23T18:50:42-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>

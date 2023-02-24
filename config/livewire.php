@@ -54,7 +54,6 @@ return [
     |
     */
 
-
     'asset_url' => 'https://tribune.travel',
 
 
