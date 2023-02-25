@@ -164,14 +164,14 @@ class PostsController extends Controller
         SEOTools::opengraph()->setTitle($title);
         SEOTools::opengraph()->setUrl($url);
         SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::opengraph()->addImage($image, ['secure_url' => $image]);
-        // SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+        // SEOTools::opengraph()->addImage($image, ['secure_url' => $image]);
+        SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 300, 'height' => 300, 'type' => 'image/jpeg']);
 
         SEOTools::twitter()->setTitle($title);
         SEOTools::twitter()->setSite('@CpsNoticias');
         SEOTools::twitter()->setUrl($url);
-        SEOTools::twitter()->setImage($image);
-        // SEOTools::twitter()->setImage($image, ['width' => 1200, 'height' => 630, 'type' => 'image/jpeg']);
+        // SEOTools::twitter()->setImage($image);
+        SEOTools::twitter()->setImage($image, ['width' => 300, 'height' => 300, 'type' => 'image/jpeg']);
     }
 
     /**
