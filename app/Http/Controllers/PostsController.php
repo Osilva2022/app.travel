@@ -28,9 +28,11 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\JsonLdMulti;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use App\Models\InstagramTokens;
 use App\Helper\Helper;
 use App\Mail\NewContact;
+use App\Mail\NewSubscriber;
 use Corcel\Model\Post as ModelPost;
 use Corcel\Model\Taxonomy as ModelTaxonomy;
 use Corcel\Model\Term as ModelTerm;
@@ -47,6 +49,7 @@ use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Mail;
 use JsonLd\Context;
 use Psy\Util\Json;
+
 
 class PostsController extends Controller
 {
@@ -1274,7 +1277,119 @@ class PostsController extends Controller
             'success' => 'Thank you for contacting us. We will get back to you soon.'
         ]);
     }
+    public function check_subscription($email,$id_category){
+        $query = "SELECT
+        travel_subscriptions_category.id_term,travel_subscriptions_category.status
+        FROM tribunetravel_wp.travel_subscriptions JOIN 
+        tribunetravel_wp.travel_subscriptions_category 
+        ON travel_subscriptions.id_subscriptions = travel_subscriptions_category.id_subscription
+        WHERE travel_subscriptions.email='$email' AND travel_subscriptions_category.id_term = $id_category ";
+        $check_id_category = DB::select($query);
+        if($check_id_category){
+            
+            return $check_id_category;
+        }
+        else
+        {
+            return $check_id_category=[''];
+        }
+        
+    } 
 
+    public function subscription(){
+
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+    
+        return view('subscriptions.index',compact('destinations_data','categories_data'));
+    }
+
+    public function saveSubscription(Request $request){
+
+        $categories_data = $this->returndata('categories');
+        $destinations_data = $this->returndata('destinations');
+        $request->validate([
+            'fullname' => 'required',
+            'email' => 'required',
+        ]);
+        if($request->category==""){
+            return redirect()->route('subscription')->with([
+                'error' => "You did not select a category"
+            ]);
+        }
+        $user_subscription = DB::select('SELECT id_subscriptions,status FROM tribunetravel_wp.travel_subscriptions WHERE email = ?',[$request->email]);
+        $now = new DateTime();
+        if($user_subscription){
+            if($user_subscription[0]->status == 1){
+                $id_subscription =  $user_subscription[0]->id_subscriptions;
+            }
+            elseif($user_subscription[0]->status == 0)
+            {
+                DB::update('update tribunetravel_wp.travel_subscriptions set status = ? where id_subscriptions = ?', [true,$user_subscription[0]->id_subscriptions]);
+                $id_subscription =  $user_subscription[0]->id_subscriptions;
+                
+            }
+
+        }
+        else
+        {
+            $id_subscription = DB::table('travel_subscriptions')->insertGetId(
+                ['full_name' => $request->fullname ,
+                 'email' => $request->email,
+                 'status' => true,
+                 'subscription_date' => $now->format('Y-m-d H:i:s'),
+                ]
+            );
+        }
+        
+        
+        for($i=0; $i < count($request->category); $i++){
+            $subscriptions = $this->check_subscription($request->email,$request->category[$i]);
+            if(($subscriptions[0]=="")){
+                DB::insert('INSERT INTO `tribunetravel_wp`.`travel_subscriptions_category`(`id_subscription`,`id_term`,`created`,`status`)VALUES(?,?,?,?);', [$id_subscription,$request->category[$i],$now->format('Y-m-d H:i:s'),true]);
+                
+            }
+            elseif($subscriptions[0]!="" && $subscriptions[0]->status == 0)
+            {
+                DB::update('update tribunetravel_wp.travel_subscriptions_category set status = ? where id_subscription = ? and id_term = ?', [true,$user_subscription[0]->id_subscriptions,$request->category[$i]]);
+            }
+            
+        }
+        return redirect()->route('subscription')->with([
+            'success' => 'Thanks for subscribing'
+        ]);
+
+        
+        return view('subscriptions.index', compact('destinations_data','categories_data'));
+    }
+
+    public function unsubscribe(){
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        
+    
+        return view('subscriptions.unsubscribe',compact('destinations_data','categories_data'));
+    }
+    public function saveUnsubscribe(Request $request){
+        $request->validate([
+            'email' => 'required',
+        ]);
+
+        $user_subscription = DB::select('SELECT id_subscriptions FROM tribunetravel_wp.travel_subscriptions WHERE email = ? and status = 1',[$request->email]);
+        if($user_subscription){
+            DB::update('update tribunetravel_wp.travel_subscriptions set status = ? where id_subscriptions = ?', [false,$user_subscription[0]->id_subscriptions]);
+            DB::update('update tribunetravel_wp.travel_subscriptions_category set status = ? where id_subscription = ?', [false,$user_subscription[0]->id_subscriptions]);
+            return redirect()->route('unsubscribe')->with([
+                'success' => "we're so sorry you're leaving"
+            ]);
+        }
+        else
+        {
+            return redirect()->route('unsubscribe')->with([
+                'error' => "Your email is not subscribed"
+            ]);
+        }
+    }
     public function search(Request $request)
     {
         $bandera = true;

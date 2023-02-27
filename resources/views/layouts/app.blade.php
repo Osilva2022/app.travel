@@ -178,6 +178,13 @@
                     <img src="{{ asset('img/svg/tv-mar-white.svg') }}" class="img-footer" alt="TVMar Logo" loading="lazy" decoding="defer">
                 </a>
             </div>
+            <div class="col col-footer text-center">
+                <a class="nav-link text-white" style="padding: 2px;" href="{{route('subscription')}}" target="_blank">
+                    <span class="etiqueta-post" style="color:#fff; background: transparent; border: solid 2px #fff; font-size: 14px !important;">
+                        Subscribe
+                    </span>
+                </a> 
+            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-12 mb-4">
