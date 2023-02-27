@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <button class="btn-submit-contact" type="submit">SUBMIT</button>
+                    <button class="btn-submit-contact" type="submit">UNSUBSCRIBE</button>
                 </div> 
               </form>
             </div>
