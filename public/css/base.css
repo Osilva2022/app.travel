@@ -87,6 +87,11 @@ div.post-cont img {
     height: auto !important;
     display: block;
 }
+div.post-cont figure {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+}
 /* div.post-cont iframe {
     width: 100%;
     height: auto;

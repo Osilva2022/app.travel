@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,7 @@
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     <meta name="facebook-domain-verification" content="fuh4fu0gnrjjsg5n8mymdif1zcknbe" />
     <meta property="og:locale" content="es_MX">
+    {!! SEO::generate() !!}
     @livewireStyles
     {{-- <title>@yield('page-title')</title> --}}
     <!-- Favicons -->
@@ -270,7 +271,7 @@
         })(window, document, 'https://cdn.bitrix24.mx/b23534531/crm/tag/call.tracker.js');
 
     </script>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    {{-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
         window.OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
@@ -279,7 +280,7 @@
             , });
         });
 
-    </script>
+    </script> --}}
     @livewireScripts
 </body>
 
