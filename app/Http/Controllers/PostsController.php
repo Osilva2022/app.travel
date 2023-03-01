@@ -1149,38 +1149,109 @@ class PostsController extends Controller
 
     public function postRedirect($slug)
     {
+
         $posts = DB::select("SELECT
-                                    *
-                                FROM
-                                    travel_posts_all
-                                        LEFT JOIN
-                                    (SELECT
-                                            u.user_id, p.meta_value AS avatar, us.user_nicename
-                                        FROM
-                                            travel_users AS us
-                                            left join
-                                            travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
-                                            left join
-                                            travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
-                                    ON travel_posts_all.author_id = q.user_id
-                                WHERE
-                                    slug = '$slug'
-                                ORDER BY post_date DESC;");
+            *
+        FROM
+            travel_posts_all
+                LEFT JOIN
+            (SELECT
+                    u.user_id, p.meta_value AS avatar, us.user_nicename
+                FROM
+                    travel_users AS us
+                    left join
+                    travel_usermeta AS u on us.ID = u.user_id AND u.meta_key = 'travel_user_avatar'
+                    left join
+                    travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
+            ON travel_posts_all.author_id = q.user_id
+        WHERE
+            slug = '$slug'
+        ORDER BY post_date DESC;");
 
-        // dd($posts);
-        // if (!isset($posts[0])) { //Fail and now send to home
-        //     dd('No');
-        // }
-        // $post = $posts[0];
-        $post = (isset($posts[0])) ? $posts[0] : abort(404);
 
-        $more_posts = DB::select("SELECT * FROM travel_posts_category
-                                    WHERE category_slug = '$post->category_slug'
-                                    AND id_post != $post->id_post
-                                        ORDER BY post_date DESC
-                                        LIMIT 3;");
+        $category = $posts[0]->category_slug;
+        $destino = $posts[0]->destination_slug;
+
+
+        $array = [];
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
+        $apiresponse = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/posts?slug=' . $slug));
+        empty($apiresponse) || $apiresponse[0]->status != "publish" ? abort(404) : true;
+        $img_id = isset($apiresponse[0]) ? $apiresponse[0]->featured_media : '';
+        $imgdata = DB::select("SELECT * FROM tribunetravel_wp.travel_media WHERE ID = $img_id;");
+        $imgdata = empty($imgdata) ? '' : $imgdata[0];
+        $author_id = isset($apiresponse[0]) ? $apiresponse[0]->author : '';
+        $authordata = DB::select("SELECT * FROM tribunetravel_wp.travel_author WHERE user_id = $author_id;");
+        $authordata = empty($authordata) ? '' : $authordata[0];
+        // dd($apiresponse);
+        $category_name = "";
+        $category_color = "";
+        foreach ($categories_data as $c) {
+            if ($c->term_id == $apiresponse[0]->categories[0]) {
+                // dd($c);
+                $category_name = $c->name;
+                $category_color = $c->color;
+            }
+        }
+        $destination_name = "";
+        $destination_color = "";
+        foreach ($destinations_data as $c) {
+            if ($c->term_id == $apiresponse[0]->post_destinos[0]) {
+                // dd($c);
+                $destination_name = $c->name;
+                $destination_color = $c->color;
+            }
+        }
+        $post_ = [
+            "slug" => $apiresponse[0]->slug,
+            "date" => $apiresponse[0]->date,
+            "id" => $apiresponse[0]->id,
+            "category" => $category,
+            "category_name" => $category_name,
+            "category_color" => $category_color,
+            "destination" => $destino,
+            "destination_name" => $destination_name,
+            "destination_color" => $destination_color,
+            "title" => $apiresponse[0]->title->rendered,
+            "excerpt" => $apiresponse[0]->excerpt->rendered,
+            "content" => $apiresponse[0]->content->rendered,
+            "seo_title" => $apiresponse[0]->acf->titulo_seo,
+            "seo_description" => $apiresponse[0]->acf->descripcion_seo,
+            "canonical_url" => $apiresponse[0]->acf->url_canonica,
+            "img" => $imgdata,
+            "author" => $authordata
+        ];
+        // dd($post_);
+        $img_metadata = unserialize($post_['img']->img_data);
+        $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
+        array_push($array, [
+            "@type" => "author",
+            "name" => $post_['author']->name,
+            "url" => route('author', $post_['author']->user_nicename),
+            "datePublished" => $post_['date'],
+        ]);
+        JsonLdMulti::setTitle($post_['seo_title']);
+        JsonLdMulti::setDescription($post_['seo_description']);
+        JsonLdMulti::setType('Article');
+        JsonLdMulti::addImage($image);
+        JsonLdMulti::addValue("author", $array);
+        JsonLdMulti::addValue("headline", $post_['seo_title']);
+
+        if (!JsonLdMulti::isEmpty()) {
+            JsonLdMulti::newJsonLd();
+            JsonLdMulti::setType('WebPage');
+            JsonLdMulti::setTitle('Page Article - ' . $post_['title']);
+        }
+        $id = $post_['id'];
+
+        // dd($id);
+        $more_posts = DB::select("SELECT * FROM travel_posts_category
+                                    WHERE category_slug = '$category'
+                                    AND id_post != $id
+                                        ORDER BY post_date DESC
+                                        LIMIT 3;");
+        // dd($categories_data);
         // $this->metadatos($post, 'post');
         $post_tags = DB::select("SELECT
                                     tags.name, tags.slug, tags.description, tags.color
@@ -1198,18 +1269,19 @@ class PostsController extends Controller
                                             AND `tr`.`term_taxonomy_id` = `tt`.`term_taxonomy_id`) AS posts_tags
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
-                                        AND id_post = $post->id_post;");
-        $category = $post->category_slug;
-        $destino = $post->destination_slug;
+                                        AND id_post = $id;");
+        // dd($post_);
         $this->metadatos(
-            isset($post->meta_title) ? $post->meta_title : $post->title,
-            isset($post->meta_description) ? $post->meta_description : $post->post_excerpt,
-            isset($post->image_data) ? imgURL($post->image_data) : config('constants.DEFAULT_IMAGE'),
-            route('post', [$post->destination_slug, $post->category_slug, $post->slug]),
-            route('post', [$post->destination_slug, $post->category_slug, $post->slug])
+            isset($post_['seo_title']) ? $post_['seo_title'] : $post_['title'],
+            isset($post_['seo_description']) ? $post_['seo_description'] : strip_tags($post_['excerpt']),
+            isset($post_["img"]->ID) ? imgURL($post_["img"]->img_data) : config('constants.DEFAULT_IMAGE'),
+            route('post', [$destino, $category, $post_['slug']]),
+            (isset($post_['canonical_url']) && $post_['canonical_url'] != '') ? $post_['canonical_url'] : route('post', [$destino, $category, $post_['slug']])
         );
+        $destination = $destino;
+        // dd($destination);
 
-        return view('posts.index', compact('post', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags'));
+        return view('posts.index', compact('post_', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination'));
     }
 
     public function contact()
@@ -1279,34 +1351,34 @@ class PostsController extends Controller
             'success' => 'Thank you for contacting us. We will get back to you soon.'
         ]);
     }
-    public function check_subscription($email,$id_category){
+    public function check_subscription($email, $id_category)
+    {
         $query = "SELECT
         travel_subscriptions_category.id_term,travel_subscriptions_category.status
-        FROM tribunetravel_wp.travel_subscriptions JOIN 
-        tribunetravel_wp.travel_subscriptions_category 
+        FROM tribunetravel_wp.travel_subscriptions JOIN
+        tribunetravel_wp.travel_subscriptions_category
         ON travel_subscriptions.id_subscriptions = travel_subscriptions_category.id_subscription
         WHERE travel_subscriptions.email='$email' AND travel_subscriptions_category.id_term = $id_category ";
         $check_id_category = DB::select($query);
-        if($check_id_category){
-            
-            return $check_id_category;
-        }
-        else
-        {
-            return $check_id_category=[''];
-        }
-        
-    } 
+        if ($check_id_category) {
 
-    public function subscription(){
+            return $check_id_category;
+        } else {
+            return $check_id_category = [''];
+        }
+    }
+
+    public function subscription()
+    {
 
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-    
-        return view('subscriptions.index',compact('destinations_data','categories_data'));
+
+        return view('subscriptions.index', compact('destinations_data', 'categories_data'));
     }
 
-    public function saveSubscription(Request $request){
+    public function saveSubscription(Request $request)
+    {
 
         $categories_data = $this->returndata('categories');
         $destinations_data = $this->returndata('destinations');
@@ -1314,79 +1386,70 @@ class PostsController extends Controller
             'fullname' => 'required',
             'email' => 'required',
         ]);
-        if($request->category==""){
+        if ($request->category == "") {
             return redirect()->route('subscription')->with([
                 'error' => "You did not select a category"
             ]);
         }
-        $user_subscription = DB::select('SELECT id_subscriptions,status FROM tribunetravel_wp.travel_subscriptions WHERE email = ?',[$request->email]);
+        $user_subscription = DB::select('SELECT id_subscriptions,status FROM tribunetravel_wp.travel_subscriptions WHERE email = ?', [$request->email]);
         $now = new DateTime();
-        if($user_subscription){
-            if($user_subscription[0]->status == 1){
+        if ($user_subscription) {
+            if ($user_subscription[0]->status == 1) {
+                $id_subscription =  $user_subscription[0]->id_subscriptions;
+            } elseif ($user_subscription[0]->status == 0) {
+                DB::update('update tribunetravel_wp.travel_subscriptions set status = ? where id_subscriptions = ?', [true, $user_subscription[0]->id_subscriptions]);
                 $id_subscription =  $user_subscription[0]->id_subscriptions;
             }
-            elseif($user_subscription[0]->status == 0)
-            {
-                DB::update('update tribunetravel_wp.travel_subscriptions set status = ? where id_subscriptions = ?', [true,$user_subscription[0]->id_subscriptions]);
-                $id_subscription =  $user_subscription[0]->id_subscriptions;
-                
-            }
-
-        }
-        else
-        {
+        } else {
             $id_subscription = DB::table('travel_subscriptions')->insertGetId(
-                ['full_name' => $request->fullname ,
-                 'email' => $request->email,
-                 'status' => true,
-                 'subscription_date' => $now->format('Y-m-d H:i:s'),
+                [
+                    'full_name' => $request->fullname,
+                    'email' => $request->email,
+                    'status' => true,
+                    'subscription_date' => $now->format('Y-m-d H:i:s'),
                 ]
             );
         }
-        
-        
-        for($i=0; $i < count($request->category); $i++){
-            $subscriptions = $this->check_subscription($request->email,$request->category[$i]);
-            if(($subscriptions[0]=="")){
-                DB::insert('INSERT INTO `tribunetravel_wp`.`travel_subscriptions_category`(`id_subscription`,`id_term`,`created`,`status`)VALUES(?,?,?,?);', [$id_subscription,$request->category[$i],$now->format('Y-m-d H:i:s'),true]);
-                
+
+
+        for ($i = 0; $i < count($request->category); $i++) {
+            $subscriptions = $this->check_subscription($request->email, $request->category[$i]);
+            if (($subscriptions[0] == "")) {
+                DB::insert('INSERT INTO `tribunetravel_wp`.`travel_subscriptions_category`(`id_subscription`,`id_term`,`created`,`status`)VALUES(?,?,?,?);', [$id_subscription, $request->category[$i], $now->format('Y-m-d H:i:s'), true]);
+            } elseif ($subscriptions[0] != "" && $subscriptions[0]->status == 0) {
+                DB::update('update tribunetravel_wp.travel_subscriptions_category set status = ? where id_subscription = ? and id_term = ?', [true, $user_subscription[0]->id_subscriptions, $request->category[$i]]);
             }
-            elseif($subscriptions[0]!="" && $subscriptions[0]->status == 0)
-            {
-                DB::update('update tribunetravel_wp.travel_subscriptions_category set status = ? where id_subscription = ? and id_term = ?', [true,$user_subscription[0]->id_subscriptions,$request->category[$i]]);
-            }
-            
         }
         return redirect()->route('subscription')->with([
             'success' => 'Thanks for subscribing'
         ]);
 
-        
-        return view('subscriptions.index', compact('destinations_data','categories_data'));
+
+        return view('subscriptions.index', compact('destinations_data', 'categories_data'));
     }
 
-    public function unsubscribe(){
+    public function unsubscribe()
+    {
         $destinations_data = $this->returndata('destinations');
         $categories_data = $this->returndata('categories');
-        
-    
-        return view('subscriptions.unsubscribe',compact('destinations_data','categories_data'));
+
+
+        return view('subscriptions.unsubscribe', compact('destinations_data', 'categories_data'));
     }
-    public function saveUnsubscribe(Request $request){
+    public function saveUnsubscribe(Request $request)
+    {
         $request->validate([
             'email' => 'required',
         ]);
 
-        $user_subscription = DB::select('SELECT id_subscriptions FROM tribunetravel_wp.travel_subscriptions WHERE email = ? and status = 1',[$request->email]);
-        if($user_subscription){
-            DB::update('update tribunetravel_wp.travel_subscriptions set status = ? where id_subscriptions = ?', [false,$user_subscription[0]->id_subscriptions]);
-            DB::update('update tribunetravel_wp.travel_subscriptions_category set status = ? where id_subscription = ?', [false,$user_subscription[0]->id_subscriptions]);
+        $user_subscription = DB::select('SELECT id_subscriptions FROM tribunetravel_wp.travel_subscriptions WHERE email = ? and status = 1', [$request->email]);
+        if ($user_subscription) {
+            DB::update('update tribunetravel_wp.travel_subscriptions set status = ? where id_subscriptions = ?', [false, $user_subscription[0]->id_subscriptions]);
+            DB::update('update tribunetravel_wp.travel_subscriptions_category set status = ? where id_subscription = ?', [false, $user_subscription[0]->id_subscriptions]);
             return redirect()->route('unsubscribe')->with([
                 'success' => "we're so sorry you're leaving"
             ]);
-        }
-        else
-        {
+        } else {
             return redirect()->route('unsubscribe')->with([
                 'error' => "Your email is not subscribed"
             ]);

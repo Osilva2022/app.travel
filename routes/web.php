@@ -279,6 +279,9 @@ Route::get('/vallarta-nayarit/travel-the-world-with-carry-on-only/', function ()
 Route::get('/vallarta-nayarit/tuba-tejuino-vallarta-delicacies/', function () {
     return redirect()->route('postRedirect', 'tuba-tejuino-vallarta-delicacies');
 });
+Route::get('/cancun-riviera/babies-and-kids-skincare/', function () {
+    return redirect()->route('postRedirect', 'babies-and-kids-skincare');
+});
 
 
 Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
