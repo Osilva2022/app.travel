@@ -143,7 +143,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="col text-md-start text-white text-center">
                     <a class="nav-link text-white" style="padding: 2px;" href="{{ route('sitemap') }}">
                         <h3 class="text-white text-center mb-2">Sitemap <br>
