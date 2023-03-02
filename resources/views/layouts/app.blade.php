@@ -10,6 +10,7 @@
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
     <meta name="facebook-domain-verification" content="fuh4fu0gnrjjsg5n8mymdif1zcknbe" />
     <meta property="og:locale" content="es_MX">
+    {{-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://tribune.travel/; object-src 'none'; script-src 'self'; style-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"> --}}
     {!! SEO::generate() !!}
     @livewireStyles
     {{-- <title>@yield('page-title')</title> --}}
@@ -143,7 +144,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="col text-md-start text-white text-center">
                     <a class="nav-link text-white" style="padding: 2px;" href="{{ route('sitemap') }}">
                         <h3 class="text-white text-center mb-2">Sitemap <br>
