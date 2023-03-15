@@ -18,7 +18,7 @@ class Pagination extends Component
     public $gallery = "";
     public $guide_tags = "";
 
-    public function buscar_nombre($var = null)
+    public function buscar_nombre($var)
     {
         $this->letter = $var;
     }
@@ -30,10 +30,11 @@ class Pagination extends Component
         $id_location = (isset($destination_data[0])) ? $destination_data[0]->term_id : abort(404);
         $id_category = (isset($directory_category_data[0])) ? $directory_category_data[0]->term_id : abort(404);
         $subquery = '';
-        if (isset($this->letter)) {
+        if (!empty($this->letter)) {
             $this->selectedtletter = $this->letter;
         }
-        if ($this->selectedtletter != '') {
+        /* dd($this->selectedtletter); */
+        if ($this->selectedtletter != '' && $this->selectedtletter != '*') {
             $subquery = " AND post_title like '$this->selectedtletter%'";
         }
 

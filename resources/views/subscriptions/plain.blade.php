@@ -1,0 +1,1 @@
+Correo:{{ $new_subscriber->email }}

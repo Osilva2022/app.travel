@@ -279,10 +279,18 @@ Route::get('/vallarta-nayarit/travel-the-world-with-carry-on-only/', function ()
 Route::get('/vallarta-nayarit/tuba-tejuino-vallarta-delicacies/', function () {
     return redirect()->route('postRedirect', 'tuba-tejuino-vallarta-delicacies');
 });
+Route::get('/cancun-riviera/babies-and-kids-skincare/', function () {
+    return redirect()->route('postRedirect', 'babies-and-kids-skincare');
+});
 
 
 Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
+Route::get('subscribe', [PostsController::class, 'subscription'])->name('subscription');
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
+Route::get('unsubscribe', [PostsController::class, 'unsubscribe'])->name('unsubscribe');
+Route::post('/save/subscription',[PostsController::class, 'saveSubscription'])->name('save_subscription');
+Route::post('/save/unsubscribe',[PostsController::class, 'saveUnsubscribe'])->name('save_unsubscribe');
+
 //Redirect To Post
 Route::get('/', [PostsController::class, 'index'])->name('home');
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');

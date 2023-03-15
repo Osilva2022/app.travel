@@ -34,15 +34,19 @@
             </div>
         </div>
         <div class="col-12 col-md-9">
-            <div class="row g-4 mb-4" id="guide-container">
+            <style>
+                .loading {
+                    opacity: 0.5;
+                }
+            </style>
+            <div class="row g-4 mb-4" id="guide-container" wire:loading.class="loading">
                 <div class="col-12" id="msg-container" style="display: none;">
                     <h1 class="text-center mt-4">No Results...</h1>
                 </div>
                 <?php $letra = ''; ?>
                 @foreach ($things as $data)
-                @include('guide.gallery')
+                    @include('guide.gallery')
                 @endforeach
-
             </div>
         </div>
     </div>
