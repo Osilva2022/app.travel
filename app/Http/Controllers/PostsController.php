@@ -168,7 +168,7 @@ class PostsController extends Controller
         SEOTools::opengraph()->setUrl($url);
         SEOTools::opengraph()->addProperty('type', 'website');
         // SEOTools::opengraph()->addImage($image, ['secure_url' => $image]);
-        SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 300, 'height' => 300, 'type' => 'image/jpeg']);
+        SEOTools::opengraph()->addImage($image, ['secure_url' => $image, 'width' => 300, 'height' => 300, 'type' => 'image/jpeg', "itemprop" => "image"]);
 
         SEOTools::twitter()->setTitle($title);
         SEOTools::twitter()->setSite('@CpsNoticias');
