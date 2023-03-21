@@ -1301,56 +1301,34 @@ class PostsController extends Controller
 
     public function storeContact(Request $request)
     {
-        request()->validate(Contact::$rules);
+        //request()->validate(Contact::$rules);
         $email = $request->email;
 
         $validate = DB::select("SELECT * FROM travel_contact_info WHERE email = '$email' ");
 
         if (!$validate) {
-
             $contact = Contact::create($request->all())->id;
-
-            $contactmsg = new ContactMessage;
-            $contactmsg->id_contact = $contact;
-            $contactmsg->id_subject = $request->id_subject;
-            $contactmsg->message = $request->message;
-            $contactmsg->save();
-            $idmessage = $contactmsg->id;
+            $this->send_email($request);
         } else {
-
-            $contactmsg = new ContactMessage;
-            $contactmsg->id_contact = $validate[0]->id_contact;
-            $contactmsg->id_subject = $request->id_subject;
-            $contactmsg->message = $request->message;
-            $contactmsg->save();
-            $idmessage = $contactmsg->id;
+            $this->send_email($request);
         }
-
-        $query = "SELECT
-                        c.email,
-                        c.firstname,
-                        c.lastname,
-                        c.zipcode,
-                        m.message,
-                        s.description AS subject
-                    FROM
-                        travel_contact_info AS c,
-                        travel_contact_subject AS s,
-                        travel_contact_message AS m
-                    WHERE
-                        s.id_subject = m.id_subject
-                        AND c.id_contact = m.id_contact
-                        AND m.id_message = $idmessage";
-
-        $new_contact = DB::select($query);
-
-        Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media', 'francisco.moras@lifeasbrand.com')
-            ->send(new NewContact($new_contact[0]));
 
         return redirect()->route('contact')->with([
             'success' => 'Thank you for contacting us. We will get back to you soon.'
         ]);
     }
+
+    public function send_email($data)
+    {
+        $query = "SELECT description FROM tribunetravel_wp.travel_contact_subject where id_subject = $data->id_subject";
+        $new_contact = DB::select($query);
+        $new_array = array($data);
+        array_push($new_array, $new_contact);
+        //dd($new_array);
+        Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media', 'francisco.moras@lifeasbrand.com')
+            ->send(new NewContact($new_array));
+    }
+
     public function check_subscription($email, $id_category)
     {
         $query = "SELECT
