@@ -1301,7 +1301,7 @@ class PostsController extends Controller
 
     public function storeContact(Request $request)
     {
-        //request()->validate(Contact::$rules);
+        request()->validate(Contact::$rules);
         $email = $request->email;
 
         $validate = DB::select("SELECT * FROM travel_contact_info WHERE email = '$email' ");
