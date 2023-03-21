@@ -2,14 +2,14 @@
 <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-interval="false">
 
     <div class="carousel-inner">
-        <div class="carousel-item active">
+        {{-- <div class="carousel-item active">
             <picture>
                 <source srcset="{{ asset('img/st-patrick-tribune-travel.png') }}" media="(min-width: 435px)" />
                 <img src="{{ asset('img/movil-st-patrick-tribune-travel.png') }}" alt="President Day"
                     class="img-slider-home" width="100%" height="100%" />
             </picture>
-        </div>
-        {{-- @foreach ($destinations as $dd)
+        </div> --}}
+        @foreach ($destinations as $dd)
             @php
                 $active = '';
                 $b = true;
@@ -17,11 +17,11 @@
                     $b = false;
                     $active = 'active';
                 }
-            @endphp --}}
+            @endphp
 
-        {{-- <div class="carousel-item {{ $active }}"> --}}
-        {{-- <div class="carousel-item"> --}}
-        {{-- <div class="opacity-effect"></div>
+            <div class="carousel-item {{ $active }}">
+                {{-- <div class="carousel-item"> --}}
+                <div class="opacity-effect"></div>
                 <img {!! img_meta($dd->image_data, $dd->image_alt, $b) !!} class="img-slider-home" width="100%" height="100%" aria-hidden="true"
                     preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach --}}
+        @endforeach
         {{--  --}}
     </div>
 </div>
