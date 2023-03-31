@@ -277,15 +277,14 @@
         })(window, document, 'https://cdn.bitrix24.mx/b23534531/crm/tag/call.tracker.js');
 
     </script>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
     <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "4f659b42-750c-490a-8148-f62604d325df"
-            , });
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "4f659b42-750c-490a-8148-f62604d325df",
         });
-
+      });
     </script>
     @livewireScripts
 </body>
