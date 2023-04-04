@@ -46,6 +46,34 @@
         });
     </script>
 @endpush
+@push('caliente-ads')
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+    /* <![CDATA[ */
+   (function (document, window) {
+       var a, c = document.createElement("script"), f = window.frameElement;
+
+       c.id = "CleverCoreLoader67989";
+       c.src = "https://scripts.cleverwebserver.com/52c6d89a258e1bb051f28808c6f4607a.js";
+
+       c.async = !0;
+       c.type = "text/javascript";
+       c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+       c.setAttribute("data-callback", "put-your-callback-function-here");
+       c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+       c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+       try {
+           a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+       } catch (e) {
+           a = !1;
+       }
+
+       a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+       a.parentNode.insertBefore(c, a);
+   })(document, window);
+   /* ]]> */
+</script> 
+@endpush
 
 <!-- content -->
 @section('content')

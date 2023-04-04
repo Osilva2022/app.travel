@@ -288,6 +288,7 @@
 
     </script> --}}
     @livewireScripts
+    @stack('caliente-ads')
 </body>
 
 </html>
