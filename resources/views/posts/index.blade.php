@@ -46,7 +46,6 @@
         });
     </script>
 @endpush
-
 <!-- content -->
 @section('content')
     <header>
