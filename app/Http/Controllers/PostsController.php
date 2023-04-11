@@ -423,6 +423,11 @@ class PostsController extends Controller
         // dd($apiresponse);
         $category_name = "";
         $category_color = "";
+        $portada_diarios = false;
+        if ($apiresponse[0]->acf->portada_diarios) {
+            $query = DB::select("SELECT guid FROM travel_posts WHERE ID = " . $apiresponse[0]->acf->portada_diarios);
+            $portada_diarios = $query[0]->guid;
+        }
         foreach ($categories_data as $c) {
             if ($c->term_id == $apiresponse[0]->categories[0]) {
                 // dd($c);
@@ -454,11 +459,12 @@ class PostsController extends Controller
             "content" => $apiresponse[0]->content->rendered,
             "seo_title" => $apiresponse[0]->acf->titulo_seo,
             "seo_description" => $apiresponse[0]->acf->descripcion_seo,
+            "portada_diarios" => $portada_diarios,
             "canonical_url" => $apiresponse[0]->acf->url_canonica,
             "img" => $imgdata,
             "author" => $authordata
         ];
-        //dd($post_);
+        // dd($post_);
         $img_metadata = unserialize($post_['img']->img_data);
         $image = images((isset($img_metadata['s3']['formats']['webp'])) ? $img_metadata['s3']['formats']['webp'] : $img_metadata['file']);
         array_push($array, [

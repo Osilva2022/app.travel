@@ -109,7 +109,7 @@
                 <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
-                            <img {!! img_meta($post_["img"]->img_data) !!}" class="card-img-final">
+                            <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
                         </div>
                         <div class="col-12">
                             <h1>{!! $post_['title'] !!}</h1>
@@ -117,12 +117,13 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
-                                    <img src="{!! images($post_["author"]->avatar) !!}" class="img-fluid rounded-circle" style="width:56px; height:auto; aspect-ratio:1/1;">
+                                    <img src="{!! images($post_['author']->avatar) !!}" class="img-fluid rounded-circle"
+                                        style="width:56px; height:auto; aspect-ratio:1/1;">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <a href="{{ route('author', $post_["author"]->user_nicename) }}">
-                                            <b>{!! $post_["author"]->name !!}</b>
+                                        <a href="{{ route('author', $post_['author']->user_nicename) }}">
+                                            <b>{!! $post_['author']->name !!}</b>
                                         </a>
                                     </p>
                                     <p class="card-text"><small
@@ -141,6 +142,29 @@
                             {!! $post_['content'] !!}
                         </div>
                         <!-- POST / NOTA -->
+                        @if ($post_['portada_diarios'])
+                            <div class="col-12">
+                                <h2 style="margin-bottom: 16px;">Diaries</h2>
+                                {{-- <iframe src="{!! $post_['portada_diarios'] !!}" width="100%" height="auto"
+                                    style="width: 100%; max-width: 720px; height: auto; aspect-ratio:5/6; margin-bottom: 24px;">
+                                    <p>
+                                        Your browser does not support PDF files.
+                                        <a href="{!! $post_['portada_diarios'] !!}">Download the file instead</a>
+                                    </p>
+                                </iframe> --}}
+                                <div>
+                                    <button id="prev">Previous</button>
+                                    <button id="next">Next</button>
+                                    &nbsp; &nbsp;
+                                    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+                                </div>
+                                <canvas id="the-canvas" data-url="{!! $post_['portada_diarios'] !!}"></canvas>
+                                <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+                                <link href="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/web/pdf_viewer.min.css"
+                                    rel="stylesheet">
+                                <script src="{{ asset('js/file_viewer.js') }}"></script>
+                            </div>
+                        @endif
                         <div class="col-12">
                             @foreach ($post_tags as $data)
                                 <a href="{{ route('tags', $data->slug) }}">
