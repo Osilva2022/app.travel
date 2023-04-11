@@ -143,27 +143,10 @@
                         </div>
                         <!-- POST / NOTA -->
                         @if ($post_['portada_diarios'])
-                            <div class="col-12">
-                                <h2 style="margin-bottom: 16px;">Diaries</h2>
-                                {{-- <iframe src="{!! $post_['portada_diarios'] !!}" width="100%" height="auto"
-                                    style="width: 100%; max-width: 720px; height: auto; aspect-ratio:5/6; margin-bottom: 24px;">
-                                    <p>
-                                        Your browser does not support PDF files.
-                                        <a href="{!! $post_['portada_diarios'] !!}">Download the file instead</a>
-                                    </p>
-                                </iframe> --}}
-                                <div>
-                                    <button id="prev">Previous</button>
-                                    <button id="next">Next</button>
-                                    &nbsp; &nbsp;
-                                    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-                                </div>
-                                <canvas id="the-canvas" data-url="{!! $post_['portada_diarios'] !!}"></canvas>
-                                <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
-                                <link href="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/web/pdf_viewer.min.css"
-                                    rel="stylesheet">
-                                <script src="{{ asset('js/file_viewer.js') }}"></script>
-                            </div>
+                            <h2 style="margin-bottom: 16px;">Top Diaries</h2>
+                            <iframe src="https://docs.google.com/gview?url={!! $post_['portada_diarios'] !!}&embedded=true"
+                                frameborder="0" width="100%" height="auto"
+                                style="width: 100%; height: auto; aspect-ratio: 1/1; margin-bottom: 40px;"></iframe>
                         @endif
                         <div class="col-12">
                             @foreach ($post_tags as $data)
