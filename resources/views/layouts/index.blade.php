@@ -54,7 +54,7 @@
     @endpush
 @endif
 @push('caliente-ads')
-    {{-- <script data-cfasync="false" type="text/javascript" id="clever-core">
+    <script data-cfasync="false" type="text/javascript" id="clever-core">
         /* <![CDATA[ */
         (function(document, window) {
             var a, c = document.createElement("script"),
@@ -80,7 +80,7 @@
             a.parentNode.insertBefore(c, a);
         })(document, window);
         /* ]]> */
-    </script> --}}
+    </script>
 @endpush
 <!-- content -->
 @section('content')
