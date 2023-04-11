@@ -47,6 +47,7 @@ function renderPage(num) {
 
     // Update page counters
     document.getElementById("page_num").textContent = num;
+    document.getElementById("page_num2").textContent = num;
 }
 
 /**
@@ -72,6 +73,7 @@ function onPrevPage() {
     queueRenderPage(pageNum);
 }
 document.getElementById("prev").addEventListener("click", onPrevPage);
+document.getElementById("prev2").addEventListener("click", onPrevPage);
 
 /**
  * Displays next page.
@@ -84,6 +86,7 @@ function onNextPage() {
     queueRenderPage(pageNum);
 }
 document.getElementById("next").addEventListener("click", onNextPage);
+document.getElementById("next2").addEventListener("click", onNextPage);
 
 /**
  * Asynchronously downloads PDF.
@@ -91,7 +94,29 @@ document.getElementById("next").addEventListener("click", onNextPage);
 pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
     pdfDoc = pdfDoc_;
     document.getElementById("page_count").textContent = pdfDoc.numPages;
+    document.getElementById("page_count2").textContent = pdfDoc.numPages;
 
     // Initial/first page rendering
     renderPage(pageNum);
 });
+
+function onZoomIn() {
+    if (scale >= 2) {
+        return;
+    }
+    scale += 0.1;
+    queueRenderPage(pageNum);
+}
+document.getElementById("zoom-in").addEventListener("click", onZoomIn);
+
+/**
+ * Zoom out on the PDF.
+ */
+function onZoomOut() {
+    if (scale <= 0.5) {
+        return;
+    }
+    scale -= 0.1;
+    queueRenderPage(pageNum);
+}
+document.getElementById("zoom-out").addEventListener("click", onZoomOut);
