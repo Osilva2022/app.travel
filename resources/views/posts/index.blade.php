@@ -143,7 +143,7 @@
                         </div>
                         <!-- POST / NOTA -->
                         @if ($post_['portada_diarios'])
-                            <h2 style="margin-bottom: 16px;">Top Diaries</h2>
+                            <h2 style="margin-bottom: 16px; text-align: center;">Selected Front Pages</h2>
                             <iframe src="https://docs.google.com/gview?url={!! $post_['portada_diarios'] !!}&embedded=true"
                                 frameborder="0" width="100%" height="auto"
                                 style="width: 100%; height: auto; aspect-ratio: 1/1; margin-bottom: 40px;"></iframe>
