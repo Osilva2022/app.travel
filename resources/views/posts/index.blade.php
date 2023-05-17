@@ -46,7 +46,6 @@
         });
     </script>
 @endpush
-
 <!-- content -->
 @section('content')
     <header>
@@ -110,7 +109,7 @@
                 <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12">
-                            <img {!! img_meta($post_["img"]->img_data) !!}" class="card-img-final">
+                            <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
                         </div>
                         <div class="col-12">
                             <h1>{!! $post_['title'] !!}</h1>
@@ -118,12 +117,13 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
-                                    <img src="{!! images($post_["author"]->avatar) !!}" class="img-fluid rounded-circle" style="width:56px; height:auto; aspect-ratio:1/1;">
+                                    <img src="{!! images($post_['author']->avatar) !!}" class="img-fluid rounded-circle"
+                                        style="width:56px; height:auto; aspect-ratio:1/1;">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
-                                        <a href="{{ route('author', $post_["author"]->user_nicename) }}">
-                                            <b>{!! $post_["author"]->name !!}</b>
+                                        <a href="{{ route('author', $post_['author']->user_nicename) }}">
+                                            <b>{!! $post_['author']->name !!}</b>
                                         </a>
                                     </p>
                                     <p class="card-text"><small
@@ -142,6 +142,12 @@
                             {!! $post_['content'] !!}
                         </div>
                         <!-- POST / NOTA -->
+                        @if ($post_['portada_diarios'])
+                            <h2 style="margin-bottom: 16px; text-align: center;"><strong>Selected Front Pages</strong></h2>
+                            <iframe src="https://docs.google.com/gview?url={!! $post_['portada_diarios'] !!}&embedded=true"
+                                frameborder="0" width="100%" height="auto"
+                                style="width: 100%; height: auto; aspect-ratio: 1/1; margin-bottom: 40px;"></iframe>
+                        @endif
                         <div class="col-12">
                             @foreach ($post_tags as $data)
                                 <a href="{{ route('tags', $data->slug) }}">

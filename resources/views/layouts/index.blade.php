@@ -106,14 +106,12 @@
                                 </a>
                                 <ul class="dropdown-menu" style="background-color: #243A85;">
                                     <li title="Cancun">
-                                        <a class="dropdown-item text-white"
-                                            href="{{ route('flights', 'cancun') }}">
+                                        <a class="dropdown-item text-white" href="{{ route('flights', 'cancun') }}">
                                             Cancun
                                         </a>
                                     </li>
                                     <li title="Los Cabos">
-                                        <a class="dropdown-item text-white"
-                                            href="{{ route('flights', 'los-cabos') }}">
+                                        <a class="dropdown-item text-white" href="{{ route('flights', 'los-cabos') }}">
                                             Los Cabos
                                         </a>
                                     </li>
