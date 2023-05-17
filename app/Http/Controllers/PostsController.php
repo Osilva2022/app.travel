@@ -1331,8 +1331,11 @@ class PostsController extends Controller
         $new_array = array($data);
         array_push($new_array, $new_contact);
         //dd($new_array);
-        Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media', 'francisco.moras@lifeasbrand.com')
-            ->send(new NewContact($new_array));
+        Mail::to("ing.osmansilva@gmail.com")
+        ->send(new NewContact($new_array));
+
+        // Mail::to("info@lifeasbrand.com")->bcc('digital@cps.media', 'francisco.moras@lifeasbrand.com')
+        //     ->send(new NewContact($new_array));
     }
 
     public function check_subscription($email, $id_category)
