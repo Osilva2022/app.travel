@@ -288,8 +288,8 @@ Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('fligh
 Route::get('subscribe', [PostsController::class, 'subscription'])->name('subscription');
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
 Route::get('unsubscribe', [PostsController::class, 'unsubscribe'])->name('unsubscribe');
-Route::post('/save/subscription',[PostsController::class, 'saveSubscription'])->name('save_subscription');
-Route::post('/save/unsubscribe',[PostsController::class, 'saveUnsubscribe'])->name('save_unsubscribe');
+Route::post('/save/subscription', [PostsController::class, 'saveSubscription'])->name('save_subscription');
+Route::post('/save/unsubscribe', [PostsController::class, 'saveUnsubscribe'])->name('save_unsubscribe');
 
 //Redirect To Post
 Route::get('/', [PostsController::class, 'index'])->name('home');
@@ -299,6 +299,10 @@ Route::get('category/{category}', [PostsController::class, 'categories'])->name(
 Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
 Route::get('directory-item', [PostsController::class, 'ShowGuideItem'])->name('directory-item');
+Route::get('/daily-briefing/{slug}', [PostsController::class, 'post_daily'])->name('post_daily');
+Route::get('/{destination}/daily-briefing/{slug}', function ($a,$b) {
+    return redirect()->route('post_daily', $b);
+});
 Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');
 Route::get('guide', [PostsController::class, 'guide'])->name('guide');
 Route::get('{destination}/{tag}', [PostsController::class, 'guide_category'])->name('guide_category');
@@ -317,7 +321,6 @@ Route::resource('files', 'FileController');
 Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return Redirect::to('/feed', 301);
-
 });
 Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
 Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
