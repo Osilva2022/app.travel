@@ -138,7 +138,7 @@ class PostsController extends Controller
      * Funcion para generar los metadatos en las paginas con SEO::generate()
      *
      */
-    function metadatos($title, $description, $image, $url, $url_canonical)
+    function metadatos($title, $description, $image, $url, $url_canonical, $noindex = null)
     {
         // SEOTools::setTitle($title);
         // SEOTools::setDescription($description);
@@ -151,6 +151,11 @@ class PostsController extends Controller
         SEOTools::setTitle($title);
         SEOTools::setDescription($description);
         SEOTools::setCanonical($url_canonical);
+        if ($noindex) {
+            SEOMeta::setRobots('noindex,nofollow');
+        } else {
+            SEOMeta::setRobots('index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+        }
 
         SEOTools::opengraph()->setTitle($title);
         SEOTools::opengraph()->setUrl($url);
@@ -390,7 +395,7 @@ class PostsController extends Controller
 
 
 
-        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new','dailys', 'daily', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'usd', 'weather'));
+        return view('layouts.index', compact('reviews', 'review', 'guide', 'news', 'new', 'dailys', 'daily', 'things', 'thing', 'destinations', 'tags_data', 'event', 'categories_data', 'gallery', 'blog', 'blogs', 'divisas_data', 'usd', 'weather'));
     }
 
     /**
@@ -611,7 +616,8 @@ class PostsController extends Controller
             isset($post_['seo_description']) ? $post_['seo_description'] : strip_tags($post_['excerpt']),
             isset($post_["img"]->ID) ? imgURL($post_["img"]->img_data) : config('constants.DEFAULT_IMAGE'),
             route('post_daily', [$post_['slug']]),
-            (isset($post_['canonical_url']) && $post_['canonical_url'] != '') ? $post_['canonical_url'] : route('post_daily', [$post_['slug']])
+            (isset($post_['canonical_url']) && $post_['canonical_url'] != '') ? $post_['canonical_url'] : route('post_daily', [$post_['slug']]),
+            true
         );
         $destination = '';
 
@@ -722,7 +728,8 @@ class PostsController extends Controller
             $category_data[0]->meta_description,
             config('constants.DEFAULT_IMAGE'),
             route('category', $category_data[0]->slug),
-            route('category', $category_data[0]->slug)
+            route('category', $category_data[0]->slug),
+            ($category == 'daily-briefing') ? true : false
         );
 
         return view('categories.index', compact('firstpostcategory', 'postscategory', 'category', 'categories_data', 'destinations_data', 'category_data', 'destination'));
