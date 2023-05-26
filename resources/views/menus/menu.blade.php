@@ -48,7 +48,7 @@
                     <a class="nav-link text-white" href="{{ route('contact') }}">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="javascript:void()"><i class="bi bi-search"
+                    <a class="nav-link text-white" href="javascript:void()" aria-label="Search"><i class="bi bi-search"
                             data-bs-toggle="modal" data-bs-target="#srcModal"></i></a>
                 </li>
             </ul>
