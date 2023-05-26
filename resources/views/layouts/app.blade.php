@@ -152,7 +152,7 @@
                     </a>
                 </div>
                 <div class="col text-md-start text-white text-center">
-                    <a class="nav-link text-white" style="padding: 2px;" href="{{ asset('Media_Kit_Tribune_travel.pdf') }}" target="_blank">
+                    <a class="nav-link text-white" style="padding: 2px;" href="{{ asset('Media-Kit-tribune-travel.pdf') }}" target="_blank">
                         <span class="etiqueta-post" style="color:#fff; background: transparent; border: solid 2px #fff; font-size: 14px !important;">
                             Read our MediaKit
                         </span>
