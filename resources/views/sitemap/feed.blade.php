@@ -36,7 +36,7 @@
                 <![CDATA[{!! $post->content !!}]]>
             </description>
             <pubDate>{{ date("D, d M Y H:i:s O", strtotime($post->post_date)) }} </pubDate>
-            <author>{{$post->author_name}}></author>
+            <author>{{$post->author_name}}</author>
             <guid isPermaLink="false">{{ url('/').'/'.$post->id_post }}</guid>
         </item>
         @endforeach
