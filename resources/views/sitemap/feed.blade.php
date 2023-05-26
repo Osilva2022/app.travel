@@ -16,10 +16,7 @@
         </description>
         <language>en</language>
         <pubDate>{{ date("D, d M Y H:i:s O", strtotime(now() )) }}</pubDate>
-        <sy:updatePeriod>
-            hourly </sy:updatePeriod>
-        <sy:updateFrequency>
-            1 </sy:updateFrequency>
+
 
         <image>
             <url>https://tribune.travel/img/favicon.png</url>
