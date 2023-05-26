@@ -394,6 +394,84 @@
                 </div>
             </div>
             <!-- NEWS -->
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
+            <!-- NEWS -->
+            <h2 class="text-center my-4">Daily Briefing</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    @foreach ($daily as $data)
+                        <div class="card card-principal-post">
+                            <div class="card border-0">
+                                {{-- <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                        {!! $data->destination !!}</span>
+                                </a> --}}
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
+                                <a href="{{ url("$data->url") }}">
+                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
+                                    <h3 class="card-title-overlay">
+                                        {!! $data->title !!}
+                                    </h3>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ url("$data->url") }}" title="{!! $data->title !!}" class="">
+                                    <p class="card-text">
+                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                    </p>
+                                </a>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-lg-8">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
+                        @foreach ($dailys as $data)
+                            @if ($daily[0]->id_post != $data->id_post)
+                                <div class="col">
+                                    <div class="card card-secundario h-100">
+                                        <div class="row h-100">
+                                            <div class="col card-head-secundario">
+                                                <a href="{{ url("$data->url") }}">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
+                                                </a>
+                                            </div>
+                                            <div class="col-6 card-body-secundario">
+                                                {{-- <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="etiqueta-post mb-2"
+                                                        style="background:{{ $data->destination_color }};">
+                                                        {!! $data->destination !!}
+                                                    </span>
+                                                </a> --}}
+                                                <a href="{{ url("$data->url") }}">
+                                                    <h3 class="card-title-secundario">{!! $data->title !!}</h3>
+                                                </a>
+                                                <small class="text-muted">
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col my-4 d-flex justify-content-center">
+                    <a href="{{ route('category', ['daily-briefing']) }}" class="btn-view-more" type="button">More
+                        Dalies</a>
+                </div>
+            </div>
+            <!-- NEWS -->
             <!-- ads /21855382314/tt-home-lb-5 -->
             @if ($mostrar)
                 <div class="row py-4">

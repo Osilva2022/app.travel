@@ -48,7 +48,9 @@
     </header>
     <main style="margin-top: 60px;">
         <div class="container">
-            @include('menus.sub_menu_destinations')
+            @if ($category_data[0]->name != 'Daily Briefing')
+                @include('menus.sub_menu_destinations')
+            @endif
             @if ($mostrar)
                 <div class="row mb-4">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
@@ -71,11 +73,20 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="card border-0">
-                                        <a href="{{ route('destinations', ["$firstpostcategory->destination_slug"]) }}">
-                                            <span class="badge etiqueta-img"
-                                                style="background:{{ $firstpostcategory->destination_color }};">{{ $firstpostcategory->destination }}</span>
-                                        </a>
-                                        <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
+                                        @if ($category_data[0]->name != 'Daily Briefing')
+                                            <a href="{{ route('destinations', ["$firstpostcategory->destination_slug"]) }}">
+                                                <span class="badge etiqueta-img"
+                                                    style="background:{{ $firstpostcategory->destination_color }};">{{ $firstpostcategory->destination }}</span>
+                                            </a>
+                                        @endif
+                                        @php
+                                            if ($category_data[0]->name === 'Daily Briefing') {
+                                                $post_route = route('post_daily', $firstpostcategory->slug);
+                                            } else {
+                                                $post_route = url("$firstpostcategory->url");
+                                            }
+                                        @endphp
+                                        <a href="{{ $post_route }}" title="Click to see more"
                                             class="text-decoration-none text-muted">
                                             {{-- @if ($firstpostcategory->id_post == $data->id_post) --}}
                                             <span class="badge etiqueta-destacado">
@@ -89,8 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center">
-                                    <a href="{{ url("$firstpostcategory->url") }}" title="Click to see more"
-                                        class="text-decoration-none">
+                                    <a href="{{ $post_route }}" title="Click to see more" class="text-decoration-none">
                                         <div class="card-body">
                                             <h3 class="">
                                                 {{ $firstpostcategory->title }}
@@ -124,22 +134,32 @@
                     <div class="row row-cols-2 row-cols-lg-4 g-3">
                         <?php $i = 1; ?>
                         @foreach ($postscategory as $data)
+                            @php
+                                if ($category_data[0]->name === 'Daily Briefing') {
+                                    $post_route = route('post_daily', $data->slug);
+                                } else {
+                                    $post_route = url("$data->url");
+                                }
+                            @endphp
                             @if ($i >= 2 && $i <= 5)
                                 <div class="col">
                                     <div class="card card-secundario h-100">
                                         <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-12">
-                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="badge etiqueta-img"
-                                                        style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
-                                                </a>
-                                                <a href="{{ url("$data->url") }}" title="Click to see more">
+
+                                                @if ($category_data[0]->name != 'Daily Briefing')
+                                                    <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                        <span class="badge etiqueta-img"
+                                                            style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                                    </a>
+                                                @endif
+                                                <a href="{{ $post_route }}" title="Click to see more">
                                                     <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-12">
                                                 <div class="card-body-secundario h-100">
-                                                    <a href="{{ url("$data->url") }}" title="Click to see more"
+                                                    <a href="{{ $post_route }}" title="Click to see more"
                                                         class="text-decoration-none text-muted">
                                                         <h3 class="card-title">{{ $data->title }}
                                                         </h3>
@@ -177,10 +197,12 @@
                             @if ($i >= 6)
                                 <div class="col">
                                     <div class="card card-secundario h-100">
-                                        <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                            <span class="badge etiqueta-img"
-                                                style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
-                                        </a>
+                                        @if ($category_data[0]->name != 'Daily Briefing')
+                                            <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                <span class="badge etiqueta-img"
+                                                    style="background:{{ $data->destination_color }};">{{ $data->destination }}</span>
+                                            </a>
+                                        @endif
                                         <div class="card m-0 p-0 border-0">
                                             <a href="{{ url("$data->url") }}" title="Click to see more">
                                                 <img {!! img_meta($data->image_data, $data->image_alt) !!} class="img-category-principal">
