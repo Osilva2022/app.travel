@@ -1295,6 +1295,11 @@ class PostsController extends Controller
         // dd($apiresponse);
         $category_name = "";
         $category_color = "";
+        $portada_diarios = false;
+        if ($apiresponse[0]->acf->portada_diarios) {
+            $query = DB::select("SELECT guid FROM travel_posts WHERE ID = " . $apiresponse[0]->acf->portada_diarios);
+            $portada_diarios = $query[0]->guid;
+        }
         foreach ($categories_data as $c) {
             if ($c->term_id == $apiresponse[0]->categories[0]) {
                 // dd($c);
@@ -1328,7 +1333,8 @@ class PostsController extends Controller
             "seo_description" => $apiresponse[0]->acf->descripcion_seo,
             "canonical_url" => $apiresponse[0]->acf->url_canonica,
             "img" => $imgdata,
-            "author" => $authordata
+            "author" => $authordata,
+            "portada_diarios" => $portada_diarios
         ];
         // dd($post_);
         $img_metadata = unserialize($post_['img']->img_data);
@@ -1387,9 +1393,9 @@ class PostsController extends Controller
             (isset($post_['canonical_url']) && $post_['canonical_url'] != '') ? $post_['canonical_url'] : route('post', [$destino, $category, $post_['slug']])
         );
         $destination = $destino;
-        // dd($destination);
+        // dd($portada_diarios);
 
-        return view('posts.index', compact('post_', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination'));
+        return view('posts.index', compact('post_', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination','portada_diarios'));
     }
 
     public function contact()
