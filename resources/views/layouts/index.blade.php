@@ -229,11 +229,11 @@
                     <hr>
                 </div>
             </div>
-            <!-- REVIEWS -->
-            <h2 class="text-center my-4">Tribune Reviews</h2>
+            <!-- Things  -->
+            <h2 class="text-center my-4">Things To Do</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
-                    @foreach ($review as $data)
+                    @foreach ($thing as $data)
                         <div class="card card-principal-post">
                             <div class="card border-0">
                                 <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
@@ -251,7 +251,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <a href="{{ url("$data->url") }}" title="{!! $data->title !!}" class="">
+                                <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
                                     <p class="card-text">
                                         {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
                                     </p>
@@ -262,20 +262,20 @@
                     @endforeach
                 </div>
                 <div class="col-lg-8">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 d-flex justify-content-between h-100">
-                        @foreach ($reviews as $data)
-                            @if ($review[0]->id_post != $data->id_post)
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
+                        @foreach ($things as $data)
+                            @if ($thing[0]->id_post != $data->id_post)
                                 <div class="col">
-                                    <div class="card card-secundario">
+                                    <div class="card card-secundario h-100">
                                         <div class="row h-100">
                                             <div class="col card-head-secundario">
                                                 <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario lazy">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
                                                 <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="etiqueta-post"
+                                                    <span class="etiqueta-post mb-2"
                                                         style="background:{{ $data->destination_color }};">
                                                         {!! $data->destination !!}
                                                     </span>
@@ -283,7 +283,7 @@
                                                 <a href="{{ url("$data->url") }}">
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
-                                                <small>
+                                                <small class="text-muted">
                                                     {{ date('M/d/Y', strtotime($data->post_date)) }}
                                                 </small>
                                             </div>
@@ -295,13 +295,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row ">
+            <div class="row">
                 <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('category', ['reviews']) }}" class="btn-view-more" type="button">More
-                        Reviews</a>
+                    <a href="{{ route('category', ['things-to-do']) }}" class="btn-view-more" type="button">More
+                        Things to do</a>
                 </div>
             </div>
-            <!-- REVIEWS -->
             @if ($mostrar)
                 <!-- ads /21855382314/tt-home-lb-3 -->
                 <div class="row py-4">
@@ -487,101 +486,6 @@
                 </div>
             @endif
             <!-- Gallery -->
-            <div class="row">
-                <div class="col-12">
-                    <hr>
-                </div>
-            </div>
-
-            <!-- Things  -->
-            <h2 class="text-center my-4">Things To Do</h2>
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    @foreach ($thing as $data)
-                        <div class="card card-principal-post">
-                            <div class="card border-0">
-                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
-                                        {!! $data->destination !!}</span>
-                                </a>
-                                <span class="etiqueta-last-post">
-                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
-                                <a href="{{ url("$data->url") }}">
-                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
-                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
-                                    <h3 class="card-title-overlay">
-                                        {!! $data->title !!}
-                                    </h3>
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <a href="{{ url("$data->url") }}" title="{{ $data->title }}" class="">
-                                    <p class="card-text">
-                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
-                                    </p>
-                                </a>
-                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="col-lg-8">
-                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 h-100">
-                        @foreach ($things as $data)
-                            @if ($thing[0]->id_post != $data->id_post)
-                                <div class="col">
-                                    <div class="card card-secundario h-100">
-                                        <div class="row h-100">
-                                            <div class="col card-head-secundario">
-                                                <a href="{{ url("$data->url") }}">
-                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario">
-                                                </a>
-                                            </div>
-                                            <div class="col-6 card-body-secundario">
-                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="etiqueta-post mb-2"
-                                                        style="background:{{ $data->destination_color }};">
-                                                        {!! $data->destination !!}
-                                                    </span>
-                                                </a>
-                                                <a href="{{ url("$data->url") }}">
-                                                    <h3 class="card-title-secundario">{!! $data->title !!}</h3>
-                                                </a>
-                                                <small class="text-muted">
-                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col my-4 d-flex justify-content-center">
-                    <a href="{{ route('category', ['things-to-do']) }}" class="btn-view-more" type="button">More
-                        Things to do</a>
-                </div>
-            </div>
-
-            <!--ads /21855382314/tt-home-lb-footer -->
-            @if ($mostrar)
-                <div class="row py-4">
-                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
-                        <div id='div-gpt-ad-1620253311869-0'>
-                            <script defer>
-                                googletag.cmd.push(function() {
-                                    googletag.display('div-gpt-ad-1620253311869-0');
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-            @endif
-            <!-- Things to do -->
-
             <!-- EVENTS -->
             <div class="row">
                 <div class="col-12">
@@ -615,6 +519,102 @@
                     <a href="{{ route('events') }}" class="btn-view-more" type="button">See the calendar</a>
                 </div>
             </div>
+            <!-- EVENTS -->
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
+
+            <!--ads /21855382314/tt-home-lb-footer -->
+            @if ($mostrar)
+                <div class="row py-4">
+                    <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
+                        <div id='div-gpt-ad-1620253311869-0'>
+                            <script defer>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1620253311869-0');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            <!-- Things to do -->
+
+            <!-- REVIEWS -->
+            <h2 class="text-center my-4">Tribune Reviews</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    @foreach ($review as $data)
+                        <div class="card card-principal-post">
+                            <div class="card border-0">
+                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
+                                        {!! $data->destination !!}</span>
+                                </a>
+                                <span class="etiqueta-last-post">
+                                    <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
+                                <a href="{{ url("$data->url") }}">
+                                    <div class="opacity-effect" style="border-radius: 1rem 1rem 0 0;"></div>
+                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img">
+                                    <h3 class="card-title-overlay">
+                                        {!! $data->title !!}
+                                    </h3>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ url("$data->url") }}" title="{!! $data->title !!}" class="">
+                                    <p class="card-text">
+                                        {!! Str::limit(strip_tags($data->post_excerpt), 175, ' ...') !!}
+                                    </p>
+                                </a>
+                                <small class="text-muted">{{ date('M/d/Y', strtotime($data->post_date)) }}</small>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-lg-8">
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 g-4 d-flex justify-content-between h-100">
+                        @foreach ($reviews as $data)
+                            @if ($review[0]->id_post != $data->id_post)
+                                <div class="col">
+                                    <div class="card card-secundario">
+                                        <div class="row h-100">
+                                            <div class="col card-head-secundario">
+                                                <a href="{{ url("$data->url") }}">
+                                                    <img {!! img_meta($data->image_data, $data->image_alt) !!} class="card-img-secundario lazy">
+                                                </a>
+                                            </div>
+                                            <div class="col-6 card-body-secundario">
+                                                <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
+                                                    <span class="etiqueta-post"
+                                                        style="background:{{ $data->destination_color }};">
+                                                        {!! $data->destination !!}
+                                                    </span>
+                                                </a>
+                                                <a href="{{ url("$data->url") }}">
+                                                    <h3 class="card-title-secundario">{!! $data->title !!}</h3>
+                                                </a>
+                                                <small>
+                                                    {{ date('M/d/Y', strtotime($data->post_date)) }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col my-4 d-flex justify-content-center">
+                    <a href="{{ route('category', ['reviews']) }}" class="btn-view-more" type="button">More
+                        Reviews</a>
+                </div>
+            </div>
+            <!-- REVIEWS -->
             <!-- ads /21855382314/tt-home-lb-4 -->
             @if ($mostrar)
                 <div class="row py-4">
@@ -629,7 +629,6 @@
                     </div>
                 </div>
             @endif
-            <!-- EVENTS -->
             <div class="row">
                 <div class="col-12">
                     <hr>
