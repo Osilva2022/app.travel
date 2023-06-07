@@ -2,205 +2,229 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://tribune.travel/</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://tribune.travel//</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/art-culture</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/beaches</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/car-rental</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/charity</loc>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/health-wellness</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/hotels</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/restaurants</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/shopping</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/cancun/tours-activities</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/art-culture</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/beaches</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/car-rental</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/charity</loc>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/health-wellness</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/hotels</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/restaurants</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/shopping</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/los-cabos/tours-activities</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/art-culture</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/beaches</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/car-rental</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/charity</loc>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/health-wellness</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/hotels</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/restaurants</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/shopping</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/puerto-vallarta/tours-activities</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/art-culture</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/beaches</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/car-rental</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/riviera-nayarit/charity</loc>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/health-wellness</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/hotels</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/restaurants</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/shopping</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://tribune.travel/riviera-nayarit/tours-activities</loc>
-        <lastmod>2023-02-24T12:00:01-06:00</lastmod>
+        <lastmod>2023-05-22T16:00:01-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
