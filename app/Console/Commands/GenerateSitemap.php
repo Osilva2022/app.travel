@@ -131,13 +131,15 @@ class GenerateSitemap extends Command
 
             foreach ($posts as $post) {
 
-                $lastMod = new DateTime($post->post_date);
-                $postsSitemap->add(
-                    Url::create($post->url)
-                        ->setLastModificationDate($lastMod)
-                        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-                        ->setPriority(0.4)
-                );
+                if (!empty($post->url)) {
+                    $lastMod = new DateTime($post->post_date);
+                    $postsSitemap->add(
+                        Url::create($post->url)
+                            ->setLastModificationDate($lastMod)
+                            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                            ->setPriority(0.4)
+                    );
+                }
             }
             // Add the sitemap to the indexes variable.
             $postsSitemap->writeToFile(public_path('sitemaps/posts_sitemap_' . $postsSitemapCount . '.xml'));
