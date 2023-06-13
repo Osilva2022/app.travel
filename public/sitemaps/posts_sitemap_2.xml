@@ -91,6 +91,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/blogs/mexican-bunuelos-christmas-flavor</loc>
+        <lastmod>2022-12-14T17:52:35-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/blogs/mexican-cuisine-changed-and-forgotten</loc>
         <lastmod>2022-07-19T17:59:34-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -223,6 +229,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/cancun-international-records-new-single-day-operational-record</loc>
+        <lastmod>2022-12-19T11:21:56-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/cancun-music-week-to-have-first-edition-in-2022</loc>
         <lastmod>2022-03-30T18:44:57-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -313,6 +325,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/mayor-reports-1-8-million-tourists-expected-in-playa-del-carmen-for-upcoming-holidays</loc>
+        <lastmod>2022-12-15T13:08:13-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/mexico-and-u-s-aviation-officials-will-discuss-category-1-classification</loc>
         <lastmod>2022-10-26T22:07:02-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -333,6 +351,12 @@
     <url>
         <loc>https://tribune.travel/cancun/news/more-than-two-dozen-direct-routes-scheduled-from-canada-to-cancun-this-winter</loc>
         <lastmod>2022-10-18T12:25:00-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/news/navy-authorized-use-of-property-for-security-bases</loc>
+        <lastmod>2022-12-14T12:29:08-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -457,6 +481,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/cancun/news/swoop-will-begin-offering-direct-flights-from-toronto-to-cancun-in-january</loc>
+        <lastmod>2022-12-16T13:34:10-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/cancun/news/tafer-hotels-resorts-keeps-betting-on-mexico</loc>
         <lastmod>2021-06-22T21:50:36-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -507,6 +537,12 @@
     <url>
         <loc>https://tribune.travel/cancun/things-to-do/3-water-activities-to-enjoy-in-cancun</loc>
         <lastmod>2022-10-17T17:38:30-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/cancun/things-to-do/4-amazing-cenotes-near-cancun</loc>
+        <lastmod>2022-12-15T18:15:16-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -597,6 +633,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/blogs/home-office-real-estate-buyers</loc>
         <lastmod>2021-07-08T10:25:14-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/blogs/hospiten-tells-us-about-anxiety-and-how-to-manage-it</loc>
+        <lastmod>2022-12-14T18:33:09-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -739,6 +781,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/baja-california-sur-is-an-attractive-travel-product</loc>
+        <lastmod>2022-12-14T12:09:24-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/bisbees-increases-hotel-occupancy-in-los-cabos</loc>
         <lastmod>2022-10-26T21:57:11-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -829,6 +877,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/los-cabos/news/los-cabos-closes-2022-with-the-highest-room-rate-in-the-country</loc>
+        <lastmod>2022-12-15T12:57:11-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/los-cabos/news/los-cabos-expects-to-close-2022-with-the-visit-of-3-3-million-tourists</loc>
         <lastmod>2022-11-29T12:25:02-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -885,6 +939,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/news/meeting-tourism-returns-to-los-cabos</loc>
         <lastmod>2022-10-21T11:42:55-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/new-jet-service-to-los-cabos-from-l-a-and-dallas-to-start-this-winter</loc>
+        <lastmod>2022-12-19T11:09:35-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -975,6 +1035,12 @@
     <url>
         <loc>https://tribune.travel/los-cabos/news/turtle-nesting-season-starts-at-la-paz</loc>
         <lastmod>2021-08-09T22:46:28-05:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/los-cabos/news/u-s-ambassador-announces-clean-energy-investments-in-baja-california-sur</loc>
+        <lastmod>2022-12-16T13:17:35-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1441,6 +1507,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/4-cruise-ships-will-dock-in-puerto-vallarta-this-week</loc>
+        <lastmod>2022-12-19T10:41:21-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/aquaadore-pv-spectacular-opening</loc>
         <lastmod>2022-04-09T13:54:05-05:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1527,6 +1599,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/news/hospiten-free-colon-cancer-screening</loc>
         <lastmod>2022-03-18T17:34:30-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/hoteles-buenaventura-celebrates-its-40th-anniversary</loc>
+        <lastmod>2022-12-16T12:45:10-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
@@ -1873,6 +1951,12 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://tribune.travel/puerto-vallarta/news/vallartas-beaches-suitable-for-recreational-use</loc>
+        <lastmod>2022-12-15T12:34:26-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://tribune.travel/puerto-vallarta/news/whale-watching-season-gets-underway-in-banderas-bay</loc>
         <lastmod>2022-12-06T13:06:45-06:00</lastmod>
         <changefreq>yearly</changefreq>
@@ -1947,6 +2031,12 @@
     <url>
         <loc>https://tribune.travel/puerto-vallarta/reviews/edie-las-vegas-showgirl-unleashed</loc>
         <lastmod>2021-11-12T18:06:30-06:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://tribune.travel/puerto-vallarta/reviews/hospiten-puerto-vallarta-offers-posada-to-members-of-my-health-program</loc>
+        <lastmod>2022-12-17T13:38:19-06:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
