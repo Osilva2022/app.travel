@@ -295,12 +295,13 @@ Route::post('/save/unsubscribe', [PostsController::class, 'saveUnsubscribe'])->n
 Route::get('/', [PostsController::class, 'index'])->name('home');
 Route::get('destination/{destination}', [PostsController::class, 'destinations'])->name('destinations');
 Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
+Route::get('category/daily-briefing', [PostsController::class, 'dailyBriefing'])->name('daily');
 Route::get('category/{category}', [PostsController::class, 'categories'])->name('category');
 Route::get('events', [PostsController::class, 'events'])->name('events');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
 Route::get('directory-item', [PostsController::class, 'ShowGuideItem'])->name('directory-item');
 Route::get('/daily-briefing/{slug}', [PostsController::class, 'post_daily'])->name('post_daily');
-Route::get('/{destination}/daily-briefing/{slug}', function ($a,$b) {
+Route::get('/{destination}/daily-briefing/{slug}', function ($a, $b) {
     return redirect()->route('post_daily', $b);
 });
 Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');

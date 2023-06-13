@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => "localhost/app.travel/public",
+    'asset_url' => 'http://localhost/app.travel/public',
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'app_url' => "localhost/app.travel/public",
+    'app_url' => 'http://localhost/app.travel/public',
 
     /*
     |--------------------------------------------------------------------------

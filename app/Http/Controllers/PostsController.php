@@ -861,7 +861,7 @@ class PostsController extends Controller
                                             AND location = '$id_location'
                                             ORDER BY location, category_id;");
         if (is_null($things_categories)) {
-            // return abort(404);
+            // return abort(404); 
             return redirect()->route('home');
         }
         $this->metadatos(
@@ -1395,7 +1395,7 @@ class PostsController extends Controller
         $destination = $destino;
         // dd($portada_diarios);
 
-        return view('posts.index', compact('post_', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination','portada_diarios'));
+        return view('posts.index', compact('post_', 'more_posts', 'category', 'destino', 'destinations_data', 'categories_data', 'post_tags', 'destination', 'portada_diarios'));
     }
 
     public function contact()
@@ -1605,5 +1605,33 @@ class PostsController extends Controller
             route('flights', $destination)
         );
         return view('flights.index', compact('destinations_data', 'categories_data', 'iframe', 'destination'));
+    }
+
+    public function dailyBriefing(Request $request)
+    {
+
+        $destinations_data = $this->returndata('destinations');
+        $categories_data = $this->returndata('categories');
+        $things_categories = DB::select("SELECT * FROM (
+            SELECT td.category_id,
+            dc.name, dc.slug, dc.color as category_color, td.location, dc.image_data,dc.image_alt, dc.description
+            ,ROW_NUMBER() over(partition by td.category_id,td.location ORDER BY td.location DESC) as orden
+            FROM travel_directory as td
+            inner join travel_directory_category as dc on td.category_id = dc.term_id
+            ) t
+            WHERE t.orden = 1
+            AND location = '4'
+            ORDER BY location, category_id
+            Limit 8;");
+
+        $this->metadatos(
+            'Daily Briefing | Tribune Travel',
+            "Daily Briefing. Today's top news by Tribune Travel",
+            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/guide-tt.png",
+            "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
+            route('daily'),
+            route('daily')
+        );
+        return view('categories.daily', compact('destinations_data', 'categories_data', 'things_categories'));
     }
 }
