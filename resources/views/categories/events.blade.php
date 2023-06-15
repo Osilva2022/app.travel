@@ -61,13 +61,6 @@
                                             }
                                             
                                         @endphp
-                                        <div class="col-12 text-end">
-                                            <a target="_blank" class="btn btn-outline-primary"
-                                                href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates={{ $dates }}&timeZone=America/Mexico_City&location={{ $event->destination }}&text={{ $event->title }}&details={{ $event->content }}">
-                                                <i class="bi bi-calendar"></i> Add to Calendar
-                                            </a>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
