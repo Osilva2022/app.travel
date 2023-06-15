@@ -118,7 +118,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Obtener las imagenes de una cuenta de instagram a travez de un api
+     * Obtener las imágenes de una cuenta de instagram a traves de un api
      * Se genera un token cada 30 días y se guarda en la tabla travel_instagram_tokens con un cronjob
      */
     function instagram()
@@ -135,7 +135,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Funcion para generar los metadatos en las paginas con SEO::generate()
+     * Función para generar los metadatos en las paginas con SEO::generate()
      *
      */
     function metadatos($title, $description, $image, $url, $url_canonical, $noindex = null)
@@ -781,15 +781,14 @@ class PostsController extends Controller
         $category = "events";
         $e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() $query ORDER BY start_date ASC;");
         $events = $this->paginate($e, 5)->onEachSide(0);
-        //dd($e);
         if ($e) {
             $event_structured_data = $this->data_json_event($e);
         }
+
         $this->metadatos(
             'Events | Tribune Travel',
             "Calendar. Looking for what to do in Mexico's top beach destinations? We got you covered with the best events. Find out what to do and where to go here.",
             "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/11/tt.png",
-            // "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/10/events-tt.png",
             route('events'),
             route('events')
         );

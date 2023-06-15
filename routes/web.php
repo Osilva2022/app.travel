@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\SitemapXmlController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
@@ -298,6 +299,7 @@ Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
 Route::get('category/daily-briefing', [PostsController::class, 'dailyBriefing'])->name('daily');
 Route::get('category/{category}', [PostsController::class, 'categories'])->name('category');
 Route::get('events', [PostsController::class, 'events'])->name('events');
+Route::get('events/{destination}/{slug}', [EventController::class, 'event'])->name('event');
 Route::get('author/{id}', [PostsController::class, 'author'])->name('author');
 Route::get('directory-item', [PostsController::class, 'ShowGuideItem'])->name('directory-item');
 Route::get('/daily-briefing/{slug}', [PostsController::class, 'post_daily'])->name('post_daily');

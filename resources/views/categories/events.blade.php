@@ -16,16 +16,18 @@
                         We got you covered with the best events. Find out what to do and where to go here.</p>
                 </div>
             </div>
-            <div class="row row-cols-1 g-4 my-4">
-                <h3>Featured Events</h3>
+            <h3>Featured Events</h3>
+            <div class="row row-cols-md-2 row-cols-lg-3 g-4 my-4">
                 @foreach ($events as $event)
                     <div class="col">
                         <div class="card-event">
-                            <div class="row g-4">
-                                <div class="col-md-5 d-flex align-items-center">
+                            <div class="row g-4 position-relative">
+                                <a class="link-absolute "
+                                    href="{{ route('event', ['destination' => $event->destination_slug, 'slug' => $event->slug]) }}"></a>
+                                <div class="col-12 d-flex align-items-center">
                                     <img {!! img_meta($event->image_data, $event->image_alt) !!} class="card-img-estatica" style="object-fit: contain;">
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-12">
                                     <div class="row g-4">
                                         <div
                                             class="col-4 border-end border-primary text-center border-3 py-0 d-flex flex-column justify-content-center align-items-center">
@@ -37,15 +39,13 @@
                                             <h1 class="align-middle">{!! date('d', $date) !!}</h1>
                                         </div>
                                         <div class="col-8 py-0 text-start">
+
                                             <h3>{!! $event->title !!}</h3>
                                             <b>{{ date('M d, Y', $date) }}</b> - <b>{{ date('M d, Y', $date2) }}</b><br>
                                             {!! $event->destination !!}<br>
                                             <small>
                                                 {!! $event->category !!}
                                             </small>
-                                        </div>
-                                        <div class="col-12">
-                                            {!! $event->content !!}
                                         </div>
                                         <!--Gmail Button-->
                                         @php
@@ -54,12 +54,12 @@
                                             $endDate = date('Ymd', strtotime($event->end_date));
                                             $endTime = date('His', strtotime($event->end_date));
                                             $allday = $event->all_day;
-
+                                            
                                             $dates = urldecode($startDate) . 'T' . urldecode($startTime) . '/' . urldecode($endDate) . 'T' . urldecode($endTime);
                                             if ($allday != null) {
                                                 $dates = urldecode($startDate) . '/' . urldecode($endDate);
                                             }
-
+                                            
                                         @endphp
                                         <div class="col-12 text-end">
                                             <a target="_blank" class="btn btn-outline-primary"
@@ -84,4 +84,18 @@
         </div>
     </main>
     <script src="{{ asset('js/submenu.js') }}" version="1"></script>
+@endsection
+@section('styles')
+    <style>
+        .link-absolute::after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            pointer-events: auto;
+            content: '';
+        }
+    </style>
 @endsection
