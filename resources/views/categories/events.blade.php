@@ -17,7 +17,7 @@
                 </div>
             </div>
             <h3>Featured Events</h3>
-            <div class="row row-cols-md-2 row-cols-lg-3 g-4 my-4">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4 my-4">
                 @foreach ($events as $event)
                     <div class="col">
                         <div class="card-event">
