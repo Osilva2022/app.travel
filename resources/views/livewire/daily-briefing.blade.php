@@ -1,5 +1,3 @@
-@livewireStyles
-@livewireScripts
 <div class="container father">
     {{-- The Master doesn't talk, he acts. --}}
     <div class="mb-4">

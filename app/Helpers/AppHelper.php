@@ -33,13 +33,14 @@ function img_meta($data, $alt = false, $lazy = true)
     }
 
     $metadatos = unserialize($data);
+    // dd($metadatos["sizes"]);
     $img_meta = [
         ($metadatos['image_meta']['title']) ? 'alt="' . $metadatos['image_meta']['title'] . '"' : 'title=""',
         // 'width="425"',
         // 'height="250"',
         'width="' . $metadatos['width'] . '"',
         'height="' . $metadatos['height'] . '"',
-        'src="' . images((isset($metadatos['s3']['formats']['webp'])) ? $metadatos['s3']['formats']['webp'] : $metadatos['file']) . '"',
+        'src="' . images((isset($metadatos["sizes"]["medium_large"]["s3"]["url"])) ? $metadatos["sizes"]["medium_large"]["s3"]["url"] : $metadatos['file']) . '"',
         ($alt) ? 'alt="' . $alt . '"' : 'alt="Alt Text"',
         ($lazy) ? 'loading="lazy"' : '',
         ($lazy) ? 'decoding="defer"' : '',

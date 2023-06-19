@@ -308,7 +308,6 @@
             });
         </script>
     @endproduction
-    
     @stack('scripts')
     @stack('caliente-ads')
 </body>
