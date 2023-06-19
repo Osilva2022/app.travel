@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:locale" content="es_MX">
     {!! SEO::generate() !!}
-    @livewireStyles
+    
 
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
@@ -308,7 +308,7 @@
             });
         </script>
     @endproduction
-    @livewireScripts
+    
     @stack('scripts')
     @stack('caliente-ads')
 </body>
