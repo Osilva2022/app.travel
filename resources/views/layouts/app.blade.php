@@ -3,74 +3,73 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0d6efd">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta property="og:locale" content="es_MX">
-    {!! SEO::generate() !!}
-    @livewireStyles
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d6efd">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<meta property="og:locale" content="es_MX">
+{!! SEO::generate() !!}
+@livewireStyles
 
-    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+<link rel="icon" href="{{ asset('img/favicon.png') }}">
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
-    <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="stylesheet">
+<!-- Styles -->
+<link rel="stylesheet" href="{{ asset('css/typekit.min.css') }}">
+<link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{{ asset('css/base.min.css?v=' . mt_rand()) }}">
+<link rel="stylesheet" href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}">
 
-    <!-- Scripts -->
-    @yield('styles')
-    <script type="application/ld+json">
-        {
-            "@context":"https://schema.org",
-            "@type":"Organization",
-            "url":"https://tribune.travel/",
-            "logo":"https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org/",
-          "@type": "WebSite",
-          "name": "Tribune Travel",
-          "url": "https://tribune.travel/",
-          "potentialAction": {
+<!-- Scripts -->
+@yield('styles')
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "https://tribune.travel/",
+        "logo": "https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
+    }
+</script>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "name": "Tribune Travel",
+        "url": "https://tribune.travel/",
+        "potentialAction": {
             "@type": "SearchAction",
             "target": "https://tribune.travel/search?search={search_term_string}",
             "query-input": "required name=search_term_string"
-          }
         }
-        </script>
-    {!! JsonLdMulti::generate() !!}
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity=""
-        crossorigin="anonymous"></script>
-    <script src="{{ asset('js/carousels.min.js') }}"></script>
-    @stack('ads')
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-N3TCH2W');
-    </script>
+    }
+</script>
+{!! JsonLdMulti::generate() !!}
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="{{ asset('OwlCarousel/dist/owl.carousel.min.js') }}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous"></script>
+<script src="{{ asset('js/carousels.min.js') }}"></script>
+@stack('ads')
+
+<!-- Google Tag Manager -->
+<script>
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-N3TCH2W');
+</script>
+
     <!-- End Google Tag Manager -->
 </head>
 
