@@ -78,6 +78,8 @@
         })(window, document, 'script', 'dataLayer', 'GTM-N3TCH2W');
     </script>
     <!-- End Google Tag Manager -->
+    <meta name="theme-color" content="#0d6efd"/>
+
 </head>
 
 <body class="p-0">
