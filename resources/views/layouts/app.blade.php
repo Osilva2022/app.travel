@@ -3,33 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="theme-color" content="#0d6efd"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d6efd">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> --}}
-    <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
-    <meta name="facebook-domain-verification" content="fuh4fu0gnrjjsg5n8mymdif1zcknbe" />
     <meta property="og:locale" content="es_MX">
     {!! SEO::generate() !!}
     @livewireStyles
-    {{-- <title>@yield('page-title')</title> --}}
-    <!-- Favicons -->
+
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
+
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/typekit.min.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('OwlCarousel/dist/assets/owl.theme.default.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet">
+    <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="preload"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link href="{{ asset('css/base.min.css?v=' . mt_rand()) }}" rel="stylesheet" {{-- media="print" onload="this.media='all'" --}}>
-    <link href="{{ asset('css/carousel.min.css?v=' . mt_rand()) }}" rel="preload" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
     <!-- Scripts -->
     @yield('styles')
     <script type="application/ld+json">
