@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#0d6efd"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> --}}
     <meta name="msvalidate.01" content="8FA114FA6F4F1BFE15936EB27C738AAE" />
@@ -78,8 +79,6 @@
         })(window, document, 'script', 'dataLayer', 'GTM-N3TCH2W');
     </script>
     <!-- End Google Tag Manager -->
-    <meta name="theme-color" content="#0d6efd"/>
-
 </head>
 
 <body class="p-0">
