@@ -37,6 +37,9 @@
             });
         </script>
     @endpush
+    @section('styles')
+        @livewireStyles
+    @endsection
 @endif
 @section('content')
     <header>
@@ -163,3 +166,6 @@
     </main>
     {{-- <script src="{{ asset('js/submenu.js') }}" version="1"></script> --}}
 @endsection
+@push('scripts')
+    @livewireScripts
+@endpush

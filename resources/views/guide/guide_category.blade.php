@@ -1,7 +1,4 @@
 @extends('layouts.app')
-@section('page-title')
-    Things to Do |
-@endsection
 @php
     $mostrar = true;
 @endphp
