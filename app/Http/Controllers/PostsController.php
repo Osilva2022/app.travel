@@ -1327,6 +1327,7 @@ class PostsController extends Controller
             "destination_name" => $destination_name,
             "destination_color" => $destination_color,
             "title" => $apiresponse[0]->title->rendered,
+            "subtitle" => $apiresponse[0]->acf->subtitle,
             "excerpt" => $apiresponse[0]->excerpt->rendered,
             "content" => $apiresponse[0]->content->rendered,
             "seo_title" => $apiresponse[0]->acf->titulo_seo,
