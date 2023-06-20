@@ -55,8 +55,12 @@ function imgMetaSrcSet($metasizes)
 {
     $allsizes = [];
     foreach ($metasizes as $size) {
-        $ruta = images((isset($size['s3']['formats']['webp'])) ? $size['s3']['formats']['webp'] : $size['s3']['key']) . ' ' . $size['width'] . 'w';
-        array_push($allsizes, $ruta);
+        try {
+            $ruta = images((isset($size['s3']['formats']['webp'])) ? $size['s3']['formats']['webp'] : $size['s3']['key']) . ' ' . $size['width'] . 'w';
+            array_push($allsizes, $ruta);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
     return implode(',', $allsizes);
 }
