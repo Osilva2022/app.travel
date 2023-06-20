@@ -112,6 +112,9 @@
                             <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
                         </div>
                         <div class="col-12">
+                            @empty(!$post_['subtitle'])
+                                <div style="font-size: 1.17rem; font-style: italic;">{!! $post_['subtitle'] !!}</div>
+                            @endempty
                             <h1>{!! $post_['title'] !!}</h1>
                         </div>
                         <div class="col-12">

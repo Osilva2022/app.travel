@@ -450,6 +450,7 @@ class PostsController extends Controller
             "destination_name" => $destination_name,
             "destination_color" => $destination_color,
             "title" => $apiresponse[0]->title->rendered,
+            "subtitle" => $apiresponse[0]->acf->subtitle,
             "excerpt" => $apiresponse[0]->excerpt->rendered,
             "content" => $apiresponse[0]->content->rendered,
             "seo_title" => $apiresponse[0]->acf->titulo_seo,
@@ -505,7 +506,7 @@ class PostsController extends Controller
                                 WHERE
                                     tags.slug = posts_tags.tag_slug
                                         AND id_post = $id;");
-        // dd($post_);
+        // dd($apiresponse[0]);
         $this->metadatos(
             isset($post_['seo_title']) ? $post_['seo_title'] : $post_['title'],
             isset($post_['seo_description']) ? $post_['seo_description'] : strip_tags($post_['excerpt']),
