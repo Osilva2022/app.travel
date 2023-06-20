@@ -121,7 +121,7 @@
                             <div class="row">
                                 <div class="col-auto text-end">
                                     <img src="{!! images($post_['author']->avatar) !!}" class="img-fluid rounded-circle"
-                                        style="width:56px; height:auto; aspect-ratio:1/1;">
+                                        style="width:56px; height:auto; aspect-ratio:1/1; object-fit: cover;">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By
