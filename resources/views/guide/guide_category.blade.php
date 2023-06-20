@@ -31,10 +31,13 @@
         </script>
     @endpush
 @endif
+@section('styles')
+    @livewireStyles
+@endsection
 @section('content')
     <header>
         @include('menus.menu_secundario')
-        
+
     </header>
     <main style="margin-top: 60px;">
         <div class="bg-light hero-image" style="background-image: url({{ imgURL($things_category[0]->image_data) }})">
@@ -105,8 +108,8 @@
                     </div>
                 </div>
             @endif
-           
-            @livewire('pagination', ['destination' => $destination,'category' => $category])
+
+            @livewire('pagination', ['destination' => $destination, 'category' => $category])
             @if ($mostrar)
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center" style="max-width: 100%; overflow: auto;">
@@ -239,3 +242,6 @@
         </script>
     </main>
 @endsection
+@push('scripts')
+    @livewireScripts
+@endpush
