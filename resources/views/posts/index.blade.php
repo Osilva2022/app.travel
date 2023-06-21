@@ -112,13 +112,16 @@
                             <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
                         </div>
                         <div class="col-12">
+                            @empty(!$post_['subtitle'])
+                                <div style="font-size: 1.17rem; font-style: italic;">{!! $post_['subtitle'] !!}</div>
+                            @endempty
                             <h1>{!! $post_['title'] !!}</h1>
                         </div>
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-auto text-end">
                                     <img src="{!! images($post_['author']->avatar) !!}" class="img-fluid rounded-circle"
-                                        style="width:56px; height:auto; aspect-ratio:1/1;">
+                                        style="width:56px; height:auto; aspect-ratio:1/1; object-fit: cover;">
                                 </div>
                                 <div class="col d-flex flex-column justify-content-center">
                                     <p class="card-title" style="color: #243A85">By

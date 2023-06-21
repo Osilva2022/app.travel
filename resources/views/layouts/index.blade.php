@@ -145,7 +145,7 @@
                                     @endforeach
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item disabled text-white" href="#" style="font-size: 8px;">By
-                                        tutsiempo.net</a>
+                                        tutiempo.net</a>
                                 </ul>
                             </div>
                         </div>
@@ -186,7 +186,10 @@
                                         <a
                                             href="{{ route('guide_category', ["$ttd->destination_slug", "$ttd->category_slug"]) }}?p={!! $ttd->ID !!}">
                                             <div class="opacity-effect" style="border-radius: 1rem"></div>
-                                            <img {!! img_meta($ttd->image_data, $ttd->image_alt, true) !!} class="carousel-img lazy">
+                                            <picture>
+                                                <source media="(min-width: )" srcset="">
+                                                <img {!! img_meta($ttd->image_data, $ttd->image_alt, true) !!} class="carousel-img lazy">
+                                            </picture>
                                             <div class="container">
                                                 <div class="carousel-info" style="bottom:4px; z-index:2;">
                                                     <h3 class="text-white">{!! $ttd->post_title !!}</h3>
