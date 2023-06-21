@@ -177,6 +177,7 @@
             }
         }
     </style>
+    @livewireStyles
 @endsection
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -187,4 +188,5 @@
             dateFormat: 'yy-mm-dd'
         });
     </script>
+     @livewireScripts
 @endpush

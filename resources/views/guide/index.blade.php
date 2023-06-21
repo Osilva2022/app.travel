@@ -37,6 +37,7 @@
             });
         </script>
     @endpush
+    
 @endif
 @section('content')
     <header>
@@ -163,3 +164,4 @@
     </main>
     {{-- <script src="{{ asset('js/submenu.js') }}" version="1"></script> --}}
 @endsection
+
