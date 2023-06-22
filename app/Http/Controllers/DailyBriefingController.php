@@ -7,7 +7,7 @@ use \Illuminate\Support\Facades\DB;
 
 class DailyBriefingController extends Controller
 {
-    public function dailyBriefing(Request $request)
+    public function dailyBriefing()
     {
         $destinations_data = returndata('destinations');
         $categories_data = returndata('categories');

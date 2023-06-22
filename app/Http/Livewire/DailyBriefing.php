@@ -6,33 +6,31 @@ use Livewire\Component;
 
 class DailyBriefing extends Component
 {
-    public $date = '', $posts = [];
+    public $date = '';
     protected $queryString = [
-        'date' => ['except' => '']
+        'date' => ['except' => '', 'as' => 'date']
     ];
 
-    protected $listeners = ["setDate" => 'setDate'];
+    protected $listeners = ["setDate" => 'changeDate'];
 
-    public function render()
+    public function mount()
     {
         if ($this->date == '') {
             $this->date = date('Y-m-d');
         }
-        // dd($this->date);
-        $this->posts = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/posts?include_daily=1&_embed&per_page=5&after=' . $this->date . 'T00:00:00&before=' . $this->date . 'T23:59:59'));
-        // $this->setDate();
-        return view('livewire.daily-briefing');
     }
 
-    function setDate($date)
+    public function render()
     {
-        $this->date = $date;
-        $filter_date = '';
-        if (isset($this->date)) {
-            $filter_date = '&after=' . $this->date . 'T00:00:00&before=' . $this->date . 'T23:59:59';
-        }
+        // $filter_date = '&after=' . $this->date . 'T00:00:00&before=' . $this->date . 'T23:59:59';
+        // dd($this->date);
+        $posts = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/posts?include_daily=1&_embed&per_page=5&after=' . $this->date . 'T00:00:00&before=' . $this->date . 'T23:59:59'));
+        // dd($posts);
+        return view('livewire.daily-briefing', compact('posts'));
+    }
 
-        $this->posts = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/posts?include_daily=1&_embed&per_page=5' . $filter_date));
-        // dd($this->posts);
+    public function changeDate($d)
+    {
+        $this->date = $d;
     }
 }
