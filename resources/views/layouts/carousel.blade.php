@@ -13,7 +13,7 @@
             @php
                 $active = '';
                 $b = true;
-                if ($dd->slug == 'puerto-vallarta') {
+                if ($dd->slug == 'los-cabos') {
                     $b = false;
                     $active = 'active';
                 }
