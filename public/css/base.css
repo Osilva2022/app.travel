@@ -341,7 +341,7 @@ small {
     aspect-ratio: 16/9;
     object-fit: contain;
 }
-.card-img-final- img{
+.card-img-final- img {
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
@@ -548,6 +548,10 @@ a:hover {
     padding-top: 2rem;
 }
 
+.post-cont figure.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+}
 .post-cont img {
     display: block;
     /* width: 100%; */
