@@ -547,7 +547,9 @@ a:hover {
 .post-cont > h3 {
     padding-top: 2rem;
 }
-
+.post-cont figure img {
+    margin-bottom: 10px !important;
+}
 .post-cont figure.aligncenter {
     margin-left: auto;
     margin-right: auto;
