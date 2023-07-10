@@ -291,42 +291,44 @@ Route::get('/cancun-riviera/babies-and-kids-skincare/', function () {
     return redirect()->route('postRedirect', 'babies-and-kids-skincare');
 });
 
+Route::middleware('notfoundredirect')->group(function () {
 
-Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
-Route::get('subscribe', [ContactController::class, 'subscription'])->name('subscription');
-Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
-Route::get('unsubscribe', [ContactController::class, 'unsubscribe'])->name('unsubscribe');
-Route::post('/save/subscription', [ContactController::class, 'saveSubscription'])->name('save_subscription');
-Route::post('/save/unsubscribe', [ContactController::class, 'saveUnsubscribe'])->name('save_unsubscribe');
+    Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
+    Route::get('subscribe', [ContactController::class, 'subscription'])->name('subscription');
+    Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
+    Route::get('unsubscribe', [ContactController::class, 'unsubscribe'])->name('unsubscribe');
+    Route::post('/save/subscription', [ContactController::class, 'saveSubscription'])->name('save_subscription');
+    Route::post('/save/unsubscribe', [ContactController::class, 'saveUnsubscribe'])->name('save_unsubscribe');
 
-//Redirect To Post
-Route::get('/', [PostsController::class, 'index'])->name('home');
-Route::get('destination/{destination}', [DestinationsController::class, 'destinations'])->name('destinations');
-Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
-Route::get('category/daily-briefing', [DailyBriefingController::class, 'dailyBriefing'])->name('daily');
-Route::get('category/{category}', [CategoriesController::class, 'categories'])->name('category');
-Route::get('events', [EventController::class, 'events'])->name('events');
-Route::get('events/{destination}/{slug}', [EventController::class, 'event'])->name('event');
-Route::get('author/{id}', [AuthorController::class, 'author'])->name('author');
-Route::get('directory-item', [GuideController::class, 'ShowGuideItem'])->name('directory-item');
-Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');
-Route::get('guide', [GuideController::class, 'guide'])->name('guide');
-Route::get('{destination}/{tag}', [GuideController::class, 'guide_category'])->name('guide_category');
-Route::get('gallery', function () {
-    return view('things_to_do.gallery', ['gallery' => '{gallery}']);
+    //Redirect To Post
+    Route::get('/', [PostsController::class, 'index'])->name('home');
+    Route::get('destination/{destination}', [DestinationsController::class, 'destinations'])->name('destinations');
+    Route::get('tag/{tag}', [PostsController::class, 'tags'])->name('tags');
+    Route::get('category/daily-briefing', [DailyBriefingController::class, 'dailyBriefing'])->name('daily');
+    Route::get('category/{category}', [CategoriesController::class, 'categories'])->name('category');
+    Route::get('events', [EventController::class, 'events'])->name('events');
+    Route::get('events/{destination}/{slug}', [EventController::class, 'event'])->name('event');
+    Route::get('author/{id}', [AuthorController::class, 'author'])->name('author');
+    Route::get('directory-item', [GuideController::class, 'ShowGuideItem'])->name('directory-item');
+    Route::get('/{destination}/{category}/{slug}', [PostsController::class, 'post'])->name('post');
+    Route::get('guide', [GuideController::class, 'guide'])->name('guide');
+    Route::get('{destination}/{tag}', [GuideController::class, 'guide_category'])->name('guide_category');
+    Route::get('gallery', function () {
+        return view('things_to_do.gallery', ['gallery' => '{gallery}']);
+    });
+    Route::get('get-posts-tags', [PostsController::class, 'PostsTags'])->name('get-posts-tags');
+    Route::get('cookies-notice', [PoliticsController::class, 'cookies'])->name('cookies');
+    Route::get('privacy-notice', [PoliticsController::class, 'privacy'])->name('privacy');
+    Route::get('sitemap', [PoliticsController::class, 'sitemap'])->name('sitemap');
+    Route::get('contact-us', [ContactController::class, 'contact'])->name('contact');
+    Route::post('/save-contact', [ContactController::class, 'storeContact'])->name('save-contact');
+    Route::get('search', [PostsController::class, 'search'])->name('search');
+    Route::resource('files', 'FileController');
+    // Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
+    Route::get('/feed', [SitemapXmlController::class, 'feed']);
+    Route::get('/rss', function () {
+        return Redirect::to('/feed', 301);
+    });
+    Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
+    Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
 });
-Route::get('get-posts-tags', [PostsController::class, 'PostsTags'])->name('get-posts-tags');
-Route::get('cookies-notice', [PoliticsController::class, 'cookies'])->name('cookies');
-Route::get('privacy-notice', [PoliticsController::class, 'privacy'])->name('privacy');
-Route::get('sitemap', [PoliticsController::class, 'sitemap'])->name('sitemap');
-Route::get('contact-us', [ContactController::class, 'contact'])->name('contact');
-Route::post('/save-contact', [ContactController::class, 'storeContact'])->name('save-contact');
-Route::get('search', [PostsController::class, 'search'])->name('search');
-Route::resource('files', 'FileController');
-// Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
-Route::get('/feed', [SitemapXmlController::class, 'feed']);
-Route::get('/rss', function () {
-    return Redirect::to('/feed', 301);
-});
-Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
-Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');

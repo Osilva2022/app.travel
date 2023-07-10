@@ -351,7 +351,6 @@ class PostsController extends Controller
 
     public function postid($id)
     {
-
         $posts = DB::select("SELECT
                                     *
                                 FROM
@@ -367,7 +366,7 @@ class PostsController extends Controller
                                             travel_postmeta AS p on u.meta_value = p.post_id AND p.meta_key = '_wp_attached_file') AS q
                                     ON travel_posts_all.author_id = q.user_id
                                 WHERE
-                                    id_post = $id
+                                    id_post = '$id'
                                 ORDER BY post_date DESC;");
         // $post = $posts[0];
         $post = (isset($posts[0])) ? $posts[0] : abort(404);
