@@ -500,21 +500,23 @@
                 <div class="owl-carousel owl-theme" id="events-carousel">
                     @foreach ($event as $data)
                         <div class="col-12" style="text-align: -webkit-center;">
-                            <div class="row" style="max-width: 420px;">
-                                <img {!! img_meta($data->image_data, $data->image_alt, true) !!} class="img-event">
-                                <div class="col-3 py-0 h-50">
-                                    @php
-                                        $date = strtotime($data->start_date);
-                                    @endphp
-                                    <h2 class="align-middle">{{ date('M', $date) }}</h2>
-                                    <h2 class="align-middle"><b>{{ date('d', $date) }}</b></h2>
+                            <a href="{{ route('event', [$data->destination_slug, $data->slug]) }}">
+                                <div class="row" style="max-width: 420px;">
+                                    <img {!! img_meta($data->image_data, $data->image_alt, true) !!} class="img-event">
+                                    <div class="col-3 py-0 h-50">
+                                        @php
+                                            $date = strtotime($data->start_date);
+                                        @endphp
+                                        <h2 class="align-middle">{{ date('M', $date) }}</h2>
+                                        <h2 class="align-middle"><b>{{ date('d', $date) }}</b></h2>
+                                    </div>
+                                    <div class="col-9 py-0 text-start">
+                                        <h3>{!! $data->title !!}</h3>
+                                        <span>{!! $data->destination !!}</span><br>
+                                        <small>{{ date('M d, Y', $date) }}</small>
+                                    </div>
                                 </div>
-                                <div class="col-9 py-0 text-start">
-                                    <h3>{!! $data->title !!}</h3>
-                                    <span>{!! $data->destination !!}</span><br>
-                                    <small>{{ date('M d, Y', $date) }}</small>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
