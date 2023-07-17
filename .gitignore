@@ -15,3 +15,7 @@ yarn-error.log
 /.idea
 /.vscode
 /config/livewire.php
+
+public/sitemaps
+public/.htaccess
+.htaccess
