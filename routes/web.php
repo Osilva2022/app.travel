@@ -291,6 +291,7 @@ Route::get('/cancun-riviera/babies-and-kids-skincare/', function () {
     return redirect()->route('postRedirect', 'babies-and-kids-skincare');
 });
 
+Route::middleware('notfoundredirect')->group(function () {
 
 Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
 Route::get('subscribe', [ContactController::class, 'subscription'])->name('subscription');
@@ -330,3 +331,4 @@ Route::get('/rss', function () {
 });
 // Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
 Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
+});
