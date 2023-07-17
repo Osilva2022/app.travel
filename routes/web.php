@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 |--------------------------------------------------------------------------
 |
 */
-
+Route::middleware('notfoundredirect')->group(function () {
 //Redirect To Post
 // Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
 // Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
@@ -290,8 +290,6 @@ Route::get('/vallarta-nayarit/tuba-tejuino-vallarta-delicacies/', function () {
 Route::get('/cancun-riviera/babies-and-kids-skincare/', function () {
     return redirect()->route('postRedirect', 'babies-and-kids-skincare');
 });
-
-Route::middleware('notfoundredirect')->group(function () {
 
 Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
 Route::get('subscribe', [ContactController::class, 'subscription'])->name('subscription');
