@@ -14,7 +14,8 @@ class NotFoundRedirect
         try {
             return $next($request);
         } catch (NotFoundHttpException $e) {
-            return response()->view('errors.404', [], 404); // Renderiza la vista 404
+            return redirect('https://tribune.travel/');
+            // return response()->view('errors.404', [], 404); // Renderiza la vista 404
         }
     }
 }

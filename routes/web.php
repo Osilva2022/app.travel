@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 |--------------------------------------------------------------------------
 |
 */
-
+Route::middleware('notfoundredirect')->group(function () {
 //Redirect To Post
 // Route::get('/vallarta-nayarit/{slug}/', [PostsController::class, 'postRedirect'])->name('vallartaRedirect');
 // Route::get('/cancun-riviera-maya/{slug}/', [PostsController::class, 'postRedirect'])->name('cancunredirect');
@@ -291,7 +291,6 @@ Route::get('/cancun-riviera/babies-and-kids-skincare/', function () {
     return redirect()->route('postRedirect', 'babies-and-kids-skincare');
 });
 
-
 Route::get('/flights/{slug}/', [PostsController::class, 'flights'])->name('flights');
 Route::get('subscribe', [ContactController::class, 'subscription'])->name('subscription');
 Route::get('/posts/{slug}/', [PostsController::class, 'postRedirect'])->name('postRedirect');
@@ -330,3 +329,4 @@ Route::get('/rss', function () {
 });
 Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
 Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
+});
