@@ -9,7 +9,7 @@ return [
 
     'IMAGES_REPOSITORY' => 'https://storage.googleapis.com/tribunetravel/',
 
-    'DEFAULT_IMAGE' => 'https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/puerto-vallarta.jpg.webp',
+    'DEFAULT_IMAGE' => 'https://storage.googleapis.com/tribunetravel/2022/08/puerto-vallarta.jpg.webp',
     'META_TITLE' => 'Tribune Travel | Your Gateway to Mexico',
     'META_DESCRIPTION' => 'Travel news and ideas from the top destinations of Puerto Vallarta, Riviera Nayarit, Cancun, Riviera Maya and Los Cabos at Mexico.',
     'META_URL' => 'https://tribune.travel/',
