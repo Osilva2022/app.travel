@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('script-id-json')
-    <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Tribune Travel","url": "{{ route('home') }}","logo": {"@type": "ImageObject",url:"https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Tribune Travel","url": "{{ route('home') }}","logo": {"@type": "ImageObject",url:"https://storage.googleapis.com/tribunetravel/2022/08/tribune-white.svg"}}</script>
 @endpush
 
 @php

@@ -88,7 +88,7 @@
         <div class="container">
             <div class="col text-center">
                 <a class="text-muted" href="{{ route('home') }}">
-                    <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
+                    <img src="https://storage.googleapis.com/tribunetravel/2022/08/tribune-white.svg"
                         width="125" height="100" alt="Tribune Travel">
                 </a>
             </div>
@@ -109,19 +109,19 @@
                     <ul class="nav pb-2 mb-2 justify-content-center">
                         <li class="">
                             <a class="text-muted" href="{{ config('constants.FACEBOOK_URL') }}" target="_blank">
-                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/face-white-ico.svg"
+                                <img src="https://storage.googleapis.com/tribunetravel/2022/08/face-white-ico.svg"
                                     alt="Tribune Travel facebook-icon" width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ config('constants.PINTEREST_URL') }}" target="_blank">
-                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/pint-white-ico.svg"
+                                <img src="https://storage.googleapis.com/tribunetravel/2022/08/pint-white-ico.svg"
                                     alt="Tribune Travel pint-icon" width="24" height="24">
                             </a>
                         </li>
                         <li class="ms-3">
                             <a class="text-muted" href="{{ config('constants.INSTAGRAM_URL') }}" target="_blank">
-                                <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/inst-white-ico.svg"
+                                <img src="https://storage.googleapis.com/tribunetravel/2022/08/inst-white-ico.svg"
                                     alt="Tribune Travel insta-icon" width="24" height="24">
                             </a>
                         </li>
@@ -186,19 +186,19 @@
             <div class="row row-cols-4 g-2 g-lg-3 justify-content-center mb-4">
                 <div class="col-12 col-footer text-center">
                     <a href="https://cps.media/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/cps-media-white.svg"
+                        <img src="https://storage.googleapis.com/tribunetravel/2022/08/cps-media-white.svg"
                             class="img-footer" alt="CPS Logo" loading="lazy" decoding="defer" style="width: 25%;">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://tribunadelabahia.com.mx/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribuna-white.svg"
+                        <img src="https://storage.googleapis.com/tribunetravel/2022/08/tribuna-white.svg"
                             class="img-footer" alt="Tribuna Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
                 <div class="col col-footer text-center">
                     <a href="https://radiante.fm/" target="_blank">
-                        <img src="https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/radiante-white-horizontal.svg"
+                        <img src="https://storage.googleapis.com/tribunetravel/2022/08/radiante-white-horizontal.svg"
                             class="img-footer" alt="Radiante Logo" loading="lazy" decoding="defer">
                     </a>
                 </div>
