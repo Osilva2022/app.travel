@@ -20,7 +20,9 @@
                 @if ($item->acf->daily_presentation == 1)
                     <a href="{!! $item->link !!}" title="Read more">
                         <div class="daily-cont-1">
-                            <img src="{!! $item->_embedded->{'wp:featuredmedia'}[0]->source_url !!}" alt="{!! $item->_embedded->{'wp:featuredmedia'}[0]->alt_text !!}">
+                            @isset($item->_embedded->{'wp:featuredmedia'}[0]->source_url)
+                                <img src="{!! $item->_embedded->{'wp:featuredmedia'}[0]->source_url !!}" alt="{!! $item->_embedded->{'wp:featuredmedia'}[0]->alt_text !!}">
+                            @endisset
                             <h2>
                                 {!! $item->title->rendered !!}
                             </h2>

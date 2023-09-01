@@ -396,22 +396,18 @@
                 </div>
             </div>
             <!-- NEWS -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12">
                     <hr>
                 </div>
-            </div>
+            </div> --}}
             <!-- NEWS -->
-            <h2 class="text-center my-4">Daily Briefing</h2>
+            {{-- <h2 class="text-center my-4">Daily Briefing</h2>
             <div class="row g-4">
                 <div class="col-lg-4">
                     @foreach ($daily as $data)
                         <div class="card card-principal-post">
                             <div class="card border-0">
-                                {{-- <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                    <span class="badge etiqueta-img" style="background:{{ $data->destination_color }};">
-                                        {!! $data->destination !!}</span>
-                                </a> --}}
                                 <span class="etiqueta-last-post">
                                     <i class="bi bi-star" style="font-size: 1rem; color:white; margin: 2px;"></i></span>
                                 <a href="{{ url("$data->url") }}">
@@ -446,12 +442,6 @@
                                                 </a>
                                             </div>
                                             <div class="col-6 card-body-secundario">
-                                                {{-- <a href="{{ route('destinations', ["$data->destination_slug"]) }}">
-                                                    <span class="etiqueta-post mb-2"
-                                                        style="background:{{ $data->destination_color }};">
-                                                        {!! $data->destination !!}
-                                                    </span>
-                                                </a> --}}
                                                 <a href="{{ url("$data->url") }}">
                                                     <h3 class="card-title-secundario">{!! $data->title !!}</h3>
                                                 </a>
@@ -472,7 +462,7 @@
                     <a href="{{ route('category', ['daily-briefing']) }}" class="btn-view-more" type="button">More
                         Dalies</a>
                 </div>
-            </div>
+            </div> --}}
             <!-- NEWS -->
             <!-- ads /21855382314/tt-home-lb-5 -->
             @if ($mostrar)

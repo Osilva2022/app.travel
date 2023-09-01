@@ -327,6 +327,6 @@ Route::get('/feed', [SitemapXmlController::class, 'feed']);
 Route::get('/rss', function () {
     return Redirect::to('/feed', 301);
 });
-// Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
+Route::get('/{id}', [PostsController::class, 'postid'])->name('postid');
 Route::get('destination/{destination}/feed', [PostsController::class, 'destinations_feed'])->name('destinations_feed');
 });
