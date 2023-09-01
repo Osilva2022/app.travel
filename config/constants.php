@@ -7,7 +7,7 @@ return [
 
     'PINTEREST_URL' => 'https://www.pinterest.com.mx/tribunetravel/',
 
-    'IMAGES_REPOSITORY' => 'https://s3.us-west-2.amazonaws.com/app.tribunetravel/',
+    'IMAGES_REPOSITORY' => 'https://storage.googleapis.com/tribunetravel/',
 
     'DEFAULT_IMAGE' => 'https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/puerto-vallarta.jpg.webp',
     'META_TITLE' => 'Tribune Travel | Your Gateway to Mexico',
