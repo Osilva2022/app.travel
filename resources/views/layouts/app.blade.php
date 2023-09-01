@@ -30,7 +30,7 @@
             "@context":"https://schema.org",
             "@type":"Organization",
             "url":"https://tribune.travel/",
-            "logo":"https://s3.us-west-2.amazonaws.com/app.tribunetravel/2022/08/tribune-white.svg"
+            "logo":"https://storage.googleapis.com/tribunetravel/2022/08/tribune-white.svg"
         }
     </script>
     <script type="application/ld+json">
