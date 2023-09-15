@@ -46,6 +46,15 @@
         });
     </script>
 @endpush
+@section('styles')
+    <style>
+        #thumb-container iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+    </style>
+@endsection
 <!-- content -->
 @section('content')
     <header>
@@ -108,8 +117,19 @@
             <div class="row g-4 mb-4">
                 <div class="col-lg-8 g-4">
                     <div class="row g-4">
-                        <div class="col-12">
-                            <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
+                        <div class="col-12" id="thumb-container">
+                            @switch($post_['post_format'])
+                                @case('entrada')
+                                    <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
+                                @break
+
+                                @case('video')
+                                    {!! $post_['video_code'] !!}
+                                @break
+
+                                @default
+                                    <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
+                            @endswitch                            
                         </div>
                         <div class="col-12">
                             @empty(!$post_['subtitle'])

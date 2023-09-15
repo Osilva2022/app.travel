@@ -286,6 +286,8 @@ class PostsController extends Controller
             "excerpt" => $apiresponse[0]->excerpt->rendered,
             "content" => $apiresponse[0]->content->rendered,
             "seo_title" => $apiresponse[0]->acf->titulo_seo,
+            "post_format" => $apiresponse[0]->acf->post_format,
+            "video_code" => $apiresponse[0]->acf->video_code,
             "seo_description" => $apiresponse[0]->acf->descripcion_seo,
             "portada_diarios" => $portada_diarios,
             "canonical_url" => $apiresponse[0]->acf->url_canonica,
