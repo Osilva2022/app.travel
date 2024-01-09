@@ -40,11 +40,11 @@
                         <a class="" href="{!! route('guide') !!}">Guide</a>
                     </h3>
                 </div>
-                <div class="col text-center">
+                {{-- <div class="col text-center">
                     <h3>
                         <a class="" href="{!! route('events') !!}">Events</a>
                     </h3>
-                </div>
+                </div> --}}
             </div>
             <hr>
             <div class="row mt-2 mb-4 g-4">

@@ -27,9 +27,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('guide') }}{{ $x }}">Guide</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('events') }}{{ $x }}">Events</a>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="destination-dropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">

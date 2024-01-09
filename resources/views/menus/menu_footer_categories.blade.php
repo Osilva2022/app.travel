@@ -39,14 +39,14 @@
                         </button>
                     </a>
                 </div>
-                <div class="col-md-3 col-lg-2 text-center">
+                {{-- <div class="col-md-3 col-lg-2 text-center">
                     <a href="{{ route('events') }}{{ $x }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">
                             <i class="bi bi-calendar-event" style="font-size: 2.5rem;"></i>
                             <h5>Events</h5>
                         </button>
                     </a>
-                </div>
+                </div> --}}
                 <div class="col-md-3 col-lg-2 text-center">
                     <a href="{{ route('category', ['blogs']) }}{{ $x }}">
                         <button class="text-center rounded-4 shadow btn-square btn" type="button">

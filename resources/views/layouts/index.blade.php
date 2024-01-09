@@ -480,7 +480,7 @@
             @endif
             <!-- Gallery -->
             <!-- EVENTS -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12">
                     <hr>
                 </div>
@@ -513,7 +513,7 @@
                 <div class="col my-4 d-flex justify-content-center">
                     <a href="{{ route('events') }}" class="btn-view-more" type="button">See the calendar</a>
                 </div>
-            </div>
+            </div> --}}
             <!-- EVENTS -->
             <div class="row">
                 <div class="col-12">
