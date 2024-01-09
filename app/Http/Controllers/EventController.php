@@ -14,7 +14,7 @@ class EventController extends Controller
         $destinations_data = returndata('destinations');
         $categories_data = returndata('categories');
         $category = "Events";
-        $apiresponse = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/tribe_events?slug='. $slug.'&_embed'));
+        $apiresponse = json_decode(file_get_contents('https://admin.tribune.travel/wp-json/wp/v2/tribe_events?slug=' . $slug . '&_embed'));
         empty($apiresponse) || $apiresponse[0]->status != "publish" ? abort(404) : true;
         $events = $apiresponse;
         $m_e = DB::select("SELECT * FROM travel_events WHERE start_date >= current_date() and slug != '$slug' ORDER BY start_date ASC;");
@@ -37,7 +37,7 @@ class EventController extends Controller
             WHERE
                 tags.slug = posts_tags.tag_slug
                     AND id_post = $id;");
-                    
+
         return view('categories.event', compact('events', 'categories_data', 'destinations_data', 'more_events',  'post_tags', 'category', 'slug', 'destination'));
     }
 
@@ -58,7 +58,7 @@ class EventController extends Controller
         if ($e) {
             $event_structured_data = data_json_event($e);
         }
-
+        // dd($e);
         metadatos(
             'Events | Tribune Travel',
             "Calendar. Looking for what to do in Mexico's top beach destinations? We got you covered with the best events. Find out what to do and where to go here.",

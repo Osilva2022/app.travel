@@ -118,6 +118,9 @@
                 <div class="col-lg-8 g-4">
                     <div class="row g-4">
                         <div class="col-12" id="thumb-container">
+                            @if ($post_['id'] == '30279')
+                                <a href="https://www.manuelpalos.com" target="_blank">
+                            @endif
                             @switch($post_['post_format'])
                                 @case('entrada')
                                     <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
@@ -129,7 +132,11 @@
 
                                 @default
                                     <img {!! img_meta($post_['img']->img_data) !!}" class="card-img-final">
-                            @endswitch                            
+                            @endswitch
+
+                            @if ($post_['id'] == '30279')
+                                </a>
+                            @endif
                         </div>
                         <div class="col-12">
                             @empty(!$post_['subtitle'])
