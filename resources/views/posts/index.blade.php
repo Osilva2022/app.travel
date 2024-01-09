@@ -119,7 +119,7 @@
                     <div class="row g-4">
                         <div class="col-12" id="thumb-container">
                             @if ($post_['id'] == '30279')
-                                <a href="https://www.manuelpalos.com" target="_blank">
+                                <a href="https://www.palosstudio.net/" target="_blank">
                             @endif
                             @switch($post_['post_format'])
                                 @case('entrada')
