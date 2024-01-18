@@ -40,39 +40,40 @@ class Divisas extends Command
     public function handle()
     {
         $curl = curl_init();
-        $end_date=date('Y-m-d');
-        $start_date=date('Y-m-d',strtotime("-1 days"));        
+        $end_date = date('Y-m-d');
+        $start_date = date('Y-m-d', strtotime("-1 days"));
 
         curl_setopt_array($curl, array(
-           CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/fluctuation?base=MXN&start_date=$start_date&end_date=$end_date&symbols=USD,CAD,EUR",
-           CURLOPT_HTTPHEADER => array(
-             "Content-Type: text/plain",
-             "apikey: V0UApTVlnDOMo62k80m0YvA0ddjpdS8j"
-           ),
-           CURLOPT_RETURNTRANSFER => true,
-           CURLOPT_ENCODING => "",
-           CURLOPT_MAXREDIRS => 10,
-           CURLOPT_TIMEOUT => 0,
-           CURLOPT_FOLLOWLOCATION => true,
-           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-           CURLOPT_CUSTOMREQUEST => "GET"
+            CURLOPT_URL => "https://api.apilayer.com/exchangerates_data/fluctuation?base=MXN&start_date=$start_date&end_date=$end_date&symbols=USD,CAD,EUR",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: text/plain",
+                "apikey: V0UApTVlnDOMo62k80m0YvA0ddjpdS8j"
+            ),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET"
         ));
-         
-        $response = curl_exec($curl);         
-        curl_close($curl);     
 
-        $changes = json_decode($response, true);       
-        $rates = $changes['rates']; 
-        
-        foreach ($rates as $key => $value) {           
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-            Divisa::where('country',$key)
-                ->update(['end_date'=>$changes["end_date"],
-                    'start_date'=>$changes["start_date"],              
-                    'start_rate'=>round($value["start_rate"],2),
-                    'end_rate'=>round($value["end_rate"],2),
-                    'change'=>$value["change"]
+        $changes = json_decode($response, true);
+        $rates = $changes['rates'];
+
+        foreach ($rates as $key => $value) {
+
+            Divisa::where('country', $key)
+                ->update([
+                    'end_date' => $changes["end_date"],
+                    'start_date' => $changes["start_date"],
+                    'start_rate' => round($value["start_rate"], 2),
+                    'end_rate' => round(1 / $value["end_rate"], 2),
+                    'change' => $value["change"]
                 ]);
-            }        
+        }
     }
 }
